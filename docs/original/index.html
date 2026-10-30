@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Xóm Nông Trại</title>
+<meta name="theme-color" content="#fff6e6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌾%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+<canvas id="scene"></canvas>
+<div id="hud" class="hidden"></div>
+<div id="layer-pop"></div>
+<div id="layer-sheet"></div>
+<div id="layer-toast"></div>
+<div id="screen-load" class="screen">
+  <div class="load-card">
+    <div class="load-title">Xóm Nông Trại</div>
+    <div class="load-egg"><i></i></div>
+    <p id="load-msg">Đang dọn vườn, chờ chút nhé…</p>
+    <div class="bar"><b id="load-bar"></b></div>
+    <p id="load-pct">Đang tải 0%</p>
+  </div>
+</div>
+<div id="screen-map" class="screen hidden"></div>
+<div id="screen-fish" class="screen hidden"></div>
+<div id="modal" class="hidden"></div>
+<div id="fade"></div>
+<script src="data.js"></script>
+<script src="game.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>

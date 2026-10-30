@@ -1,0 +1,222 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "name": "asset loading",
+      "sprites": 840,
+      "sheets": 27,
+      "loaded": 27,
+      "failed": [],
+      "individualPNGs": true,
+      "crops": 102,
+      "fish": 22,
+      "buildings": 14
+    },
+    {
+      "name": "complete motion clips",
+      "frames": 362,
+      "clips": 61,
+      "allFarmers": true,
+      "allAnimals": true,
+      "effects": true
+    },
+    {
+      "name": "rooted foliage",
+      "rootShift": 0.037947067655707656,
+      "canopyShift": 1.8940221410101827,
+      "rootStable": true,
+      "canopyAnimated": true
+    },
+    {
+      "name": "actual rendered walk frames",
+      "distinct": 8,
+      "multiFrame": true
+    },
+    {
+      "name": "live movement and render",
+      "moved": true,
+      "gaitAdvanced": true,
+      "noSceneErrors": true,
+      "averageRenderHz": 26,
+      "medianFrameMs": 40.09999990463257,
+      "p95FrameMs": 49.299999952316284
+    },
+    {
+      "name": "static ground cache",
+      "reused": true,
+      "invalidated": true
+    },
+    {
+      "name": "plant and harvest",
+      "planted": true,
+      "harvested": true,
+      "inventoryIncreased": true
+    },
+    {
+      "name": "extended buildings",
+      "built": true,
+      "animals": 18
+    },
+    {
+      "name": "shop",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "factories",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "livestock",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "gear",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "orchard",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "decorations",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "models",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "fish-album",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "bag",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "orders",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "events",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "checkin",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "season",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "friends",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "invite",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "mail",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "avatar",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "settings",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "library",
+      "rendered": true,
+      "brokenImages": 0
+    },
+    {
+      "name": "decoration lifecycle",
+      "placed": true,
+      "harvested": true,
+      "removed": true,
+      "occupiedPlotRejected": true,
+      "occupiedPondRejected": true
+    },
+    {
+      "name": "seed search",
+      "matching": true
+    },
+    {
+      "name": "fishing",
+      "active": true,
+      "canvas": true
+    },
+    {
+      "name": "cast",
+      "waiting": true
+    },
+    {
+      "name": "persistent fish collection",
+      "recordedAfterSale": true
+    },
+    {
+      "name": "mobile layout",
+      "viewport": 390,
+      "bodyWidth": 390,
+      "horizontalOverflow": false,
+      "headerControlsFit": true,
+      "brokenImages": []
+    },
+    {
+      "name": "save compatibility",
+      "saved": true
+    },
+    {
+      "name": "sprite safety gutters",
+      "invalid": []
+    },
+    {
+      "name": "packaged asset paths",
+      "missing": []
+    },
+    {
+      "name": "motion preview",
+      "ready": true,
+      "frames": 362,
+      "clips": 61
+    },
+    {
+      "name": "recorded motion preview",
+      "recorded": true,
+      "bytes": 118250
+    },
+    {
+      "name": "standalone PNG gallery",
+      "cards": 840,
+      "expected": 840,
+      "groups": 27
+    },
+    {
+      "name": "gallery search",
+      "matching": true
+    }
+  ]
+}

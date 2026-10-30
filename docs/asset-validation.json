@@ -1,0 +1,162 @@
+[
+  {
+    "name": "produce",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 39,
+    "safePadding": 24
+  },
+  {
+    "name": "buildings",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 35,
+    "safePadding": 24
+  },
+  {
+    "name": "nature",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 44,
+    "safePadding": 24
+  },
+  {
+    "name": "fishing",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 56,
+    "safePadding": 24
+  },
+  {
+    "name": "ui",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 50,
+    "safePadding": 24
+  },
+  {
+    "name": "effects",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 41,
+    "safePadding": 24
+  },
+  {
+    "name": "growth",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 43,
+    "safePadding": 24
+  },
+  {
+    "name": "terrain",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 16,
+    "transparentPercent": 56,
+    "safePadding": 24
+  },
+  {
+    "name": "characters",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 24,
+    "transparentPercent": 71,
+    "safePadding": 24
+  },
+  {
+    "name": "goods",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 48,
+    "safePadding": 24
+  },
+  {
+    "name": "crops-extra",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 33,
+    "safePadding": 24
+  },
+  {
+    "name": "botanical",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 31,
+    "safePadding": 24
+  },
+  {
+    "name": "trees-a",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 55,
+    "safePadding": 24
+  },
+  {
+    "name": "trees-b",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 59,
+    "safePadding": 24
+  },
+  {
+    "name": "heritage",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 36,
+    "transparentPercent": 33,
+    "safePadding": 24
+  },
+  {
+    "name": "facilities",
+    "sourceSize": [
+      1254,
+      1254
+    ],
+    "objects": 25,
+    "transparentPercent": 32,
+    "safePadding": 24
+  }
+]

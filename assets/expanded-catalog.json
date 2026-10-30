@@ -1,0 +1,746 @@
+{
+  "crops-extra": [
+    {
+      "id": "raumuong",
+      "n": "Rau muống"
+    },
+    {
+      "id": "luanep",
+      "n": "Lúa nếp"
+    },
+    {
+      "id": "luate",
+      "n": "Lúa tẻ"
+    },
+    {
+      "id": "toido",
+      "n": "Tỏi đỏ"
+    },
+    {
+      "id": "xalach",
+      "n": "Xà lách"
+    },
+    {
+      "id": "me",
+      "n": "Mè"
+    },
+    {
+      "id": "bong",
+      "n": "Bông"
+    },
+    {
+      "id": "hoacuc",
+      "n": "Hoa cúc"
+    },
+    {
+      "id": "nhansam",
+      "n": "Nhân sâm"
+    },
+    {
+      "id": "sa",
+      "n": "Sả"
+    },
+    {
+      "id": "huongduong",
+      "n": "Hướng dương"
+    },
+    {
+      "id": "daunang",
+      "n": "Đậu đũa"
+    },
+    {
+      "id": "san",
+      "n": "Sắn"
+    },
+    {
+      "id": "nghe",
+      "n": "Nghệ"
+    },
+    {
+      "id": "sanday",
+      "n": "Sắn dây"
+    },
+    {
+      "id": "hoahong",
+      "n": "Hoa hồng"
+    },
+    {
+      "id": "daudo",
+      "n": "Đậu đỏ"
+    },
+    {
+      "id": "hanhtim",
+      "n": "Hành tím"
+    },
+    {
+      "id": "hoalan",
+      "n": "Hoa lan"
+    },
+    {
+      "id": "khoaimon",
+      "n": "Khoai môn"
+    },
+    {
+      "id": "rautragioi",
+      "n": "Rau Trà Giới"
+    },
+    {
+      "id": "mangtay",
+      "n": "Măng tây"
+    },
+    {
+      "id": "oaihuong",
+      "n": "Oải hương"
+    },
+    {
+      "id": "atiso",
+      "n": "Atisô"
+    },
+    {
+      "id": "hanhnhan",
+      "n": "Hạnh nhân"
+    },
+    {
+      "id": "hoaly",
+      "n": "Hoa ly"
+    },
+    {
+      "id": "broccoli",
+      "n": "Bông cải xanh"
+    },
+    {
+      "id": "samngoclinh",
+      "n": "Sâm Ngọc Linh"
+    },
+    {
+      "id": "vantho",
+      "n": "Vạn thọ"
+    },
+    {
+      "id": "suhao",
+      "n": "Su hào"
+    },
+    {
+      "id": "luathom",
+      "n": "Lúa thơm"
+    },
+    {
+      "id": "ladong",
+      "n": "Lá dong"
+    },
+    {
+      "id": "raungot",
+      "n": "Rau ngót"
+    },
+    {
+      "id": "khom",
+      "n": "Khóm"
+    },
+    {
+      "id": "susu",
+      "n": "Su su"
+    },
+    {
+      "id": "caime",
+      "n": "Cải mơ"
+    }
+  ],
+  "botanical": [
+    {
+      "id": "bongdien",
+      "n": "Bông điên điển"
+    },
+    {
+      "id": "nhiepnhu",
+      "n": "Nếp cẩm"
+    },
+    {
+      "id": "luast25",
+      "n": "Lúa ST25"
+    },
+    {
+      "id": "tuyenngoc",
+      "n": "Tuyết ngọc"
+    },
+    {
+      "id": "ladao",
+      "n": "Lá đào"
+    },
+    {
+      "id": "honglang",
+      "n": "Hương lăng"
+    },
+    {
+      "id": "senmo",
+      "n": "Sen mơ"
+    },
+    {
+      "id": "daoco",
+      "n": "Đào cỏ"
+    },
+    {
+      "id": "caibay",
+      "n": "Cải bảy"
+    },
+    {
+      "id": "ngocdan",
+      "n": "Ngọc đan"
+    },
+    {
+      "id": "hongnang",
+      "n": "Hồng nắng"
+    },
+    {
+      "id": "thuyduoc",
+      "n": "Thủy dược"
+    },
+    {
+      "id": "cainon",
+      "n": "Cải non"
+    },
+    {
+      "id": "xuongrong",
+      "n": "Xương rồng"
+    },
+    {
+      "id": "mamxanh",
+      "n": "Mầm xanh"
+    },
+    {
+      "id": "namrom",
+      "n": "Nấm rơm"
+    },
+    {
+      "id": "namhuong",
+      "n": "Nấm hương"
+    },
+    {
+      "id": "namlinhchi",
+      "n": "Nấm linh chi"
+    },
+    {
+      "id": "nammo",
+      "n": "Nấm mỡ"
+    },
+    {
+      "id": "namkimcham",
+      "n": "Nấm kim châm"
+    },
+    {
+      "id": "nambao",
+      "n": "Nấm bào ngư"
+    },
+    {
+      "id": "namtrang",
+      "n": "Nấm trắng"
+    },
+    {
+      "id": "suplo",
+      "n": "Súp lơ"
+    },
+    {
+      "id": "doquyen",
+      "n": "Đỗ quyên"
+    },
+    {
+      "id": "huongthao",
+      "n": "Hương thảo"
+    },
+    {
+      "id": "bacha",
+      "n": "Bạc hà"
+    },
+    {
+      "id": "hungque",
+      "n": "Húng quế"
+    },
+    {
+      "id": "ngori",
+      "n": "Ngò rí"
+    },
+    {
+      "id": "hanhla",
+      "n": "Hành lá"
+    },
+    {
+      "id": "thila",
+      "n": "Thì là"
+    },
+    {
+      "id": "cobonla",
+      "n": "Cỏ bốn lá"
+    },
+    {
+      "id": "mangtre",
+      "n": "Măng tre"
+    },
+    {
+      "id": "daoqua",
+      "n": "Đào"
+    },
+    {
+      "id": "nho",
+      "n": "Nho"
+    },
+    {
+      "id": "chanh",
+      "n": "Chanh"
+    },
+    {
+      "id": "comnon",
+      "n": "Cốm non"
+    }
+  ],
+  "trees-a": [
+    {
+      "id": "tree-cam",
+      "n": "Cam"
+    },
+    {
+      "id": "tree-vai",
+      "n": "Vải thiều"
+    },
+    {
+      "id": "tree-tao",
+      "n": "Táo"
+    },
+    {
+      "id": "tree-buoi",
+      "n": "Bưởi"
+    },
+    {
+      "id": "tree-na",
+      "n": "Na"
+    },
+    {
+      "id": "tree-tieu",
+      "n": "Trụ tiêu"
+    },
+    {
+      "id": "tree-xoai",
+      "n": "Xoài"
+    },
+    {
+      "id": "tree-nhan",
+      "n": "Nhãn lồng"
+    },
+    {
+      "id": "tree-bo",
+      "n": "Bơ"
+    },
+    {
+      "id": "tree-macca",
+      "n": "Mắc ca"
+    },
+    {
+      "id": "tree-caphe",
+      "n": "Cà phê"
+    },
+    {
+      "id": "tree-sake",
+      "n": "Sa kê"
+    },
+    {
+      "id": "tree-mangcut",
+      "n": "Măng cụt"
+    },
+    {
+      "id": "tree-dao",
+      "n": "Đào Tết"
+    },
+    {
+      "id": "tree-man",
+      "n": "Mận"
+    },
+    {
+      "id": "tree-mai",
+      "n": "Mai vàng"
+    },
+    {
+      "id": "tree-tre",
+      "n": "Tre"
+    },
+    {
+      "id": "tree-oi",
+      "n": "Ổi"
+    },
+    {
+      "id": "tree-saurieng",
+      "n": "Sầu riêng"
+    },
+    {
+      "id": "tree-hong",
+      "n": "Hồng"
+    },
+    {
+      "id": "tree-thanhlong",
+      "n": "Thanh long"
+    },
+    {
+      "id": "tree-dua",
+      "n": "Dừa"
+    },
+    {
+      "id": "tree-chuoi",
+      "n": "Chuối"
+    },
+    {
+      "id": "tree-hatde",
+      "n": "Hạt dẻ"
+    },
+    {
+      "id": "tree-cacao",
+      "n": "Ca cao"
+    }
+  ],
+  "trees-b": [
+    {
+      "id": "tree-dau",
+      "n": "Dâu tằm"
+    },
+    {
+      "id": "tree-mo",
+      "n": "Mơ"
+    },
+    {
+      "id": "tree-thanhtra",
+      "n": "Thanh trà"
+    },
+    {
+      "id": "tree-chomchom",
+      "n": "Chôm chôm"
+    },
+    {
+      "id": "tree-quat",
+      "n": "Quất"
+    },
+    {
+      "id": "tree-cau",
+      "n": "Cau"
+    },
+    {
+      "id": "tree-vusua",
+      "n": "Vú sữa"
+    },
+    {
+      "id": "tree-hoi",
+      "n": "Hồi"
+    },
+    {
+      "id": "tree-gosua",
+      "n": "Gỗ sưa"
+    },
+    {
+      "id": "tree-mit",
+      "n": "Mít"
+    },
+    {
+      "id": "tree-chashan",
+      "n": "Chè Shan"
+    },
+    {
+      "id": "tree-que",
+      "n": "Quế"
+    },
+    {
+      "id": "tree-voi",
+      "n": "Vối"
+    },
+    {
+      "id": "tree-gac",
+      "n": "Gấc"
+    },
+    {
+      "id": "tree-duatam",
+      "n": "Dừa tam"
+    },
+    {
+      "id": "tree-thotnot",
+      "n": "Thốt nốt"
+    },
+    {
+      "id": "tree-ramtra",
+      "n": "Tràm"
+    },
+    {
+      "id": "tree-bonbon",
+      "n": "Bòn bon"
+    },
+    {
+      "id": "tree-dangsam",
+      "n": "Đẳng sâm"
+    },
+    {
+      "id": "tree-bachdan",
+      "n": "Bạch đàn"
+    },
+    {
+      "id": "tree-chanhday",
+      "n": "Chanh dây"
+    },
+    {
+      "id": "tree-sim",
+      "n": "Sim"
+    },
+    {
+      "id": "tree-vaithanhha",
+      "n": "Vải Thanh Hà"
+    },
+    {
+      "id": "tree-taoxanh",
+      "n": "Táo xanh"
+    },
+    {
+      "id": "tree-xoaicat",
+      "n": "Xoài cát"
+    }
+  ],
+  "heritage": [
+    {
+      "id": "deco-trefence",
+      "n": "Hàng rào tre"
+    },
+    {
+      "id": "deco-brickpath",
+      "n": "Đường gạch"
+    },
+    {
+      "id": "deco-stonebench",
+      "n": "Ghế đá"
+    },
+    {
+      "id": "deco-waterjar",
+      "n": "Lu nước"
+    },
+    {
+      "id": "deco-flowerjar",
+      "n": "Chum hoa"
+    },
+    {
+      "id": "deco-banana",
+      "n": "Chuối kiểng"
+    },
+    {
+      "id": "deco-hut",
+      "n": "Lều rơm"
+    },
+    {
+      "id": "deco-lantern",
+      "n": "Đèn lồng"
+    },
+    {
+      "id": "deco-bicycle",
+      "n": "Xe đạp"
+    },
+    {
+      "id": "deco-windmill",
+      "n": "Cối xay gió"
+    },
+    {
+      "id": "deco-monkeybridge",
+      "n": "Cầu khỉ"
+    },
+    {
+      "id": "deco-oxcart",
+      "n": "Xe bò"
+    },
+    {
+      "id": "deco-gourdtrellis",
+      "n": "Giàn mướp"
+    },
+    {
+      "id": "deco-bamboobridge",
+      "n": "Cầu tre"
+    },
+    {
+      "id": "deco-villagegate",
+      "n": "Cổng làng"
+    },
+    {
+      "id": "deco-swing",
+      "n": "Xích đu tre"
+    },
+    {
+      "id": "deco-bougainvillea",
+      "n": "Giàn hoa giấy"
+    },
+    {
+      "id": "deco-mousestatue",
+      "n": "Tượng chuột tí"
+    },
+    {
+      "id": "deco-gazebo",
+      "n": "Nhà chòi"
+    },
+    {
+      "id": "deco-floatinglantern",
+      "n": "Đèn hoa đăng"
+    },
+    {
+      "id": "deco-mai",
+      "n": "Chậu mai"
+    },
+    {
+      "id": "deco-peach",
+      "n": "Chậu đào"
+    },
+    {
+      "id": "deco-strawstack",
+      "n": "Đống rơm"
+    },
+    {
+      "id": "deco-seedsack",
+      "n": "Bao thóc giống"
+    },
+    {
+      "id": "deco-bauhinia",
+      "n": "Hoa ban"
+    },
+    {
+      "id": "deco-instruments",
+      "n": "Nhạc cụ dân tộc"
+    },
+    {
+      "id": "deco-waterwheel",
+      "n": "Guồng nước"
+    },
+    {
+      "id": "deco-lotuspond",
+      "n": "Ao sen"
+    },
+    {
+      "id": "deco-goldrice",
+      "n": "Bó lúa vàng"
+    },
+    {
+      "id": "deco-huetea",
+      "n": "Bộ trà Huế"
+    },
+    {
+      "id": "deco-palace",
+      "n": "Nhà nhạc cung đình"
+    },
+    {
+      "id": "deco-bamboobed",
+      "n": "Bộ ván tre"
+    },
+    {
+      "id": "deco-flowerboat",
+      "n": "Thuyền hoa"
+    },
+    {
+      "id": "deco-stilthouse",
+      "n": "Nhà sàn"
+    },
+    {
+      "id": "deco-terrace",
+      "n": "Ruộng bậc thang"
+    },
+    {
+      "id": "deco-welcome",
+      "n": "Cổng hoa"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "facility-doghouse",
+      "n": "Mô hình chuồng chó"
+    },
+    {
+      "id": "facility-sugar",
+      "n": "Mô hình lò đường"
+    },
+    {
+      "id": "facility-milk",
+      "n": "Mô hình nhà sữa"
+    },
+    {
+      "id": "facility-juice",
+      "n": "Mô hình quầy nước"
+    },
+    {
+      "id": "facility-loom",
+      "n": "Mô hình khung dệt"
+    },
+    {
+      "id": "facility-sticky",
+      "n": "Mô hình bếp xôi"
+    },
+    {
+      "id": "facility-tailor",
+      "n": "Mô hình tiệm may"
+    },
+    {
+      "id": "facility-pastry",
+      "n": "Mô hình tiệm bánh"
+    },
+    {
+      "id": "facility-florist",
+      "n": "Mô hình tiệm hoa"
+    },
+    {
+      "id": "facility-kitchen",
+      "n": "Mô hình bếp cổ truyền"
+    },
+    {
+      "id": "facility-coastal",
+      "n": "Mô hình xưởng duyên hải"
+    },
+    {
+      "id": "facility-candy",
+      "n": "Mô hình lò kẹo"
+    },
+    {
+      "id": "facility-oil",
+      "n": "Mô hình lò ép dầu"
+    },
+    {
+      "id": "facility-restaurant",
+      "n": "Mô hình quán ăn"
+    },
+    {
+      "id": "facility-aroma",
+      "n": "Mô hình xưởng hương liệu"
+    },
+    {
+      "id": "facility-rabbit",
+      "n": "Mô hình chuồng thỏ"
+    },
+    {
+      "id": "facility-pigeon",
+      "n": "Mô hình chuồng bồ câu"
+    },
+    {
+      "id": "facility-feed",
+      "n": "Mô hình máy xay cám"
+    },
+    {
+      "id": "facility-rice",
+      "n": "Mô hình nhà xay xát"
+    },
+    {
+      "id": "facility-bakery",
+      "n": "Mô hình lò bánh mì"
+    },
+    {
+      "id": "facility-coop",
+      "n": "Mô hình chuồng gà"
+    },
+    {
+      "id": "facility-barn",
+      "n": "Mô hình chuồng bò"
+    },
+    {
+      "id": "facility-pigsty",
+      "n": "Mô hình chuồng heo"
+    },
+    {
+      "id": "facility-sheep",
+      "n": "Mô hình chuồng cừu"
+    },
+    {
+      "id": "facility-beehive",
+      "n": "Mô hình tổ ong"
+    }
+  ]
+}

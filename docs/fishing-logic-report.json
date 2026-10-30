@@ -1,0 +1,140 @@
+[
+  {
+    "test": "relaxed starter rod: caro",
+    "pass": true,
+    "seconds": 5.89
+  },
+  {
+    "test": "relaxed starter rod: tom",
+    "pass": true,
+    "seconds": 5.89
+  },
+  {
+    "test": "relaxed starter rod: cachep",
+    "pass": true,
+    "seconds": 6.18
+  },
+  {
+    "test": "relaxed starter rod: caloc",
+    "pass": true,
+    "seconds": 7.17
+  },
+  {
+    "test": "relaxed starter rod: cavang",
+    "pass": true,
+    "seconds": 12.37
+  },
+  {
+    "test": "relaxed starter rod: catre",
+    "pass": true,
+    "seconds": 5.89
+  },
+  {
+    "test": "relaxed starter rod: cachim",
+    "pass": true,
+    "seconds": 5.89
+  },
+  {
+    "test": "relaxed starter rod: camu",
+    "pass": true,
+    "seconds": 6.83
+  },
+  {
+    "test": "relaxed starter rod: cangu",
+    "pass": true,
+    "seconds": 7.17
+  },
+  {
+    "test": "relaxed starter rod: tomvang",
+    "pass": true,
+    "seconds": 7.98
+  },
+  {
+    "test": "relaxed starter rod: cachen",
+    "pass": true,
+    "seconds": 7.52
+  },
+  {
+    "test": "relaxed starter rod: catran",
+    "pass": true,
+    "seconds": 7.98
+  },
+  {
+    "test": "relaxed starter rod: cachach",
+    "pass": true,
+    "seconds": 6.18
+  },
+  {
+    "test": "relaxed starter rod: luon",
+    "pass": true,
+    "seconds": 6.51
+  },
+  {
+    "test": "relaxed starter rod: cathatlat",
+    "pass": true,
+    "seconds": 11.49
+  },
+  {
+    "test": "relaxed starter rod: cachinh",
+    "pass": true,
+    "seconds": 7.98
+  },
+  {
+    "test": "relaxed starter rod: cahoi",
+    "pass": true,
+    "seconds": 11.49
+  },
+  {
+    "test": "relaxed starter rod: laokhonglo",
+    "pass": true,
+    "seconds": 13.22
+  },
+  {
+    "test": "relaxed starter rod: chepvang",
+    "pass": true,
+    "seconds": 13.59
+  },
+  {
+    "test": "relaxed starter rod: canhavu",
+    "pass": true,
+    "seconds": 12.79
+  },
+  {
+    "test": "relaxed starter rod: cachien",
+    "pass": true,
+    "seconds": 15.07
+  },
+  {
+    "test": "relaxed starter rod: cadieu",
+    "pass": true,
+    "seconds": 6.51
+  },
+  {
+    "test": "upgraded rod improves catch time",
+    "pass": true
+  },
+  {
+    "test": "ignoring warnings can lose a difficult fish",
+    "pass": true
+  },
+  {
+    "test": "equivalent catches at 30/60/120 Hz",
+    "pass": true
+  },
+  {
+    "test": "releasing in danger has a recovery window",
+    "pass": true
+  },
+  {
+    "test": "all 22 species available across locations",
+    "pass": true
+  },
+  {
+    "test": "progression gates",
+    "pass": true
+  },
+  {
+    "test": "shrimp and giant fish have distinct sensible weights",
+    "pass": true
+  }
+]

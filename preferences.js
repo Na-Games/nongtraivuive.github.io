@@ -1,0 +1,42 @@
+'use strict';
+const PREF_DEFAULTS={weather:'none',particles:true,particleDensity:1,shadow:true,hq:true,sound:true,wind:true,reduceMotion:false,volume:.65,sfxVolume:.8,waterVolume:.18,fishSound:true,vibration:'medium',vibrateBite:true,vibrateDanger:true,vibrateReward:true,vibrateTap:false,fishDifficulty:'relax',fishControl:'hold',autoHook:false,quickBite:true,castTiming:false,fishHints:true,leftHanded:false,screenShake:.35,highContrast:false,pauseOnBlur:true};
+const Preferences={
+  normalize(fx){const next=Object.assign({},PREF_DEFAULTS,fx||{});for(const k of ['volume','sfxVolume','waterVolume','screenShake'])next[k]=clamp(Number.isFinite(Number(next[k]))?Number(next[k]):PREF_DEFAULTS[k],0,1);next.particleDensity=clamp(Number(next.particleDensity)||1,.25,1);if(!['off','light','medium','strong'].includes(next.vibration))next.vibration='medium';if(!['relax','challenge'].includes(next.fishDifficulty))next.fishDifficulty='relax';if(!['hold','toggle'].includes(next.fishControl))next.fishControl='hold';return next},
+  apply(persist=true){document.body.classList.toggle('high-contrast',!!S.fx.highContrast);document.body.classList.toggle('left-handed',!!S.fx.leftHanded);Haptics.stop();if(typeof Fishing!=='undefined')Fishing.updateAudio();if(persist)save()},
+  set(key,value){S.fx[key]=value;this.apply()},
+};
+const Haptics={
+  last:-Infinity,supported:()=>typeof navigator.vibrate==='function',
+  pattern(kind,level){const unit={off:0,light:14,medium:32,strong:58}[level]||0;if(!unit)return [];const patterns={tap:[unit*.5],bite:[unit,55,unit],danger:[unit*.7,75,unit*.7],reward:[unit,65,unit*.6,60,unit*1.3],test:[unit,100,unit]};return(patterns[kind]||patterns.tap).map(n=>Math.round(n))},
+  pulse(kind='tap',force=false){if(!this.supported()||S.fx.vibration==='off'||document.hidden||navigator.userActivation?.hasBeenActive===false)return false;const switches={tap:'vibrateTap',bite:'vibrateBite',danger:'vibrateDanger',reward:'vibrateReward'};if(!force&&switches[kind]&&!S.fx[switches[kind]])return false;const now=performance.now();if(!force&&now-this.last<(kind==='danger'?1200:200))return false;try{const ok=navigator.vibrate(this.pattern(kind,S.fx.vibration));if(ok)this.last=now;return ok}catch{return false}},
+  stop(){if(this.supported()&&navigator.userActivation?.hasBeenActive!==false)try{navigator.vibrate(0)}catch{}}
+};
+let setTab=0;
+function openSettings(tab=setTab){
+  setTab=tab;if(typeof FS!=='undefined'&&FS){FS.paused=true;FS.reel=false;Fishing.inputActive=false}
+  openSheet('settings','Cài đặt',body=>{
+    body.append(tabs(['Chung','Chủ đề','Hiệu ứng','Âm thanh & rung','Câu cá','Dữ liệu'],setTab,i=>{setTab=i;refreshSheet()}));
+    const heading=(title,desc)=>{body.append(el('h3','pref-heading',title));if(desc)body.append(el('p','pref-description',desc))};
+    const toggle=(key,label,desc='',custom)=>{const row=el('button','pref-row',`<span><b>${label}</b>${desc?`<small>${desc}</small>`:''}</span><span class="sw ${S.fx[key]?'on':''}"></span>`);row.type='button';row.setAttribute('role','switch');row.setAttribute('aria-checked',String(!!S.fx[key]));row.onclick=()=>{custom?custom():Preferences.set(key,!S.fx[key]);refreshSheet()};body.append(row)};
+    const slider=(key,label,min=0,max=1,step=.05)=>{const wrap=el('label','pref-slider',`<span>${label}<output>${Math.round(S.fx[key]*100)}%</output></span>`),input=el('input');input.type='range';input.min=min;input.max=max;input.step=step;input.value=S.fx[key];input.setAttribute('aria-label',label);input.oninput=()=>{S.fx[key]=Number(input.value);$('output',wrap).textContent=Math.round(S.fx[key]*100)+'%';Preferences.apply()};wrap.append(input);body.append(wrap)};
+    const choices=(key,label,values)=>{body.append(el('div','lbl',label));const seg=el('div','seg pref-seg');for(const [id,n]of values){const b=el('button',S.fx[key]===id?'on':'',n);b.setAttribute('aria-pressed',String(S.fx[key]===id));b.onclick=()=>{Preferences.set(key,id);refreshSheet()};seg.append(b)}body.append(seg)};
+    if(setTab===0){
+      heading('Thoải mái khi chơi');const night=el('button','pref-row',`<span><b>Chế độ ban đêm</b><small>Chuyển ánh sáng khu vườn dịu hơn.</small></span><span class="sw ${S.night?'on':''}"></span>`);night.setAttribute('role','switch');night.setAttribute('aria-checked',String(S.night));night.onclick=()=>{toggleNight();save();refreshSheet()};body.append(night);
+      toggle('highContrast','Tăng tương phản','Chữ và thanh trạng thái rõ hơn.');toggle('leftHanded','Thuận tay trái','Đổi vị trí các nút điều khiển câu cá.');toggle('pauseOnBlur','Dừng khi bấm ra ngoài cửa sổ','Lượt câu luôn tạm dừng khi bạn chuyển ứng dụng khác.');
+      const full=el('button','cbtn2 pref-wide','Toàn màn hình');full.onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen({navigationUI:'hide'});else toast('Thiết bị này chưa hỗ trợ toàn màn hình.')}catch{toast('Không thể mở toàn màn hình trên trình duyệt này.')}};body.append(full);
+    }else if(setTab===1){heading('Màu sắc khu vườn');const grid=el('div','themes');THEMES.forEach(([id,n,c])=>{const b=el('button','theme-chip'+(S.theme===id?' on':''),n);b.style.background=c;b.onclick=()=>{setTheme(id);save();refreshSheet()};grid.append(b)});body.append(grid)}
+    else if(setTab===2){heading('Hình ảnh & hiệu ứng');toggle('hq','Độ nét cao','Tắt để giảm tải trên máy yếu.',()=>{Preferences.set('hq',!S.fx.hq);Scene.resize();if(typeof Fishing!=='undefined')Fishing.resize()});toggle('particles','Hạt hiệu ứng');slider('particleDensity','Mật độ hiệu ứng',.25,1,.05);toggle('wind','Cây lay theo gió');toggle('shadow','Bóng đổ & mây');toggle('reduceMotion','Chuyển động nhẹ','Giảm lay cây, bụi và chuyển động phụ.');slider('screenShake','Độ rung hình khi cá quẫy');choices('weather','Thời tiết',[['none','Trong lành'],['rain','Mưa'],['petal','Hoa rơi'],['leaf','Lá rơi'],['firefly','Đom đóm']]);
+    }else if(setTab===3){
+      heading('Âm thanh');toggle('sound','Bật âm thanh');slider('volume','Âm lượng tổng');slider('sfxVolume','Âm lượng hiệu ứng');toggle('fishSound','Tín hiệu câu cá','Tiếng báo cá cắn và tiếng kéo cần.');slider('waterVolume','Tiếng nước thư giãn');
+      heading('Rung phản hồi','Mức rung thay đổi độ dài và nhịp xung.');choices('vibration','Mức rung',[['off','Tắt'],['light','Nhẹ'],['medium','Vừa'],['strong','Mạnh']]);toggle('vibrateBite','Rung khi cá cắn');toggle('vibrateDanger','Rung nhắc nhả cần');toggle('vibrateReward','Rung khi bắt được cá');toggle('vibrateTap','Rung khi chạm nút');
+      const test=el('button','cbtn2 pref-wide','Thử rung');test.disabled=!Haptics.supported();test.onclick=()=>{if(S.fx.vibration==='off')return toast('Hãy chọn một mức rung trước.');const ok=Haptics.pulse('test',true);toast(ok?'Đã gửi nhịp rung thử.':'Trình duyệt chưa cho phép rung trên thiết bị này.')};body.append(test);body.append(el('p','pref-description',Haptics.supported()?'Rung còn phụ thuộc thiết bị và chế độ im lặng của máy.':'Trình duyệt hoặc thiết bị này không hỗ trợ rung. Lựa chọn của bạn vẫn được lưu.'));
+    }else if(setTab===4){
+      heading('Cách câu của bạn');choices('fishDifficulty','Độ khó',[['relax','Thư giãn'],['challenge','Thử thách']]);choices('fishControl','Cách kéo cá',[['hold','Giữ để kéo'],['toggle','Chạm bật / tắt kéo']]);toggle('autoHook','Tự giật phao','Tự mắc cá sau khi cá cắn; bạn vẫn tự kéo cá.');toggle('quickBite','Chờ cá ngắn hơn');toggle('castTiming','Canh lực thả','Thêm thử thách bấm vào vùng vàng để thả chính xác.');toggle('fishHints','Gợi ý thao tác');
+      const audio=el('button','cbtn2 pref-wide','Chỉnh âm thanh & rung');audio.onclick=()=>openSettings(3);body.append(audio);
+    }else{
+      heading('Dữ liệu của bạn','Tiến trình và cài đặt được lưu trong trình duyệt này.');const library=el('button','cbtn2 pref-wide','Mở thư viện PNG');library.onclick=openArtLibrary;body.append(library);
+      const reset=el('button','cbtn2 gray pref-wide','Khôi phục cài đặt');reset.onclick=()=>{if(!confirm('Khôi phục cài đặt? Tiến trình chơi vẫn được giữ.'))return;S.fx=Object.assign({},PREF_DEFAULTS);Preferences.apply();Scene.resize();refreshSheet()};body.append(reset);
+      const erase=el('button','pref-danger','Xóa tiến trình & chơi lại');erase.onclick=()=>{if(confirm('Xóa toàn bộ tiến trình và bắt đầu lại?')){localStorage.removeItem(SAVE_KEY);location.reload()}};body.append(erase);
+    }
+  },'86%');
+}

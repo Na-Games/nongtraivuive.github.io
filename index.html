@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Xóm Nông Trại</title>
+<meta name="theme-color" content="#fff6e6">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>if(/^https?:$/.test(location.protocol)){const manifest=document.createElement('link');manifest.rel='manifest';manifest.href='manifest.webmanifest';document.head.append(manifest)}</script>
+<link rel="icon" type="image/png" href="assets/sprites/produce/lua.png">
+<link rel="apple-touch-icon" href="assets/sprites/terrain/farm-map.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="art.css">
+<link rel="stylesheet" href="fishing.css">
+</head>
+<body class="theme-default">
+<canvas id="scene"></canvas>
+<div id="hud" class="hidden"></div>
+<div id="layer-pop"></div>
+<div id="layer-sheet"></div>
+<div id="layer-toast"></div>
+<div id="screen-load" class="screen">
+  <div class="load-card">
+    <div class="load-title">Xóm Nông Trại</div>
+    <div class="load-egg"><i></i></div>
+    <p id="load-msg">Đang dọn vườn, chờ chút nhé…</p>
+    <div class="bar"><b id="load-bar"></b></div>
+    <p id="load-pct">Đang tải 0%</p>
+  </div>
+</div>
+<div id="screen-map" class="screen hidden"></div>
+<div id="screen-fish" class="screen hidden"></div>
+<div id="modal" class="hidden"></div>
+<div id="fade"></div>
+<script src="data.js"></script>
+<script src="catalog.js"></script>
+<script src="expanded-catalog.js"></script>
+<script src="decor.js"></script>
+<script src="assets/manifest.js"></script>
+<script src="assets/motion/manifest.js"></script>
+<script src="assets/fishing-rigs.js"></script>
+<script src="art.js"></script>
+<script src="motion.js"></script>
+<script src="preferences.js"></script>
+<script src="game.js"></script>
+<script src="fishing-core.js"></script>
+<script src="fishing.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
