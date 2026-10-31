@@ -22,8 +22,8 @@ function openSheet(key,title,render,h){
   requestAnimationFrame(()=>requestAnimationFrame(()=>{bd.classList.add('on');sh.classList.add('on')}));
   beep('pop');
 }
-function refreshSheet(){const b=$('.sheet .body');if(b&&sheetRefresh){const st=b.scrollTop;b.innerHTML='';sheetRefresh(b);b.scrollTop=st}}
-function tabs(list,cur,cb){const t=el('div','tabs');list.forEach((n,i)=>{const b=el('button',i===cur?'on':'',n);b.onclick=()=>cb(i);t.appendChild(b)});return t}
+function refreshSheet(){const b=$('.sheet .body');if(b&&sheetRefresh){const st=b.scrollTop,strip=$('.tabs',b),active=strip?.querySelector('.on')?.dataset.tab,scroll=strip?.scrollLeft||0;b.innerHTML='';sheetRefresh(b);const next=$('.tabs',b),changed=active!==next?.querySelector('.on')?.dataset.tab;b.scrollTop=changed?0:st;if(next&&!changed)next.scrollLeft=scroll}}
+function tabs(list,cur,cb){const t=el('div','tabs');t.setAttribute('role','tablist');list.forEach((n,i)=>{const b=el('button',i===cur?'on':'',n);b.type='button';b.dataset.tab=i;b.setAttribute('role','tab');b.setAttribute('aria-selected',String(i===cur));b.tabIndex=i===cur?0:-1;b.onclick=()=>cb(i);b.onkeydown=event=>{let next;if(event.key==='ArrowRight')next=(i+1)%list.length;if(event.key==='ArrowLeft')next=(i-1+list.length)%list.length;if(next!==undefined){event.preventDefault();cb(next);requestAnimationFrame(()=>$('.tabs button.on')?.focus({preventScroll:true}))}};t.appendChild(b)});if(typeof Art!=='undefined')Art.enhance(t);const reveal=()=>{if(!t.isConnected)return;const active=t.querySelector('.on');if(active){const a=active.getBoundingClientRect(),r=t.getBoundingClientRect();if(a.left<r.left+4||a.right>r.right-4)t.scrollLeft+=a.left-r.left-(r.width-a.width)/2}};requestAnimationFrame(()=>{reveal();requestAnimationFrame(reveal)});return t}
 function modal(html,cls=''){const m=$('#modal');m.innerHTML=`<div class="mcard ${cls}">${html}</div>`;m.classList.remove('hidden');return $('.mcard',m)}
 function closeModal(){$('#modal').classList.add('hidden')}
 function fadeTo(fn){const f=$('#fade');f.classList.add('on');setTimeout(()=>{fn();f.classList.remove('on')},480)}
@@ -74,6 +74,7 @@ function buildHud(){
   $('#b-menu').onclick=openMenu;$('#b-fish').onclick=openFishing;$('#b-harv').onclick=harvestAll;
   $('#b-zin').onclick=()=>Scene.zoomAt(1.25,Scene.w/2,Scene.h/2);$('#b-zout').onclick=()=>Scene.zoomAt(.8,Scene.w/2,Scene.h/2);
   $('#qbox').onclick=()=>{if(!claimQuest())openQuests()};
+  FarmTools.mount(h);
   setInterval(chatTick,4200);chatTick();chatTick();chatTick();
 }
 const SUN=Art.icon('sun','Chuyển sang ban đêm');
@@ -89,7 +90,7 @@ function refreshHud(){
   const d=$('#d-ord');d.textContent=ready;d.classList.toggle('on',ready>0);
   $('#d-mail').classList.toggle('on',S.mail.some(m=>!m.got));
   $('#d-ci').classList.toggle('on',S.checkin.last!==today());
-  drawHudAvatar();refreshQuest();
+  drawHudAvatar();refreshQuest();FarmTools.refresh();
 }
 function drawHudAvatar(){const c=$('#av-hud');if(!c)return;const x=c.getContext('2d');x.clearRect(0,0,140,140);drawAvatar(x,70,150,150,S.av,{t:0})}
 function refreshQuest(){
@@ -133,7 +134,7 @@ Scene.onTap=(gx,gy,sx,sy)=>{
   if(Math.hypot(gx-5,gy-5)<1.3){walkTo(5,6);return openStorage()}
   if(Math.hypot(gx-12,gy-5.9)<1.2){walkTo(11.6,5.2);return openFishing()}
   if(Math.hypot(gx-1.2,gy-9)<1){walkTo(2,9.5);return toast('🪣 Giếng làng: nước trong mát!')}
-  for(let k=0;k<PCOLS*PROWS;k++){const[a,b]=plotXY(k);if(i===a&&j===b)return tapPlot(k,sx,sy)}
+  for(let k=0;k<PCOLS*PROWS;k++){const[a,b]=plotXY(k);if(i===a&&j===b)return FarmTools.tap(k,sx,sy)}
   walkTo(gx,gy);
 };
 function tapPlot(k,sx,sy){
@@ -173,7 +174,7 @@ function plant(k,id,sx,sy,quiet){
   const C=CROPS[id];
   if(!C||k<0||k>=S.plotsOpen||S.lv<C.lv||S.plots[k].crop)return false;
   if(S.seeds[id]>0)S.seeds[id]--;else{if(S.coins<C.seed)return toast('Không đủ xu mua hạt'),beep('err');addCoins(-C.seed)}
-  const pl=S.plots[k];pl.crop=id;pl.t0=Date.now();pl.care={};pl.bonus=0;S.lastSeed=id;
+  const pl=S.plots[k];pl.crop=id;pl.t0=Date.now();pl.durationSec=C.t;pl.care={};pl.bonus=0;S.lastSeed=id;
   if(!quiet){Haptics.pulse('farm');Motion.workPlayer();Scene.burst(sx,sy,'sprout',5);hidePop();beep('tap')}
   save();return true;
 }
@@ -452,7 +453,7 @@ function runLoader(done){
   const progress=value=>{p=Math.max(p,Math.min(100,value));bar.style.width=p+'%';pct.textContent=`Đang tải ${Math.floor(p)}%`};
   progress(p);msg.textContent='Đang chuẩn bị nông trại…';
   const iv=setInterval(()=>{const elapsed=performance.now()-start;progress(Math.min(92,12+Art.ready*10+elapsed/70));if(elapsed>1200)msg.textContent='Sắp vào vườn, hình ảnh còn lại tải ở nền…'},80);
-  const finish=()=>{if(finished)return;finished=true;clearInterval(iv);clearTimeout(deadline);progress(100);msg.textContent='Nông trại đã sẵn sàng!';setTimeout(()=>{screen.classList.add('out');done();setTimeout(()=>screen.remove(),500)},120)};
+  const finish=()=>{if(finished)return;finished=true;clearInterval(iv);clearTimeout(deadline);progress(100);msg.textContent='Nông trại đã sẵn sàng!';setTimeout(()=>{screen.classList.add('out');done();setTimeout(()=>{screen.remove();GameAudio.sync()},500)},120)};
   // Enter even on a slow/missing image. All gameplay has a canvas fallback.
   const deadline=setTimeout(finish,3000);
   Promise.resolve(Art.criticalPromise).then(()=>{const minimum=Math.max(0,350-(performance.now()-start));setTimeout(finish,minimum)},finish);
@@ -507,6 +508,7 @@ function showMapScreen(change){
 function enterFarm(welcome){
   fadeTo(()=>{
     $('#screen-map').classList.add('hidden');$('#hud').classList.remove('hidden');
+    GameAudio.sync();
     refreshHud();Scene.syncAnimals();
     if(welcome){
       const r=S.province;

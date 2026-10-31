@@ -24,6 +24,7 @@ function load(){
   S.lv=clamp(Math.floor(Number(S.lv)||1),1,MAX_LEVEL);
   S.av=Wardrobe.normalize(S.av);
   while(S.plots.length<PCOLS*PROWS)S.plots.push({crop:null,t0:0,lv:1});
+  if(S.cropTimingVersion!==2){const now=Date.now();for(const p of S.plots){if(!p.crop||!CROPS[p.crop])continue;const c=CROPS[p.crop],oldDuration=(c.legacyTime||c.t)*1000*Math.pow(.92,p.lv-1),progress=clamp((now-p.t0)/oldDuration,0,1);p.durationSec=c.t;p.t0=now-progress*c.t*1000*Math.max(.6,Math.pow(.97,p.lv-1))}S.cropTimingVersion=2}
   if(!S.orders.length)genOrders(true);
   if(!Array.isArray(S.decor))S.decor=[];
   S.fish.seen=S.fish.seen||{};
@@ -77,18 +78,11 @@ function market(){const seed=Math.floor(Date.now()/3600000);const keys=Object.ke
 let actx;
 function beep(kind){
   if(typeof Haptics!=='undefined'&&['coin','win','err'].includes(kind))Haptics.pulse(kind==='err'?'danger':'reward');
-  if(!S.fx.sound||S.fx.volume<=0||S.fx.sfxVolume<=0)return;
-  try{
-    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
-    if(actx.state==='suspended')actx.resume().catch(()=>{});
-    const seq={tap:[[660,.05]],coin:[[880,.06],[1175,.09]],win:[[523,.08],[659,.08],[784,.08],[1046,.16]],err:[[200,.15]],pop:[[440,.04],[550,.05]]}[kind]||[[500,.05]];
-    let t=actx.currentTime;
-    for(const[f,d]of seq){const o=actx.createOscillator(),g=actx.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.12*S.fx.volume*S.fx.sfxVolume,t);g.gain.exponentialRampToValueAtTime(.00001,t+d);o.connect(g);g.connect(actx.destination);o.start(t);o.stop(t+d);t+=d*.9}
-  }catch(e){}
+  if(typeof GameAudio!=='undefined')GameAudio.play(kind);
 }
 
 /* ===== Sinh trưởng ===== */
-const cropDur=p=>CROPS[p.crop].t*1000*Math.pow(.92,p.lv-1);
+const cropDur=p=>(p.durationSec||CROPS[p.crop].t)*1000*Math.max(.6,Math.pow(.97,p.lv-1));
 const cropProg=p=>p.crop?clamp((Date.now()-p.t0)/cropDur(p),0,1):0;
 const yieldQty=p=>1+Math.floor((p.lv-1)/2)+(p.bonus||0);
 const plotUpCost=p=>Math.round(120*Math.pow(2.1,p.lv-1));
@@ -124,7 +118,7 @@ const Scene={
   },
   iso(gx,gy){const z=this.cam.z;return{x:this.cam.x+(gx-gy)*TW/2*z,y:this.cam.y+(gx+gy)*TH/2*z}},
   grid(sx,sy){const z=this.cam.z,u=(sx-this.cam.x)/z/(TW/2),v=(sy-this.cam.y)/z/(TH/2);return{x:(v+u)/2,y:(v-u)/2}},
-  centerOn(gx,gy,z){this.cam.z=this.tz=z;this.cam.x=this.w/2-(gx-gy)*TW/2*z;this.cam.y=this.h/2-(gx+gy)*TH/2*z},
+  centerOn(gx,gy,z){if(typeof Camera!=='undefined')Camera.reset();this.cam.z=this.tz=z;this.cam.x=this.w/2-(gx-gy)*TW/2*z;this.cam.y=this.h/2-(gx+gy)*TH/2*z},
   zoomAt(f,sx,sy){
     const c=this.cam,nz=clamp(c.z*f,.55,2.4),k=nz/c.z;
     c.x=sx-(sx-c.x)*k;c.y=sy-(sy-c.y)*k;c.z=nz;this.tz=nz;
@@ -193,6 +187,7 @@ const Scene={
     this.animals=want.map(w=>keep.get(w.k)||Object.assign(w,{x:w.home[0]+rnd(-1,1),y:w.home[1]+rnd(-1,1),tx:w.home[0],ty:w.home[1],wait:rnd(0,3),face:1}));
   },
   update(dt){
+    if(typeof Camera!=='undefined')Camera.update(dt);
     // chuyển cảnh ngày/đêm mượt
     const target=S.night?1:0;this.nf+=(target-this.nf)*Math.min(1,dt*2.2);
     Motion.update(this,dt);
@@ -254,28 +249,29 @@ const Scene={
     c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.lineTo(d.x,d.y);c.lineTo(e.x,e.y);c.closePath();
   },
   drawGround(c,z,t){
-    const key=[this.w,this.h,this.dpr,this.cam.x,this.cam.y,z,Art.ready].join('|');
-    if(this.groundKey!==key){const cv=this.groundCache||(this.groundCache=document.createElement('canvas'));cv.width=this.cv.width;cv.height=this.cv.height;const cached=cv.getContext('2d');cached.setTransform(this.dpr,0,0,this.dpr,0,0);this.drawGroundBase(cached,z);this.groundKey=key;this.groundRebuilds=(this.groundRebuilds||0)+1}
-    c.drawImage(this.groundCache,0,0,this.groundCache.width,this.groundCache.height,0,0,this.w,this.h);
+    const margin=220,key=[this.w,this.h,this.dpr,Art.ready].join('|'),origin=this.groundOrigin,ratio=origin?z/origin.z:1,moving=typeof Camera!=='undefined'&&(Camera.dragging||Camera.zoomTarget||Camera.focus||Math.hypot(Camera.velocity.x,Camera.velocity.y)>5);
+    const needsRebuild=!origin||this.groundKey!==key||Math.abs(this.cam.x-origin.x*ratio)>margin*.65||Math.abs(this.cam.y-origin.y*ratio)>margin*.65||ratio<.8||ratio>1.2||!moving&&Math.abs(ratio-1)>.001;
+    if(needsRebuild){const cv=this.groundCache||(this.groundCache=document.createElement('canvas'));cv.width=Math.round((this.w+margin*2)*this.dpr);cv.height=Math.round((this.h+margin*2)*this.dpr);const cached=cv.getContext('2d');cached.setTransform(this.dpr,0,0,this.dpr,margin*this.dpr,margin*this.dpr);this.groundMargin=margin;this.drawGroundBase(cached,z);this.groundOrigin={x:this.cam.x,y:this.cam.y,z};this.groundKey=key;this.groundRebuilds=(this.groundRebuilds||0)+1}
+    const saved=this.groundOrigin,scale=z/saved.z;c.drawImage(this.groundCache,0,0,this.groundCache.width,this.groundCache.height,this.cam.x-(saved.x+margin)*scale,this.cam.y-(saved.y+margin)*scale,(this.w+margin*2)*scale,(this.h+margin*2)*scale);
     this.drawPond(c,z,t);
     if(typeof World!=='undefined')World.drawWater(c,this,z,t);
   },
   drawGroundBase(c,z){
-    const m=this.grid(this.w/2,this.h/2),rad=Math.ceil(Math.max(this.w,this.h)/(TH*z))+3;
+    const margin=this.groundMargin||0,m=this.grid(this.w/2,this.h/2),rad=Math.ceil((Math.max(this.w,this.h)+margin*2)/(TH*z))+3;
     const i0=Math.floor(m.x)-rad,i1=Math.floor(m.x)+rad,j0=Math.floor(m.y)-rad,j1=Math.floor(m.y)+rad;
     for(let i=i0;i<=i1;i++)for(let j=j0;j<=j1;j++){
-      const p=this.iso(i+.5,j+.5);if(p.x<-TW*z||p.x>this.w+TW*z||p.y<-TH*z||p.y>this.h+TH*z)continue;
+      const p=this.iso(i+.5,j+.5);if(p.x<-TW*z-margin||p.x>this.w+TW*z+margin||p.y<-TH*z-margin||p.y>this.h+TH*z+margin)continue;
       const inWorld=i>=0&&j>=0&&i<N&&j<N;
       const hsh=(i*73856093^j*19349663)>>>0,v=(hsh%100)/100;
       let col;
-      const onPath=inWorld&&((j===7&&i>=2&&i<=13)||(i===8&&j>=7&&j<=15)||(j===8&&i>=1&&i<=8&&false));
+      const onPath=inWorld&&((typeof Landscape!=='undefined'&&Landscape.path(i,j))||(j===7&&i>=2&&i<=13));
       if(i>=27&&i<N&&j>=0&&j<N)col=`hsl(185,32%,${37+v*2}%)`;
       else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(38,31%,${66+v*2}%)`;
       else if(onPath)col=`hsl(39,18%,${46+v*2}%)`;
       else if(inWorld)col=`hsl(${79+v*3},${24+v*3}%,${41+v*2}%)`;
       else col=`hsl(${85+v*3},${21+v*3}%,${32+v*2}%)`;
       this.diamond(c,i,j);c.fillStyle=col;c.fill();
-      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'stone-path':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
+      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'village-cobblestone':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
     }
     if(typeof World!=='undefined')World.drawMountains(c,this,z);
   },
@@ -295,6 +291,7 @@ const Scene={
     c.restore();
   },
   drawFence(c,z){
+    if(typeof Landscape!=='undefined'&&Landscape.walls(c,z))return;
     c.strokeStyle='#8a5a2b';c.fillStyle='#a8743a';
     const seg=(x0,y0,x1,y1)=>{
       const a=this.iso(x0,y0),b=this.iso(x1,y1),n=Math.round(Math.hypot(x1-x0,y1-y0)*2);
@@ -329,7 +326,7 @@ const Scene={
   drawObj(c,o,z,t){
     const p=this.iso(o.gx,o.gy),s=o.s*z,sw=Math.sin(t*1.4+o.ph)*2*z;
     if(p.x<-180*z||p.x>this.w+180*z||p.y<-40*z||p.y>this.h+180*z)return;
-    const sizes={tree:[78,102],palm:[92,122],bamboo:[76,112],bush:[45,40],flower:[32,28],rock:[34,26],silo:[64,94],sign:[54,68],well:[70,78],scarecrow:[48,72],hay:[43,32],farmhouse:[160,140],truck:[80,65],tractor:[70,64],'shop-stall':[100,90],boat:[74,48],greenhouse:[106,90],gate:[56,62],bridge:[85,46],'peach-tree':[78,104],cat:[30,35],buffalo:[54,46]};
+    const sizes={'village-teahouse':[245,215],'village-dyehouse':[220,190],'village-wheel':[145,150],'village-stone-bridge':[130,80],'village-spring':[190,150],'village-maple':[110,140],'village-pine':[110,150],'village-bamboo':[110,170],'village-stairs':[100,60],'village-rocks':[56,48],'village-stone-lantern':[35,70],'village-pipeline':[160,85],tree:[78,102],palm:[92,122],bamboo:[76,112],bush:[45,40],flower:[32,28],rock:[34,26],silo:[64,94],sign:[54,68],well:[70,78],scarecrow:[48,72],hay:[43,32],farmhouse:[160,140],truck:[80,65],tractor:[70,64],'shop-stall':[100,90],boat:[74,48],greenhouse:[106,90],gate:[56,62],bridge:[85,46],'peach-tree':[78,104],cat:[30,35],buffalo:[54,46]};
     if(Art.has(o.k)){const meta=DECOR_CATALOG[o.k],[w,h]=meta?[meta.w,meta.h]:sizes[o.k]||[60,70];this.shadow(c,p.x,p.y+2*s,w*.3*s,7*s);if(Motion.isFoliage(o.k))Motion.foliage(c,o.k,p.x,p.y+3*s,w*s,h*s,t,o.ph+o.gx*.7+o.gy*.4);else Art.draw(c,o.k,p.x,p.y+3*s+(['truck','tractor','boat'].includes(o.k)?Math.sin(t*(o.k==='boat'?1.8:11))*.35*s:0),w*s,h*s,1);return}
     switch(o.k){
       case'tree':this.shadow(c,p.x+8*s,p.y+2*s,26*s,10*s);c.fillStyle='#6b4423';c.fillRect(p.x-4*s,p.y-30*s,8*s,32*s);
@@ -385,7 +382,7 @@ const Scene={
     if(pl.lv>1){const p=this.iso(i+.5,j+.95);c.font=`800 ${10*z}px 'Baloo 2'`;c.textAlign='center';c.fillStyle='#ffe27a';Art.text(c,'★'.repeat(Math.min(pl.lv,5)),p.x,p.y)}
     if(!pl.crop)return;
     const pr=cropProg(pl),C=CROPS[pl.crop],p=this.iso(i+.5,j+.5),sw=Math.sin(t*2+k)*1.5*z;
-    const stage=pr<.3?0:pr<1?1:2,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},sprite=Art.has((C.art||pl.crop)+'-'+stage)?(C.art||pl.crop)+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||pl.crop]||(C.art||pl.crop);
+    const stage=pr<.3?0:pr<1?1:2,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},sprite=Art.has((C.growthArt||C.art||pl.crop)+'-'+stage)?(C.growthArt||C.art||pl.crop)+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||pl.crop]||(C.growthArt||C.art||pl.crop);
     if(Art.has(sprite)){for(const [dx,dy]of [[-17,-3],[16,-3],[0,10]]){if(Motion.isFoliage(sprite))Motion.foliage(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,t,k*.7);else Art.draw(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,1)}return}
     if(pr<.15){c.fillStyle='#3a2410';c.beginPath();c.arc(p.x,p.y,3*z,0,6.283);c.fill();for(let m=-1;m<=1;m++){c.beginPath();c.arc(p.x+m*10*z,p.y+m*2*z,2*z,0,6.283);c.fill()}return}
     const sz=(pr<.55?14:pr<1?22:30)*z;
