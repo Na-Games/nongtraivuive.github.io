@@ -12,9 +12,11 @@ const World={
     const map=el('div','world-overview');map.innerHTML='<span class="world-north">ĐỒI XANH</span><span class="world-east">BIỂN</span>';
     for(const r of this.regions){const b=el('button','world-pin',Art.icon(r.icon,r.n)+`<span>${r.n}</span>`);b.style.left=(r.x/32*85)+'%';b.style.top=(r.y/32*76+8)+'%';b.onclick=()=>this.visit(r);map.append(b)}body.append(map);
     const grid=el('div','world-regions');for(const r of this.regions){const b=el('button','world-region',`${Art.icon(r.icon,r.n)}<span><b>${r.n}</b><small>${r.desc}</small></span><span>›</span>`);b.onclick=()=>this.visit(r);grid.append(b)}body.append(grid);
+    const village=el('button','village-entry',`${Art.icon('deco-waterwheel','Guồng nước')}<span><b>Nhịp sống làng quê</b><small>Khôi phục công trình và làm hàng thủ công</small></span><span>›</span>`);village.onclick=openVillage;body.append(village);
   },'80%')},
   visit(region){closeSheet();Scene.centerOn(region.x,region.y,clamp(innerWidth/620,.65,1.1));toast(region.n+' · '+region.desc)},
   drawMountains(c,scene,z){
+    if(Art.has('scenery-waterfall')){for(const [id,x,y,w,h]of [['scenery-waterfall',18,1,440,360],['scenery-bamboo',22,4,180,210],['scenery-pines',3,2,210,220]]){const p=scene.iso(x,y);Art.draw(c,id,p.x,p.y,w*z,h*z,1)}return}
     if(!this.ridge.complete||!this.ridge.naturalWidth)return;
     for(const x of [6,15,23]){const p=scene.iso(x,.5),w=590*z,h=w*this.ridge.naturalHeight/this.ridge.naturalWidth;c.drawImage(this.ridge,p.x-w/2,p.y-h+30*z,w,h)}
   },

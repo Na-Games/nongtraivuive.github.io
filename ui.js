@@ -124,6 +124,7 @@ function popAt(sx,sy,html,setup){
 }
 Scene.onTap=(gx,gy,sx,sy)=>{
   if(!$('#hud')||$('#hud').classList.contains('hidden'))return;
+  if(Village.tap(gx,gy,sx,sy))return;
   if(World.tap(gx,gy,sx,sy))return;
   if(decorPlacement){placeDecor(Math.floor(gx)+.5,Math.floor(gy)+.5);return}
   const decoration=(S.decor||[]).filter(d=>DECOR_CATALOG[d.id]).sort((a,b)=>Math.hypot(gx-a.gx,gy-a.gy)-Math.hypot(gx-b.gx,gy-b.gy)).find(d=>Math.hypot(gx-d.gx,gy-d.gy)<.85);if(decoration)return tapDecor(decoration,sx,sy);
@@ -146,6 +147,7 @@ function tapPlot(k,sx,sy){
   const pl=S.plots[k];
   if(!pl.crop)return seedPicker(k,sx,sy);
   if(cropProg(pl)>=1)return harvestPlot(k,sx,sy);
+  return FarmCare.open(k);
   const C=CROPS[pl.crop],rem=cropDur(pl)-(Date.now()-pl.t0),gc=Math.max(1,Math.ceil(rem/15000));
   const up=plotUpCost(pl);
   popAt(sx,sy,`<h4>${C.e} ${C.n} <small>(Đất ★${pl.lv})</small></h4><p>⏳ Còn <b id="pt">${fmtT(rem)}</b> · Sản lượng ×${yieldQty(pl)}</p><div class="acts"><button class="cbtn2 orange sm" id="pf">⚡ ${gc}💎 Tăng tốc</button><button class="cbtn2 blue sm" id="pu">⬆ Đất 🪙${fmt(up)}</button></div>`,p=>{
@@ -155,13 +157,13 @@ function tapPlot(k,sx,sy){
   });
 }
 function upgradePlot(k,sx,sy){
-  const pl=S.plots[k];if(pl.lv>=5)return toast('Đất đã đạt cấp tối đa!');
+  const pl=S.plots[k];if(pl.lv>=20)return toast('Đất đã đạt cấp tối đa!');if(pl.lv>=5&&S.lv<pl.lv*10)return toast(`Cần cấp ${pl.lv*10} để nâng đất tiếp.`);
   const c=plotUpCost(pl);if(S.coins<c)return toast('Không đủ xu'),beep('err');
   addCoins(-c);pl.lv++;track('upgrade');Scene.burst(sx,sy,'⭐');beep('win');hidePop();toast(`⬆ Đất lên ★${pl.lv}: thu hoạch nhiều hơn & mọc nhanh hơn`);
 }
 function seedPicker(k,sx,sy){
   const list=Object.entries(CROPS);
-  popAt(sx,sy,`<h4>🌱 Gieo hạt</h4><div class="seedgrid">${list.map(([id,c])=>{const own=S.seeds[id]||0,lock=S.lv<c.lv;return`<button data-id="${id}" ${lock?'disabled':''}><span>${Art.icon(Art.has("seed-"+id)?"seed-"+id:id,c.n)}</span>${lock?'🔒Cấp '+c.lv:c.n}<br>${lock?'':own?'x'+own:'🪙'+c.seed}</button>`}).join('')}</div><div class="acts" style="margin-top:6px"><button class="cbtn2 blue sm" id="pu">⬆ Đất ★${S.plots[k].lv} 🪙${fmt(plotUpCost(S.plots[k]))}</button></div>`,p=>{
+  popAt(sx,sy,`<h4>🌱 Gieo hạt</h4><div class="seedgrid">${list.map(([id,c])=>{const own=S.seeds[id]||0,lock=S.lv<c.lv;return`<button data-id="${id}" ${lock?'disabled':''}><span>${Art.icon(Art.has("seed-"+id)?"seed-"+id:(c.art||id),c.n)}</span>${lock?'🔒Cấp '+c.lv:c.n}<br>${lock?'':own?'x'+own:'🪙'+c.seed}</button>`}).join('')}</div><div class="acts" style="margin-top:6px"><button class="cbtn2 blue sm" id="pu">⬆ Đất ★${S.plots[k].lv} 🪙${fmt(plotUpCost(S.plots[k]))}</button></div>`,p=>{
     const search=el('input','seed-search');search.id='seed-find';search.placeholder='Tìm hạt giống…';p.querySelector('.seedgrid').before(search);search.oninput=()=>{const q=search.value.trim().toLocaleLowerCase('vi');p.querySelectorAll('[data-id]').forEach(b=>b.style.display=CROPS[b.dataset.id].n.toLocaleLowerCase('vi').includes(q)?'':'none')};
     p.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>plant(k,b.dataset.id,sx,sy));
     $('#pu',p).onclick=()=>upgradePlot(k,sx,sy);
@@ -169,11 +171,14 @@ function seedPicker(k,sx,sy){
 }
 function plant(k,id,sx,sy,quiet){
   const C=CROPS[id];
+  if(!C||k<0||k>=S.plotsOpen||S.lv<C.lv||S.plots[k].crop)return false;
   if(S.seeds[id]>0)S.seeds[id]--;else{if(S.coins<C.seed)return toast('Không đủ xu mua hạt'),beep('err');addCoins(-C.seed)}
-  const pl=S.plots[k];pl.crop=id;pl.t0=Date.now();S.lastSeed=id;
+  const pl=S.plots[k];pl.crop=id;pl.t0=Date.now();pl.care={};pl.bonus=0;S.lastSeed=id;
   if(!quiet){Haptics.pulse('farm');Motion.workPlayer();Scene.burst(sx,sy,'sprout',5);hidePop();beep('tap')}
+  save();return true;
 }
 function harvestPlot(k,sx,sy,quiet){
+  if(!S.plots[k]?.crop||cropProg(S.plots[k])<1)return false;
   const pl=S.plots[k],C=CROPS[pl.crop],q=yieldQty(pl);
   if(invTotal()+q>fishCapacity()){toast('Kho đầy! Hãy giao hàng hoặc nâng cấp kho.');beep('err');return false}
   addItem(pl.crop,q);const[i,j]=plotXY(k);
@@ -217,7 +222,7 @@ function buildB(id,sx,sy){
   const p=Scene.iso(d.slot[0]+1,d.slot[1]+1);Scene.burst(p.x,p.y,'✨',10);
 }
 function upgradeB(id){
-  const b=S.b[id];if(b.lv>=5)return toast('Đã tối đa cấp');const c=bUpCost(id);
+  const b=S.b[id];if(b.lv>=20)return toast('Đã tối đa cấp');if(b.lv>=5&&S.lv<b.lv*10)return toast(`Cần cấp ${b.lv*10}`);const c=bUpCost(id);
   if(S.coins<c)return toast('Không đủ xu'),beep('err');
   addCoins(-c);b.lv++;track('upgrade');Scene.syncAnimals();hidePop();beep('win');toast(`⬆ ${BUILDINGS[id].n} lên Lv${b.lv}!`);const d=BUILDINGS[id],p=Scene.iso(d.slot[0]+1,d.slot[1]+1);Scene.burst(p.x,p.y,'⭐',10);
 }
@@ -231,10 +236,12 @@ function openShop(tab=shopTab){
   shopTab=tab;
   openSheet('shop','Cửa hàng',body=>{
     body.innerHTML=`<div class="row" style="justify-content:flex-end;font-weight:800;font-size:20px;margin-bottom:6px">🪙 ${fmt(S.coins)} &nbsp; 💎 ${S.gems}</div>`;
-    body.appendChild(tabs(['🌱 Hạt giống','🏭 Nhà máy','🐄 Chuồng','📦 Kho & đất','🎣 Câu cá','🌳 Cây lâu năm','🏮 Trang trí','🏠 Mô hình'],shopTab,i=>{shopTab=i;refreshSheet()}));
+    body.appendChild(tabs(['🌱 Hạt giống','🏭 Nhà máy','🐄 Chuồng','📦 Ruộng & kho','🎣 Câu cá','🌳 Cây lâu năm','🏮 Trang trí','🏠 Mô hình','🐔 Vật nuôi','🪣 Vật phẩm','⭐ Cấp 200'],shopTab,i=>{shopTab=i;refreshSheet()}));
+    body.append(el('p','shop-progress',`Cấp ${S.lv}/200 · ${Object.keys(CROPS).length} giống cây · Các mục có thể vuốt ngang`));
+    if(shopTab>=8){Progression.shop(body,shopTab);return}
     if(shopTab>=5){renderDecorShop(body,shopTab===5?'trees':shopTab===6?'heritage':'models');return}
     const g=el('div','grid3');
-    if(shopTab===0)for(const[id,c]of Object.entries(CROPS)){const lock=S.lv<c.lv;const it=el('div','item'+(lock?' lock':''),`${S.seeds[id]?`<span class="badge">${S.seeds[id]}</span>`:''}<div class="em">${Art.icon(id,c.n)}</div>${c.n}<div class="pr">${lock?`<span class="lockt">🔒 Lv ${c.lv}</span>`:`🪙${c.seed} <small>x5</small>`}</div><small>${fmtT(c.t*1000)} · bán ${c.sell}</small>`);
+    if(shopTab===0)for(const[id,c]of Object.entries(CROPS)){const lock=S.lv<c.lv;const it=el('div','item'+(lock?' lock':''),`${S.seeds[id]?`<span class="badge">${S.seeds[id]}</span>`:''}<div class="em">${Art.icon(c.art||id,c.n)}</div>${c.n}<div class="pr">${lock?`<span class="lockt">🔒 Lv ${c.lv}</span>`:`🪙${c.seed} <small>x5</small>`}</div><small>${fmtT(c.t*1000)} · bán ${c.sell}</small>`);
       it.onclick=()=>{if(lock)return toast(`Mở ở cấp ${c.lv}`);if(S.coins<c.seed*5)return toast('Không đủ xu'),beep('err');addCoins(-c.seed*5);S.seeds[id]=(S.seeds[id]||0)+5;beep('coin');refreshSheet()};g.appendChild(it)}
     else if(shopTab===1||shopTab===2){
       const ids=Object.keys(BUILDINGS).filter(k=>shopTab===1?(['mill','oven'].includes(k)||BUILDINGS[k].kind==='factory'):(['coop','pen','bee'].includes(k)||BUILDINGS[k].kind==='animal'));
@@ -259,7 +266,7 @@ function openShop(tab=shopTab){
       for(const t of TOOLS){const own=S.fish.tools[t.id];const it=el('div','item',`<div class="em">${Art.icon(t.id==="luoi"?"net":"bucket",t.n)}</div>${t.n}<div class="pr">${own?'✔ Đã có':'🪙'+t.p}</div><small>${t.desc}</small>`);
         it.onclick=()=>{if(own)return;if(S.coins<t.p)return toast('Không đủ xu'),beep('err');addCoins(-t.p);S.fish.tools[t.id]=1;beep('win');refreshSheet()};g.appendChild(it)}
     }
-    body.appendChild(g);
+    const search=el('input','shop-search');search.type='search';search.placeholder='Tìm trong danh mục này…';search.oninput=()=>{const q=search.value.toLocaleLowerCase('vi');g.querySelectorAll('.item').forEach(b=>b.hidden=!b.textContent.toLocaleLowerCase('vi').includes(q))};body.append(search,g);
   },'86%');
 }
 function openStorage(){openShop(3)}
@@ -407,7 +414,7 @@ function openMenu(){
   openSheet('menu','Menu',body=>{
     const g=el('div','grid3');
     [['🎣','Câu cá',openFishing],['🐟','Sổ cá',openFishAlbum],['🖼','Thư viện PNG',openArtLibrary],['🦋','Xem chuyển động',()=>window.open('chuyen-dong.html','_blank','noopener')],['👤','Hồ sơ',openProfile],['🎨','Giao diện',()=>openSettings(1)],['⚙️','Cài đặt',()=>openSettings(0)],['📜','Nhiệm vụ',openQuests],['🗺️','Đổi quê',changeProvince]].forEach(([e,n,f])=>{const it=el('div','item',`<div class="em">${e}</div>${n}`);it.onclick=f;g.appendChild(it)});
-    body.appendChild(g);
+    const village=el('button','village-entry',`${Art.icon('deco-waterwheel','Làng quê')}<span><b>Nhịp sống làng quê</b><small>Guồng nước · Xưởng chàm · Suối khoáng</small></span><span>›</span>`);village.onclick=openVillage;body.append(village,g);
   },'50%');
 }
 
@@ -517,6 +524,8 @@ function enterFarm(welcome){
 /* ===== Khởi động ===== */
 (function boot(){
   load();
+  Village.ensure();
+  FarmCare.ensure();
   const ref=new URLSearchParams(location.search).get('ref');
   if(ref&&!S.refUsed){S.refUsed=ref;S.mail.unshift({id:Date.now(),t:'Bạn được mời!',d:'Cảm ơn bạn đã vào xóm theo lời mời của bạn bè.',c:300,g:5,got:false})}
   document.body.classList.toggle('dark',!!S.night);setTheme(S.theme);Preferences.apply(false);

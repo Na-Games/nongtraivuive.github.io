@@ -85,7 +85,7 @@
       "left": 544,
       "top": 12,
       "right": 832,
-      "bottom": 306.875,
+      "bottom": 303,
       "w": 844,
       "h": 390
     },
@@ -143,6 +143,30 @@
     },
     {
       "name": "customization and orientation survive reload",
+      "pass": true
+    },
+    {
+      "name": "crop care has four actions",
+      "pass": true
+    },
+    {
+      "name": "water action updates crop",
+      "pass": true
+    },
+    {
+      "name": "new shop category 8",
+      "pass": true
+    },
+    {
+      "name": "new shop category 9",
+      "pass": true
+    },
+    {
+      "name": "new shop category 10",
+      "pass": true
+    },
+    {
+      "name": "village projects render",
       "pass": true
     },
     {

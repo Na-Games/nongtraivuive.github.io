@@ -1,0 +1,22 @@
+'use strict';
+/* Real level gates and increasingly valuable varieties, sharing matching species art. */
+const MAX_LEVEL=200;
+const Progression={
+  tiers:[{lv:40,n:'Tuyển chọn',mult:2},{lv:70,n:'Hữu cơ',mult:4},{lv:100,n:'Đặc sản',mult:7},{lv:140,n:'Thượng hạng',mult:12},{lv:180,n:'Di sản',mult:20},{lv:200,n:'Bậc thầy',mult:28}],
+  install(){
+    const factories=[['loom','Xưởng dệt chàm',40,'facility-loom','len',{ngo:3},[14,21]],['pastry','Tiệm bánh thủ công',65,'facility-pastry','banh',{bot:3,trung:2},[17,21]],['juice','Xưởng nước quả',90,'facility-juice','mut',{cam:3,dau:2},[20,21]],['sugar','Xưởng đường mía',120,'facility-sugar','com',{mia:4},[14,25]],['aroma','Xưởng hương thảo',160,'facility-aroma','tra',{che:4},[17,25]],['heritage','Nhà trà di sản',200,'facility-restaurant','tra',{che:5,mat:2},[20,25]]];
+    for(const [id,n,lv,art,out,input,slot]of factories)BUILDINGS[id]={n,lv,art,out,in:input,slot,kind:'factory',cost:lv*500,t:60+lv*2,e:'🏭',desc:'Chế biến '+Object.entries(input).map(([id,q])=>q+' '+ITEMS[id].n).join(' + ')+' → '+ITEMS[out].n,col:['#8b7355','#67543e','#4e5450']};
+    const species=['lua','ngo','carot','dau','cachua','che','cam','tao','xoai','dua','thanhlong','caphe-qua'];
+    for(const tier of this.tiers)for(const [i,base]of species.entries()){const c=CROPS[base];if(!c)continue;const id=base+'-lv'+tier.lv,lv=Math.min(200,tier.lv+i);CROPS[id]={...c,art:c.art||base,n:c.n+' '+tier.n,lv,t:Math.round(c.t*(1+tier.mult*.16)),seed:Math.round(c.seed*tier.mult),sell:Math.round(c.sell*tier.mult*1.4),xp:Math.round(c.xp*tier.mult)};ITEMS[id]=CROPS[id]}
+    const decor=Object.values(DECOR_CATALOG);for(const tier of this.tiers)for(const group of ['trees','heritage','models'])for(const [i,d]of decor.filter(d=>d.group===group).slice(0,6).entries()){const id=d.id+'-lv'+tier.lv;DECOR_CATALOG[id]={...d,id,art:d.art||d.id,n:d.n+' · '+tier.n,lv:Math.min(200,tier.lv+i),cost:Math.round(d.cost*tier.mult*3)};if(TREE_OUTPUT[d.id])TREE_OUTPUT[id]=TREE_OUTPUT[d.id]}
+  },
+  buySupply(id,count,cost){FarmCare.ensure();if(S.coins<cost)return false;addCoins(-cost);S.supplies[id]+=count;save();return true},
+  animals:[{id:'hen',n:'Gà mái',home:'coop',lv:2,price:120},{id:'cow',n:'Bò sữa',home:'pen',lv:6,price:400},{id:'duck',n:'Vịt',home:'ducks',lv:10,price:280},{id:'pig',n:'Heo',home:'pigs',lv:15,price:650},{id:'goat',n:'Dê',home:'goats',lv:22,price:800},{id:'sheep',n:'Cừu',home:'sheep',lv:28,price:950}],
+  adopt(id){const a=this.animals.find(a=>a.id===id);if(!a||S.lv<a.lv||!S.b[a.home])return false;S.livestock=S.livestock||{};if((S.livestock[id]||0)>=5||S.coins<a.price)return false;addCoins(-a.price);S.livestock[id]=(S.livestock[id]||0)+1;Scene.syncAnimals();save();return true},
+  shop(body,tab){
+    if(tab===8){body.append(el('p','pref-description','Mua thêm vật nuôi sau khi xây chuồng tương ứng. Tối đa 5 con mỗi loại; mỗi con tăng sản lượng chuồng.'));const grid=el('div','grid3');for(const a of this.animals){const b=el('button','item',`<div class="em">${Art.icon(a.id,a.n)}</div><b>${a.n}</b><small>Cấp ${a.lv} · Có ${S.livestock?.[a.id]||0}/5</small><div class="pr">${fmt(a.price)} xu</div><small>${BUILDINGS[a.home]?.n||'Chuồng'}</small>`);b.onclick=()=>{if(!this.adopt(a.id))toast('Cần đủ cấp, xu, chuồng phù hợp và chưa đủ 5 con.');refreshSheet()};grid.append(b)}body.append(grid);return}
+    if(tab===9){FarmCare.ensure();const grid=el('div','grid3');for(const a of [{id:'fertilizer',art:'fertilizer',n:'Phân hữu cơ ×5',qty:5,cost:150},{id:'boost',art:'energy',n:'Thuốc tăng trưởng ×3',qty:3,cost:360}]){const b=el('button','item',`<div class="em">${Art.icon(a.art,a.n)}</div><b>${a.n}</b><div>${a.cost} xu</div><small>Đang có ${S.supplies[a.id]}</small>`);b.onclick=()=>{if(!this.buySupply(a.id,a.qty,a.cost))toast('Không đủ xu');refreshSheet()};grid.append(b)}body.append(grid);return}
+    if(tab===10){body.append(el('p','pref-description','Các mốc mở khóa đến cấp 200. Mỗi giống có giá hạt, thời gian, giá bán và kinh nghiệm riêng.'));for(const tier of this.tiers){const card=el('div','progression-tier',`<b>Cấp ${tier.lv} · ${tier.n}</b><small>${Object.values(CROPS).filter(c=>c.lv>=tier.lv&&c.lv<=Math.min(200,tier.lv+11)).length} giống · cây lâu năm · trang trí · công trình mô hình</small><span>${S.lv>=tier.lv?'Đã mở':'Chưa mở'}</span>`);body.append(card)}return}
+  },
+};
+Progression.install();

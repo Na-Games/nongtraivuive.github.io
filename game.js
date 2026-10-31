@@ -1,7 +1,7 @@
 'use strict';
 /* ===== Trạng thái & lưu trữ ===== */
 const SAVE_KEY='xom_nong_trai_v2';
-const N=32,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=5;
+const N=32,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
 const defState=()=>({
   name:'Nông dân',coins:500,gems:20,xp:0,lv:1,sxp:0,sclaimed:[],
   inv:{lua:3},seeds:{lua:6},cap:150,province:null,joined:0,
@@ -22,6 +22,7 @@ function load(){
   try{const r=localStorage.getItem(SAVE_KEY);if(r){const o=JSON.parse(r);S=Object.assign(defState(),o);S.fx=Object.assign(defState().fx,o.fx||{});S.fish=Object.assign(defState().fish,o.fish||{});}}catch(e){}
   S.fx=Preferences.normalize(S.fx);
   S.av=Wardrobe.normalize(S.av);
+  while(S.plots.length<PCOLS*PROWS)S.plots.push({crop:null,t0:0,lv:1});
   if(!S.orders.length)genOrders(true);
   if(!Array.isArray(S.decor))S.decor=[];
   S.fish.seen=S.fish.seen||{};
@@ -41,7 +42,7 @@ function addCoins(n){S.coins+=n;pulse('#r-coin');refreshHud();}
 function addGems(n){S.gems+=n;pulse('#r-gem');refreshHud();}
 function addXp(n){
   S.xp+=n;S.sxp+=n;
-  while(S.xp>=xpNeed(S.lv)){S.xp-=xpNeed(S.lv);S.lv++;onLevelUp();}
+  while(S.lv<MAX_LEVEL&&S.xp>=xpNeed(S.lv)){S.xp-=xpNeed(S.lv);S.lv++;onLevelUp();}if(S.lv>=MAX_LEVEL)S.xp=Math.min(S.xp,xpNeed(MAX_LEVEL));
   refreshHud();
 }
 function reward(r){if(r.c)addCoins(r.c);if(r.g)addGems(r.g);if(r.xp)addXp(r.xp);if(r.i)for(const k in r.i)addItem(k,r.i[k]);}
@@ -88,12 +89,12 @@ function beep(kind){
 /* ===== Sinh trưởng ===== */
 const cropDur=p=>CROPS[p.crop].t*1000*Math.pow(.92,p.lv-1);
 const cropProg=p=>p.crop?clamp((Date.now()-p.t0)/cropDur(p),0,1):0;
-const yieldQty=p=>1+Math.floor((p.lv-1)/2);
+const yieldQty=p=>1+Math.floor((p.lv-1)/2)+(p.bonus||0);
 const plotUpCost=p=>Math.round(120*Math.pow(2.1,p.lv-1));
 const bTime=(id)=>BUILDINGS[id].t*1000*Math.pow(.88,(S.b[id].lv-1));
-const bQty=id=>1+Math.floor((S.b[id].lv-1)/2);
+const bQty=id=>1+Math.floor((S.b[id].lv-1)/2)+(S.livestock?.[({coop:'hen',pen:'cow',ducks:'duck',pigs:'pig',goats:'goat',sheep:'sheep'})[id]]||0);
 const bUpCost=id=>Math.round(BUILDINGS[id].cost*.9*S.b[id].lv);
-const plotReqLv=k=>Math.max(1,Math.floor((k-3)/2));
+const plotReqLv=k=>k<30?Math.max(1,Math.floor((k-3)/2)):Math.min(200,20+(k-30)*6);
 const plotCost=k=>Math.round(70*Math.pow(1.13,k-7));
 const fmtT=ms=>{const s=Math.ceil(ms/1000);return s>=60?`${Math.floor(s/60)}p ${s%60}s`:`${s}s`};
 
@@ -162,7 +163,7 @@ const Scene={
   buildDecor(){
     let s=1337;const r=()=>(s=(s*16807)%2147483647)/2147483647;
     const o=[];
-    const inPlot=(x,y)=>x>=PX0-1&&x<PX0+PCOLS+1&&y>=PY0-1&&y<PY0+PROWS+1;
+    const inPlot=(x,y)=>x>=PX0-1&&x<PX0+PCOLS+1&&y>=PY0-1&&y<PY0+Math.min(PROWS,5)+1;
     const inPond=(x,y)=>Math.hypot((x-11.5)/3.3,(y-3.6)/2.6)<1.1;
     const slots=Object.values(BUILDINGS).map(b=>b.slot);
     const nearSlot=(x,y)=>slots.some(([a,b])=>x>a-1.5&&x<a+3.5&&y>b-1.5&&y<b+3.5);
@@ -180,6 +181,7 @@ const Scene={
   },
   syncAnimals(){
     const want=[];
+    if(typeof Progression!=='undefined')for(const a of Progression.animals){const home=BUILDINGS[a.home]?.slot;if(!home||!S.b[a.home])continue;for(let i=0;i<(S.livestock?.[a.id]||0);i++)want.push({e:({hen:'🐔',cow:'🐄',duck:'🦆',pig:'🐷',goat:'🐐',sheep:'🐑'})[a.id],home:[home[0]+1,home[1]+2.5],r:1.2,sp:.5,k:'owned-'+a.id+i})}
     if(S.b.coop)for(let i=0;i<2+S.b.coop.lv;i++)want.push({e:'🐔',home:[10,10],r:2.2,sp:.7,k:'coop'+i});
     if(S.b.pen)for(let i=0;i<1+Math.ceil(S.b.pen.lv/2);i++)want.push({e:'🐄',home:[12.2,12.4],r:2.4,sp:.45,k:'pen'+i});
     want.push({e:'🐄',home:[4,13.5],r:2,sp:.4,k:'amb1'},{e:'🦆',home:[11.3,3.8],r:1.7,sp:.5,k:'duck1',water:1},{e:'🦆',home:[12.3,3.2],r:1.5,sp:.5,k:'duck2',water:1},{e:'🐕',home:[7,7],r:4,sp:1.2,k:'dog'},{e:'🦋',home:[6,10],r:6,sp:1.6,k:'bf',fly:1});
@@ -228,7 +230,8 @@ const Scene={
     // vật thể sắp xếp theo độ sâu
     const list=[];
     for(const o of this.objs)list.push({d:o.gx+o.gy,f:()=>this.drawObj(c,o,z,t)});
-    for(const o of S.decor||[])if(DECOR_CATALOG[o.id])list.push({d:o.gx+o.gy,f:()=>this.drawObj(c,{gx:o.gx,gy:o.gy,k:o.id,s:1,ph:0},z,t)});
+    for(const o of S.decor||[])if(DECOR_CATALOG[o.id])list.push({d:o.gx+o.gy,f:()=>this.drawObj(c,{gx:o.gx,gy:o.gy,k:DECOR_CATALOG[o.id].art||o.id,s:1,ph:0},z,t)});
+    if(typeof Village!=='undefined')for(const o of Village.sceneObjects())list.push({d:o.gx+o.gy,f:()=>this.drawObj(c,o,z,t)});
     for(const k in BUILDINGS){const b=BUILDINGS[k];list.push({d:b.slot[0]+b.slot[1]+2,f:()=>this.drawBuilding(c,k,z,t)})}
     PLOTS_EACH((k,i,j)=>list.push({d:i+j+1,f:()=>this.drawPlot(c,k,i,j,z,t)}));
     for(const a of this.animals)list.push({d:a.x+a.y,f:()=>this.drawAnimal(c,a,z,t)});
@@ -265,13 +268,13 @@ const Scene={
       const hsh=(i*73856093^j*19349663)>>>0,v=(hsh%100)/100;
       let col;
       const onPath=inWorld&&((j===7&&i>=2&&i<=13)||(i===8&&j>=7&&j<=15)||(j===8&&i>=1&&i<=8&&false));
-      if(i>=27&&i<N&&j>=0&&j<N)col=`hsl(190,55%,${43+v*3}%)`;
-      else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(41,58%,${74+v*4}%)`;
-      else if(onPath)col=`hsl(36,${38+v*8}%,${56+v*5}%)`;
-      else if(inWorld)col=`hsl(${92+v*10},${46+v*8}%,${52+v*6}%)`;
-      else col=`hsl(${84+v*14},${34+v*8}%,${44+v*6}%)`;
+      if(i>=27&&i<N&&j>=0&&j<N)col=`hsl(185,32%,${37+v*2}%)`;
+      else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(38,31%,${66+v*2}%)`;
+      else if(onPath)col=`hsl(39,18%,${46+v*2}%)`;
+      else if(inWorld)col=`hsl(${79+v*3},${24+v*3}%,${41+v*2}%)`;
+      else col=`hsl(${85+v*3},${21+v*3}%,${32+v*2}%)`;
       this.diamond(c,i,j);c.fillStyle=col;c.fill();
-      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'path':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
+      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'stone-path':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
     }
     if(typeof World!=='undefined')World.drawMountains(c,this,z);
   },
@@ -297,17 +300,17 @@ const Scene={
       c.lineWidth=2*z;c.beginPath();c.moveTo(a.x,a.y-12*z);c.lineTo(b.x,b.y-12*z);c.moveTo(a.x,a.y-6*z);c.lineTo(b.x,b.y-6*z);c.stroke();
       for(let k=0;k<=n;k++){const p=this.iso(lerp(x0,x1,k/n),lerp(y0,y1,k/n));c.fillRect(p.x-1.5*z,p.y-16*z,3*z,16*z)}
     };
-    const x0=PX0-.6,x1=PX0+PCOLS+.6,y0=PY0-.6,y1=PY0+PROWS+.6;
+    const x0=PX0-.6,x1=PX0+PCOLS+.6,y0=PY0-.6,y1=PY0+Math.min(PROWS,5)+.6;
     seg(x0,y1,x1,y1);seg(x1,y0,x1,y1);seg(x0,y0,x0,y1);
   },
   drawLabels(c,z,t){
     // nhãn mở đất
     const k=S.plotsOpen;if(k<PCOLS*PROWS){const[i,j]=plotXY(k),p=this.iso(i+.5,j+.5);this.label(c,`🔒 Mở đất · Cấp ${plotReqLv(k)}`,p.x,p.y-8*z,Math.max(11,13*z),S.lv>=plotReqLv(k))}
-    for(const id in BUILDINGS){const b=BUILDINGS[id];if(S.b[id])continue;const p=this.iso(b.slot[0]+1,b.slot[1]+1);this.label(c,S.lv>=b.lv?`🔨 Xây ${b.n}`:`🔒 ${b.n} · Cấp ${b.lv}`,p.x,p.y-6*z,Math.max(11,13*z),S.lv>=b.lv)}
+    for(const id in BUILDINGS){const b=BUILDINGS[id];if(S.b[id]||b.lv>S.lv+5)continue;const p=this.iso(b.slot[0]+1,b.slot[1]+1);this.label(c,S.lv>=b.lv?`🔨 Xây ${b.n}`:`🔒 ${b.n} · Cấp ${b.lv}`,p.x,p.y-6*z,Math.max(11,13*z),S.lv>=b.lv)}
     // đợi thu hoạch
     PLOTS_EACH((k,i,j)=>{const pl=S.plots[k];if(k>=S.plotsOpen||!pl.crop)return;const pr=cropProg(pl);const p=this.iso(i+.5,j+.5);
       if(pr>=1){const by=p.y-34*z-Math.abs(Math.sin(t*3+k))*6*z;c.fillStyle='rgba(255,246,200,.95)';c.strokeStyle='#d6a23a';c.lineWidth=2*z;c.beginPath();c.arc(p.x,by,16*z,0,6.283);c.fill();c.stroke();c.font=`${20*z}px serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle='#000';Art.text(c,CROPS[pl.crop].e,p.x,by+1*z)}
-      else if(this.sel===k){const w=46*z;c.fillStyle='rgba(0,0,0,.5)';c.fillRect(p.x-w/2,p.y-30*z,w,6*z);c.fillStyle='#8fe05a';c.fillRect(p.x-w/2,p.y-30*z,w*pr,6*z)}
+      else {const w=46*z;c.fillStyle='rgba(0,0,0,.5)';c.fillRect(p.x-w/2,p.y-30*z,w,5*z);c.fillStyle='#a2bb79';c.fillRect(p.x-w/2,p.y-30*z,w*pr,5*z);this.text(c,fmtT(Math.max(0,cropDur(pl)-(Date.now()-pl.t0))),p.x,p.y-39*z,Math.max(9,10*z),'#fff6d7')}
     });
     for(const id in S.b){const b=S.b[id],d=BUILDINGS[id],p=this.iso(d.slot[0]+1,d.slot[1]+1);
       const by=p.y-86*z;
@@ -381,7 +384,7 @@ const Scene={
     if(pl.lv>1){const p=this.iso(i+.5,j+.95);c.font=`800 ${10*z}px 'Baloo 2'`;c.textAlign='center';c.fillStyle='#ffe27a';Art.text(c,'★'.repeat(Math.min(pl.lv,5)),p.x,p.y)}
     if(!pl.crop)return;
     const pr=cropProg(pl),C=CROPS[pl.crop],p=this.iso(i+.5,j+.5),sw=Math.sin(t*2+k)*1.5*z;
-    const stage=pr<.3?0:pr<1?1:2,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},sprite=Art.has(pl.crop+'-'+stage)?pl.crop+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[pl.crop]||pl.crop;
+    const stage=pr<.3?0:pr<1?1:2,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},sprite=Art.has((C.art||pl.crop)+'-'+stage)?(C.art||pl.crop)+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||pl.crop]||(C.art||pl.crop);
     if(Art.has(sprite)){for(const [dx,dy]of [[-17,-3],[16,-3],[0,10]]){if(Motion.isFoliage(sprite))Motion.foliage(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,t,k*.7);else Art.draw(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,1)}return}
     if(pr<.15){c.fillStyle='#3a2410';c.beginPath();c.arc(p.x,p.y,3*z,0,6.283);c.fill();for(let m=-1;m<=1;m++){c.beginPath();c.arc(p.x+m*10*z,p.y+m*2*z,2*z,0,6.283);c.fill()}return}
     const sz=(pr<.55?14:pr<1?22:30)*z;
@@ -425,7 +428,7 @@ const Scene={
     if(S.fx.weather==='rain'){c.fillStyle='rgba(40,60,90,.18)';c.fillRect(0,0,this.w,this.h)}
   }
 };
-function plotXY(k){return[PX0+k%PCOLS,PY0+Math.floor(k/PCOLS)]}
+function plotXY(k){return[PX0+k%PCOLS,k<30?PY0+Math.floor(k/PCOLS):23+Math.floor((k-30)/PCOLS)]}
 function PLOTS_EACH(fn){for(let k=0;k<PCOLS*PROWS;k++){const[i,j]=plotXY(k);fn(k,i,j)}}
 
 /* avatar vẽ bằng canvas (dùng trong cảnh, HUD và bộ chỉnh sửa) */

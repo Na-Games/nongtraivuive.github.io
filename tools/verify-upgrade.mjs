@@ -49,6 +49,10 @@ try{
  await run("document.querySelector('#screen-map').classList.add('hidden');document.querySelector('#hud').classList.remove('hidden');closeSheet();World.open()");check('four farm regions available',await run('document.querySelectorAll(".world-region").length===4&&N===32'));
  await run('closeSheet();S.hillGiftAt=0;window.giftBefore=S.coins;World.tap(18,3,200,200);document.querySelector("#hill-gift").click();World.tap(18,3,200,200)');check('hill reward has persistent cooldown',await run('S.coins===giftBefore+25&&document.querySelector("#hill-gift").disabled'));
  await run('hidePop();save()');await send('Page.reload');await sleep(800);check('customization and orientation survive reload',await run("S.av.style===2&&S.av.skin===SKINS[2]&&S.av.hat==='none'&&S.fx.orientation==='portrait'"));
+ await run("S.lv=200;S.coins=999999;S.fx.sound=false;closeSheet();S.plots[0]={crop:'lua',t0:Date.now(),lv:1,care:{},bonus:0};FarmCare.open(0)");check('crop care has four actions',await run('document.querySelectorAll(".care-action").length===4&&!!document.querySelector("#care-clock")'));
+ await run("document.querySelector('.care-action').click()");check('water action updates crop',await run('S.plots[0].care.water===true&&document.querySelector(".care-action").disabled'));
+ for(const tab of [8,9,10]){await run('openShop('+tab+')');check('new shop category '+tab,await run('document.querySelector(".sheet .body").textContent.length>100'))}
+ await run('openVillage()');check('village projects render',await run('document.querySelectorAll(".village-card").length===3'));
  check('no runtime exceptions',report.errors.length===0,{errors:report.errors});
  fs.writeFileSync('docs/verification/upgrade-report.json',JSON.stringify(report,null,2));console.log('PASS '+report.checks.length+' upgrade checks');
  await send('Browser.close');

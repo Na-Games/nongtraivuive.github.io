@@ -19,9 +19,10 @@ const Motion={
     c.drawImage(Art.images[frame.sheet],frame.col*sheet.cell,frame.row*sheet.cell,sheet.cell,sheet.cell,-side*clip.pivot[0]/clip.cell,-side*clip.pivot[1]/clip.cell,side,side);c.restore();return true;
   },
   canOccupy(x,y){
+    if(x>=2&&x<8&&y>=23&&y<28)return false;
     if(x>=27||y<1.5)return false;
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
-    if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+PROWS+.15)return false;
+    if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+Math.min(PROWS,5)+.15)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
     if(Object.values(BUILDINGS).some(b=>x>b.slot[0]-.15&&x<b.slot[0]+2.15&&y>b.slot[1]-.15&&y<b.slot[1]+2.15))return false;
     if((S.decor||[]).some(d=>Math.hypot(x-d.gx,y-d.gy)<.65))return false;

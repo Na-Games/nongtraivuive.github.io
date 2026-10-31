@@ -3,7 +3,7 @@
 const Art={
   images:{},tiles:{},failed:[],ready:0,total:Object.keys(ART_MANIFEST.sheets).length,emoji:new Map(),
   load(){
-    const critical=new Set(['terrain','nature','buildings','growth','produce','ui']);
+    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','characters','wardrobe-parts']);
     const entries=Object.entries(ART_MANIFEST.sheets),primary=entries.filter(([id])=>critical.has(id)),background=entries.filter(([id])=>!critical.has(id));
     const loadOne=([id,s])=>new Promise(resolve=>{const im=new Image();let settled=false;const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve()};const timer=setTimeout(()=>finish(false),12000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file});
     const queue=async entries=>{let cursor=0;await Promise.all(Array.from({length:Math.min(3,entries.length)},async()=>{while(cursor<entries.length)await loadOne(entries[cursor++])}))};
@@ -33,7 +33,7 @@ const Art={
     parts.forEach((p,i)=>{const id=this.emoji.get(p);if(id&&this.has(id))this.draw(c,id,cursor+widths[i]/2,cy,px,px);else{if(outline)c.strokeText(p,cursor,0);c.fillText(p,cursor,0)}cursor+=widths[i]});c.restore();
   },
   initSymbols(){
-    Object.entries(CROPS).forEach(([id,v])=>this.register(v.e,id));Object.entries(PRODUCTS).forEach(([id,v])=>this.register(v.e,id));Object.entries(FISHES).forEach(([id,v])=>this.register(v.e,v.art||id));
+    Object.entries(CROPS).forEach(([id,v])=>this.register(v.e,v.art||id));Object.entries(PRODUCTS).forEach(([id,v])=>this.register(v.e,id));Object.entries(FISHES).forEach(([id,v])=>this.register(v.e,v.art||id));
     const pairs={'🪙':'coin','💎':'gem','⭐':'star','🎒':'bag','📋':'orders','🎁':'gift','✉️':'mail','📗':'season','📅':'calendar','🪷':'festival','🏮':'lantern','🏆':'trophy','🏪':'shop','🧺':'friends','💌':'invite','⚙️':'settings','📷':'camera','⊞':'menu','☀️':'sun','🌙':'moon','🔒':'lock','🔨':'hammer','⬆':'upgrade','⚡':'energy','🚚':'truck','🐔':'hen','🐄':'cow','🦆':'duck','🐕':'dog','🦋':'butterfly','🐝':'bee-animal','🐷':'pig','🐑':'sheep','🐐':'goat','🐃':'buffalo','🦢':'crane','🐈':'cat','🌼':'flower','🌿':'bush','🌱':'sprout','✨':'sparkle','🌟':'sparkle-big','🎉':'levelup','❤️':'heart','🪣':'bucket','🎣':'rod-truc','🎋':'rod-tre','🪱':'bait-nho','🐛':'bait-giun','🕸️':'net','🪴':'tea-bush','🏺':'silo','🟫':'soil','📦':'planks','🪵':'planks','🧱':'bricks','🪨':'stones','👑':'crown','📍':'pin','🔥':'oven','🧑‍🌾':'farmer-0-idle','👩':'farmer-1-idle','🧑':'farmer-2-idle','👴':'farmer-3-idle','👵':'farmer-4-idle','👧':'farmer-1-idle','🧒':'farmer-5-idle','🦛':'buffalo','⚙':'settings','✉':'mail'};
     for(const [symbol,id] of Object.entries(pairs))this.register(symbol,id);
     for(const [symbol,id]of Object.entries({'🏭':'mill','👤':'farmer-0-idle','🎨':'flower','📜':'orders','🗺️':'farm-map','🖼':'farm-map','🌳':'tree','🏠':'farmhouse','🔊':'settings','🌑':'moon'}))this.register(symbol,id);
@@ -47,6 +47,7 @@ const Art={
   observe(){this.initSymbols();this.enhance();const pending=new Set();let scheduled=false;this.observer=new MutationObserver(records=>{for(const r of records){if(r.type==='characterData')pending.add(r.target.parentElement);else for(const n of r.addedNodes){if(n.nodeType===1&&!n.matches('.game-icon'))pending.add(n);else if(n.nodeType===3)pending.add(n.parentElement)}}if(!scheduled&&pending.size){scheduled=true;requestAnimationFrame(()=>{scheduled=false;const roots=[...pending];pending.clear();for(const n of roots)if(n?.isConnected)this.enhance(n)})}});this.observer.observe(document.body,{childList:true,subtree:true,characterData:true})}
 };
 Art.promise=Art.load();
+Art.promise.then(()=>{if(typeof drawHudAvatar==='function')drawHudAvatar()});
 
 function openArtLibrary(){
   openSheet('art-library','Thư viện hình ảnh',body=>{

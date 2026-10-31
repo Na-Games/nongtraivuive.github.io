@@ -1,0 +1,411 @@
+{
+  "version": 1,
+  "sheets": {
+    "produce": {
+      "source": "assets/diorama/source/produce.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 38.13,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "fishing": {
+      "source": "assets/diorama/source/fishing.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 50.5,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "buildings": {
+      "source": "assets/diorama/source/buildings.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 47.96,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "ui": {
+      "source": "assets/diorama/source/ui.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 45.29,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "nature": {
+      "source": "assets/diorama/source/nature.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 41.28,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "effects": {
+      "source": "assets/diorama/source/effects.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 31.08,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "terrain": {
+      "source": "assets/diorama/source/terrain.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 16,
+      "transparentPercent": 50.45,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "wardrobe-parts": {
+      "source": "assets/diorama/source/wardrobe-parts.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 12,
+      "transparentPercent": 51.99,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "growth": {
+      "source": "assets/diorama/source/growth.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 51.21,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "characters": {
+      "passed": true,
+      "sprites": 24,
+      "padding": 24,
+      "source": "Newly generated farmer motion clips; same identity in static and animated poses",
+      "derivedFrom": [
+        "anim-farmer-0",
+        "anim-farmer-1",
+        "anim-farmer-2",
+        "anim-farmer-3",
+        "anim-farmer-4",
+        "anim-farmer-5"
+      ]
+    },
+    "goods": {
+      "source": "assets/diorama/source/goods.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 39.1,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "crops-extra": {
+      "source": "assets/diorama/source/crops-extra.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 34,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "botanical": {
+      "source": "assets/diorama/source/botanical.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 24.83,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "scenery": {
+      "source": "assets/diorama/source/scenery.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sprites": 8,
+      "transparentPercent": 39.52,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "trees-a": {
+      "source": "assets/diorama/source/trees-a.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 27.54,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "trees-b": {
+      "source": "assets/diorama/source/trees-b.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 23.9,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "facilities": {
+      "source": "assets/diorama/source/facilities.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 25,
+      "transparentPercent": 25.96,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "heritage": {
+      "source": "assets/diorama/source/heritage.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 30.44,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-0": {
+      "source": "assets/diorama/source/anim-farmer-0.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 30,
+      "transparentPercent": 64.88,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-2": {
+      "source": "assets/diorama/source/anim-farmer-2.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 31,
+      "transparentPercent": 65.87,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-3": {
+      "source": "assets/diorama/source/anim-farmer-3.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 30,
+      "transparentPercent": 66.43,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-5": {
+      "source": "assets/diorama/source/anim-farmer-5.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 30,
+      "transparentPercent": 63.27,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-animals-1": {
+      "source": "assets/diorama/source/anim-animals-1.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 39.73,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-1": {
+      "source": "assets/diorama/source/anim-farmer-1.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 30,
+      "transparentPercent": 77.7,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-animals-0": {
+      "source": "assets/diorama/source/anim-animals-0.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 52.78,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-animals-2": {
+      "source": "assets/diorama/source/anim-animals-2.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 45.89,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-farmer-4": {
+      "source": "assets/diorama/source/anim-farmer-4.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 30,
+      "transparentPercent": 73.49,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-animals-3": {
+      "source": "assets/diorama/source/anim-animals-3.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 54.54,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "anim-effects": {
+      "source": "assets/diorama/source/anim-effects.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 41.23,
+      "padding": 24,
+      "commonScale": true,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    }
+  }
+}

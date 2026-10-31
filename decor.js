@@ -11,7 +11,7 @@ TREE_OUTPUT['tree-dau']=null;
 let decorPlacement=null;
 function renderDecorShop(body,group){
   body.appendChild(el('p','art-intro',group==='models'?'Các mô hình dùng để trang trí. Công trình có chuỗi sản xuất nằm trong mục Nhà máy và Chuồng.':'Chọn một hình, rồi chạm vùng đất trống trên bản đồ để đặt. Cây có quả tương ứng trong kho sẽ cho thu hoạch theo thời gian.'));
-  const grid=el('div','grid3');for(const d of Object.values(DECOR_CATALOG).filter(x=>x.group===group)){const lock=S.lv<d.lv,it=el('div','item'+(lock?' lock':''),`<div class="em">${Art.icon(d.id,d.n)}</div>${d.n}<div class="pr">${lock?'🔒 Cấp '+d.lv:'🪙 '+fmt(d.cost)}</div><small>${TREE_OUTPUT[d.id]?'Cho '+CROPS[TREE_OUTPUT[d.id]].n:'Trang trí bản đồ'}</small>`);it.onclick=()=>{if(lock)return toast('Mở ở cấp '+d.lv);if(S.coins<d.cost)return toast('Không đủ xu');startDecorPlacement(d.id)};grid.append(it)}body.append(grid);
+  const grid=el('div','grid3');for(const d of Object.values(DECOR_CATALOG).filter(x=>x.group===group)){const lock=S.lv<d.lv,it=el('div','item'+(lock?' lock':''),`<div class="em">${Art.icon(d.art||d.id,d.n)}</div>${d.n}<div class="pr">${lock?'🔒 Cấp '+d.lv:'🪙 '+fmt(d.cost)}</div><small>${TREE_OUTPUT[d.id]?'Cho '+CROPS[TREE_OUTPUT[d.id]].n:'Trang trí bản đồ'}</small>`);it.onclick=()=>{if(lock)return toast('Mở ở cấp '+d.lv);if(S.coins<d.cost)return toast('Không đủ xu');startDecorPlacement(d.id)};grid.append(it)}body.append(grid);
 }
 function startDecorPlacement(id){
   const d=DECOR_CATALOG[id];if(!d)return;decorPlacement=id;closeSheet();hidePop();document.querySelector('#decor-placement')?.remove();
@@ -19,9 +19,10 @@ function startDecorPlacement(id){
 }
 function cancelDecorPlacement(){decorPlacement=null;document.querySelector('#decor-placement')?.remove()}
 function decorCanPlace(x,y){
+  if(x>=1&&x<9&&y>=22&&y<29)return false;
   if(x>=26||y<2)return false;
   if(x<.5||y<.5||x>N-.5||y>N-.5)return false;
-  if(x>PX0-1&&x<PX0+PCOLS+1&&y>PY0-1&&y<PY0+PROWS+1)return false;
+  if(x>PX0-1&&x<PX0+PCOLS+1&&y>PY0-1&&y<PY0+Math.min(PROWS,5)+1)return false;
   if(Math.hypot((x-11.5)/3.6,(y-3.6)/2.9)<1)return false;
   if(Object.values(BUILDINGS).some(b=>x>b.slot[0]-.5&&x<b.slot[0]+2.5&&y>b.slot[1]-.5&&y<b.slot[1]+2.5))return false;
   if((S.decor||[]).some(d=>Math.hypot(x-d.gx,y-d.gy)<1.25))return false;
@@ -39,7 +40,7 @@ function placeDecor(x,y){
 function tapDecor(d,sx,sy){
   const meta=DECOR_CATALOG[d.id];if(!meta)return;
   const fruit=TREE_OUTPUT[d.id],ready=fruit&&Date.now()-d.t0>=120000;
-  popAt(sx,sy,`<h4>${Art.icon(d.id,meta.n)} ${meta.n}</h4><p>${fruit?(ready?'Quả đã chín. Chạm để thu hoạch!':'Thu hoạch sau '+fmtT(120000-(Date.now()-d.t0))):'Trang trí riêng cho khu vườn của bạn.'}</p><div class="acts">${fruit?`<button class="cbtn2 sm ${ready?'':'gray'}" id="deco-harvest">Thu hoạch</button>`:''}<button class="cbtn2 gray sm" id="deco-remove">Thu hồi +🪙${Math.floor(meta.cost/2)}</button></div>`,p=>{
+  popAt(sx,sy,`<h4>${Art.icon(meta.art||d.id,meta.n)} ${meta.n}</h4><p>${fruit?(ready?'Quả đã chín. Chạm để thu hoạch!':'Thu hoạch sau '+fmtT(120000-(Date.now()-d.t0))):'Trang trí riêng cho khu vườn của bạn.'}</p><div class="acts">${fruit?`<button class="cbtn2 sm ${ready?'':'gray'}" id="deco-harvest">Thu hoạch</button>`:''}<button class="cbtn2 gray sm" id="deco-remove">Thu hồi +🪙${Math.floor(meta.cost/2)}</button></div>`,p=>{
     $('#deco-remove',p).onclick=()=>{S.decor=S.decor.filter(x=>x.uid!==d.uid);addCoins(Math.floor(meta.cost/2));save();hidePop();toast('Đã thu hồi '+meta.n)};
     const b=$('#deco-harvest',p);if(b)b.onclick=()=>{if(!ready)return toast('Quả chưa chín');if(invTotal()>=fishCapacity())return toast('Kho đầy');addItem(fruit,1);d.t0=Date.now();addXp(12);track('harvest');track('harvest_'+fruit);Scene.float(d.gx,d.gy,'+1 '+CROPS[fruit].e);Scene.burst(sx,sy,'✨',6);refreshHud();save();hidePop();beep('coin')};
   });

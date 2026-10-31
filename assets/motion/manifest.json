@@ -19,7 +19,7 @@
     },
     "anim-farmer-2": {
       "file": "assets/motion/anim-farmer-2.png",
-      "cols": 5,
+      "cols": 6,
       "rows": 6,
       "cell": 384,
       "title": "Chuyển động nhân vật 3"
@@ -48,7 +48,7 @@
     "anim-animals-0": {
       "file": "assets/motion/anim-animals-0.png",
       "cols": 6,
-      "rows": 7,
+      "rows": 6,
       "cell": 256,
       "title": "Chuyển động vật nuôi 1"
     },
@@ -88,10 +88,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-0.png",
       "bounds": {
-        "x": 129,
-        "y": 166,
-        "w": 131,
-        "h": 193
+        "x": 139,
+        "y": 164,
+        "w": 102,
+        "h": 191
       }
     },
     "farmer0-walk-1": {
@@ -100,10 +100,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-1.png",
       "bounds": {
-        "x": 132,
-        "y": 168,
-        "w": 125,
-        "h": 191
+        "x": 147,
+        "y": 164,
+        "w": 91,
+        "h": 192
       }
     },
     "farmer0-walk-2": {
@@ -112,10 +112,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-2.png",
       "bounds": {
-        "x": 132,
-        "y": 167,
-        "w": 125,
-        "h": 193
+        "x": 146,
+        "y": 166,
+        "w": 92,
+        "h": 190
       }
     },
     "farmer0-walk-3": {
@@ -124,10 +124,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-3.png",
       "bounds": {
-        "x": 133,
-        "y": 168,
-        "w": 125,
-        "h": 191
+        "x": 147,
+        "y": 163,
+        "w": 93,
+        "h": 193
       }
     },
     "farmer0-walk-4": {
@@ -136,10 +136,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-4.png",
       "bounds": {
-        "x": 130,
+        "x": 139,
         "y": 166,
-        "w": 130,
-        "h": 193
+        "w": 107,
+        "h": 190
       }
     },
     "farmer0-walk-5": {
@@ -148,9 +148,9 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-5.png",
       "bounds": {
-        "x": 130,
-        "y": 167,
-        "w": 130,
+        "x": 137,
+        "y": 164,
+        "w": 112,
         "h": 192
       }
     },
@@ -160,10 +160,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-6.png",
       "bounds": {
-        "x": 133,
-        "y": 170,
-        "w": 124,
-        "h": 189
+        "x": 144,
+        "y": 164,
+        "w": 105,
+        "h": 192
       }
     },
     "farmer0-walk-7": {
@@ -172,250 +172,250 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-walk-7.png",
       "bounds": {
-        "x": 131,
-        "y": 173,
-        "w": 129,
-        "h": 186
+        "x": 137,
+        "y": 165,
+        "w": 110,
+        "h": 191
       }
     },
     "farmer0-idle-0": {
       "sheet": "anim-farmer-0",
-      "col": 3,
-      "row": 1,
+      "col": 1,
+      "row": 3,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-idle-0.png",
       "bounds": {
-        "x": 131,
-        "y": 167,
-        "w": 130,
+        "x": 146,
+        "y": 164,
+        "w": 93,
         "h": 192
       }
     },
     "farmer0-idle-1": {
       "sheet": "anim-farmer-0",
-      "col": 4,
-      "row": 1,
+      "col": 2,
+      "row": 3,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-idle-1.png",
       "bounds": {
-        "x": 131,
-        "y": 167,
-        "w": 129,
+        "x": 145,
+        "y": 164,
+        "w": 93,
         "h": 192
       }
     },
     "farmer0-back-0": {
       "sheet": "anim-farmer-0",
-      "col": 0,
-      "row": 2,
+      "col": 3,
+      "row": 1,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-0.png",
       "bounds": {
-        "x": 131,
+        "x": 146,
         "y": 168,
-        "w": 124,
-        "h": 190
+        "w": 104,
+        "h": 188
       }
     },
     "farmer0-back-1": {
       "sheet": "anim-farmer-0",
-      "col": 1,
-      "row": 2,
+      "col": 4,
+      "row": 1,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-1.png",
       "bounds": {
-        "x": 130,
-        "y": 165,
-        "w": 126,
-        "h": 194
+        "x": 149,
+        "y": 169,
+        "w": 104,
+        "h": 187
       }
     },
     "farmer0-back-2": {
       "sheet": "anim-farmer-0",
-      "col": 2,
+      "col": 0,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-2.png",
       "bounds": {
-        "x": 130,
-        "y": 166,
-        "w": 126,
-        "h": 192
+        "x": 150,
+        "y": 163,
+        "w": 102,
+        "h": 193
       }
     },
     "farmer0-back-3": {
       "sheet": "anim-farmer-0",
-      "col": 3,
+      "col": 1,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-3.png",
       "bounds": {
-        "x": 131,
-        "y": 167,
-        "w": 126,
-        "h": 192
+        "x": 152,
+        "y": 166,
+        "w": 93,
+        "h": 189
       }
     },
     "farmer0-back-4": {
       "sheet": "anim-farmer-0",
-      "col": 4,
+      "col": 2,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-4.png",
       "bounds": {
-        "x": 131,
-        "y": 165,
-        "w": 126,
-        "h": 194
+        "x": 146,
+        "y": 167,
+        "w": 106,
+        "h": 189
       }
     },
     "farmer0-back-5": {
       "sheet": "anim-farmer-0",
-      "col": 0,
-      "row": 3,
+      "col": 3,
+      "row": 2,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-5.png",
       "bounds": {
-        "x": 132,
+        "x": 152,
         "y": 168,
-        "w": 124,
-        "h": 191
+        "w": 103,
+        "h": 187
       }
     },
     "farmer0-back-6": {
       "sheet": "anim-farmer-0",
-      "col": 1,
-      "row": 3,
+      "col": 4,
+      "row": 2,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-6.png",
       "bounds": {
-        "x": 130,
-        "y": 169,
-        "w": 127,
-        "h": 189
+        "x": 147,
+        "y": 170,
+        "w": 106,
+        "h": 185
       }
     },
     "farmer0-back-7": {
       "sheet": "anim-farmer-0",
-      "col": 2,
+      "col": 0,
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-back-7.png",
       "bounds": {
-        "x": 131,
-        "y": 171,
-        "w": 124,
-        "h": 188
+        "x": 152,
+        "y": 174,
+        "w": 102,
+        "h": 182
       }
     },
     "farmer0-work-0": {
       "sheet": "anim-farmer-0",
-      "col": 3,
-      "row": 3,
+      "col": 0,
+      "row": 4,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-work-0.png",
       "bounds": {
-        "x": 123,
-        "y": 166,
-        "w": 158,
-        "h": 194
+        "x": 97,
+        "y": 188,
+        "w": 169,
+        "h": 168
       }
     },
     "farmer0-work-1": {
       "sheet": "anim-farmer-0",
-      "col": 4,
-      "row": 3,
+      "col": 1,
+      "row": 4,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-work-1.png",
       "bounds": {
-        "x": 106,
-        "y": 165,
-        "w": 168,
-        "h": 195
+        "x": 122,
+        "y": 180,
+        "w": 138,
+        "h": 176
       }
     },
     "farmer0-work-2": {
       "sheet": "anim-farmer-0",
-      "col": 0,
+      "col": 2,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-work-2.png",
       "bounds": {
-        "x": 122,
-        "y": 182,
-        "w": 156,
-        "h": 178
+        "x": 126,
+        "y": 180,
+        "w": 139,
+        "h": 176
       }
     },
     "farmer0-work-3": {
       "sheet": "anim-farmer-0",
-      "col": 1,
+      "col": 3,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-work-3.png",
       "bounds": {
-        "x": 120,
-        "y": 182,
-        "w": 171,
-        "h": 178
+        "x": 112,
+        "y": 184,
+        "w": 162,
+        "h": 172
       }
     },
     "farmer0-fish-0": {
       "sheet": "anim-farmer-0",
-      "col": 2,
+      "col": 4,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-0.png",
       "bounds": {
-        "x": 80,
-        "y": 168,
-        "w": 181,
-        "h": 191
+        "x": 87,
+        "y": 171,
+        "w": 159,
+        "h": 184
       }
     },
     "farmer0-fish-1": {
       "sheet": "anim-farmer-0",
-      "col": 3,
-      "row": 4,
+      "col": 0,
+      "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-1.png",
       "bounds": {
-        "x": 25,
-        "y": 181,
-        "w": 242,
-        "h": 179
+        "x": 29,
+        "y": 162,
+        "w": 232,
+        "h": 194
       }
     },
     "farmer0-fish-2": {
       "sheet": "anim-farmer-0",
-      "col": 4,
-      "row": 4,
+      "col": 1,
+      "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-2.png",
       "bounds": {
-        "x": 30,
-        "y": 181,
-        "w": 236,
-        "h": 178
+        "x": 46,
+        "y": 171,
+        "w": 208,
+        "h": 185
       }
     },
     "farmer0-fish-3": {
       "sheet": "anim-farmer-0",
-      "col": 0,
+      "col": 2,
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-3.png",
       "bounds": {
-        "x": 90,
-        "y": 164,
-        "w": 172,
-        "h": 194
+        "x": 61,
+        "y": 180,
+        "w": 186,
+        "h": 176
       }
     },
     "farmer0-fish-4": {
       "sheet": "anim-farmer-0",
-      "col": 1,
+      "col": 3,
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-4.png",
       "bounds": {
-        "x": 96,
-        "y": 163,
-        "w": 165,
-        "h": 196
+        "x": 45,
+        "y": 180,
+        "w": 207,
+        "h": 176
       }
     },
     "farmer0-fish-5": {
       "sheet": "anim-farmer-0",
-      "col": 2,
+      "col": 4,
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-5.png",
       "bounds": {
-        "x": 58,
+        "x": 64,
         "y": 169,
-        "w": 202,
-        "h": 190
+        "w": 188,
+        "h": 187
       }
     },
     "farmer0-fish-6": {
@@ -424,10 +424,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-6.png",
       "bounds": {
-        "x": 43,
-        "y": 179,
-        "w": 219,
-        "h": 179
+        "x": 45,
+        "y": 180,
+        "w": 207,
+        "h": 176
       }
     },
     "farmer0-fish-7": {
@@ -436,10 +436,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-0/farmer0-fish-7.png",
       "bounds": {
-        "x": 45,
-        "y": 162,
-        "w": 212,
-        "h": 196
+        "x": 64,
+        "y": 169,
+        "w": 188,
+        "h": 187
       }
     },
     "farmer1-walk-0": {
@@ -448,10 +448,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-0.png",
       "bounds": {
-        "x": 126,
-        "y": 146,
-        "w": 137,
-        "h": 211
+        "x": 145,
+        "y": 167,
+        "w": 95,
+        "h": 187
       }
     },
     "farmer1-walk-1": {
@@ -460,10 +460,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-1.png",
       "bounds": {
-        "x": 126,
-        "y": 145,
-        "w": 137,
-        "h": 212
+        "x": 158,
+        "y": 167,
+        "w": 76,
+        "h": 187
       }
     },
     "farmer1-walk-2": {
@@ -472,10 +472,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-2.png",
       "bounds": {
-        "x": 126,
-        "y": 147,
-        "w": 140,
-        "h": 208
+        "x": 154,
+        "y": 166,
+        "w": 74,
+        "h": 188
       }
     },
     "farmer1-walk-3": {
@@ -484,10 +484,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-3.png",
       "bounds": {
-        "x": 126,
-        "y": 146,
-        "w": 147,
-        "h": 211
+        "x": 152,
+        "y": 168,
+        "w": 83,
+        "h": 186
       }
     },
     "farmer1-walk-4": {
@@ -496,10 +496,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-4.png",
       "bounds": {
-        "x": 127,
-        "y": 145,
-        "w": 141,
-        "h": 211
+        "x": 143,
+        "y": 165,
+        "w": 97,
+        "h": 189
       }
     },
     "farmer1-walk-5": {
@@ -508,10 +508,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-5.png",
       "bounds": {
-        "x": 126,
-        "y": 146,
-        "w": 137,
-        "h": 211
+        "x": 146,
+        "y": 165,
+        "w": 88,
+        "h": 189
       }
     },
     "farmer1-walk-6": {
@@ -520,10 +520,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-6.png",
       "bounds": {
-        "x": 127,
-        "y": 148,
-        "w": 145,
-        "h": 209
+        "x": 144,
+        "y": 165,
+        "w": 90,
+        "h": 189
       }
     },
     "farmer1-walk-7": {
@@ -532,10 +532,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-walk-7.png",
       "bounds": {
-        "x": 126,
-        "y": 146,
-        "w": 146,
-        "h": 210
+        "x": 147,
+        "y": 165,
+        "w": 86,
+        "h": 189
       }
     },
     "farmer1-back-0": {
@@ -544,10 +544,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-0.png",
       "bounds": {
-        "x": 128,
-        "y": 143,
-        "w": 133,
-        "h": 213
+        "x": 150,
+        "y": 166,
+        "w": 85,
+        "h": 188
       }
     },
     "farmer1-back-1": {
@@ -556,10 +556,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-1.png",
       "bounds": {
-        "x": 130,
-        "y": 144,
-        "w": 130,
-        "h": 211
+        "x": 151,
+        "y": 164,
+        "w": 88,
+        "h": 189
       }
     },
     "farmer1-back-2": {
@@ -568,10 +568,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-2.png",
       "bounds": {
-        "x": 130,
-        "y": 147,
-        "w": 129,
-        "h": 209
+        "x": 150,
+        "y": 166,
+        "w": 90,
+        "h": 187
       }
     },
     "farmer1-back-3": {
@@ -580,10 +580,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-3.png",
       "bounds": {
-        "x": 130,
-        "y": 146,
-        "w": 131,
-        "h": 210
+        "x": 152,
+        "y": 168,
+        "w": 89,
+        "h": 186
       }
     },
     "farmer1-back-4": {
@@ -592,10 +592,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-4.png",
       "bounds": {
-        "x": 129,
-        "y": 147,
-        "w": 131,
-        "h": 209
+        "x": 154,
+        "y": 169,
+        "w": 84,
+        "h": 185
       }
     },
     "farmer1-back-5": {
@@ -604,10 +604,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-5.png",
       "bounds": {
-        "x": 129,
-        "y": 146,
-        "w": 131,
-        "h": 209
+        "x": 151,
+        "y": 164,
+        "w": 85,
+        "h": 190
       }
     },
     "farmer1-back-6": {
@@ -616,10 +616,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-6.png",
       "bounds": {
-        "x": 130,
-        "y": 151,
-        "w": 130,
-        "h": 205
+        "x": 153,
+        "y": 168,
+        "w": 84,
+        "h": 186
       }
     },
     "farmer1-back-7": {
@@ -628,10 +628,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-back-7.png",
       "bounds": {
-        "x": 132,
-        "y": 155,
-        "w": 124,
-        "h": 201
+        "x": 158,
+        "y": 163,
+        "w": 68,
+        "h": 191
       }
     },
     "farmer1-idle-0": {
@@ -640,10 +640,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-idle-0.png",
       "bounds": {
-        "x": 125,
-        "y": 151,
-        "w": 141,
-        "h": 205
+        "x": 159,
+        "y": 162,
+        "w": 67,
+        "h": 192
       }
     },
     "farmer1-idle-1": {
@@ -652,10 +652,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-idle-1.png",
       "bounds": {
-        "x": 126,
-        "y": 151,
-        "w": 140,
-        "h": 204
+        "x": 160,
+        "y": 162,
+        "w": 66,
+        "h": 192
       }
     },
     "farmer1-idle-2": {
@@ -664,10 +664,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-idle-2.png",
       "bounds": {
-        "x": 126,
-        "y": 151,
-        "w": 140,
-        "h": 205
+        "x": 158,
+        "y": 162,
+        "w": 68,
+        "h": 191
       }
     },
     "farmer1-idle-3": {
@@ -676,10 +676,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-idle-3.png",
       "bounds": {
-        "x": 126,
-        "y": 153,
-        "w": 140,
-        "h": 203
+        "x": 112,
+        "y": 173,
+        "w": 134,
+        "h": 182
       }
     },
     "farmer1-work-0": {
@@ -688,10 +688,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-work-0.png",
       "bounds": {
-        "x": 99,
-        "y": 176,
-        "w": 195,
-        "h": 179
+        "x": 119,
+        "y": 194,
+        "w": 135,
+        "h": 162
       }
     },
     "farmer1-work-1": {
@@ -700,10 +700,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-work-1.png",
       "bounds": {
-        "x": 111,
-        "y": 175,
-        "w": 168,
-        "h": 181
+        "x": 109,
+        "y": 184,
+        "w": 142,
+        "h": 171
       }
     },
     "farmer1-work-2": {
@@ -712,10 +712,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-work-2.png",
       "bounds": {
-        "x": 104,
-        "y": 179,
-        "w": 176,
-        "h": 180
+        "x": 109,
+        "y": 184,
+        "w": 152,
+        "h": 169
       }
     },
     "farmer1-work-3": {
@@ -724,10 +724,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-work-3.png",
       "bounds": {
-        "x": 120,
-        "y": 176,
-        "w": 161,
-        "h": 181
+        "x": 93,
+        "y": 180,
+        "w": 168,
+        "h": 175
       }
     },
     "farmer1-work-4": {
@@ -736,10 +736,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-work-4.png",
       "bounds": {
-        "x": 77,
-        "y": 179,
-        "w": 194,
-        "h": 177
+        "x": 159,
+        "y": 162,
+        "w": 84,
+        "h": 191
       }
     },
     "farmer1-fish-0": {
@@ -748,10 +748,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-fish-0.png",
       "bounds": {
-        "x": 25,
-        "y": 174,
-        "w": 244,
-        "h": 182
+        "x": 138,
+        "y": 162,
+        "w": 90,
+        "h": 191
       }
     },
     "farmer1-fish-1": {
@@ -760,10 +760,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-fish-1.png",
       "bounds": {
-        "x": 29,
-        "y": 178,
-        "w": 235,
-        "h": 177
+        "x": 147,
+        "y": 162,
+        "w": 171,
+        "h": 192
       }
     },
     "farmer1-fish-2": {
@@ -772,10 +772,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-fish-2.png",
       "bounds": {
-        "x": 74,
-        "y": 175,
-        "w": 188,
-        "h": 180
+        "x": 150,
+        "y": 170,
+        "w": 185,
+        "h": 183
       }
     },
     "farmer1-fish-3": {
@@ -784,10 +784,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-fish-3.png",
       "bounds": {
-        "x": 36,
-        "y": 178,
-        "w": 231,
-        "h": 177
+        "x": 142,
+        "y": 175,
+        "w": 214,
+        "h": 179
       }
     },
     "farmer1-fish-4": {
@@ -796,10 +796,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-1/farmer1-fish-4.png",
       "bounds": {
-        "x": 47,
-        "y": 180,
-        "w": 217,
-        "h": 175
+        "x": 157,
+        "y": 171,
+        "w": 181,
+        "h": 182
       }
     },
     "farmer2-walk-0": {
@@ -808,10 +808,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-0.png",
       "bounds": {
-        "x": 122,
-        "y": 137,
-        "w": 144,
-        "h": 222
+        "x": 135,
+        "y": 134,
+        "w": 128,
+        "h": 219
       }
     },
     "farmer2-walk-1": {
@@ -820,10 +820,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-1.png",
       "bounds": {
-        "x": 123,
-        "y": 137,
-        "w": 142,
-        "h": 221
+        "x": 136,
+        "y": 134,
+        "w": 125,
+        "h": 220
       }
     },
     "farmer2-walk-2": {
@@ -832,10 +832,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-2.png",
       "bounds": {
-        "x": 124,
-        "y": 137,
-        "w": 141,
-        "h": 221
+        "x": 141,
+        "y": 139,
+        "w": 105,
+        "h": 215
       }
     },
     "farmer2-walk-3": {
@@ -844,10 +844,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-3.png",
       "bounds": {
-        "x": 122,
-        "y": 138,
-        "w": 144,
-        "h": 220
+        "x": 140,
+        "y": 139,
+        "w": 114,
+        "h": 215
       }
     },
     "farmer2-walk-4": {
@@ -856,310 +856,310 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-4.png",
       "bounds": {
-        "x": 122,
+        "x": 137,
         "y": 138,
-        "w": 144,
-        "h": 221
+        "w": 109,
+        "h": 215
       }
     },
     "farmer2-walk-5": {
       "sheet": "anim-farmer-2",
-      "col": 0,
-      "row": 1,
+      "col": 5,
+      "row": 0,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-5.png",
       "bounds": {
-        "x": 122,
-        "y": 140,
-        "w": 145,
-        "h": 219
+        "x": 138,
+        "y": 142,
+        "w": 106,
+        "h": 212
       }
     },
     "farmer2-walk-6": {
       "sheet": "anim-farmer-2",
-      "col": 1,
+      "col": 0,
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-6.png",
       "bounds": {
-        "x": 121,
-        "y": 139,
-        "w": 147,
-        "h": 219
+        "x": 131,
+        "y": 143,
+        "w": 110,
+        "h": 210
       }
     },
     "farmer2-walk-7": {
       "sheet": "anim-farmer-2",
-      "col": 2,
+      "col": 1,
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-7.png",
       "bounds": {
-        "x": 122,
-        "y": 138,
-        "w": 146,
-        "h": 219
+        "x": 138,
+        "y": 143,
+        "w": 105,
+        "h": 211
       }
     },
     "farmer2-walk-8": {
       "sheet": "anim-farmer-2",
-      "col": 3,
+      "col": 2,
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-8.png",
       "bounds": {
-        "x": 121,
-        "y": 136,
-        "w": 148,
-        "h": 222
+        "x": 132,
+        "y": 143,
+        "w": 111,
+        "h": 211
       }
     },
     "farmer2-walk-9": {
       "sheet": "anim-farmer-2",
-      "col": 4,
+      "col": 3,
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-walk-9.png",
       "bounds": {
-        "x": 123,
-        "y": 140,
-        "w": 144,
-        "h": 218
+        "x": 132,
+        "y": 143,
+        "w": 111,
+        "h": 211
       }
     },
     "farmer2-back-0": {
       "sheet": "anim-farmer-2",
-      "col": 0,
-      "row": 2,
+      "col": 4,
+      "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-0.png",
       "bounds": {
-        "x": 122,
-        "y": 137,
-        "w": 145,
-        "h": 221
+        "x": 138,
+        "y": 134,
+        "w": 130,
+        "h": 220
       }
     },
     "farmer2-back-1": {
       "sheet": "anim-farmer-2",
-      "col": 1,
-      "row": 2,
+      "col": 5,
+      "row": 1,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-1.png",
       "bounds": {
-        "x": 121,
-        "y": 132,
-        "w": 147,
-        "h": 226
+        "x": 139,
+        "y": 134,
+        "w": 123,
+        "h": 220
       }
     },
     "farmer2-back-2": {
       "sheet": "anim-farmer-2",
-      "col": 2,
+      "col": 0,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-2.png",
       "bounds": {
-        "x": 123,
-        "y": 129,
-        "w": 144,
-        "h": 229
+        "x": 140,
+        "y": 134,
+        "w": 124,
+        "h": 220
       }
     },
     "farmer2-back-3": {
       "sheet": "anim-farmer-2",
-      "col": 3,
+      "col": 1,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-3.png",
       "bounds": {
-        "x": 119,
+        "x": 139,
         "y": 134,
-        "w": 152,
-        "h": 224
+        "w": 128,
+        "h": 220
       }
     },
     "farmer2-back-4": {
       "sheet": "anim-farmer-2",
-      "col": 4,
+      "col": 2,
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-4.png",
       "bounds": {
-        "x": 121,
-        "y": 135,
-        "w": 148,
-        "h": 222
+        "x": 140,
+        "y": 133,
+        "w": 132,
+        "h": 221
       }
     },
     "farmer2-back-5": {
       "sheet": "anim-farmer-2",
-      "col": 0,
-      "row": 3,
+      "col": 3,
+      "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-5.png",
       "bounds": {
-        "x": 119,
-        "y": 142,
-        "w": 154,
-        "h": 216
+        "x": 118,
+        "y": 133,
+        "w": 128,
+        "h": 221
       }
     },
     "farmer2-back-6": {
       "sheet": "anim-farmer-2",
-      "col": 1,
-      "row": 3,
+      "col": 4,
+      "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-6.png",
       "bounds": {
-        "x": 120,
-        "y": 143,
-        "w": 150,
-        "h": 215
+        "x": 119,
+        "y": 130,
+        "w": 127,
+        "h": 224
       }
     },
     "farmer2-back-7": {
       "sheet": "anim-farmer-2",
-      "col": 2,
-      "row": 3,
+      "col": 5,
+      "row": 2,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-7.png",
       "bounds": {
-        "x": 120,
-        "y": 144,
-        "w": 150,
-        "h": 214
+        "x": 123,
+        "y": 128,
+        "w": 122,
+        "h": 226
       }
     },
     "farmer2-idle-0": {
       "sheet": "anim-farmer-2",
-      "col": 3,
+      "col": 2,
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-idle-0.png",
       "bounds": {
-        "x": 120,
-        "y": 142,
-        "w": 152,
-        "h": 216
+        "x": 138,
+        "y": 133,
+        "w": 109,
+        "h": 221
       }
     },
     "farmer2-idle-1": {
       "sheet": "anim-farmer-2",
-      "col": 4,
+      "col": 3,
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-idle-1.png",
       "bounds": {
-        "x": 120,
-        "y": 142,
-        "w": 151,
-        "h": 216
+        "x": 138,
+        "y": 134,
+        "w": 107,
+        "h": 220
       }
     },
     "farmer2-idle-2": {
       "sheet": "anim-farmer-2",
-      "col": 0,
-      "row": 4,
+      "col": 4,
+      "row": 3,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-idle-2.png",
       "bounds": {
-        "x": 124,
-        "y": 161,
-        "w": 147,
-        "h": 197
+        "x": 139,
+        "y": 133,
+        "w": 108,
+        "h": 221
       }
     },
     "farmer2-work-0": {
       "sheet": "anim-farmer-2",
-      "col": 1,
-      "row": 4,
+      "col": 5,
+      "row": 3,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-work-0.png",
       "bounds": {
-        "x": 89,
-        "y": 161,
-        "w": 192,
-        "h": 197
+        "x": 109,
+        "y": 137,
+        "w": 163,
+        "h": 217
       }
     },
     "farmer2-work-1": {
       "sheet": "anim-farmer-2",
-      "col": 2,
+      "col": 0,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-work-1.png",
       "bounds": {
-        "x": 111,
-        "y": 159,
-        "w": 187,
-        "h": 199
+        "x": 97,
+        "y": 139,
+        "w": 179,
+        "h": 215
       }
     },
     "farmer2-work-2": {
       "sheet": "anim-farmer-2",
-      "col": 3,
+      "col": 1,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-work-2.png",
       "bounds": {
-        "x": 123,
-        "y": 163,
-        "w": 187,
-        "h": 195
+        "x": 100,
+        "y": 142,
+        "w": 186,
+        "h": 213
       }
     },
     "farmer2-work-3": {
       "sheet": "anim-farmer-2",
-      "col": 4,
+      "col": 2,
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-work-3.png",
       "bounds": {
-        "x": 123,
-        "y": 161,
-        "w": 176,
-        "h": 197
+        "x": 105,
+        "y": 159,
+        "w": 187,
+        "h": 195
       }
     },
     "farmer2-fish-0": {
       "sheet": "anim-farmer-2",
-      "col": 0,
-      "row": 5,
+      "col": 3,
+      "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-fish-0.png",
       "bounds": {
-        "x": 113,
-        "y": 169,
-        "w": 190,
-        "h": 188
+        "x": 29,
+        "y": 154,
+        "w": 224,
+        "h": 199
       }
     },
     "farmer2-fish-1": {
       "sheet": "anim-farmer-2",
-      "col": 1,
-      "row": 5,
+      "col": 4,
+      "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-fish-1.png",
       "bounds": {
-        "x": 25,
-        "y": 177,
-        "w": 247,
-        "h": 181
+        "x": 47,
+        "y": 151,
+        "w": 199,
+        "h": 203
       }
     },
     "farmer2-fish-2": {
       "sheet": "anim-farmer-2",
-      "col": 2,
-      "row": 5,
+      "col": 5,
+      "row": 4,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-fish-2.png",
       "bounds": {
-        "x": 42,
-        "y": 175,
-        "w": 221,
-        "h": 182
+        "x": 53,
+        "y": 149,
+        "w": 205,
+        "h": 205
       }
     },
     "farmer2-fish-3": {
       "sheet": "anim-farmer-2",
-      "col": 3,
+      "col": 0,
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-fish-3.png",
       "bounds": {
-        "x": 33,
-        "y": 178,
-        "w": 233,
-        "h": 179
+        "x": 103,
+        "y": 148,
+        "w": 163,
+        "h": 206
       }
     },
     "farmer2-fish-4": {
       "sheet": "anim-farmer-2",
-      "col": 4,
+      "col": 0,
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-2/farmer2-fish-4.png",
       "bounds": {
-        "x": 62,
-        "y": 171,
-        "w": 205,
-        "h": 186
+        "x": 103,
+        "y": 148,
+        "w": 163,
+        "h": 206
       }
     },
     "farmer3-walk-0": {
@@ -1168,10 +1168,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-0.png",
       "bounds": {
-        "x": 120,
-        "y": 137,
-        "w": 150,
-        "h": 218
+        "x": 132,
+        "y": 155,
+        "w": 126,
+        "h": 200
       }
     },
     "farmer3-walk-1": {
@@ -1180,10 +1180,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-1.png",
       "bounds": {
-        "x": 122,
-        "y": 137,
-        "w": 147,
-        "h": 218
+        "x": 136,
+        "y": 155,
+        "w": 119,
+        "h": 200
       }
     },
     "farmer3-walk-2": {
@@ -1192,10 +1192,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-2.png",
       "bounds": {
-        "x": 122,
-        "y": 137,
-        "w": 147,
-        "h": 218
+        "x": 147,
+        "y": 160,
+        "w": 95,
+        "h": 195
       }
     },
     "farmer3-walk-3": {
@@ -1204,10 +1204,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-3.png",
       "bounds": {
-        "x": 122,
-        "y": 134,
-        "w": 158,
-        "h": 221
+        "x": 142,
+        "y": 159,
+        "w": 122,
+        "h": 196
       }
     },
     "farmer3-walk-4": {
@@ -1216,10 +1216,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-4.png",
       "bounds": {
-        "x": 122,
-        "y": 136,
-        "w": 149,
-        "h": 219
+        "x": 131,
+        "y": 156,
+        "w": 131,
+        "h": 199
       }
     },
     "farmer3-walk-5": {
@@ -1228,10 +1228,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-5.png",
       "bounds": {
-        "x": 121,
-        "y": 136,
-        "w": 151,
-        "h": 219
+        "x": 138,
+        "y": 157,
+        "w": 114,
+        "h": 197
       }
     },
     "farmer3-walk-6": {
@@ -1240,10 +1240,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-6.png",
       "bounds": {
-        "x": 121,
-        "y": 136,
-        "w": 150,
-        "h": 219
+        "x": 150,
+        "y": 160,
+        "w": 94,
+        "h": 195
       }
     },
     "farmer3-walk-7": {
@@ -1252,10 +1252,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-walk-7.png",
       "bounds": {
-        "x": 121,
-        "y": 136,
-        "w": 150,
-        "h": 219
+        "x": 143,
+        "y": 164,
+        "w": 120,
+        "h": 192
       }
     },
     "farmer3-back-0": {
@@ -1264,10 +1264,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-0.png",
       "bounds": {
-        "x": 119,
-        "y": 137,
-        "w": 140,
-        "h": 218
+        "x": 126,
+        "y": 157,
+        "w": 123,
+        "h": 198
       }
     },
     "farmer3-back-1": {
@@ -1276,10 +1276,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-1.png",
       "bounds": {
-        "x": 121,
-        "y": 135,
-        "w": 145,
-        "h": 220
+        "x": 133,
+        "y": 154,
+        "w": 116,
+        "h": 201
       }
     },
     "farmer3-back-2": {
@@ -1288,10 +1288,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-2.png",
       "bounds": {
-        "x": 121,
-        "y": 137,
-        "w": 146,
-        "h": 218
+        "x": 135,
+        "y": 156,
+        "w": 108,
+        "h": 199
       }
     },
     "farmer3-back-3": {
@@ -1300,10 +1300,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-3.png",
       "bounds": {
-        "x": 119,
-        "y": 132,
-        "w": 144,
-        "h": 223
+        "x": 131,
+        "y": 159,
+        "w": 113,
+        "h": 196
       }
     },
     "farmer3-back-4": {
@@ -1312,10 +1312,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-4.png",
       "bounds": {
-        "x": 123,
-        "y": 136,
-        "w": 143,
-        "h": 219
+        "x": 134,
+        "y": 158,
+        "w": 111,
+        "h": 196
       }
     },
     "farmer3-back-5": {
@@ -1324,10 +1324,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-5.png",
       "bounds": {
-        "x": 121,
-        "y": 136,
-        "w": 146,
-        "h": 219
+        "x": 137,
+        "y": 158,
+        "w": 115,
+        "h": 196
       }
     },
     "farmer3-back-6": {
@@ -1336,10 +1336,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-6.png",
       "bounds": {
-        "x": 120,
-        "y": 135,
-        "w": 147,
-        "h": 219
+        "x": 138,
+        "y": 156,
+        "w": 115,
+        "h": 199
       }
     },
     "farmer3-back-7": {
@@ -1348,10 +1348,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-back-7.png",
       "bounds": {
-        "x": 120,
-        "y": 140,
-        "w": 146,
-        "h": 215
+        "x": 133,
+        "y": 157,
+        "w": 119,
+        "h": 198
       }
     },
     "farmer3-idle-0": {
@@ -1360,10 +1360,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-idle-0.png",
       "bounds": {
-        "x": 117,
-        "y": 140,
-        "w": 158,
-        "h": 215
+        "x": 146,
+        "y": 156,
+        "w": 99,
+        "h": 199
       }
     },
     "farmer3-idle-1": {
@@ -1372,10 +1372,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-idle-1.png",
       "bounds": {
-        "x": 119,
-        "y": 140,
-        "w": 156,
-        "h": 215
+        "x": 145,
+        "y": 152,
+        "w": 98,
+        "h": 202
       }
     },
     "farmer3-idle-2": {
@@ -1384,10 +1384,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-idle-2.png",
       "bounds": {
-        "x": 119,
-        "y": 139,
-        "w": 156,
-        "h": 216
+        "x": 141,
+        "y": 154,
+        "w": 102,
+        "h": 201
       }
     },
     "farmer3-idle-3": {
@@ -1396,10 +1396,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-idle-3.png",
       "bounds": {
-        "x": 119,
-        "y": 138,
-        "w": 155,
-        "h": 217
+        "x": 142,
+        "y": 154,
+        "w": 98,
+        "h": 201
       }
     },
     "farmer3-work-0": {
@@ -1408,10 +1408,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-work-0.png",
       "bounds": {
-        "x": 83,
-        "y": 160,
-        "w": 210,
-        "h": 195
+        "x": 97,
+        "y": 166,
+        "w": 170,
+        "h": 189
       }
     },
     "farmer3-work-1": {
@@ -1420,10 +1420,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-work-1.png",
       "bounds": {
-        "x": 101,
-        "y": 174,
-        "w": 187,
-        "h": 185
+        "x": 124,
+        "y": 169,
+        "w": 142,
+        "h": 186
       }
     },
     "farmer3-work-2": {
@@ -1432,10 +1432,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-work-2.png",
       "bounds": {
-        "x": 111,
-        "y": 171,
-        "w": 174,
-        "h": 184
+        "x": 127,
+        "y": 177,
+        "w": 147,
+        "h": 178
       }
     },
     "farmer3-work-3": {
@@ -1444,10 +1444,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-work-3.png",
       "bounds": {
-        "x": 112,
-        "y": 172,
-        "w": 170,
-        "h": 183
+        "x": 107,
+        "y": 168,
+        "w": 155,
+        "h": 187
       }
     },
     "farmer3-fish-0": {
@@ -1456,10 +1456,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-0.png",
       "bounds": {
-        "x": 40,
-        "y": 170,
-        "w": 219,
-        "h": 185
+        "x": 116,
+        "y": 168,
+        "w": 154,
+        "h": 187
       }
     },
     "farmer3-fish-1": {
@@ -1468,10 +1468,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-1.png",
       "bounds": {
-        "x": 28,
-        "y": 181,
-        "w": 275,
-        "h": 174
+        "x": 47,
+        "y": 149,
+        "w": 207,
+        "h": 206
       }
     },
     "farmer3-fish-2": {
@@ -1480,10 +1480,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-2.png",
       "bounds": {
-        "x": 68,
-        "y": 170,
-        "w": 193,
-        "h": 185
+        "x": 29,
+        "y": 178,
+        "w": 222,
+        "h": 177
       }
     },
     "farmer3-fish-3": {
@@ -1492,10 +1492,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-3.png",
       "bounds": {
-        "x": 62,
-        "y": 170,
-        "w": 204,
-        "h": 184
+        "x": 57,
+        "y": 164,
+        "w": 180,
+        "h": 190
       }
     },
     "farmer3-fish-4": {
@@ -1504,10 +1504,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-4.png",
       "bounds": {
-        "x": 25,
-        "y": 178,
-        "w": 242,
-        "h": 177
+        "x": 60,
+        "y": 163,
+        "w": 184,
+        "h": 192
       }
     },
     "farmer3-fish-5": {
@@ -1516,10 +1516,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-3/farmer3-fish-5.png",
       "bounds": {
-        "x": 109,
-        "y": 172,
-        "w": 169,
-        "h": 183
+        "x": 97,
+        "y": 153,
+        "w": 155,
+        "h": 202
       }
     },
     "farmer4-walk-0": {
@@ -1528,10 +1528,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-0.png",
       "bounds": {
-        "x": 118,
-        "y": 151,
-        "w": 144,
-        "h": 208
+        "x": 134,
+        "y": 115,
+        "w": 116,
+        "h": 238
       }
     },
     "farmer4-walk-1": {
@@ -1540,10 +1540,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-1.png",
       "bounds": {
-        "x": 122,
-        "y": 152,
-        "w": 137,
-        "h": 207
+        "x": 135,
+        "y": 115,
+        "w": 119,
+        "h": 237
       }
     },
     "farmer4-walk-2": {
@@ -1552,10 +1552,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-2.png",
       "bounds": {
-        "x": 124,
-        "y": 152,
-        "w": 135,
-        "h": 207
+        "x": 134,
+        "y": 113,
+        "w": 113,
+        "h": 240
       }
     },
     "farmer4-walk-3": {
@@ -1564,10 +1564,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-3.png",
       "bounds": {
-        "x": 119,
-        "y": 152,
-        "w": 140,
-        "h": 207
+        "x": 134,
+        "y": 115,
+        "w": 126,
+        "h": 238
       }
     },
     "farmer4-walk-4": {
@@ -1576,10 +1576,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-4.png",
       "bounds": {
-        "x": 129,
-        "y": 153,
-        "w": 131,
-        "h": 206
+        "x": 132,
+        "y": 115,
+        "w": 126,
+        "h": 237
       }
     },
     "farmer4-walk-5": {
@@ -1588,10 +1588,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-5.png",
       "bounds": {
-        "x": 122,
-        "y": 157,
-        "w": 136,
-        "h": 203
+        "x": 133,
+        "y": 113,
+        "w": 119,
+        "h": 239
       }
     },
     "farmer4-walk-6": {
@@ -1600,10 +1600,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-6.png",
       "bounds": {
-        "x": 128,
-        "y": 156,
-        "w": 132,
-        "h": 203
+        "x": 134,
+        "y": 115,
+        "w": 119,
+        "h": 238
       }
     },
     "farmer4-walk-7": {
@@ -1612,10 +1612,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-walk-7.png",
       "bounds": {
-        "x": 129,
-        "y": 156,
-        "w": 131,
-        "h": 204
+        "x": 130,
+        "y": 115,
+        "w": 129,
+        "h": 238
       }
     },
     "farmer4-back-0": {
@@ -1624,10 +1624,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-0.png",
       "bounds": {
-        "x": 135,
-        "y": 156,
-        "w": 120,
-        "h": 203
+        "x": 142,
+        "y": 113,
+        "w": 99,
+        "h": 239
       }
     },
     "farmer4-back-1": {
@@ -1636,10 +1636,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-1.png",
       "bounds": {
-        "x": 137,
-        "y": 158,
-        "w": 118,
-        "h": 201
+        "x": 132,
+        "y": 113,
+        "w": 117,
+        "h": 240
       }
     },
     "farmer4-back-2": {
@@ -1648,10 +1648,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-2.png",
       "bounds": {
-        "x": 135,
-        "y": 164,
-        "w": 119,
-        "h": 195
+        "x": 141,
+        "y": 115,
+        "w": 100,
+        "h": 238
       }
     },
     "farmer4-back-3": {
@@ -1660,10 +1660,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-3.png",
       "bounds": {
-        "x": 134,
-        "y": 164,
-        "w": 122,
-        "h": 195
+        "x": 133,
+        "y": 115,
+        "w": 115,
+        "h": 238
       }
     },
     "farmer4-back-4": {
@@ -1672,10 +1672,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-4.png",
       "bounds": {
-        "x": 134,
-        "y": 167,
-        "w": 121,
-        "h": 192
+        "x": 141,
+        "y": 115,
+        "w": 103,
+        "h": 238
       }
     },
     "farmer4-back-5": {
@@ -1684,10 +1684,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-5.png",
       "bounds": {
-        "x": 136,
-        "y": 166,
-        "w": 118,
-        "h": 193
+        "x": 131,
+        "y": 115,
+        "w": 111,
+        "h": 238
       }
     },
     "farmer4-back-6": {
@@ -1696,10 +1696,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-6.png",
       "bounds": {
-        "x": 136,
-        "y": 164,
-        "w": 118,
-        "h": 195
+        "x": 137,
+        "y": 114,
+        "w": 110,
+        "h": 239
       }
     },
     "farmer4-back-7": {
@@ -1708,10 +1708,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-back-7.png",
       "bounds": {
-        "x": 135,
-        "y": 177,
-        "w": 120,
-        "h": 183
+        "x": 147,
+        "y": 108,
+        "w": 88,
+        "h": 245
       }
     },
     "farmer4-idle-0": {
@@ -1720,10 +1720,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-idle-0.png",
       "bounds": {
-        "x": 131,
-        "y": 170,
-        "w": 127,
-        "h": 189
+        "x": 149,
+        "y": 108,
+        "w": 88,
+        "h": 245
       }
     },
     "farmer4-idle-1": {
@@ -1732,10 +1732,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-idle-1.png",
       "bounds": {
-        "x": 132,
-        "y": 170,
-        "w": 127,
-        "h": 189
+        "x": 147,
+        "y": 107,
+        "w": 87,
+        "h": 246
       }
     },
     "farmer4-idle-2": {
@@ -1744,10 +1744,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-idle-2.png",
       "bounds": {
-        "x": 131,
-        "y": 170,
-        "w": 128,
-        "h": 189
+        "x": 148,
+        "y": 109,
+        "w": 86,
+        "h": 244
       }
     },
     "farmer4-idle-3": {
@@ -1756,10 +1756,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-idle-3.png",
       "bounds": {
-        "x": 131,
-        "y": 169,
-        "w": 128,
-        "h": 189
+        "x": 74,
+        "y": 126,
+        "w": 191,
+        "h": 226
       }
     },
     "farmer4-work-0": {
@@ -1768,10 +1768,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-work-0.png",
       "bounds": {
-        "x": 101,
-        "y": 184,
-        "w": 155,
-        "h": 175
+        "x": 83,
+        "y": 132,
+        "w": 177,
+        "h": 221
       }
     },
     "farmer4-work-1": {
@@ -1780,10 +1780,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-work-1.png",
       "bounds": {
-        "x": 116,
-        "y": 175,
-        "w": 153,
-        "h": 184
+        "x": 89,
+        "y": 141,
+        "w": 188,
+        "h": 212
       }
     },
     "farmer4-work-2": {
@@ -1792,10 +1792,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-work-2.png",
       "bounds": {
-        "x": 123,
-        "y": 191,
-        "w": 156,
-        "h": 169
+        "x": 91,
+        "y": 136,
+        "w": 161,
+        "h": 219
       }
     },
     "farmer4-work-3": {
@@ -1804,10 +1804,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-work-3.png",
       "bounds": {
-        "x": 127,
-        "y": 187,
-        "w": 146,
-        "h": 172
+        "x": 91,
+        "y": 122,
+        "w": 165,
+        "h": 230
       }
     },
     "farmer4-work-4": {
@@ -1816,10 +1816,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-work-4.png",
       "bounds": {
-        "x": 102,
-        "y": 185,
-        "w": 157,
-        "h": 174
+        "x": 66,
+        "y": 129,
+        "w": 197,
+        "h": 223
       }
     },
     "farmer4-fish-0": {
@@ -1828,10 +1828,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-fish-0.png",
       "bounds": {
-        "x": 66,
-        "y": 198,
-        "w": 191,
-        "h": 161
+        "x": 145,
+        "y": 123,
+        "w": 183,
+        "h": 230
       }
     },
     "farmer4-fish-1": {
@@ -1840,10 +1840,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-fish-1.png",
       "bounds": {
-        "x": 25,
-        "y": 204,
-        "w": 240,
-        "h": 155
+        "x": 148,
+        "y": 110,
+        "w": 172,
+        "h": 242
       }
     },
     "farmer4-fish-2": {
@@ -1852,10 +1852,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-fish-2.png",
       "bounds": {
-        "x": 43,
-        "y": 202,
-        "w": 214,
-        "h": 156
+        "x": 29,
+        "y": 122,
+        "w": 213,
+        "h": 230
       }
     },
     "farmer4-fish-3": {
@@ -1864,10 +1864,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-fish-3.png",
       "bounds": {
-        "x": 47,
-        "y": 201,
-        "w": 211,
-        "h": 157
+        "x": 48,
+        "y": 121,
+        "w": 194,
+        "h": 232
       }
     },
     "farmer4-fish-4": {
@@ -1876,10 +1876,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-4/farmer4-fish-4.png",
       "bounds": {
-        "x": 81,
-        "y": 197,
-        "w": 176,
-        "h": 162
+        "x": 41,
+        "y": 120,
+        "w": 199,
+        "h": 233
       }
     },
     "farmer5-walk-0": {
@@ -1888,10 +1888,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-0.png",
       "bounds": {
-        "x": 142,
-        "y": 169,
-        "w": 107,
-        "h": 191
+        "x": 147,
+        "y": 177,
+        "w": 97,
+        "h": 177
       }
     },
     "farmer5-walk-1": {
@@ -1900,10 +1900,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-1.png",
       "bounds": {
-        "x": 141,
-        "y": 167,
-        "w": 108,
-        "h": 193
+        "x": 149,
+        "y": 176,
+        "w": 100,
+        "h": 178
       }
     },
     "farmer5-walk-2": {
@@ -1912,10 +1912,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-2.png",
       "bounds": {
-        "x": 142,
-        "y": 171,
-        "w": 107,
-        "h": 188
+        "x": 146,
+        "y": 175,
+        "w": 99,
+        "h": 179
       }
     },
     "farmer5-walk-3": {
@@ -1924,10 +1924,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-3.png",
       "bounds": {
-        "x": 141,
-        "y": 168,
-        "w": 118,
-        "h": 192
+        "x": 150,
+        "y": 177,
+        "w": 95,
+        "h": 177
       }
     },
     "farmer5-walk-4": {
@@ -1936,10 +1936,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-4.png",
       "bounds": {
-        "x": 142,
-        "y": 167,
-        "w": 113,
-        "h": 192
+        "x": 146,
+        "y": 177,
+        "w": 98,
+        "h": 178
       }
     },
     "farmer5-walk-5": {
@@ -1948,10 +1948,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-5.png",
       "bounds": {
-        "x": 140,
-        "y": 167,
-        "w": 116,
-        "h": 192
+        "x": 152,
+        "y": 177,
+        "w": 99,
+        "h": 177
       }
     },
     "farmer5-walk-6": {
@@ -1960,10 +1960,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-6.png",
       "bounds": {
-        "x": 141,
-        "y": 169,
-        "w": 104,
-        "h": 189
+        "x": 151,
+        "y": 176,
+        "w": 100,
+        "h": 178
       }
     },
     "farmer5-walk-7": {
@@ -1972,10 +1972,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-7.png",
       "bounds": {
-        "x": 141,
-        "y": 165,
-        "w": 111,
-        "h": 194
+        "x": 153,
+        "y": 177,
+        "w": 100,
+        "h": 178
       }
     },
     "farmer5-walk-8": {
@@ -1984,10 +1984,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-8.png",
       "bounds": {
-        "x": 140,
-        "y": 166,
-        "w": 114,
-        "h": 194
+        "x": 154,
+        "y": 176,
+        "w": 99,
+        "h": 178
       }
     },
     "farmer5-walk-9": {
@@ -1996,10 +1996,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-walk-9.png",
       "bounds": {
-        "x": 141,
-        "y": 163,
-        "w": 106,
-        "h": 196
+        "x": 151,
+        "y": 177,
+        "w": 96,
+        "h": 177
       }
     },
     "farmer5-back-0": {
@@ -2008,10 +2008,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-0.png",
       "bounds": {
-        "x": 144,
-        "y": 165,
-        "w": 105,
-        "h": 194
+        "x": 150,
+        "y": 187,
+        "w": 96,
+        "h": 167
       }
     },
     "farmer5-back-1": {
@@ -2020,10 +2020,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-1.png",
       "bounds": {
-        "x": 145,
-        "y": 168,
-        "w": 106,
-        "h": 191
+        "x": 154,
+        "y": 187,
+        "w": 87,
+        "h": 168
       }
     },
     "farmer5-back-2": {
@@ -2032,10 +2032,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-2.png",
       "bounds": {
-        "x": 145,
-        "y": 165,
-        "w": 103,
-        "h": 194
+        "x": 157,
+        "y": 188,
+        "w": 91,
+        "h": 166
       }
     },
     "farmer5-back-3": {
@@ -2044,10 +2044,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-3.png",
       "bounds": {
-        "x": 145,
-        "y": 166,
-        "w": 109,
-        "h": 193
+        "x": 153,
+        "y": 186,
+        "w": 97,
+        "h": 168
       }
     },
     "farmer5-back-4": {
@@ -2056,10 +2056,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-4.png",
       "bounds": {
-        "x": 144,
-        "y": 166,
-        "w": 106,
-        "h": 193
+        "x": 157,
+        "y": 187,
+        "w": 92,
+        "h": 166
       }
     },
     "farmer5-back-5": {
@@ -2068,10 +2068,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-5.png",
       "bounds": {
-        "x": 145,
-        "y": 169,
+        "x": 147,
+        "y": 186,
         "w": 101,
-        "h": 190
+        "h": 168
       }
     },
     "farmer5-back-6": {
@@ -2080,10 +2080,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-6.png",
       "bounds": {
-        "x": 142,
-        "y": 169,
-        "w": 111,
-        "h": 189
+        "x": 158,
+        "y": 189,
+        "w": 96,
+        "h": 164
       }
     },
     "farmer5-back-7": {
@@ -2092,10 +2092,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-7.png",
       "bounds": {
-        "x": 143,
-        "y": 169,
-        "w": 98,
-        "h": 190
+        "x": 157,
+        "y": 186,
+        "w": 82,
+        "h": 168
       }
     },
     "farmer5-back-8": {
@@ -2104,10 +2104,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-8.png",
       "bounds": {
-        "x": 145,
-        "y": 167,
-        "w": 100,
-        "h": 192
+        "x": 152,
+        "y": 188,
+        "w": 80,
+        "h": 166
       }
     },
     "farmer5-back-9": {
@@ -2116,10 +2116,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-back-9.png",
       "bounds": {
-        "x": 144,
-        "y": 165,
-        "w": 106,
-        "h": 194
+        "x": 152,
+        "y": 188,
+        "w": 80,
+        "h": 166
       }
     },
     "farmer5-idle-0": {
@@ -2128,10 +2128,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-idle-0.png",
       "bounds": {
-        "x": 142,
-        "y": 176,
-        "w": 101,
-        "h": 182
+        "x": 154,
+        "y": 194,
+        "w": 76,
+        "h": 159
       }
     },
     "farmer5-idle-1": {
@@ -2140,10 +2140,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-idle-1.png",
       "bounds": {
-        "x": 142,
-        "y": 176,
-        "w": 103,
-        "h": 183
+        "x": 154,
+        "y": 195,
+        "w": 76,
+        "h": 158
       }
     },
     "farmer5-idle-2": {
@@ -2152,10 +2152,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-idle-2.png",
       "bounds": {
-        "x": 141,
-        "y": 179,
-        "w": 105,
-        "h": 180
+        "x": 132,
+        "y": 201,
+        "w": 124,
+        "h": 153
       }
     },
     "farmer5-idle-3": {
@@ -2164,10 +2164,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-idle-3.png",
       "bounds": {
-        "x": 142,
-        "y": 177,
-        "w": 103,
-        "h": 182
+        "x": 127,
+        "y": 203,
+        "w": 128,
+        "h": 151
       }
     },
     "farmer5-work-0": {
@@ -2176,10 +2176,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-work-0.png",
       "bounds": {
-        "x": 117,
-        "y": 185,
-        "w": 178,
-        "h": 175
+        "x": 130,
+        "y": 211,
+        "w": 122,
+        "h": 143
       }
     },
     "farmer5-work-1": {
@@ -2188,10 +2188,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-work-1.png",
       "bounds": {
-        "x": 117,
-        "y": 194,
-        "w": 175,
-        "h": 164
+        "x": 144,
+        "y": 211,
+        "w": 119,
+        "h": 143
       }
     },
     "farmer5-work-2": {
@@ -2200,10 +2200,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-work-2.png",
       "bounds": {
-        "x": 138,
-        "y": 204,
-        "w": 160,
-        "h": 155
+        "x": 151,
+        "y": 212,
+        "w": 163,
+        "h": 141
       }
     },
     "farmer5-work-3": {
@@ -2212,10 +2212,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-work-3.png",
       "bounds": {
-        "x": 114,
-        "y": 208,
-        "w": 172,
-        "h": 152
+        "x": 146,
+        "y": 212,
+        "w": 210,
+        "h": 144
       }
     },
     "farmer5-fish-0": {
@@ -2224,10 +2224,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-fish-0.png",
       "bounds": {
-        "x": 25,
-        "y": 194,
-        "w": 228,
-        "h": 165
+        "x": 150,
+        "y": 208,
+        "w": 145,
+        "h": 145
       }
     },
     "farmer5-fish-1": {
@@ -2236,10 +2236,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-farmer-5/farmer5-fish-1.png",
       "bounds": {
-        "x": 53,
+        "x": 147,
         "y": 196,
-        "w": 217,
-        "h": 163
+        "w": 135,
+        "h": 159
       }
     },
     "hen-walk-0": {
@@ -2248,10 +2248,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-0.png",
       "bounds": {
-        "x": 39,
-        "y": 32,
-        "w": 179,
-        "h": 200
+        "x": 35,
+        "y": 53,
+        "w": 187,
+        "h": 175
       }
     },
     "hen-walk-1": {
@@ -2260,10 +2260,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-1.png",
       "bounds": {
-        "x": 43,
-        "y": 31,
-        "w": 171,
-        "h": 201
+        "x": 34,
+        "y": 51,
+        "w": 189,
+        "h": 177
       }
     },
     "hen-walk-2": {
@@ -2272,10 +2272,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-2.png",
       "bounds": {
-        "x": 49,
-        "y": 34,
-        "w": 159,
-        "h": 198
+        "x": 31,
+        "y": 42,
+        "w": 195,
+        "h": 186
       }
     },
     "hen-walk-3": {
@@ -2284,10 +2284,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-3.png",
       "bounds": {
-        "x": 49,
-        "y": 32,
-        "w": 159,
-        "h": 200
+        "x": 29,
+        "y": 46,
+        "w": 199,
+        "h": 182
       }
     },
     "hen-walk-4": {
@@ -2296,10 +2296,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-4.png",
       "bounds": {
-        "x": 43,
-        "y": 32,
-        "w": 171,
-        "h": 200
+        "x": 33,
+        "y": 47,
+        "w": 191,
+        "h": 181
       }
     },
     "hen-walk-5": {
@@ -2308,10 +2308,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-5.png",
       "bounds": {
-        "x": 49,
-        "y": 34,
-        "w": 159,
-        "h": 198
+        "x": 37,
+        "y": 48,
+        "w": 183,
+        "h": 180
       }
     },
     "hen-walk-6": {
@@ -2320,10 +2320,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-6.png",
       "bounds": {
-        "x": 56,
-        "y": 37,
-        "w": 145,
-        "h": 195
+        "x": 33,
+        "y": 50,
+        "w": 191,
+        "h": 178
       }
     },
     "hen-walk-7": {
@@ -2332,370 +2332,370 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-walk-7.png",
       "bounds": {
-        "x": 54,
-        "y": 40,
-        "w": 149,
-        "h": 192
+        "x": 30,
+        "y": 52,
+        "w": 197,
+        "h": 176
       }
     },
     "hen-turn-0": {
       "sheet": "anim-animals-0",
-      "col": 2,
-      "row": 1,
+      "col": 1,
+      "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-turn-0.png",
       "bounds": {
-        "x": 36,
-        "y": 24,
-        "w": 185,
-        "h": 208
+        "x": 34,
+        "y": 51,
+        "w": 189,
+        "h": 177
       }
     },
     "hen-turn-1": {
       "sheet": "anim-animals-0",
-      "col": 3,
-      "row": 1,
+      "col": 5,
+      "row": 0,
       "file": "assets/motion/sprites/anim-animals-0/hen-turn-1.png",
       "bounds": {
-        "x": 30,
-        "y": 27,
-        "w": 197,
-        "h": 205
+        "x": 37,
+        "y": 48,
+        "w": 183,
+        "h": 180
       }
     },
     "hen-idle-0": {
       "sheet": "anim-animals-0",
-      "col": 4,
+      "col": 2,
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-idle-0.png",
       "bounds": {
-        "x": 36,
-        "y": 28,
-        "w": 185,
-        "h": 204
+        "x": 31,
+        "y": 43,
+        "w": 195,
+        "h": 185
       }
     },
     "hen-idle-1": {
       "sheet": "anim-animals-0",
-      "col": 5,
+      "col": 3,
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-idle-1.png",
       "bounds": {
-        "x": 39,
-        "y": 26,
-        "w": 179,
-        "h": 206
+        "x": 31,
+        "y": 40,
+        "w": 195,
+        "h": 188
       }
     },
     "hen-idle-2": {
       "sheet": "anim-animals-0",
-      "col": 0,
-      "row": 2,
+      "col": 4,
+      "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-idle-2.png",
       "bounds": {
-        "x": 35,
-        "y": 24,
-        "w": 187,
-        "h": 208
+        "x": 34,
+        "y": 37,
+        "w": 189,
+        "h": 191
       }
     },
     "hen-idle-3": {
       "sheet": "anim-animals-0",
-      "col": 1,
-      "row": 2,
+      "col": 5,
+      "row": 1,
       "file": "assets/motion/sprites/anim-animals-0/hen-idle-3.png",
       "bounds": {
-        "x": 37,
-        "y": 26,
-        "w": 183,
-        "h": 206
+        "x": 36,
+        "y": 40,
+        "w": 185,
+        "h": 188
       }
     },
     "cow-walk-0": {
       "sheet": "anim-animals-0",
-      "col": 2,
+      "col": 0,
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-0.png",
       "bounds": {
-        "x": 32,
-        "y": 88,
-        "w": 193,
-        "h": 144
+        "x": 30,
+        "y": 63,
+        "w": 197,
+        "h": 165
       }
     },
     "cow-walk-1": {
       "sheet": "anim-animals-0",
-      "col": 3,
+      "col": 1,
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-1.png",
       "bounds": {
-        "x": 25,
-        "y": 86,
-        "w": 207,
-        "h": 146
+        "x": 30,
+        "y": 65,
+        "w": 197,
+        "h": 163
       }
     },
     "cow-walk-2": {
       "sheet": "anim-animals-0",
-      "col": 4,
+      "col": 2,
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-2.png",
       "bounds": {
-        "x": 33,
-        "y": 87,
-        "w": 191,
-        "h": 145
+        "x": 29,
+        "y": 65,
+        "w": 199,
+        "h": 163
       }
     },
     "cow-walk-3": {
       "sheet": "anim-animals-0",
-      "col": 5,
+      "col": 3,
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-3.png",
       "bounds": {
         "x": 33,
-        "y": 88,
+        "y": 65,
         "w": 191,
-        "h": 144
+        "h": 163
       }
     },
     "cow-walk-4": {
       "sheet": "anim-animals-0",
-      "col": 0,
-      "row": 3,
+      "col": 4,
+      "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-4.png",
       "bounds": {
-        "x": 32,
-        "y": 87,
-        "w": 193,
-        "h": 145
+        "x": 29,
+        "y": 70,
+        "w": 199,
+        "h": 158
       }
     },
     "cow-walk-5": {
       "sheet": "anim-animals-0",
-      "col": 1,
-      "row": 3,
+      "col": 5,
+      "row": 2,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-5.png",
       "bounds": {
-        "x": 43,
-        "y": 88,
-        "w": 171,
-        "h": 144
+        "x": 31,
+        "y": 64,
+        "w": 195,
+        "h": 164
       }
     },
     "cow-walk-6": {
       "sheet": "anim-animals-0",
-      "col": 2,
+      "col": 0,
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-6.png",
       "bounds": {
         "x": 32,
-        "y": 89,
+        "y": 65,
         "w": 193,
-        "h": 143
+        "h": 163
       }
     },
     "cow-walk-7": {
       "sheet": "anim-animals-0",
-      "col": 3,
+      "col": 1,
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-walk-7.png",
       "bounds": {
-        "x": 28,
-        "y": 87,
-        "w": 201,
-        "h": 145
+        "x": 31,
+        "y": 72,
+        "w": 195,
+        "h": 156
       }
     },
     "cow-idle-0": {
       "sheet": "anim-animals-0",
-      "col": 4,
+      "col": 2,
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-idle-0.png",
       "bounds": {
-        "x": 34,
-        "y": 86,
-        "w": 189,
-        "h": 146
+        "x": 29,
+        "y": 71,
+        "w": 199,
+        "h": 157
       }
     },
     "cow-idle-1": {
       "sheet": "anim-animals-0",
-      "col": 5,
+      "col": 3,
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-idle-1.png",
       "bounds": {
-        "x": 40,
-        "y": 87,
-        "w": 177,
-        "h": 145
+        "x": 30,
+        "y": 62,
+        "w": 197,
+        "h": 166
       }
     },
     "cow-idle-2": {
       "sheet": "anim-animals-0",
-      "col": 0,
-      "row": 4,
+      "col": 4,
+      "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-idle-2.png",
       "bounds": {
-        "x": 35,
-        "y": 86,
-        "w": 187,
-        "h": 146
+        "x": 29,
+        "y": 59,
+        "w": 199,
+        "h": 169
       }
     },
     "cow-idle-3": {
       "sheet": "anim-animals-0",
-      "col": 1,
-      "row": 4,
+      "col": 5,
+      "row": 3,
       "file": "assets/motion/sprites/anim-animals-0/cow-idle-3.png",
       "bounds": {
-        "x": 44,
-        "y": 87,
-        "w": 169,
-        "h": 145
+        "x": 32,
+        "y": 64,
+        "w": 193,
+        "h": 164
       }
     },
     "duck-walk-0": {
       "sheet": "anim-animals-0",
-      "col": 2,
+      "col": 0,
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-0.png",
       "bounds": {
-        "x": 29,
-        "y": 47,
-        "w": 199,
-        "h": 185
+        "x": 33,
+        "y": 68,
+        "w": 191,
+        "h": 160
       }
     },
     "duck-walk-1": {
       "sheet": "anim-animals-0",
-      "col": 3,
+      "col": 1,
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-1.png",
       "bounds": {
-        "x": 28,
-        "y": 46,
-        "w": 201,
-        "h": 186
+        "x": 30,
+        "y": 60,
+        "w": 197,
+        "h": 168
       }
     },
     "duck-walk-2": {
       "sheet": "anim-animals-0",
-      "col": 4,
+      "col": 2,
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-2.png",
       "bounds": {
         "x": 31,
-        "y": 48,
+        "y": 59,
         "w": 195,
-        "h": 184
+        "h": 169
       }
     },
     "duck-walk-3": {
       "sheet": "anim-animals-0",
-      "col": 5,
+      "col": 3,
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-3.png",
       "bounds": {
-        "x": 26,
-        "y": 49,
-        "w": 205,
-        "h": 183
+        "x": 29,
+        "y": 61,
+        "w": 199,
+        "h": 167
       }
     },
     "duck-walk-4": {
       "sheet": "anim-animals-0",
-      "col": 0,
-      "row": 5,
+      "col": 4,
+      "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-4.png",
       "bounds": {
-        "x": 32,
-        "y": 49,
-        "w": 193,
-        "h": 183
+        "x": 33,
+        "y": 63,
+        "w": 191,
+        "h": 165
       }
     },
     "duck-walk-5": {
       "sheet": "anim-animals-0",
-      "col": 1,
-      "row": 5,
+      "col": 5,
+      "row": 4,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-5.png",
       "bounds": {
-        "x": 34,
-        "y": 52,
-        "w": 189,
-        "h": 180
+        "x": 32,
+        "y": 65,
+        "w": 193,
+        "h": 163
       }
     },
     "duck-walk-6": {
       "sheet": "anim-animals-0",
-      "col": 2,
+      "col": 0,
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-6.png",
       "bounds": {
-        "x": 25,
+        "x": 31,
         "y": 55,
-        "w": 207,
-        "h": 177
+        "w": 195,
+        "h": 173
       }
     },
     "duck-walk-7": {
       "sheet": "anim-animals-0",
-      "col": 3,
+      "col": 1,
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-walk-7.png",
       "bounds": {
-        "x": 29,
-        "y": 55,
-        "w": 199,
-        "h": 177
+        "x": 30,
+        "y": 65,
+        "w": 197,
+        "h": 163
       }
     },
     "duck-idle-0": {
       "sheet": "anim-animals-0",
-      "col": 4,
+      "col": 2,
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-idle-0.png",
       "bounds": {
-        "x": 33,
-        "y": 55,
-        "w": 191,
-        "h": 177
+        "x": 32,
+        "y": 60,
+        "w": 193,
+        "h": 168
       }
     },
     "duck-idle-1": {
       "sheet": "anim-animals-0",
-      "col": 5,
+      "col": 3,
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-idle-1.png",
       "bounds": {
-        "x": 29,
-        "y": 53,
-        "w": 199,
-        "h": 179
+        "x": 32,
+        "y": 52,
+        "w": 193,
+        "h": 176
       }
     },
     "duck-idle-2": {
       "sheet": "anim-animals-0",
-      "col": 0,
-      "row": 6,
+      "col": 4,
+      "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-idle-2.png",
       "bounds": {
-        "x": 33,
-        "y": 53,
-        "w": 191,
-        "h": 179
+        "x": 31,
+        "y": 59,
+        "w": 195,
+        "h": 169
       }
     },
     "duck-idle-3": {
       "sheet": "anim-animals-0",
-      "col": 1,
-      "row": 6,
+      "col": 5,
+      "row": 5,
       "file": "assets/motion/sprites/anim-animals-0/duck-idle-3.png",
       "bounds": {
-        "x": 33,
-        "y": 52,
-        "w": 191,
-        "h": 180
+        "x": 35,
+        "y": 55,
+        "w": 187,
+        "h": 173
       }
     },
     "dog-walk-0": {
@@ -2704,10 +2704,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-0.png",
       "bounds": {
-        "x": 28,
-        "y": 60,
-        "w": 201,
-        "h": 172
+        "x": 32,
+        "y": 55,
+        "w": 193,
+        "h": 173
       }
     },
     "dog-walk-1": {
@@ -2716,10 +2716,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-1.png",
       "bounds": {
-        "x": 25,
+        "x": 29,
         "y": 61,
-        "w": 207,
-        "h": 171
+        "w": 199,
+        "h": 167
       }
     },
     "dog-walk-2": {
@@ -2728,10 +2728,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-2.png",
       "bounds": {
-        "x": 31,
-        "y": 62,
-        "w": 195,
-        "h": 170
+        "x": 36,
+        "y": 61,
+        "w": 185,
+        "h": 167
       }
     },
     "dog-walk-3": {
@@ -2740,10 +2740,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-3.png",
       "bounds": {
-        "x": 31,
-        "y": 62,
-        "w": 195,
-        "h": 170
+        "x": 37,
+        "y": 63,
+        "w": 183,
+        "h": 165
       }
     },
     "dog-walk-4": {
@@ -2752,10 +2752,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-4.png",
       "bounds": {
-        "x": 28,
-        "y": 59,
-        "w": 201,
-        "h": 173
+        "x": 33,
+        "y": 63,
+        "w": 191,
+        "h": 165
       }
     },
     "dog-walk-5": {
@@ -2764,10 +2764,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-5.png",
       "bounds": {
-        "x": 32,
+        "x": 33,
         "y": 63,
-        "w": 193,
-        "h": 169
+        "w": 191,
+        "h": 165
       }
     },
     "dog-walk-6": {
@@ -2776,10 +2776,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-6.png",
       "bounds": {
-        "x": 33,
-        "y": 59,
-        "w": 191,
-        "h": 173
+        "x": 35,
+        "y": 57,
+        "w": 187,
+        "h": 171
       }
     },
     "dog-walk-7": {
@@ -2788,10 +2788,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-walk-7.png",
       "bounds": {
-        "x": 35,
-        "y": 59,
-        "w": 187,
-        "h": 173
+        "x": 33,
+        "y": 63,
+        "w": 191,
+        "h": 165
       }
     },
     "dog-idle-0": {
@@ -2800,10 +2800,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-idle-0.png",
       "bounds": {
-        "x": 35,
-        "y": 54,
-        "w": 187,
-        "h": 178
+        "x": 36,
+        "y": 56,
+        "w": 185,
+        "h": 172
       }
     },
     "dog-idle-1": {
@@ -2812,10 +2812,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-idle-1.png",
       "bounds": {
-        "x": 36,
-        "y": 55,
-        "w": 185,
-        "h": 177
+        "x": 38,
+        "y": 54,
+        "w": 181,
+        "h": 174
       }
     },
     "dog-idle-2": {
@@ -2824,10 +2824,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-idle-2.png",
       "bounds": {
-        "x": 38,
+        "x": 35,
         "y": 53,
-        "w": 181,
-        "h": 179
+        "w": 187,
+        "h": 175
       }
     },
     "dog-idle-3": {
@@ -2836,10 +2836,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-1/dog-idle-3.png",
       "bounds": {
-        "x": 36,
-        "y": 53,
-        "w": 185,
-        "h": 179
+        "x": 38,
+        "y": 56,
+        "w": 180,
+        "h": 172
       }
     },
     "cat-walk-0": {
@@ -2848,10 +2848,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-0.png",
       "bounds": {
-        "x": 27,
-        "y": 36,
-        "w": 203,
-        "h": 196
+        "x": 36,
+        "y": 48,
+        "w": 185,
+        "h": 180
       }
     },
     "cat-walk-1": {
@@ -2860,9 +2860,9 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-1.png",
       "bounds": {
-        "x": 28,
-        "y": 38,
-        "w": 201,
+        "x": 30,
+        "y": 34,
+        "w": 197,
         "h": 194
       }
     },
@@ -2872,10 +2872,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-2.png",
       "bounds": {
-        "x": 28,
-        "y": 43,
-        "w": 201,
-        "h": 189
+        "x": 39,
+        "y": 40,
+        "w": 179,
+        "h": 188
       }
     },
     "cat-walk-3": {
@@ -2884,10 +2884,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-3.png",
       "bounds": {
-        "x": 25,
-        "y": 37,
-        "w": 207,
-        "h": 195
+        "x": 36,
+        "y": 51,
+        "w": 185,
+        "h": 177
       }
     },
     "cat-walk-4": {
@@ -2896,10 +2896,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-4.png",
       "bounds": {
-        "x": 27,
-        "y": 37,
-        "w": 203,
-        "h": 195
+        "x": 35,
+        "y": 46,
+        "w": 187,
+        "h": 182
       }
     },
     "cat-walk-5": {
@@ -2908,10 +2908,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-5.png",
       "bounds": {
-        "x": 29,
-        "y": 40,
-        "w": 199,
-        "h": 192
+        "x": 43,
+        "y": 52,
+        "w": 171,
+        "h": 176
       }
     },
     "cat-walk-6": {
@@ -2920,10 +2920,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-6.png",
       "bounds": {
-        "x": 27,
-        "y": 50,
-        "w": 203,
-        "h": 182
+        "x": 35,
+        "y": 57,
+        "w": 187,
+        "h": 171
       }
     },
     "cat-walk-7": {
@@ -2932,10 +2932,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-walk-7.png",
       "bounds": {
-        "x": 33,
-        "y": 71,
-        "w": 191,
-        "h": 161
+        "x": 29,
+        "y": 43,
+        "w": 199,
+        "h": 185
       }
     },
     "cat-idle-0": {
@@ -2944,10 +2944,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-idle-0.png",
       "bounds": {
-        "x": 33,
-        "y": 50,
-        "w": 191,
-        "h": 182
+        "x": 38,
+        "y": 54,
+        "w": 181,
+        "h": 174
       }
     },
     "cat-idle-1": {
@@ -2956,10 +2956,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-idle-1.png",
       "bounds": {
-        "x": 33,
-        "y": 54,
-        "w": 191,
-        "h": 178
+        "x": 35,
+        "y": 57,
+        "w": 187,
+        "h": 171
       }
     },
     "cat-idle-2": {
@@ -2968,10 +2968,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-idle-2.png",
       "bounds": {
-        "x": 35,
-        "y": 53,
-        "w": 187,
-        "h": 179
+        "x": 38,
+        "y": 47,
+        "w": 181,
+        "h": 181
       }
     },
     "cat-idle-3": {
@@ -2980,10 +2980,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-1/cat-idle-3.png",
       "bounds": {
-        "x": 34,
+        "x": 45,
         "y": 53,
-        "w": 189,
-        "h": 179
+        "w": 167,
+        "h": 175
       }
     },
     "buffalo-walk-0": {
@@ -2992,10 +2992,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-0.png",
       "bounds": {
-        "x": 28,
-        "y": 93,
-        "w": 201,
-        "h": 139
+        "x": 29,
+        "y": 72,
+        "w": 199,
+        "h": 156
       }
     },
     "buffalo-walk-1": {
@@ -3004,10 +3004,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-1.png",
       "bounds": {
-        "x": 25,
-        "y": 92,
-        "w": 207,
-        "h": 140
+        "x": 35,
+        "y": 70,
+        "w": 187,
+        "h": 158
       }
     },
     "buffalo-walk-2": {
@@ -3016,10 +3016,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-2.png",
       "bounds": {
-        "x": 26,
-        "y": 90,
-        "w": 205,
-        "h": 142
+        "x": 33,
+        "y": 68,
+        "w": 191,
+        "h": 160
       }
     },
     "buffalo-walk-3": {
@@ -3028,10 +3028,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-3.png",
       "bounds": {
-        "x": 26,
-        "y": 94,
-        "w": 205,
-        "h": 138
+        "x": 30,
+        "y": 74,
+        "w": 197,
+        "h": 154
       }
     },
     "buffalo-walk-4": {
@@ -3040,10 +3040,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-4.png",
       "bounds": {
-        "x": 26,
-        "y": 88,
-        "w": 205,
-        "h": 144
+        "x": 34,
+        "y": 74,
+        "w": 189,
+        "h": 154
       }
     },
     "buffalo-walk-5": {
@@ -3052,10 +3052,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-5.png",
       "bounds": {
-        "x": 31,
-        "y": 89,
-        "w": 195,
-        "h": 143
+        "x": 37,
+        "y": 78,
+        "w": 183,
+        "h": 150
       }
     },
     "buffalo-walk-6": {
@@ -3064,10 +3064,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-6.png",
       "bounds": {
-        "x": 28,
-        "y": 94,
-        "w": 201,
-        "h": 138
+        "x": 35,
+        "y": 72,
+        "w": 187,
+        "h": 156
       }
     },
     "buffalo-walk-7": {
@@ -3076,10 +3076,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-walk-7.png",
       "bounds": {
-        "x": 30,
-        "y": 90,
-        "w": 197,
-        "h": 142
+        "x": 29,
+        "y": 70,
+        "w": 199,
+        "h": 158
       }
     },
     "buffalo-idle-0": {
@@ -3088,10 +3088,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-idle-0.png",
       "bounds": {
-        "x": 28,
-        "y": 90,
-        "w": 201,
-        "h": 142
+        "x": 35,
+        "y": 74,
+        "w": 187,
+        "h": 154
       }
     },
     "buffalo-idle-1": {
@@ -3100,10 +3100,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-idle-1.png",
       "bounds": {
-        "x": 28,
-        "y": 90,
-        "w": 201,
-        "h": 142
+        "x": 35,
+        "y": 75,
+        "w": 187,
+        "h": 153
       }
     },
     "buffalo-idle-2": {
@@ -3112,10 +3112,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-idle-2.png",
       "bounds": {
-        "x": 29,
-        "y": 89,
-        "w": 199,
-        "h": 143
+        "x": 35,
+        "y": 73,
+        "w": 187,
+        "h": 155
       }
     },
     "buffalo-idle-3": {
@@ -3124,10 +3124,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-1/buffalo-idle-3.png",
       "bounds": {
-        "x": 32,
-        "y": 85,
-        "w": 193,
-        "h": 147
+        "x": 40,
+        "y": 67,
+        "w": 177,
+        "h": 161
       }
     },
     "pig-walk-0": {
@@ -3136,10 +3136,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-0.png",
       "bounds": {
-        "x": 25,
-        "y": 65,
-        "w": 207,
-        "h": 167
+        "x": 41,
+        "y": 77,
+        "w": 175,
+        "h": 151
       }
     },
     "pig-walk-1": {
@@ -3148,10 +3148,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-1.png",
       "bounds": {
-        "x": 25,
-        "y": 61,
-        "w": 207,
-        "h": 171
+        "x": 31,
+        "y": 80,
+        "w": 195,
+        "h": 148
       }
     },
     "pig-walk-2": {
@@ -3160,10 +3160,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-2.png",
       "bounds": {
-        "x": 28,
-        "y": 64,
-        "w": 201,
-        "h": 168
+        "x": 31,
+        "y": 79,
+        "w": 195,
+        "h": 149
       }
     },
     "pig-walk-3": {
@@ -3173,9 +3173,9 @@
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-3.png",
       "bounds": {
         "x": 29,
-        "y": 60,
+        "y": 83,
         "w": 199,
-        "h": 172
+        "h": 145
       }
     },
     "pig-walk-4": {
@@ -3184,10 +3184,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-4.png",
       "bounds": {
-        "x": 28,
-        "y": 60,
-        "w": 201,
-        "h": 172
+        "x": 40,
+        "y": 81,
+        "w": 177,
+        "h": 147
       }
     },
     "pig-walk-5": {
@@ -3196,10 +3196,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-5.png",
       "bounds": {
-        "x": 27,
-        "y": 61,
-        "w": 203,
-        "h": 171
+        "x": 38,
+        "y": 94,
+        "w": 181,
+        "h": 134
       }
     },
     "pig-walk-6": {
@@ -3208,10 +3208,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-6.png",
       "bounds": {
-        "x": 26,
-        "y": 58,
-        "w": 205,
-        "h": 174
+        "x": 39,
+        "y": 79,
+        "w": 179,
+        "h": 149
       }
     },
     "pig-walk-7": {
@@ -3220,10 +3220,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-walk-7.png",
       "bounds": {
-        "x": 27,
-        "y": 63,
-        "w": 203,
-        "h": 169
+        "x": 40,
+        "y": 81,
+        "w": 177,
+        "h": 147
       }
     },
     "pig-idle-0": {
@@ -3232,10 +3232,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-idle-0.png",
       "bounds": {
-        "x": 29,
-        "y": 61,
-        "w": 199,
-        "h": 171
+        "x": 38,
+        "y": 79,
+        "w": 181,
+        "h": 149
       }
     },
     "pig-idle-1": {
@@ -3244,10 +3244,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-idle-1.png",
       "bounds": {
-        "x": 29,
-        "y": 68,
-        "w": 199,
-        "h": 164
+        "x": 35,
+        "y": 82,
+        "w": 187,
+        "h": 146
       }
     },
     "pig-idle-2": {
@@ -3256,10 +3256,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-idle-2.png",
       "bounds": {
-        "x": 25,
-        "y": 67,
-        "w": 207,
-        "h": 165
+        "x": 36,
+        "y": 83,
+        "w": 185,
+        "h": 145
       }
     },
     "pig-idle-3": {
@@ -3268,10 +3268,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-2/pig-idle-3.png",
       "bounds": {
-        "x": 28,
-        "y": 63,
-        "w": 201,
-        "h": 169
+        "x": 36,
+        "y": 80,
+        "w": 185,
+        "h": 148
       }
     },
     "sheep-walk-0": {
@@ -3280,10 +3280,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-0.png",
       "bounds": {
-        "x": 28,
-        "y": 56,
-        "w": 201,
-        "h": 176
+        "x": 33,
+        "y": 50,
+        "w": 191,
+        "h": 178
       }
     },
     "sheep-walk-1": {
@@ -3292,10 +3292,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-1.png",
       "bounds": {
-        "x": 30,
-        "y": 52,
-        "w": 197,
-        "h": 180
+        "x": 31,
+        "y": 50,
+        "w": 195,
+        "h": 178
       }
     },
     "sheep-walk-2": {
@@ -3304,10 +3304,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-2.png",
       "bounds": {
-        "x": 29,
-        "y": 47,
-        "w": 199,
-        "h": 185
+        "x": 34,
+        "y": 50,
+        "w": 189,
+        "h": 178
       }
     },
     "sheep-walk-3": {
@@ -3316,10 +3316,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-3.png",
       "bounds": {
-        "x": 30,
+        "x": 29,
         "y": 52,
-        "w": 197,
-        "h": 180
+        "w": 199,
+        "h": 176
       }
     },
     "sheep-walk-4": {
@@ -3328,10 +3328,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-4.png",
       "bounds": {
-        "x": 26,
-        "y": 48,
-        "w": 205,
-        "h": 184
+        "x": 37,
+        "y": 50,
+        "w": 183,
+        "h": 178
       }
     },
     "sheep-walk-5": {
@@ -3340,10 +3340,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-5.png",
       "bounds": {
-        "x": 28,
-        "y": 48,
-        "w": 201,
-        "h": 184
+        "x": 31,
+        "y": 60,
+        "w": 195,
+        "h": 168
       }
     },
     "sheep-walk-6": {
@@ -3352,10 +3352,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-6.png",
       "bounds": {
-        "x": 28,
-        "y": 61,
-        "w": 201,
-        "h": 171
+        "x": 34,
+        "y": 54,
+        "w": 189,
+        "h": 174
       }
     },
     "sheep-walk-7": {
@@ -3364,10 +3364,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-walk-7.png",
       "bounds": {
-        "x": 31,
-        "y": 59,
-        "w": 195,
-        "h": 173
+        "x": 32,
+        "y": 56,
+        "w": 193,
+        "h": 172
       }
     },
     "sheep-idle-0": {
@@ -3376,10 +3376,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-idle-0.png",
       "bounds": {
-        "x": 28,
-        "y": 48,
-        "w": 201,
-        "h": 184
+        "x": 35,
+        "y": 55,
+        "w": 187,
+        "h": 173
       }
     },
     "sheep-idle-1": {
@@ -3388,10 +3388,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-idle-1.png",
       "bounds": {
-        "x": 30,
-        "y": 52,
-        "w": 197,
-        "h": 180
+        "x": 32,
+        "y": 54,
+        "w": 193,
+        "h": 174
       }
     },
     "sheep-idle-2": {
@@ -3400,10 +3400,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-idle-2.png",
       "bounds": {
-        "x": 25,
-        "y": 46,
-        "w": 207,
-        "h": 186
+        "x": 35,
+        "y": 55,
+        "w": 187,
+        "h": 173
       }
     },
     "sheep-idle-3": {
@@ -3412,10 +3412,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-2/sheep-idle-3.png",
       "bounds": {
-        "x": 29,
-        "y": 45,
-        "w": 199,
-        "h": 187
+        "x": 34,
+        "y": 53,
+        "w": 189,
+        "h": 175
       }
     },
     "goat-walk-0": {
@@ -3424,10 +3424,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-0.png",
       "bounds": {
-        "x": 26,
-        "y": 28,
-        "w": 205,
-        "h": 204
+        "x": 35,
+        "y": 40,
+        "w": 187,
+        "h": 188
       }
     },
     "goat-walk-1": {
@@ -3436,10 +3436,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-1.png",
       "bounds": {
-        "x": 27,
-        "y": 24,
-        "w": 203,
-        "h": 208
+        "x": 32,
+        "y": 39,
+        "w": 193,
+        "h": 189
       }
     },
     "goat-walk-2": {
@@ -3448,10 +3448,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-2.png",
       "bounds": {
-        "x": 30,
-        "y": 31,
-        "w": 197,
-        "h": 201
+        "x": 33,
+        "y": 44,
+        "w": 191,
+        "h": 184
       }
     },
     "goat-walk-3": {
@@ -3460,10 +3460,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-3.png",
       "bounds": {
-        "x": 31,
-        "y": 27,
-        "w": 195,
-        "h": 205
+        "x": 29,
+        "y": 37,
+        "w": 199,
+        "h": 191
       }
     },
     "goat-walk-4": {
@@ -3472,10 +3472,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-4.png",
       "bounds": {
-        "x": 26,
-        "y": 27,
-        "w": 205,
-        "h": 205
+        "x": 35,
+        "y": 39,
+        "w": 187,
+        "h": 189
       }
     },
     "goat-walk-5": {
@@ -3484,10 +3484,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-5.png",
       "bounds": {
-        "x": 31,
-        "y": 28,
-        "w": 195,
-        "h": 204
+        "x": 33,
+        "y": 45,
+        "w": 191,
+        "h": 183
       }
     },
     "goat-walk-6": {
@@ -3496,10 +3496,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-6.png",
       "bounds": {
-        "x": 26,
-        "y": 33,
-        "w": 205,
-        "h": 199
+        "x": 37,
+        "y": 42,
+        "w": 183,
+        "h": 186
       }
     },
     "goat-walk-7": {
@@ -3508,10 +3508,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-walk-7.png",
       "bounds": {
-        "x": 29,
-        "y": 38,
-        "w": 199,
-        "h": 194
+        "x": 36,
+        "y": 41,
+        "w": 185,
+        "h": 187
       }
     },
     "goat-idle-0": {
@@ -3520,10 +3520,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-idle-0.png",
       "bounds": {
-        "x": 31,
-        "y": 32,
-        "w": 195,
-        "h": 200
+        "x": 37,
+        "y": 37,
+        "w": 183,
+        "h": 191
       }
     },
     "goat-idle-1": {
@@ -3532,10 +3532,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-idle-1.png",
       "bounds": {
-        "x": 32,
-        "y": 34,
-        "w": 193,
-        "h": 198
+        "x": 34,
+        "y": 40,
+        "w": 189,
+        "h": 188
       }
     },
     "goat-idle-2": {
@@ -3544,10 +3544,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-idle-2.png",
       "bounds": {
-        "x": 31,
-        "y": 33,
-        "w": 195,
-        "h": 199
+        "x": 36,
+        "y": 37,
+        "w": 185,
+        "h": 191
       }
     },
     "goat-idle-3": {
@@ -3556,10 +3556,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-2/goat-idle-3.png",
       "bounds": {
-        "x": 33,
-        "y": 33,
-        "w": 191,
-        "h": 199
+        "x": 42,
+        "y": 36,
+        "w": 173,
+        "h": 192
       }
     },
     "crane-walk-0": {
@@ -3568,10 +3568,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-0.png",
       "bounds": {
-        "x": 42,
-        "y": 37,
-        "w": 173,
-        "h": 195
+        "x": 31,
+        "y": 57,
+        "w": 195,
+        "h": 171
       }
     },
     "crane-walk-1": {
@@ -3580,10 +3580,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-1.png",
       "bounds": {
-        "x": 42,
-        "y": 33,
-        "w": 173,
-        "h": 199
+        "x": 33,
+        "y": 53,
+        "w": 191,
+        "h": 175
       }
     },
     "crane-walk-2": {
@@ -3592,10 +3592,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-2.png",
       "bounds": {
-        "x": 44,
-        "y": 36,
-        "w": 169,
-        "h": 196
+        "x": 33,
+        "y": 53,
+        "w": 191,
+        "h": 175
       }
     },
     "crane-walk-3": {
@@ -3604,10 +3604,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-3.png",
       "bounds": {
-        "x": 45,
-        "y": 28,
-        "w": 167,
-        "h": 204
+        "x": 33,
+        "y": 56,
+        "w": 191,
+        "h": 172
       }
     },
     "crane-walk-4": {
@@ -3616,10 +3616,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-4.png",
       "bounds": {
-        "x": 43,
-        "y": 36,
-        "w": 171,
-        "h": 196
+        "x": 36,
+        "y": 56,
+        "w": 185,
+        "h": 172
       }
     },
     "crane-walk-5": {
@@ -3628,10 +3628,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-5.png",
       "bounds": {
-        "x": 44,
-        "y": 35,
-        "w": 169,
-        "h": 197
+        "x": 37,
+        "y": 55,
+        "w": 183,
+        "h": 173
       }
     },
     "crane-walk-6": {
@@ -3640,10 +3640,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-6.png",
       "bounds": {
-        "x": 45,
-        "y": 32,
-        "w": 167,
-        "h": 200
+        "x": 41,
+        "y": 31,
+        "w": 175,
+        "h": 197
       }
     },
     "crane-walk-7": {
@@ -3652,10 +3652,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-3/crane-walk-7.png",
       "bounds": {
-        "x": 43,
-        "y": 28,
-        "w": 171,
-        "h": 204
+        "x": 44,
+        "y": 30,
+        "w": 169,
+        "h": 198
       }
     },
     "crane-idle-0": {
@@ -3664,10 +3664,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-3/crane-idle-0.png",
       "bounds": {
-        "x": 45,
-        "y": 30,
-        "w": 167,
-        "h": 202
+        "x": 43,
+        "y": 29,
+        "w": 171,
+        "h": 199
       }
     },
     "crane-idle-1": {
@@ -3676,10 +3676,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-3/crane-idle-1.png",
       "bounds": {
-        "x": 47,
-        "y": 24,
-        "w": 163,
-        "h": 208
+        "x": 39,
+        "y": 33,
+        "w": 179,
+        "h": 195
       }
     },
     "crane-idle-2": {
@@ -3689,9 +3689,9 @@
       "file": "assets/motion/sprites/anim-animals-3/crane-idle-2.png",
       "bounds": {
         "x": 44,
-        "y": 31,
+        "y": 54,
         "w": 169,
-        "h": 201
+        "h": 174
       }
     },
     "crane-idle-3": {
@@ -3700,10 +3700,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-animals-3/crane-idle-3.png",
       "bounds": {
-        "x": 44,
-        "y": 32,
-        "w": 169,
-        "h": 200
+        "x": 51,
+        "y": 36,
+        "w": 155,
+        "h": 192
       }
     },
     "butterfly-walk-0": {
@@ -3712,10 +3712,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-0.png",
       "bounds": {
-        "x": 27,
-        "y": 68,
-        "w": 203,
-        "h": 164
+        "x": 35,
+        "y": 54,
+        "w": 187,
+        "h": 174
       }
     },
     "butterfly-walk-1": {
@@ -3724,10 +3724,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-1.png",
       "bounds": {
-        "x": 27,
-        "y": 52,
-        "w": 203,
-        "h": 180
+        "x": 33,
+        "y": 71,
+        "w": 191,
+        "h": 157
       }
     },
     "butterfly-walk-2": {
@@ -3736,10 +3736,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-2.png",
       "bounds": {
-        "x": 27,
-        "y": 35,
-        "w": 203,
-        "h": 197
+        "x": 37,
+        "y": 75,
+        "w": 183,
+        "h": 153
       }
     },
     "butterfly-walk-3": {
@@ -3748,10 +3748,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-3.png",
       "bounds": {
-        "x": 34,
-        "y": 34,
-        "w": 189,
-        "h": 198
+        "x": 33,
+        "y": 69,
+        "w": 191,
+        "h": 159
       }
     },
     "butterfly-walk-4": {
@@ -3760,10 +3760,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-4.png",
       "bounds": {
-        "x": 25,
-        "y": 64,
-        "w": 207,
-        "h": 168
+        "x": 36,
+        "y": 62,
+        "w": 185,
+        "h": 166
       }
     },
     "butterfly-walk-5": {
@@ -3772,10 +3772,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-5.png",
       "bounds": {
-        "x": 27,
-        "y": 70,
-        "w": 203,
-        "h": 162
+        "x": 38,
+        "y": 54,
+        "w": 181,
+        "h": 174
       }
     },
     "butterfly-walk-6": {
@@ -3784,9 +3784,9 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-6.png",
       "bounds": {
-        "x": 27,
-        "y": 64,
-        "w": 203,
+        "x": 37,
+        "y": 60,
+        "w": 183,
         "h": 168
       }
     },
@@ -3796,10 +3796,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-walk-7.png",
       "bounds": {
-        "x": 29,
-        "y": 44,
-        "w": 199,
-        "h": 188
+        "x": 39,
+        "y": 64,
+        "w": 179,
+        "h": 164
       }
     },
     "butterfly-idle-0": {
@@ -3808,10 +3808,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-idle-0.png",
       "bounds": {
-        "x": 32,
-        "y": 71,
-        "w": 193,
-        "h": 161
+        "x": 37,
+        "y": 59,
+        "w": 183,
+        "h": 169
       }
     },
     "butterfly-idle-1": {
@@ -3820,10 +3820,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-idle-1.png",
       "bounds": {
-        "x": 36,
-        "y": 64,
-        "w": 185,
-        "h": 168
+        "x": 44,
+        "y": 66,
+        "w": 169,
+        "h": 162
       }
     },
     "butterfly-idle-2": {
@@ -3832,10 +3832,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-idle-2.png",
       "bounds": {
-        "x": 35,
+        "x": 47,
         "y": 64,
-        "w": 187,
-        "h": 168
+        "w": 163,
+        "h": 164
       }
     },
     "butterfly-idle-3": {
@@ -3844,10 +3844,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-animals-3/butterfly-idle-3.png",
       "bounds": {
-        "x": 35,
-        "y": 60,
-        "w": 187,
-        "h": 172
+        "x": 29,
+        "y": 91,
+        "w": 199,
+        "h": 137
       }
     },
     "bee-animal-walk-0": {
@@ -3856,10 +3856,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-0.png",
       "bounds": {
-        "x": 25,
-        "y": 40,
-        "w": 207,
-        "h": 192
+        "x": 35,
+        "y": 73,
+        "w": 187,
+        "h": 155
       }
     },
     "bee-animal-walk-1": {
@@ -3868,10 +3868,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-1.png",
       "bounds": {
-        "x": 28,
-        "y": 40,
-        "w": 201,
-        "h": 192
+        "x": 30,
+        "y": 57,
+        "w": 197,
+        "h": 171
       }
     },
     "bee-animal-walk-2": {
@@ -3880,10 +3880,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-2.png",
       "bounds": {
-        "x": 29,
-        "y": 42,
-        "w": 199,
-        "h": 190
+        "x": 34,
+        "y": 45,
+        "w": 189,
+        "h": 183
       }
     },
     "bee-animal-walk-3": {
@@ -3892,10 +3892,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-3.png",
       "bounds": {
-        "x": 28,
-        "y": 40,
-        "w": 201,
-        "h": 192
+        "x": 36,
+        "y": 52,
+        "w": 185,
+        "h": 176
       }
     },
     "bee-animal-walk-4": {
@@ -3904,10 +3904,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-4.png",
       "bounds": {
-        "x": 28,
-        "y": 42,
-        "w": 201,
-        "h": 190
+        "x": 29,
+        "y": 59,
+        "w": 199,
+        "h": 169
       }
     },
     "bee-animal-walk-5": {
@@ -3916,10 +3916,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-5.png",
       "bounds": {
-        "x": 27,
-        "y": 45,
-        "w": 203,
-        "h": 187
+        "x": 36,
+        "y": 54,
+        "w": 185,
+        "h": 174
       }
     },
     "bee-animal-walk-6": {
@@ -3928,10 +3928,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-6.png",
       "bounds": {
-        "x": 28,
-        "y": 47,
-        "w": 201,
-        "h": 185
+        "x": 38,
+        "y": 57,
+        "w": 181,
+        "h": 171
       }
     },
     "bee-animal-walk-7": {
@@ -3940,10 +3940,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-walk-7.png",
       "bounds": {
-        "x": 25,
-        "y": 51,
-        "w": 207,
-        "h": 181
+        "x": 38,
+        "y": 65,
+        "w": 181,
+        "h": 163
       }
     },
     "bee-animal-idle-0": {
@@ -3952,10 +3952,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-idle-0.png",
       "bounds": {
-        "x": 30,
-        "y": 57,
-        "w": 197,
-        "h": 175
+        "x": 44,
+        "y": 79,
+        "w": 169,
+        "h": 149
       }
     },
     "bee-animal-idle-1": {
@@ -3964,10 +3964,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-idle-1.png",
       "bounds": {
-        "x": 30,
-        "y": 54,
-        "w": 197,
-        "h": 178
+        "x": 37,
+        "y": 70,
+        "w": 183,
+        "h": 158
       }
     },
     "bee-animal-idle-2": {
@@ -3976,10 +3976,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-idle-2.png",
       "bounds": {
-        "x": 29,
-        "y": 50,
-        "w": 199,
-        "h": 182
+        "x": 38,
+        "y": 66,
+        "w": 181,
+        "h": 162
       }
     },
     "bee-animal-idle-3": {
@@ -3988,10 +3988,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-animals-3/bee-animal-idle-3.png",
       "bounds": {
-        "x": 31,
-        "y": 53,
-        "w": 195,
-        "h": 179
+        "x": 37,
+        "y": 82,
+        "w": 183,
+        "h": 146
       }
     },
     "motion-dust-0": {
@@ -4000,10 +4000,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-0.png",
       "bounds": {
-        "x": 98,
-        "y": 193,
-        "w": 61,
-        "h": 39
+        "x": 95,
+        "y": 161,
+        "w": 67,
+        "h": 67
       }
     },
     "motion-dust-1": {
@@ -4012,10 +4012,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-1.png",
       "bounds": {
-        "x": 74,
-        "y": 163,
-        "w": 109,
-        "h": 69
+        "x": 73,
+        "y": 123,
+        "w": 111,
+        "h": 105
       }
     },
     "motion-dust-2": {
@@ -4024,10 +4024,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-2.png",
       "bounds": {
-        "x": 54,
-        "y": 124,
-        "w": 149,
-        "h": 108
+        "x": 38,
+        "y": 71,
+        "w": 181,
+        "h": 157
       }
     },
     "motion-dust-3": {
@@ -4036,10 +4036,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-3.png",
       "bounds": {
-        "x": 25,
-        "y": 72,
-        "w": 207,
-        "h": 160
+        "x": 29,
+        "y": 34,
+        "w": 199,
+        "h": 194
       }
     },
     "motion-dust-4": {
@@ -4048,10 +4048,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-4.png",
       "bounds": {
-        "x": 39,
-        "y": 99,
-        "w": 179,
-        "h": 133
+        "x": 56,
+        "y": 94,
+        "w": 145,
+        "h": 134
       }
     },
     "motion-dust-5": {
@@ -4060,10 +4060,10 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-5.png",
       "bounds": {
-        "x": 80,
-        "y": 147,
-        "w": 97,
-        "h": 85
+        "x": 91,
+        "y": 151,
+        "w": 75,
+        "h": 77
       }
     },
     "motion-water-0": {
@@ -4072,10 +4072,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-0.png",
       "bounds": {
-        "x": 87,
-        "y": 188,
-        "w": 83,
-        "h": 44
+        "x": 72,
+        "y": 145,
+        "w": 113,
+        "h": 83
       }
     },
     "motion-water-1": {
@@ -4084,10 +4084,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-1.png",
       "bounds": {
-        "x": 56,
-        "y": 136,
-        "w": 145,
-        "h": 96
+        "x": 54,
+        "y": 129,
+        "w": 149,
+        "h": 99
       }
     },
     "motion-water-2": {
@@ -4096,10 +4096,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-2.png",
       "bounds": {
-        "x": 35,
-        "y": 103,
-        "w": 187,
-        "h": 129
+        "x": 37,
+        "y": 90,
+        "w": 183,
+        "h": 138
       }
     },
     "motion-water-3": {
@@ -4108,10 +4108,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-3.png",
       "bounds": {
-        "x": 25,
+        "x": 29,
         "y": 63,
-        "w": 207,
-        "h": 169
+        "w": 199,
+        "h": 165
       }
     },
     "motion-water-4": {
@@ -4120,10 +4120,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-4.png",
       "bounds": {
-        "x": 38,
-        "y": 106,
-        "w": 181,
-        "h": 126
+        "x": 48,
+        "y": 120,
+        "w": 161,
+        "h": 108
       }
     },
     "motion-water-5": {
@@ -4132,10 +4132,10 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-5.png",
       "bounds": {
-        "x": 50,
-        "y": 143,
-        "w": 157,
-        "h": 89
+        "x": 52,
+        "y": 134,
+        "w": 153,
+        "h": 94
       }
     },
     "motion-ripple-0": {
@@ -4144,10 +4144,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-0.png",
       "bounds": {
-        "x": 94,
-        "y": 182,
-        "w": 69,
-        "h": 50
+        "x": 95,
+        "y": 193,
+        "w": 67,
+        "h": 35
       }
     },
     "motion-ripple-1": {
@@ -4156,10 +4156,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-1.png",
       "bounds": {
-        "x": 71,
-        "y": 160,
-        "w": 115,
-        "h": 72
+        "x": 70,
+        "y": 158,
+        "w": 117,
+        "h": 70
       }
     },
     "motion-ripple-2": {
@@ -4168,10 +4168,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-2.png",
       "bounds": {
-        "x": 40,
-        "y": 132,
-        "w": 177,
-        "h": 100
+        "x": 53,
+        "y": 131,
+        "w": 151,
+        "h": 97
       }
     },
     "motion-ripple-3": {
@@ -4180,10 +4180,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-3.png",
       "bounds": {
-        "x": 25,
-        "y": 76,
-        "w": 207,
-        "h": 156
+        "x": 29,
+        "y": 91,
+        "w": 199,
+        "h": 137
       }
     },
     "motion-ripple-4": {
@@ -4192,10 +4192,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-4.png",
       "bounds": {
-        "x": 43,
-        "y": 161,
-        "w": 171,
-        "h": 71
+        "x": 47,
+        "y": 140,
+        "w": 163,
+        "h": 88
       }
     },
     "motion-ripple-5": {
@@ -4204,10 +4204,10 @@
       "row": 2,
       "file": "assets/motion/sprites/anim-effects/motion-ripple-5.png",
       "bounds": {
-        "x": 66,
-        "y": 154,
-        "w": 125,
-        "h": 78
+        "x": 56,
+        "y": 181,
+        "w": 145,
+        "h": 47
       }
     },
     "motion-harvest-0": {
@@ -4216,10 +4216,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-0.png",
       "bounds": {
-        "x": 99,
-        "y": 181,
-        "w": 59,
-        "h": 51
+        "x": 89,
+        "y": 148,
+        "w": 79,
+        "h": 80
       }
     },
     "motion-harvest-1": {
@@ -4228,10 +4228,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-1.png",
       "bounds": {
-        "x": 75,
-        "y": 137,
-        "w": 107,
-        "h": 95
+        "x": 69,
+        "y": 124,
+        "w": 119,
+        "h": 104
       }
     },
     "motion-harvest-2": {
@@ -4240,10 +4240,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-2.png",
       "bounds": {
-        "x": 43,
-        "y": 90,
-        "w": 171,
-        "h": 142
+        "x": 32,
+        "y": 58,
+        "w": 193,
+        "h": 170
       }
     },
     "motion-harvest-3": {
@@ -4252,10 +4252,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-3.png",
       "bounds": {
-        "x": 25,
-        "y": 52,
-        "w": 207,
-        "h": 180
+        "x": 29,
+        "y": 34,
+        "w": 199,
+        "h": 194
       }
     },
     "motion-harvest-4": {
@@ -4264,10 +4264,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-4.png",
       "bounds": {
-        "x": 48,
-        "y": 118,
-        "w": 161,
-        "h": 114
+        "x": 29,
+        "y": 88,
+        "w": 199,
+        "h": 140
       }
     },
     "motion-harvest-5": {
@@ -4276,10 +4276,10 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-5.png",
       "bounds": {
-        "x": 50,
-        "y": 148,
-        "w": 157,
-        "h": 83
+        "x": 81,
+        "y": 132,
+        "w": 95,
+        "h": 96
       }
     },
     "motion-wind-0": {
@@ -4288,10 +4288,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-0.png",
       "bounds": {
-        "x": 84,
-        "y": 169,
-        "w": 89,
-        "h": 63
+        "x": 88,
+        "y": 174,
+        "w": 81,
+        "h": 54
       }
     },
     "motion-wind-1": {
@@ -4300,10 +4300,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-1.png",
       "bounds": {
-        "x": 59,
-        "y": 142,
-        "w": 139,
-        "h": 90
+        "x": 49,
+        "y": 112,
+        "w": 159,
+        "h": 116
       }
     },
     "motion-wind-2": {
@@ -4312,10 +4312,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-2.png",
       "bounds": {
-        "x": 34,
-        "y": 89,
-        "w": 189,
-        "h": 143
+        "x": 42,
+        "y": 77,
+        "w": 173,
+        "h": 151
       }
     },
     "motion-wind-3": {
@@ -4324,10 +4324,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-3.png",
       "bounds": {
-        "x": 25,
-        "y": 66,
-        "w": 207,
-        "h": 166
+        "x": 29,
+        "y": 61,
+        "w": 199,
+        "h": 167
       }
     },
     "motion-wind-4": {
@@ -4336,10 +4336,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-4.png",
       "bounds": {
-        "x": 46,
-        "y": 123,
-        "w": 165,
-        "h": 109
+        "x": 34,
+        "y": 94,
+        "w": 189,
+        "h": 134
       }
     },
     "motion-wind-5": {
@@ -4348,10 +4348,10 @@
       "row": 4,
       "file": "assets/motion/sprites/anim-effects/motion-wind-5.png",
       "bounds": {
-        "x": 70,
-        "y": 141,
-        "w": 117,
-        "h": 91
+        "x": 82,
+        "y": 143,
+        "w": 93,
+        "h": 85
       }
     },
     "motion-smoke-0": {
@@ -4361,9 +4361,9 @@
       "file": "assets/motion/sprites/anim-effects/motion-smoke-0.png",
       "bounds": {
         "x": 100,
-        "y": 175,
+        "y": 157,
         "w": 57,
-        "h": 57
+        "h": 71
       }
     },
     "motion-smoke-1": {
@@ -4372,10 +4372,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-effects/motion-smoke-1.png",
       "bounds": {
-        "x": 90,
-        "y": 127,
-        "w": 77,
-        "h": 105
+        "x": 82,
+        "y": 111,
+        "w": 93,
+        "h": 117
       }
     },
     "motion-smoke-2": {
@@ -4384,10 +4384,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-effects/motion-smoke-2.png",
       "bounds": {
-        "x": 57,
-        "y": 70,
-        "w": 143,
-        "h": 162
+        "x": 62,
+        "y": 64,
+        "w": 133,
+        "h": 164
       }
     },
     "motion-smoke-3": {
@@ -4396,10 +4396,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-effects/motion-smoke-3.png",
       "bounds": {
-        "x": 44,
-        "y": 24,
-        "w": 169,
-        "h": 208
+        "x": 55,
+        "y": 29,
+        "w": 147,
+        "h": 199
       }
     },
     "motion-smoke-4": {
@@ -4408,10 +4408,10 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-effects/motion-smoke-4.png",
       "bounds": {
-        "x": 44,
-        "y": 99,
-        "w": 169,
-        "h": 133
+        "x": 74,
+        "y": 70,
+        "w": 109,
+        "h": 158
       }
     },
     "motion-smoke-5": {
@@ -4420,10 +4420,58 @@
       "row": 5,
       "file": "assets/motion/sprites/anim-effects/motion-smoke-5.png",
       "bounds": {
-        "x": 75,
-        "y": 159,
-        "w": 107,
-        "h": 73
+        "x": 89,
+        "y": 99,
+        "w": 79,
+        "h": 129
+      }
+    },
+    "farmer0-idle-2": {
+      "sheet": "anim-farmer-0",
+      "col": 3,
+      "row": 3,
+      "file": "assets/motion/sprites/anim-farmer-0/farmer0-idle-2.png",
+      "bounds": {
+        "x": 145,
+        "y": 162,
+        "w": 94,
+        "h": 194
+      }
+    },
+    "farmer0-idle-3": {
+      "sheet": "anim-farmer-0",
+      "col": 4,
+      "row": 3,
+      "file": "assets/motion/sprites/anim-farmer-0/farmer0-idle-3.png",
+      "bounds": {
+        "x": 146,
+        "y": 164,
+        "w": 94,
+        "h": 192
+      }
+    },
+    "farmer2-back-8": {
+      "sheet": "anim-farmer-2",
+      "col": 0,
+      "row": 3,
+      "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-8.png",
+      "bounds": {
+        "x": 118,
+        "y": 131,
+        "w": 127,
+        "h": 223
+      }
+    },
+    "farmer2-back-9": {
+      "sheet": "anim-farmer-2",
+      "col": 1,
+      "row": 3,
+      "file": "assets/motion/sprites/anim-farmer-2/farmer2-back-9.png",
+      "bounds": {
+        "x": 128,
+        "y": 129,
+        "w": 119,
+        "h": 225
       }
     }
   },
@@ -4443,22 +4491,24 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        351
       ],
-      "extent": 190.7891429750577
+      "extent": 187.77927341377296
     },
     "farmer0-idle": {
       "frames": [
         "farmer0-idle-0",
-        "farmer0-idle-1"
+        "farmer0-idle-1",
+        "farmer0-idle-2",
+        "farmer0-idle-3"
       ],
       "fps": 3,
       "cell": 384,
       "pivot": [
         192,
-        357
+        351
       ],
-      "extent": 190.7891429750577
+      "extent": 187.77927341377296
     },
     "farmer0-back": {
       "frames": [
@@ -4475,9 +4525,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        351
       ],
-      "extent": 190.7891429750577
+      "extent": 187.77927341377296
     },
     "farmer0-work": {
       "frames": [
@@ -4490,9 +4540,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        351
       ],
-      "extent": 190.7891429750577
+      "extent": 187.77927341377296
     },
     "farmer0-fish": {
       "frames": [
@@ -4501,17 +4551,15 @@
         "farmer0-fish-2",
         "farmer0-fish-3",
         "farmer0-fish-4",
-        "farmer0-fish-5",
-        "farmer0-fish-6",
-        "farmer0-fish-7"
+        "farmer0-fish-5"
       ],
       "fps": 8,
       "cell": 384,
       "pivot": [
         192,
-        357
+        351
       ],
-      "extent": 190.7891429750577
+      "extent": 187.77927341377296
     },
     "farmer1-walk": {
       "frames": [
@@ -4528,9 +4576,9 @@
       "cell": 384,
       "pivot": [
         192,
-        354
+        349
       ],
-      "extent": 208.9564177914974
+      "extent": 185.21646227433217
     },
     "farmer1-back": {
       "frames": [
@@ -4547,9 +4595,9 @@
       "cell": 384,
       "pivot": [
         192,
-        354
+        349
       ],
-      "extent": 208.9564177914974
+      "extent": 185.21646227433217
     },
     "farmer1-idle": {
       "frames": [
@@ -4562,9 +4610,9 @@
       "cell": 384,
       "pivot": [
         192,
-        354
+        349
       ],
-      "extent": 208.9564177914974
+      "extent": 185.21646227433217
     },
     "farmer1-work": {
       "frames": [
@@ -4578,9 +4626,9 @@
       "cell": 384,
       "pivot": [
         192,
-        354
+        349
       ],
-      "extent": 208.9564177914974
+      "extent": 185.21646227433217
     },
     "farmer1-fish": {
       "frames": [
@@ -4594,9 +4642,9 @@
       "cell": 384,
       "pivot": [
         192,
-        354
+        349
       ],
-      "extent": 208.9564177914974
+      "extent": 185.21646227433217
     },
     "farmer2-walk": {
       "frames": [
@@ -4615,9 +4663,9 @@
       "cell": 384,
       "pivot": [
         192,
-        356
+        349
       ],
-      "extent": 219.1830294610869
+      "extent": 211.31620967231365
     },
     "farmer2-back": {
       "frames": [
@@ -4628,15 +4676,17 @@
         "farmer2-back-4",
         "farmer2-back-5",
         "farmer2-back-6",
-        "farmer2-back-7"
+        "farmer2-back-7",
+        "farmer2-back-8",
+        "farmer2-back-9"
       ],
       "fps": 12,
       "cell": 384,
       "pivot": [
         192,
-        356
+        349
       ],
-      "extent": 219.1830294610869
+      "extent": 211.31620967231365
     },
     "farmer2-idle": {
       "frames": [
@@ -4648,9 +4698,9 @@
       "cell": 384,
       "pivot": [
         192,
-        356
+        349
       ],
-      "extent": 219.1830294610869
+      "extent": 211.31620967231365
     },
     "farmer2-work": {
       "frames": [
@@ -4663,25 +4713,24 @@
       "cell": 384,
       "pivot": [
         192,
-        356
+        349
       ],
-      "extent": 219.1830294610869
+      "extent": 211.31620967231365
     },
     "farmer2-fish": {
       "frames": [
         "farmer2-fish-0",
         "farmer2-fish-1",
         "farmer2-fish-2",
-        "farmer2-fish-3",
-        "farmer2-fish-4"
+        "farmer2-fish-3"
       ],
       "fps": 8,
       "cell": 384,
       "pivot": [
         192,
-        356
+        349
       ],
-      "extent": 219.1830294610869
+      "extent": 211.31620967231365
     },
     "farmer3-walk": {
       "frames": [
@@ -4698,9 +4747,9 @@
       "cell": 384,
       "pivot": [
         192,
-        353
+        350
       ],
-      "extent": 218.06369043367567
+      "extent": 194.3788667365404
     },
     "farmer3-back": {
       "frames": [
@@ -4717,9 +4766,9 @@
       "cell": 384,
       "pivot": [
         192,
-        353
+        350
       ],
-      "extent": 218.06369043367567
+      "extent": 194.3788667365404
     },
     "farmer3-idle": {
       "frames": [
@@ -4732,9 +4781,9 @@
       "cell": 384,
       "pivot": [
         192,
-        353
+        350
       ],
-      "extent": 218.06369043367567
+      "extent": 194.3788667365404
     },
     "farmer3-work": {
       "frames": [
@@ -4747,9 +4796,9 @@
       "cell": 384,
       "pivot": [
         192,
-        353
+        350
       ],
-      "extent": 218.06369043367567
+      "extent": 194.3788667365404
     },
     "farmer3-fish": {
       "frames": [
@@ -4764,9 +4813,9 @@
       "cell": 384,
       "pivot": [
         192,
-        353
+        350
       ],
-      "extent": 218.06369043367567
+      "extent": 194.3788667365404
     },
     "farmer4-walk": {
       "frames": [
@@ -4783,9 +4832,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        347
       ],
-      "extent": 206.14697898377494
+      "extent": 233.1802764652424
     },
     "farmer4-back": {
       "frames": [
@@ -4802,9 +4851,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        347
       ],
-      "extent": 206.14697898377494
+      "extent": 233.1802764652424
     },
     "farmer4-idle": {
       "frames": [
@@ -4817,9 +4866,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        347
       ],
-      "extent": 206.14697898377494
+      "extent": 233.1802764652424
     },
     "farmer4-work": {
       "frames": [
@@ -4833,9 +4882,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        347
       ],
-      "extent": 206.14697898377494
+      "extent": 233.1802764652424
     },
     "farmer4-fish": {
       "frames": [
@@ -4849,9 +4898,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        347
       ],
-      "extent": 206.14697898377494
+      "extent": 233.1802764652424
     },
     "farmer5-walk": {
       "frames": [
@@ -4870,9 +4919,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        350
       ],
-      "extent": 191.3825867556234
+      "extent": 174.27391222923583
     },
     "farmer5-back": {
       "frames": [
@@ -4891,9 +4940,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        350
       ],
-      "extent": 191.3825867556234
+      "extent": 174.27391222923583
     },
     "farmer5-idle": {
       "frames": [
@@ -4906,9 +4955,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        350
       ],
-      "extent": 191.3825867556234
+      "extent": 174.27391222923583
     },
     "farmer5-work": {
       "frames": [
@@ -4921,9 +4970,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        350
       ],
-      "extent": 191.3825867556234
+      "extent": 174.27391222923583
     },
     "farmer5-fish": {
       "frames": [
@@ -4934,9 +4983,9 @@
       "cell": 384,
       "pivot": [
         192,
-        357
+        350
       ],
-      "extent": 191.3825867556234
+      "extent": 174.27391222923583
     },
     "hen-walk": {
       "frames": [
@@ -4953,7 +5002,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -4981,7 +5030,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5000,7 +5049,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5015,7 +5064,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5034,7 +5083,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5049,7 +5098,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5068,7 +5117,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5083,7 +5132,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5102,7 +5151,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5117,7 +5166,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5136,7 +5185,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5151,7 +5200,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5170,7 +5219,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5185,7 +5234,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5204,7 +5253,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5219,7 +5268,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5238,7 +5287,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5253,7 +5302,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5272,7 +5321,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5287,7 +5336,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5306,7 +5355,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5321,7 +5370,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5340,7 +5389,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5355,7 +5404,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5372,7 +5421,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5389,7 +5438,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5406,7 +5455,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5423,7 +5472,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5440,7 +5489,7 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     },
@@ -5457,9 +5506,10 @@
       "cell": 256,
       "pivot": [
         128,
-        231
+        227
       ],
       "extent": 208
     }
-  }
+  },
+  "generatedWith": "built-in image_gen · rustic diorama redesign"
 }
