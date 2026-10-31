@@ -697,7 +697,6 @@
       "farmer1-back-4",
       "farmer1-back-5",
       "farmer1-back-6",
-      "farmer1-back-7",
       "farmer1-idle-0",
       "farmer1-idle-1",
       "farmer1-idle-2",
@@ -715,7 +714,23 @@
     ],
     "prompt": "NEW ART DIRECTION, OVERRIDES any old style wording below: Use the supplied image ONLY as a visual STYLE REFERENCE, create an entirely new atlas with the specified layout. Realistic miniature 3D diorama rural East Asian farming village: tactile weathered timber, individually modeled charcoal-gray ceramic roof tiles, rice straw, woven bamboo, mossy stone, linen and indigo cotton; tiny charming realistically rendered chibi farm people (not flat cartoon or vector). Natural subdued olive green, indigo, stone gray, terracotta, warm honey wood; physically believable materials, rich microtexture, soft late-afternoon sunlight from upper-left, realistic gentle ambient occlusion only inside object silhouette. Real transparent alpha background, NEVER a painted checkerboard or colored ground. Matching reference quality, high sharpness. Maintain generous clear transparent separation between objects, no overlaps, NO common contact shadows or background. Keep each sprite small enough to leave 20 percent EMPTY padding inside its own cell. No texts or grid. Use case: stylized-concept. Production ANIMATION SPRITE SHEET for cozy Vietnamese farming game. Character: young Vietnamese female farmer tan skin black braid coral shirt brown trousers straw hat. Match the character identity from row 2 of the reference image; reference is STYLE AND IDENTITY ONLY, not edit target. Exactly 5 columns by 6 rows = 30 distinct full-body poses on a square transparent PNG. Equal cells, whole character each inside central 60%, at least 40px genuinely transparent gutters. NO touching, no labels, no text, grid, floor, cast shadows, or scenery. Warm hand-painted 3D cartoon, sharp edges. Same anatomy, face, outfit, hat, camera distance, head size and foot baseline in EVERY cell. Row-major animation: cells 1-8 one complete 8-phase walk cycle facing southwest (left and toward camera); cells 9-16 one complete 8-phase walk cycle facing northwest (left and AWAY from camera, back visible); cells 17-20 gentle idle breathing and blinking four phases, front-left; cells 21-24 four phases hoeing soil with a small hoe, front-left; cells 25-30 six phases fishing with rod in hand, front-left, cast then hold then pull. Walk phases in order: left heel contact, left down, left passing, left up, right heel contact, right down, right passing, right up. Genuinely alternating feet and counter-swing arms, no duplicate poses. Do not translate the character across a cell. Keep every silhouette fully separate with wide transparent gaps. Only 30 figures, no accessories outside their figure. CHARACTER LAYERING OVERRIDE: Every person is BAREHEADED with short dark brown hair and NO HAT, no head scarf, no eyewear. Indigo cotton shirt and dark brown trousers for all variants, warm natural skin, stable identical face and proportions across animation poses. No tools except necessary held farming/fishing tools. Hats/hair will be layered by game separately. Keep the same six character identities and exact row-major poses defined above.",
     "source": "assets/diorama/source/anim-farmer-1.png",
-    "kind": "motion"
+    "kind": "motion",
+    "componentRows": [
+      5,
+      5,
+      5,
+      5,
+      4,
+      5
+    ],
+    "sourceLayoutRows": [
+      5,
+      5,
+      5,
+      5,
+      4,
+      5
+    ]
   },
   {
     "name": "anim-farmer-2",
@@ -844,7 +859,8 @@
     ],
     "prompt": "NEW ART DIRECTION, OVERRIDES any old style wording below: Use the supplied image ONLY as a visual STYLE REFERENCE, create an entirely new atlas with the specified layout. Realistic miniature 3D diorama rural East Asian farming village: tactile weathered timber, individually modeled charcoal-gray ceramic roof tiles, rice straw, woven bamboo, mossy stone, linen and indigo cotton; tiny charming realistically rendered chibi farm people (not flat cartoon or vector). Natural subdued olive green, indigo, stone gray, terracotta, warm honey wood; physically believable materials, rich microtexture, soft late-afternoon sunlight from upper-left, realistic gentle ambient occlusion only inside object silhouette. Real transparent alpha background, NEVER a painted checkerboard or colored ground. Matching reference quality, high sharpness. Maintain generous clear transparent separation between objects, no overlaps, NO common contact shadows or background. Keep each sprite small enough to leave 20 percent EMPTY padding inside its own cell. No texts or grid. Use case: stylized-concept. Production ANIMATION SPRITE SHEET for cozy Vietnamese farming game. Character: Vietnamese female farmer tan skin black hair purple shirt brown trousers dark traditional headscarf. Match the character identity from row 5 of the reference image; reference is STYLE AND IDENTITY ONLY, not edit target. Exactly 5 columns by 6 rows = 30 distinct full-body poses on a square transparent PNG. Equal cells, whole character each inside central 60%, at least 40px genuinely transparent gutters. NO touching, no labels, no text, grid, floor, cast shadows, or scenery. Warm hand-painted 3D cartoon, sharp edges. Same anatomy, face, outfit, hat, camera distance, head size and foot baseline in EVERY cell. Row-major animation: cells 1-8 one complete 8-phase walk cycle facing southwest (left and toward camera); cells 9-16 one complete 8-phase walk cycle facing northwest (left and AWAY from camera, back visible); cells 17-20 gentle idle breathing and blinking four phases, front-left; cells 21-24 four phases hoeing soil with a small hoe, front-left; cells 25-30 six phases fishing with rod in hand, front-left, cast then hold then pull. Walk phases in order: left heel contact, left down, left passing, left up, right heel contact, right down, right passing, right up. Genuinely alternating feet and counter-swing arms, no duplicate poses. Do not translate the character across a cell. Keep every silhouette fully separate with wide transparent gaps. Only 30 figures, no accessories outside their figure. CHARACTER LAYERING OVERRIDE: Every person is BAREHEADED with short dark brown hair and NO HAT, no head scarf, no eyewear. Indigo cotton shirt and dark brown trousers for all variants, warm natural skin, stable identical face and proportions across animation poses. No tools except necessary held farming/fishing tools. Hats/hair will be layered by game separately. Keep the same six character identities and exact row-major poses defined above.",
     "source": "assets/diorama/source/anim-farmer-4.png",
-    "kind": "motion"
+    "kind": "motion",
+    "sourceNote": "Previously validated generated adult farmer, retained instead of rejected refinement; repacked atlas used as extraction source."
   },
   {
     "name": "anim-farmer-5",

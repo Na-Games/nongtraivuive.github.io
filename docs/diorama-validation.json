@@ -329,8 +329,8 @@
         1254,
         1254
       ],
-      "sprites": 30,
-      "transparentPercent": 77.7,
+      "sprites": 29,
+      "transparentPercent": 59,
       "padding": 24,
       "commonScale": true,
       "warnings": [],
@@ -368,11 +368,11 @@
     "anim-farmer-4": {
       "source": "assets/diorama/source/anim-farmer-4.png",
       "sourceSize": [
-        1254,
-        1254
+        1920,
+        2304
       ],
       "sprites": 30,
-      "transparentPercent": 73.49,
+      "transparentPercent": 89.5,
       "padding": 24,
       "commonScale": true,
       "warnings": [],

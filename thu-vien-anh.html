@@ -12,6 +12,7 @@
 <script src="data.js"></script><script src="catalog.js"></script><script src="expanded-catalog.js"></script><script src="decor.js"></script><script src="assets/manifest.js"></script><script src="assets/motion/manifest.js"></script>
 <script>
 const names={produce:'Nông sản',buildings:'Công trình & phương tiện',nature:'Thiên nhiên & vật nuôi',fishing:'Cá & dụng cụ',ui:'Giao diện',effects:'Hiệu ứng',growth:'Giai đoạn sinh trưởng',terrain:'Địa hình & cảnh nền',characters:'Nhân vật',goods:'Chế phẩm & vật liệu','crops-extra':'Rau củ & hoa',botanical:'Thảo mộc & nấm','trees-a':'Cây lâu năm I','trees-b':'Cây lâu năm II',heritage:'Trang trí Việt Nam',facilities:'Mô hình công trình'};
+Object.assign(names,{'wardrobe-parts':'Wardrobe',scenery:'Village scenery'});
 for(const [id,sheet]of Object.entries(MOTION_MANIFEST.sheets))names[id]=sheet.title;
 const group=document.querySelector('#group'),search=document.querySelector('#search'),gallery=document.querySelector('#gallery');
 for(const [id,label]of Object.entries(names)){const op=document.createElement('option');op.value=id;op.textContent=label;group.append(op)}

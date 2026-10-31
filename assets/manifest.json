@@ -2987,9 +2987,9 @@
       "row": 1,
       "file": "assets/sprites/characters/farmer-1-idle.png",
       "bounds": {
-        "x": 91,
+        "x": 72,
         "y": 24,
-        "w": 73,
+        "w": 112,
         "h": 208
       }
     },
@@ -2999,9 +2999,9 @@
       "row": 1,
       "file": "assets/sprites/characters/farmer-1-walk-a.png",
       "bounds": {
-        "x": 85,
+        "x": 69,
         "y": 24,
-        "w": 85,
+        "w": 117,
         "h": 208
       }
     },
@@ -3011,9 +3011,9 @@
       "row": 1,
       "file": "assets/sprites/characters/farmer-1-walk-b.png",
       "bounds": {
-        "x": 74,
+        "x": 66,
         "y": 24,
-        "w": 107,
+        "w": 124,
         "h": 208
       }
     },
@@ -3023,9 +3023,9 @@
       "row": 1,
       "file": "assets/sprites/characters/farmer-1-work.png",
       "bounds": {
-        "x": 41,
+        "x": 27,
         "y": 24,
-        "w": 173,
+        "w": 201,
         "h": 208
       }
     },
@@ -3131,9 +3131,9 @@
       "row": 4,
       "file": "assets/sprites/characters/farmer-4-idle.png",
       "bounds": {
-        "x": 90,
+        "x": 91,
         "y": 24,
-        "w": 75,
+        "w": 74,
         "h": 208
       }
     },
@@ -3155,9 +3155,9 @@
       "row": 4,
       "file": "assets/sprites/characters/farmer-4-walk-b.png",
       "bounds": {
-        "x": 72,
+        "x": 73,
         "y": 24,
-        "w": 111,
+        "w": 109,
         "h": 208
       }
     },

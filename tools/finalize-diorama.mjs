@@ -1,7 +1,7 @@
 import fs from 'node:fs';import {decode,encode}from './png-codec.mjs';
 const motion=JSON.parse(fs.readFileSync('assets/motion/manifest.json','utf8')),art=JSON.parse(fs.readFileSync('assets/manifest.json','utf8'));
 // Compatibility IDs use frames from the newly generated animation, never old art.
-for(const [id,from]of [['hen-turn-0','hen-walk-1'],['hen-turn-1','hen-walk-5'],['farmer0-fish-6','farmer0-fish-4'],['farmer0-fish-7','farmer0-fish-5'],['farmer2-fish-4','farmer2-fish-3']]){const old=motion.frames[id],next=motion.frames[from];if(!old||!next)continue;fs.copyFileSync(next.file,old.file);motion.frames[id]={...next,file:old.file}}
+for(const [id,from]of [['farmer1-back-7','farmer1-back-6'],['hen-turn-0','hen-walk-1'],['hen-turn-1','hen-walk-5'],['farmer0-fish-6','farmer0-fish-4'],['farmer0-fish-7','farmer0-fish-5'],['farmer2-fish-4','farmer2-fish-3']]){const old=motion.frames[id],next=motion.frames[from];if(!old||!next)continue;fs.copyFileSync(next.file,old.file);motion.frames[id]={...next,file:old.file}}
 const cols=4,rows=6,cell=256,w=cols*cell,h=rows*cell,pixels=Buffer.alloc(w*h*4);
 for(let style=0;style<6;style++)for(const [pose,state,index]of [['idle','idle',0],['walk-a','walk',1],['walk-b','walk',4],['work','work',1]]){
  const clip=motion.clips['farmer'+style+'-'+state],frame=motion.frames[clip.frames[index%clip.frames.length]],image=decode(frame.file),b=frame.bounds;

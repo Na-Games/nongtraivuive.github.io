@@ -52,6 +52,7 @@ Art.promise.then(()=>{if(typeof drawHudAvatar==='function')drawHudAvatar()});
 function openArtLibrary(){
   openSheet('art-library','Thư viện hình ảnh',body=>{
     const names={produce:'Nông sản',buildings:'Công trình & xe',nature:'Thiên nhiên & vật nuôi',fishing:'Cá & dụng cụ',ui:'Giao diện',effects:'Hiệu ứng',growth:'Sinh trưởng',terrain:'Địa hình & bản đồ',characters:'Nhân vật',goods:'Chế phẩm & vật liệu','crops-extra':'Rau củ & hoa','botanical':'Thảo mộc & nấm','trees-a':'Cây lâu năm I','trees-b':'Cây lâu năm II',heritage:'Trang trí làng Việt',facilities:'Mô hình công trình'};
+Object.assign(names,{'wardrobe-parts':'Wardrobe',scenery:'Village scenery'});
     for(const [id,sheet]of Object.entries(MOTION_MANIFEST.sheets))names[id]=sheet.title;
     body.innerHTML=`<p class="art-intro">${Object.keys(ART_MANIFEST.sprites).length} hình PNG trong suốt · Khoảng đệm an toàn 24 px. Chạm hình để xem và tải PNG riêng.</p><button class="cbtn2 sm" id="art-vfx">Trình diễn bộ hiệu ứng</button><input class="search" id="art-search" placeholder="Tìm mã hình: lua, farmer, rod, soil…"><div id="art-list"></div>`;
     $('#art-vfx',body).onclick=()=>{closeSheet();Object.entries(ART_MANIFEST.sprites).filter(([,s])=>s.sheet==='effects').forEach(([id],i)=>setTimeout(()=>Scene.burst(Scene.w*(.2+(i%5)*.15),Scene.h*(.3+Math.floor(i/5)*.09),id,4),i*90))};

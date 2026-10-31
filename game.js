@@ -21,6 +21,7 @@ let S=defState();
 function load(){
   try{const r=localStorage.getItem(SAVE_KEY);if(r){const o=JSON.parse(r);S=Object.assign(defState(),o);S.fx=Object.assign(defState().fx,o.fx||{});S.fish=Object.assign(defState().fish,o.fish||{});}}catch(e){}
   S.fx=Preferences.normalize(S.fx);
+  S.lv=clamp(Math.floor(Number(S.lv)||1),1,MAX_LEVEL);
   S.av=Wardrobe.normalize(S.av);
   while(S.plots.length<PCOLS*PROWS)S.plots.push({crop:null,t0:0,lv:1});
   if(!S.orders.length)genOrders(true);

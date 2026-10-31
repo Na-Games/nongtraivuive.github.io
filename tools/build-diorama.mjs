@@ -48,12 +48,13 @@ export function extractSheet(image,job){
     if(i>=count)throw Error(`Unexpected object in unused cell ${i+1}`);
     if(!roots[i]||c.area>roots[i].area)roots[i]=c;
   }
+  if(job.componentRows){const main=components.filter(c=>c.area>=significant).sort((a,b)=>b.area-a.area).slice(0,count).sort((a,b)=>a.cy-b.cy);if(main.length!==count)throw Error('Missing complete actor silhouettes');let offset=0;for(const width of job.componentRows){const row=main.slice(offset,offset+width).sort((a,b)=>a.cx-b.cx);for(let i=0;i<width;i++)roots[offset+i]=row[i];offset+=width}}
   for(let i=0;i<count;i++)if(!roots[i])throw Error(`Empty or too-small object for ${ids[i]} in cell ${i+1}`);
   for(let i=0;i<count;i++)owners[roots[i].label]=i;
   const warnings=[];
   for(const c of components){
     if(c.area<minPart||owners[c.label]>=0)continue;
-    if(job.groupByCell||job.name.startsWith('anim-farmer')){const i=indexFor(c);if(i>=count)throw Error(`Unexpected component in unused cell ${i+1}`);owners[c.label]=i;continue}
+    if(job.groupByCell||job.name.startsWith('anim-farmer')&&!job.componentRows){const i=indexFor(c);if(i>=count)throw Error(`Unexpected component in unused cell ${i+1}`);owners[c.label]=i;continue}
     const ranked=roots.map((root,i)=>({i,d:distance(c,root),root})).sort((a,b)=>a.d-b.d);
     const candidate=ranked[0],gridIndex=indexFor(c);
     if(candidate.d>Math.min(cellW,cellH)*.28){
@@ -149,7 +150,7 @@ function main(){
   // Legacy animal sheet 0 used irregular physical rows. New generation prompts
   // use a regular grid for every sheet; the last unused cells remain empty.
   const jobs=fs.existsSync('docs/diorama-prompts.json')?readJSON('docs/diorama-prompts.json').map(({layoutRows,...j})=>({...j,layoutRows:j.sourceLayoutRows,groupByCell:j.name.includes('effects'),motion:j.kind==='motion'})):[...readJSON('assets/sources.json').map(j=>({...j,groupByCell:j.name==='effects',motion:false})),...readJSON('docs/motion-sources.json').map(({layoutRows,...j})=>({...j,motion:true}))];
-  const selected=jobs.filter(j=>(!args.includes('--static')||!j.motion)&&(requested?j.name===requested:fs.existsSync(`assets/diorama/source/${j.name}.png`)));
+  const selected=jobs.filter(j=>j.name!=='characters'&&(!args.includes('--static')||!j.motion)&&(requested?j.name===requested:fs.existsSync(`assets/diorama/source/${j.name}.png`)));
   if(!selected.length)throw Error(requested?'Unknown sheet '+requested:'No generated diorama sheets found');
   const reportFile='docs/diorama-validation.json',report=fs.existsSync(reportFile)?readJSON(reportFile):{version:1,sheets:{}};
   for(const job of selected){

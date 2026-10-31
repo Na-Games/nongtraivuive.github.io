@@ -3,7 +3,7 @@
   "checks": [
     {
       "name": "asset loading",
-      "sprites": 860,
+      "sprites": 864,
       "sheets": 29,
       "loaded": 29,
       "failed": [],
@@ -14,7 +14,7 @@
     },
     {
       "name": "complete motion clips",
-      "frames": 362,
+      "frames": 366,
       "clips": 61,
       "allFarmers": true,
       "allAnimals": true,
@@ -37,9 +37,9 @@
       "moved": true,
       "gaitAdvanced": true,
       "noSceneErrors": true,
-      "averageRenderHz": 37,
-      "medianFrameMs": 27,
-      "p95FrameMs": 32
+      "averageRenderHz": 34,
+      "medianFrameMs": 29.199999928474426,
+      "p95FrameMs": 36.5
     },
     {
       "name": "static ground cache",
@@ -200,7 +200,7 @@
     {
       "name": "motion preview",
       "ready": true,
-      "frames": 362,
+      "frames": 366,
       "clips": 61
     },
     {
@@ -210,8 +210,8 @@
     },
     {
       "name": "standalone PNG gallery",
-      "cards": 840,
-      "expected": 860,
+      "cards": 844,
+      "expected": 864,
       "groups": 27
     },
     {

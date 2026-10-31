@@ -4,7 +4,7 @@
     {
       "name": "loader starts above zero",
       "pass": true,
-      "initial": "Đang tải 13%"
+      "initial": "Đang tải 14%"
     },
     {
       "name": "stalled images cannot trap startup",
@@ -85,7 +85,7 @@
       "left": 544,
       "top": 12,
       "right": 832,
-      "bottom": 303,
+      "bottom": 306.875,
       "w": 844,
       "h": 390
     },
@@ -103,7 +103,7 @@
       "left": 367,
       "top": 12,
       "right": 655,
-      "bottom": 297,
+      "bottom": 300.875,
       "w": 667,
       "h": 375
     },

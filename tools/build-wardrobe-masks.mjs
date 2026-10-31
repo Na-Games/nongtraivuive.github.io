@@ -1,0 +1,12 @@
+import fs from 'node:fs';import vm from 'node:vm';import {decode,encode}from './png-codec.mjs';
+const staticArt=JSON.parse(fs.readFileSync('assets/manifest.json','utf8')),motion=JSON.parse(fs.readFileSync('assets/motion/manifest.json','utf8')),frames={...Object.fromEntries(Object.entries(staticArt.sprites).filter(([id])=>id.startsWith('farmer-'))),...Object.fromEntries(Object.entries(motion.frames).filter(([id])=>id.startsWith('farmer')))},sheets={...staticArt.sheets,...motion.sheets};
+const wardrobe=vm.runInNewContext(fs.readFileSync('wardrobe.js','utf8')+';Wardrobe'),rigs={},masks={};fs.mkdirSync('assets/diorama/masks',{recursive:true});
+for(const sheetId of [...new Set(Object.values(frames).map(f=>f.sheet))]){
+ const sheet=sheets[sheetId],im=decode(sheet.file),layers=Object.fromEntries(['skin','hair','shirt'].map(k=>[k,Buffer.alloc(im.w*im.h*4)]));
+ for(const [id,f]of Object.entries(frames).filter(([,f])=>f.sheet===sheetId)){
+  const cell=sheet.cell,b=f.bounds,sprite=Buffer.alloc(cell*cell*4);for(let y=0;y<cell;y++)im.pixels.copy(sprite,y*cell*4,((f.row*cell+y)*im.w+f.col*cell)*4,((f.row*cell+y)*im.w+f.col*cell+cell)*4);rigs[id]=wardrobe.head(sprite,b,cell);
+  for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++){const local=(y*cell+x)*4,r=sprite[local],g=sprite[local+1],bl=sprite[local+2],a=sprite[local+3],ny=(y-b.y)/b.h;if(a<20)continue;let layer;if(ny<.65&&r>g*1.12&&g>bl*1.08&&r>75)layer='skin';else if(ny>.3&&ny<.82&&bl>r*1.12&&bl>g*.96)layer='shirt';else if(ny<.4&&r<105&&g<85&&bl<80)layer='hair';if(!layer)continue;const p=((f.row*cell+y)*im.w+f.col*cell+x)*4;layers[layer][p]=layers[layer][p+1]=layers[layer][p+2]=255;layers[layer][p+3]=a}
+ }
+ masks[sheetId]={};for(const [layer,pixels]of Object.entries(layers)){const file='assets/diorama/masks/'+sheetId+'-'+layer+'.png';encode(file,im.w,im.h,pixels);masks[sheetId][layer]=file}
+}
+fs.writeFileSync('assets/wardrobe-rigs.js',`const WARDROBE_RIGS=${JSON.stringify(rigs)};\nconst WARDROBE_MASKS=${JSON.stringify(masks)};\n`);console.log('Built alpha masks and head anchors for '+Object.keys(rigs).length+' character frames');
