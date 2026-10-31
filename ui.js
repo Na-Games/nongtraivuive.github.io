@@ -427,8 +427,10 @@ function openAvatarEditor(){
     body.appendChild(el('div','lbl','Chọn nhân vật'));const styles=el('div','avatar-styles');for(let i=0;i<6;i++){const b=el('button',(S.av.style||0)===i?'on':'');b.title=Wardrobe.names[i];b.setAttribute('aria-pressed',String((S.av.style||0)===i));b.append(Wardrobe.icon({...S.av,style:i}),el('small','',Wardrobe.names[i]));b.onclick=()=>{S.av.style=i;S.av.art=true;save();refreshSheet();drawHudAvatar()};styles.appendChild(b)}body.appendChild(styles);body.append(el('p','pref-description','Da, tóc, áo và mũ áp dụng trên chính nhân vật đã chọn, cả trong vườn và khi câu cá.'));
     const redraw=()=>{const x=$('#pav',body).getContext('2d');x.clearRect(0,0,340,400);drawAvatar(x,170,380,330,S.av,{t:0});drawHudAvatar()};
     const row=(lbl,key,arr)=>{body.appendChild(el('div','lbl',lbl));const r=el('div','sw-row');arr.forEach((c,i)=>{const b=el('button','sw-c'+(S.av[key]===c?' on':''));b.title=lbl+' '+(i+1);b.setAttribute('aria-pressed',String(S.av[key]===c));b.style.background=c;b.onclick=()=>{S.av[key]=c;save();refreshSheet();drawHudAvatar()};r.appendChild(b)});body.appendChild(r)};
-    row('Màu da','skin',SKINS);row('Tóc','hair',HAIRS);row('Áo','outfit',OUTFITS);
-    body.appendChild(el('div','lbl','Mũ'));const s=el('div','seg');HATS.forEach(([k,n])=>{const b=el('button',S.av.hat===k?'on':'',n);b.onclick=()=>{S.av.hat=k;save();refreshSheet();drawHudAvatar()};s.appendChild(b)});body.appendChild(s);
+    row('Màu da','skin',SKINS);row('Màu tóc','hair',HAIRS);row('Màu áo','outfit',OUTFITS);
+    body.append(el('div','lbl','Kiểu tóc'));const hairs=el('div','seg hair-choices');for(const [id,label]of Wardrobe.hairStyles){const b=el('button',Wardrobe.normalize(S.av).hairStyle===id?'on':'');b.append(Wardrobe.icon({...S.av,hairStyle:id,hat:'none'},64),el('span','',label));b.onclick=()=>{S.av.hairStyle=id;save();refreshSheet();drawHudAvatar()};hairs.append(b)}body.append(hairs);
+    body.append(el('div','lbl','Kiểu áo'));const shirts=el('div','seg shirt-choices');for(const [id,label]of [['shirt','Áo sơ mi'],['overalls','Quần yếm'],['jacket','Áo khoác']]){const b=el('button',Wardrobe.normalize(S.av).shirtStyle===id?'on':'',label);b.onclick=()=>{S.av.shirtStyle=id;save();refreshSheet();drawHudAvatar()};shirts.append(b)}body.append(shirts);
+    body.appendChild(el('div','lbl','Mũ'));const s=el('div','seg hat-choices');HATS.forEach(([k,n])=>{const b=el('button',S.av.hat===k?'on':'',n);b.onclick=()=>{S.av.hat=k;save();refreshSheet();drawHudAvatar()};s.appendChild(b)});body.appendChild(s);
     body.appendChild(el('div','lbl','Tên'));const inp=el('input','search');inp.value=S.name;inp.maxLength=16;inp.oninput=()=>S.name=inp.value||'Nông dân';body.appendChild(inp);
     redraw();
   },'88%');
@@ -438,15 +440,15 @@ function changeProvince(){closeSheet();$('#hud').classList.add('hidden');fadeTo(
 
 /* ===== Màn hình tải ===== */
 function runLoader(done){
-  Art.promise.then(()=>{
-
-  if(Art.failed.length)toast('Một số bộ ảnh chưa tải được: '+Art.failed.join(', '));
-  const msgs=['Đang dọn vườn, chờ chút nhé…','Đang gieo hạt…','Đang dắt trâu ra đồng…','Sắp xong rồi…'];
-  let p=0;const iv=setInterval(()=>{
-    p=Math.min(100,p+rnd(4,11));$('#load-bar').style.width=p+'%';$('#load-pct').textContent=`Đang tải ${Math.floor(p)}%`;$('#load-msg').textContent=msgs[Math.min(3,Math.floor(p/26))];
-    if(p>=100){clearInterval(iv);setTimeout(()=>{const s=$('#screen-load');s.classList.add('out');setTimeout(()=>s.remove(),500);done()},350)}
-  },120);
-  });
+  const screen=$('#screen-load'),bar=$('#load-bar'),pct=$('#load-pct'),msg=$('#load-msg');
+  let finished=false,p=8;const start=performance.now();
+  const progress=value=>{p=Math.max(p,Math.min(100,value));bar.style.width=p+'%';pct.textContent=`Đang tải ${Math.floor(p)}%`};
+  progress(p);msg.textContent='Đang chuẩn bị nông trại…';
+  const iv=setInterval(()=>{const elapsed=performance.now()-start;progress(Math.min(92,12+Art.ready*10+elapsed/70));if(elapsed>1200)msg.textContent='Sắp vào vườn, hình ảnh còn lại tải ở nền…'},80);
+  const finish=()=>{if(finished)return;finished=true;clearInterval(iv);clearTimeout(deadline);progress(100);msg.textContent='Nông trại đã sẵn sàng!';setTimeout(()=>{screen.classList.add('out');done();setTimeout(()=>screen.remove(),500)},120)};
+  // Enter even on a slow/missing image. All gameplay has a canvas fallback.
+  const deadline=setTimeout(finish,3000);
+  Promise.resolve(Art.criticalPromise).then(()=>{const minimum=Math.max(0,350-(performance.now()-start));setTimeout(finish,minimum)},finish);
 }
 
 /* ===== Màn hình chọn tỉnh (bản đồ Việt Nam) ===== */
@@ -456,7 +458,7 @@ function showMapScreen(change){
   const SC=34,PW=330,PH=620,proj=(lon,lat)=>[(lon-101.5)*SC+10,(23.8-lat)*SC+10];
   const outline=VN_OUTLINE.map(([a,b])=>proj(a,b).join(',')).join(' ');
   let sel=null;
-  const marks=PROVINCES.map(p=>{const[x,y]=proj(p[1],p[2]);const col=p[3]==='Bắc'?'#6fae4e':p[3]==='Trung'?'#e5b45a':'#d98f4a';return`<g class="pv" data-n="${p[0]}" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="7" fill="${col}" stroke="#fff" stroke-width="1.5"/><text x="${x+9}" y="${y+4}" font-size="10" font-weight="800" fill="#fff" stroke="#16384f" stroke-width="2.5" paint-order="stroke" font-family="Baloo 2">${p[0]}</text></g>`}).join('');
+  const marks=PROVINCES.map(p=>{const[x,y]=proj(p[1],p[2]);const col=p[3]==='Bắc'?'#6fae4e':p[3]==='Trung'?'#e5b45a':'#d98f4a';return`<g class="pv" data-n="${p[0]}" role="button" tabindex="0" aria-label="Chọn ${p[0]}" style="cursor:pointer"><circle class="map-hit" cx="${x}" cy="${y}" r="13"/><circle class="map-marker" cx="${x}" cy="${y}" r="5" fill="${col}" data-color="${col}" stroke="#fff" stroke-width="1.5"/><text x="${x+9}" y="${y+4}" font-size="10" font-weight="800" fill="#fff" stroke="#16384f" stroke-width="2.5" paint-order="stroke" font-family="Baloo 2">${p[0]}</text></g>`}).join('');
   scr.innerHTML=`<div id="mapSvgWrap"><svg id="mapSvg" width="${PW*1.4}" height="${PH*1.4}" viewBox="0 0 ${PW} ${PH}">
    <defs><pattern id="gr" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,.07)"/></pattern><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7ba3"/><stop offset="1" stop-color="#1d5478"/></linearGradient></defs>
    <rect x="-600" y="-600" width="2000" height="2400" fill="url(#sea)"/><rect x="-600" y="-600" width="2000" height="2400" fill="url(#gr)"/>
@@ -471,23 +473,26 @@ function showMapScreen(change){
    <div class="map-sheet" id="msheet"><div class="grab"></div><div class="card"><div class="sel-info" id="msel">Chạm vào một tỉnh trên bản đồ, hoặc tìm tên tỉnh ở danh sách bên dưới.</div><button class="btn-big" id="mgo" disabled>Chọn một tỉnh</button></div><input class="search" id="msearch" placeholder="Tìm tỉnh… (vd: Đà Nẵng, Bình Dương)"><div class="plist" id="plist"></div></div>`;
   const svg=$('#mapSvg',scr),T={x:(innerWidth-PW*1.4)/2+20,y:30,z:1};
   const apply=()=>svg.style.transform=`translate(${T.x}px,${T.y}px) scale(${T.z})`;apply();
+  const fit=()=>{const landscape=innerWidth>innerHeight&&innerHeight<600,availableW=landscape?innerWidth-360:innerWidth,availableH=landscape?innerHeight-80:innerHeight*.46;T.z=clamp(Math.min(availableW/(PW*1.4),availableH/(PH*1.4)),.3,1.2);T.x=(availableW-PW*1.4*T.z)/2;T.y=60;apply()};fit();
+  mapState={resize:fit};
   const zoom=(f,cx=innerWidth/2,cy=innerHeight/3)=>{const nz=clamp(T.z*f,.6,4),k=nz/T.z;T.x=cx-(cx-T.x)*k;T.y=cy-(cy-T.y)*k;T.z=nz;apply()};
-  $('#mz1',scr).onclick=()=>zoom(1.4);$('#mz2',scr).onclick=()=>zoom(.7);$('#mz3',scr).onclick=()=>{T.x=(innerWidth-PW*1.4)/2+20;T.y=30;T.z=1;apply()};
+  $('#mz1',scr).onclick=()=>zoom(1.4);$('#mz2',scr).onclick=()=>zoom(.7);$('#mz3',scr).onclick=fit;
   const wrap=$('#mapSvgWrap',scr);let drag=null,pts=new Map(),pd=0,mv=0;
   wrap.onpointerdown=e=>{wrap.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);mv=0;if(pts.size===2){const[a,b]=[...pts.values()];pd=Math.hypot(a[0]-b[0],a[1]-b[1])}};
   wrap.onpointermove=e=>{const p=pts.get(e.pointerId);if(!p)return;
     if(pts.size===1){const dx=e.clientX-p[0],dy=e.clientY-p[1];mv+=Math.abs(dx)+Math.abs(dy);T.x+=dx;T.y+=dy;apply()}
     else{pts.set(e.pointerId,[e.clientX,e.clientY]);const[a,b]=[...pts.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)zoom(d/pd,(a[0]+b[0])/2,(a[1]+b[1])/2);pd=d;mv=99;return}
     pts.set(e.pointerId,[e.clientX,e.clientY])};
-  wrap.onpointerup=wrap.onpointercancel=e=>{pts.delete(e.pointerId);if(pts.size<2)pd=0;if(mv<8){const g=e.target.closest&&e.target.closest('.pv');if(g)choose(g.dataset.n)}};
+  wrap.onpointerup=wrap.onpointercancel=e=>{pts.delete(e.pointerId);if(pts.size<2)pd=0;if(e.type==='pointerup'&&mv<8){const g=document.elementFromPoint(e.clientX,e.clientY)?.closest('.pv');if(g)choose(g.dataset.n)}};
   wrap.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.15:.87,e.clientX,e.clientY)},{passive:false});
   const choose=n=>{sel=n;$('#msel',scr).innerHTML=`📍 <b>${n}</b> — quê hương của bạn?`;const g=$('#mgo',scr);g.disabled=false;g.textContent=`Chọn ${n}`;
-    scr.querySelectorAll('.pv circle').forEach(c=>{const on=c.parentNode.dataset.n===n;c.setAttribute('r',on?11:7);c.setAttribute('fill',on?'#ff5a4a':c.getAttribute('fill'))});
+    scr.querySelectorAll('.pv .map-marker').forEach(c=>{const on=c.parentNode.dataset.n===n;c.parentNode.classList.toggle('selected',on);c.setAttribute('r',on?8:5);c.setAttribute('fill',on?'#e76148':c.dataset.color)});
     const p=PROVINCES.find(x=>x[0]===n),[x,y]=proj(p[1],p[2]);T.z=Math.max(T.z,1.8);T.x=innerWidth/2-x*1.4*T.z;T.y=innerHeight*.28-y*1.4*T.z;svg.style.transition='transform .5s';apply();setTimeout(()=>svg.style.transition='',520);renderList();beep('pop')};
   const renderList=()=>{const q=$('#msearch',scr).value.trim().toLowerCase(),L=$('#plist',scr);L.innerHTML='';
     ['Bắc','Trung','Nam'].forEach(r=>{const items=PROVINCES.filter(p=>p[3]===r&&p[0].toLowerCase().includes(q));if(!items.length)return;L.appendChild(el('div','reg',r));const g=el('div','pgrid');
-      items.forEach(p=>{const h=hashN(p[0]),it=el('button','pitem'+(sel===p[0]?' sel':''),`${p[0]} ${h%3===0?'⭐':''}<small>${h%20}/20 đang gom</small>`);it.onclick=()=>choose(p[0]);g.appendChild(it)});L.appendChild(g)})};
+      items.forEach(p=>{const it=el('button','pitem'+(sel===p[0]?' sel':''),`${Art.icon('pin',p[0])} ${p[0]}<small>${sel===p[0]?'Đã chọn':'Miền '+r+' · Chạm để chọn'}</small>`);it.onclick=()=>choose(p[0]);g.appendChild(it)});L.appendChild(g)})};
   renderList();$('#msearch',scr).oninput=renderList;
+  scr.querySelectorAll('.pv').forEach(g=>g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(g.dataset.n)}});
   $('#msearch',scr).onfocus=()=>$('#msheet',scr).classList.add('big');
   $('#mgo',scr).onclick=()=>{if(!sel)return;S.province=sel;if(!S.joined)S.joined=ri(40,300);save();enterFarm(true)};
   $('#mback',scr).onclick=()=>{if(change&&S.province)enterFarm(false);else toast('Chào mừng bạn đến Xóm Nông Trại! 🌾')};
@@ -522,4 +527,6 @@ function enterFarm(welcome){
     else showMapScreen(false);
   });
   window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();cancelDecorPlacement()}});
+  window.addEventListener('resize',()=>{if(!$('#screen-map').classList.contains('hidden'))mapState?.resize()});
+  document.addEventListener('click',e=>{if(e.target.closest('button,[role=button],.avatar-ring,.item'))Haptics.pulse('tap')});
 })();

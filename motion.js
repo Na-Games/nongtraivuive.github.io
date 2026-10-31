@@ -85,7 +85,7 @@ const Motion={
   animal(c,a,z,t,scene){
     const id=Art.emoji.get(a.e);if(!id)return false;const active=a.moving||a.fly,turning=Math.abs(a.turn??1)<.55&&this.has(id+'-turn'),state=turning?'turn':active?'walk':'idle',phase=turning?Math.abs(a.turn):a.fly?t*2.7+(a.phase||0):active?a.phase:t*.6+a.x;
     const p=scene.iso(a.x,a.y),elevation=a.fly?24+Math.sin(t*3+a.x)*3:a.water?Math.sin(t*2+a.x)*.8:Math.sin((a.phase||0)*Math.PI*4)*.35*(a.moveBlend||0),size=(id==='cow'||id==='buffalo'?47:id==='butterfly'||id==='bee-animal'?24:35)*z;
-    return this.draw(c,id+'-'+state,phase,p.x,p.y-elevation*z,size,{flipScale:-(a.turn??a.face??-1)});
+    return this.draw(c,id+'-'+state,phase,p.x,p.y-elevation*z,size,{flipScale:(a.turn??a.face??-1)>0?-1:1});
   },
   isFoliage(id){return ['tree','bamboo','palm','bush','flower','reeds','lotus','lily','peach-tree','mango-tree','banana-tree','orange-tree','tea-bush','coffee-bush'].includes(id)||id.startsWith('tree-')||/-(0|1|2)$/.test(id)&&ART_MANIFEST.sprites[id]?.sheet==='growth'},
   foliage(c,id,x,y,w,h,t,phase=0){

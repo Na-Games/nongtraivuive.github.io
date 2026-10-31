@@ -20,6 +20,6 @@ let ws;try{
  await send('Page.navigate',{url:new URL('file:///'+root.replaceAll(path.sep,'/')+'/index.html').href});await new Promise(r=>setTimeout(r,4500));await evaluate('Art.promise');
  await evaluate("S.province='Test';S.fx.sound=false;document.querySelector('#screen-map').classList.add('hidden');document.querySelector('#hud').classList.remove('hidden');openFishing()");await new Promise(r=>setTimeout(r,1250));
  report.checks.push(await evaluate("({name:'open index directly from file',pass:location.protocol==='file:'&&Art.ready===Art.total&&Art.failed.length===0&&!!FS&&!Scene._e})"));
- report.checks.push(await evaluate("(()=>{cast();FS.wait=0;fishUpdate(1/120);startFight();FS.fightTime=2.5;FS.moodName='warning';Fishing.ui();fishDraw();return{name:'local file fishing renders live anchored line',pass:FS.state==='fight'&&Object.keys(Motion.fishingRigs).length>0}})()"));
+ report.checks.push(await evaluate("(()=>{cast();FS.wait=0;fishUpdate(1/120);startFight();FS.fightTime=2.5;FS.moodName='warning';Fishing.ui();fishDraw();const rig=FS.lastRig;return{name:'local file fishing renders live anchored line',pass:FS.state==='fight'&&Number.isFinite(rig?.x)&&Number.isFinite(rig?.y)&&Math.hypot(rig.x-rig.handX,rig.y-rig.handY)>40}})()"));
  report.passed=report.errors.length===0&&report.checks.every(r=>r.pass);fs.writeFileSync('docs/verification/local-file-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(!report.passed)process.exitCode=1;await send('Browser.close');
 }finally{ws?.close();chrome.kill();server.close()}

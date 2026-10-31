@@ -19,7 +19,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #f9ce59;outline-offse
 .bl{width:min(310px,calc(100vw - 90px));gap:6px}.bl-row{gap:6px}.quest{gap:2px}.quest .qa{width:34px;height:42px}.qa>.game-icon{width:32px;height:40px}
 .qbox{padding:4px 9px;border-radius:13px}.qbox b{font-size:13px;gap:6px}.qbox b span{white-space:nowrap}.qbox small{font-size:10px}
 .chat{font-size:11px;padding:5px 9px;border-radius:12px;max-height:42px}.chat div:nth-last-child(n+3){display:none}
-.shopbtn{width:70px;height:70px;right:8px;bottom:calc(12px + var(--sb))}.shopbtn .ico{width:62px;height:58px}.shopbtn .ico>.game-icon{width:51px;height:49px}.shopbtn span{font-size:12px;padding:1px 7px}
+.shopbtn{width:70px;height:70px;right:8px;bottom:calc(12px + var(--sb))}.shopbtn .ico{width:62px;height:58px}.shopbtn .ico>.game-icon{width:51px;height:49px}.shopbtn span{font-size:11px;padding:2px 5px;white-space:nowrap}
 .sheet{border-radius:22px 22px 0 0;max-height:calc(100dvh - 42px - var(--st));max-width:680px}
 .sheet .ribbon{font-size:20px;padding:2px 28px;top:-17px;border-width:2px}.sheet .x{width:36px;height:36px;font-size:20px;top:-15px}
 .sheet .body{padding:28px 12px calc(14px + var(--sb));overscroll-behavior:contain;touch-action:pan-y}
@@ -32,6 +32,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #f9ce59;outline-offse
 .av-prev{width:119px;height:140px;border-radius:18px;border-width:3px;margin-bottom:7px}
 .avatar-styles{gap:5px}.avatar-styles button{padding:3px;min-width:0}.avatar-styles canvas{width:100%;height:auto;display:block}.avatar-styles small{font-size:12px}
 .sw-c{width:34px;height:34px;border-width:3px}.sw-row{padding:4px;gap:10px}.lbl{font-size:15px}.seg button{font-size:14px;padding:7px 12px}
+.hair-choices{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}.hair-choices button{padding:4px 2px;border-radius:13px}.hair-choices canvas{display:block;width:48px;height:48px;max-width:100%;margin:auto}.hair-choices span{font-size:11px}
 .profile-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.profile-actions .btn-big{min-width:0;font-size:14px;padding:9px 6px}
 [data-sheet=profile] .grid3{margin:10px 0!important}[data-sheet=profile] .item{display:flex;flex-direction:column;align-items:center;gap:6px;line-height:1.25;overflow:hidden}[data-sheet=profile] .em{flex:none;height:32px!important;display:grid;place-items:center}[data-sheet=profile] .em>.game-icon{height:29px;width:29px}
 .pop{transform:none;animation:fadein .12s;min-width:0;width:288px;max-width:calc(100vw - 24px);overflow:auto;overscroll-behavior:contain;touch-action:pan-y;padding:9px;border-width:2px}

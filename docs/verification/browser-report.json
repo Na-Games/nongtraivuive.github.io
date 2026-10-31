@@ -37,9 +37,9 @@
       "moved": true,
       "gaitAdvanced": true,
       "noSceneErrors": true,
-      "averageRenderHz": 26,
-      "medianFrameMs": 40.09999990463257,
-      "p95FrameMs": 49.299999952316284
+      "averageRenderHz": 38,
+      "medianFrameMs": 26.5,
+      "p95FrameMs": 29.899999976158142
     },
     {
       "name": "static ground cache",
@@ -206,7 +206,7 @@
     {
       "name": "recorded motion preview",
       "recorded": true,
-      "bytes": 118250
+      "bytes": 577290
     },
     {
       "name": "standalone PNG gallery",
