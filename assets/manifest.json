@@ -115,37 +115,43 @@
       "file": "assets/village-landscape.png",
       "cols": 4,
       "rows": 4,
-      "cell": 256
+      "cell": 256,
+      "title": "Cảnh làng quê"
     },
     "elite-seeds-a": {
       "file": "assets/elite-seeds-a.png",
       "cols": 6,
       "rows": 6,
-      "cell": 256
+      "cell": 256,
+      "title": "Hạt giống cao cấp I"
     },
     "elite-seeds-b": {
       "file": "assets/elite-seeds-b.png",
       "cols": 6,
       "rows": 6,
-      "cell": 256
+      "cell": 256,
+      "title": "Hạt giống cao cấp II"
     },
     "elite-heritage": {
       "file": "assets/elite-heritage.png",
       "cols": 6,
       "rows": 6,
-      "cell": 256
+      "cell": 256,
+      "title": "Trang trí cao cấp"
     },
     "elite-trees": {
       "file": "assets/elite-trees.png",
       "cols": 6,
       "rows": 6,
-      "cell": 256
+      "cell": 256,
+      "title": "Cây lâu năm cao cấp"
     },
     "elite-models": {
       "file": "assets/elite-models.png",
       "cols": 6,
       "rows": 6,
-      "cell": 256
+      "cell": 256,
+      "title": "Mô hình cao cấp"
     }
   },
   "sprites": {

@@ -4,7 +4,7 @@ Cập nhật 31/10/2026. Thực hiện trong mã nguồn game hiện có, giữ 
 
 ## Hình ảnh đã tích hợp
 
-864 PNG riêng trong 29 nhóm: 498 hình tĩnh và 366 khung chuyển động. Ảnh được tạo bằng công cụ imagegen tích hợp theo phong cách các ảnh tham chiếu: mô hình làng quê 3D thu nhỏ, mái ngói, tre, gỗ, đá và vải chàm. Mỗi hình xuất ra có nền alpha trong suốt, khoảng đệm ít nhất 24 px; bảng ảnh nguồn không được dùng trực tiếp làm icon.
+1.060 PNG riêng trong 35 nhóm: 694 hình tĩnh và 366 khung chuyển động. Ảnh được tạo bằng công cụ imagegen tích hợp theo phong cách các ảnh tham chiếu: mô hình làng quê 3D thu nhỏ, mái ngói, tre, gỗ, đá và vải chàm. Mỗi hình xuất ra có nền alpha trong suốt, khoảng đệm ít nhất 24 px; bảng ảnh nguồn không được dùng trực tiếp làm icon.
 
 - Tệp dùng khi chơi: `assets/*.png`, `assets/motion/*.png` và các PNG riêng trong `assets/sprites/`, `assets/motion/sprites/`.
 - Tóc, áo và mũ: `assets/sprites/wardrobe-parts/`. Nhân vật tĩnh được trích từ chính bộ chuyển động để giữ cùng khuôn mặt. `wardrobe.js` ghép lớp phụ kiện và đổi màu có bộ nhớ đệm.
@@ -14,13 +14,25 @@ Cập nhật 31/10/2026. Thực hiện trong mã nguồn game hiện có, giữ 
 
 Đã dọn các bảng ảnh nguồn trung gian, ảnh/video kiểm thử và tài liệu cũ để giảm dung lượng. Game, thư viện PNG và trình diễn chuyển động vẫn dùng đủ bộ ảnh đã đóng gói. Muốn tạo lại atlas từ đầu cần tạo lại ảnh nguồn theo `docs/diorama-prompts.json`; chơi hoặc đóng gói game không cần ảnh nguồn này. Báo cáo kiểm thử có thể tạo lại bằng các lệnh dưới đây.
 
-Các phẩm cấp cây và trang trí cấp cao dùng lại hình của đúng loài/mẫu đã thiết kế; chúng có tên, giá và thông số tiến trình khác nhau. Không phải mỗi phẩm cấp có một ảnh mới độc lập.
+180 hình phẩm cấp mới trong `assets/sprites/elite-*`: 72 icon hạt/giống, 36 cây lâu năm, 36 món trang trí và 36 mô hình công trình. Sáu phẩm cấp có hình riêng: từ bao vải, giỏ tre, thùng gỗ đến chậu gốm, sơn son và khảm vàng. Các giống cao cấp giữ hình sinh trưởng của đúng loài; icon trong cửa hàng và kho dùng hình phẩm cấp riêng.
+
+## Bản đồ, điều khiển và âm thanh
+
+Bản đồ có thêm nhà trà, xưởng chàm, ruộng viền đá, cầu đá, đường rêu, dòng suối và guồng nước. 16 PNG cảnh mới ở `assets/sprites/village-landscape/`. Dùng kéo để di chuyển và thả để trượt theo quán tính; lăn chuột hoặc chụm ngón tay để zoom. Zoom nội suy quanh vị trí con trỏ. Nền có vùng đệm để không phải vẽ lại mỗi khung khi kéo nhẹ.
+
+Âm thanh bản đồ được mở khóa ở lần chạm/phím đầu tiên. Tiếng gió, suối và chim dùng chung cài đặt âm lượng tổng; có công tắc và âm lượng môi trường riêng trong Cài đặt → Âm thanh & rung. Nút Thử âm thanh phát tín hiệu kiểm tra. Âm thanh dừng khi ẩn ứng dụng; chuyển sang câu cá sẽ thay môi trường nông trại bằng tiếng hồ câu, trở về vườn sẽ khôi phục âm thanh bản đồ.
+
+Game tự yêu cầu toàn màn hình ở lần chạm đầu tiên và không còn nút toàn màn hình trong cài đặt. Trình duyệt không cho phép mở toàn màn hình trước thao tác người dùng; thiết bị không hỗ trợ API vẫn dùng toàn bộ khung nhìn khả dụng.
+
+Tab trong cửa hàng/cài đặt được cuộn đến đúng mục đang chọn, giữ vị trí khi cập nhật và hỗ trợ phím mũi tên. Màu áo được áp dụng lên cả phần vải tối/sáng, mẫu áo mới được giới hạn trong lớp vải của nhân vật; tóc và mũ được căn theo đầu ở từng tư thế.
 
 ## Trồng và chăm cây
 
 Chạm đất trống để gieo. Chạm ô đang trồng để mở màn hình chăm sóc. Có tưới nước miễn phí (-10% thời gian), nhổ cỏ miễn phí (-5%, +1 sản lượng), bón phân (-20%, +1 sản lượng) và thuốc tăng trưởng (-35%). Mỗi thao tác chỉ dùng một lần trong một vụ; phân và thuốc trừ đúng một lần. Cây chín không dùng thêm vật phẩm chăm sóc. Chạm cây chín để thu/hái; kho đầy sẽ giữ cây.
 
-Thời gian còn lại hiển thị trên từng ô đang trồng và trong màn hình chăm sóc. Menu → Ruộng & vườn xem toàn bộ ô đã mở. Thời gian dùng mốc thực tế nên cây tiếp tục lớn khi rời game.
+Thời gian còn lại hiển thị trên từng ô đang trồng và trong màn hình chăm sóc. Lúa mặc định 5 phút, ngô 7 phút; các cây khác lâu hơn, tối đa 12 giờ với giống cao cấp. Thời gian trồng đã tăng so với bản cũ. Tiến trình của vụ cũ được chuyển đổi theo tỷ lệ đã lớn, cây đã chín vẫn giữ chín. Menu → Ruộng & vườn xem toàn bộ ô đã mở. Thời gian dùng mốc thực tế nên cây tiếp tục lớn khi rời game.
+
+Thanh công cụ Gieo / Thu / Chăm / Hái nằm ở cuối màn hình. Chọn Chăm rồi chạm ô đất để mở bảng thao tác nhanh; nút Chi tiết ô đất mở đầy đủ thông tin và tiến trình. Số trên nút là số ô hoặc cây hiện có thể thao tác.
 
 60 ô đất: 30 ô ban đầu và 30 ô mở rộng ở phía nam bản đồ. Ô mở rộng yêu cầu cấp 20–194. Tự bổ sung ô mới khi tải bản lưu cũ. Đất và công trình nâng được đến cấp 20; từ cấp nâng thứ 5 cần thêm cấp người chơi tương ứng.
 
@@ -43,5 +55,6 @@ Menu hoặc bản đồ → Nhịp sống làng quê: khôi phục guồng nư�
 - `node tools/test-diorama.mjs`: tách hình, nền alpha, khoảng đệm và điểm neo chuyển động.
 - Sau khi đóng gói chuyển động, chạy `node tools/finalize-diorama.mjs`, `node tools/build-fishing-rigs.mjs` và `node tools/build-wardrobe-masks.mjs`. Các lớp màu PNG cho phép thay màu cả khi mở bằng `file:` mà không đọc pixel trong trình duyệt.
 - `node tools/verify-game.mjs`, `node tools/verify-upgrade.mjs`, `node tools/verify-fishing.mjs`, `node tools/verify-local-file.mjs`: chạy Chrome với giao diện và thao tác game. Báo cáo trong `docs/verification/`.
+- `node tools/verify-map.mjs`: kiểm tra dạng sóng âm thanh thực, bật/tắt tiếng, chuyển cảnh, kéo/zoom, tab, đổi màu trang phục và chuyển đổi thời gian vụ cũ.
 
 Kiểm tra Chrome mô phỏng kích thước điện thoại không thay thế thử nghiệm trên thiết bị thật. Cảm giác rung và khóa chiều màn hình còn tùy trình duyệt/điện thoại.

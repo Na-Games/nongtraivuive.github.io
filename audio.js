@@ -6,8 +6,8 @@ const GameAudio={
   activate(){this.unlocked=true;const context=this.context();if(!context)return;try{if(context.state!=='running'){const pending=context.resume();this.resuming=pending;Promise.resolve(pending).then(()=>{if(this.resuming===pending)this.resuming=null;this.sync();if(typeof Fishing!=='undefined'&&FS)Fishing.updateAudio(true)}).catch(()=>{this.resuming=null})}else{this.sync();if(typeof Fishing!=='undefined'&&FS)Fishing.updateAudio(true)}}catch{}},
   enabled(){return !!S.fx.sound&&S.fx.volume>0&&!document.hidden},
   play(kind='tap'){
-    if(!this.enabled()||S.fx.sfxVolume<=0)return;
-    const context=this.context();if(!context||!this.unlocked)return;
+    if(!this.enabled()||S.fx.sfxVolume<=0||!this.unlocked)return;
+    const context=this.context();if(!context)return;
     const play=()=>{if(!this.enabled()||S.fx.sfxVolume<=0||context.state!=='running')return;const now=performance.now();if(kind==='tap'&&now-this.lastEffect<90)return;this.lastEffect=now;
       const notes={tap:[[660,.045]],coin:[[880,.07],[1175,.11]],win:[[523,.08],[659,.08],[784,.08],[1046,.17]],err:[[200,.15]],pop:[[440,.045],[550,.055]],water:[[420,.06],[610,.08],[480,.08]],weed:[[320,.05],[470,.08]]}[kind]||[[500,.06]];let time=context.currentTime;
       for(const [frequency,duration]of notes){const source=context.createOscillator(),gain=context.createGain();source.type='sine';source.frequency.value=frequency;gain.gain.setValueAtTime(.0001,time);gain.gain.exponentialRampToValueAtTime(Math.max(.0001,.16*S.fx.volume*S.fx.sfxVolume),time+.008);gain.gain.exponentialRampToValueAtTime(.0001,time+duration);source.connect(gain);gain.connect(context.destination);this.effects.add(source);source.onended=()=>{source.disconnect();gain.disconnect();this.effects.delete(source)};source.start(time);source.stop(time+duration+.01);time+=duration*.9}
