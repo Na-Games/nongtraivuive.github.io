@@ -12,6 +12,8 @@ Cập nhật 31/10/2026. Thực hiện trong mã nguồn game hiện có, giữ 
 - Bộ prompt, thứ tự hình và thông số: `docs/diorama-prompts.json`. Các lần tạo lại đã được kiểm tra trước khi đóng gói; nhân vật tĩnh cuối cùng lấy từ khung chuyển động thay vì bảng nháp.
 - Kiểm tra nền trong suốt, số hình và khoảng đệm: `docs/diorama-validation.json`. Script đóng gói từ nguồn: `tools/build-diorama.mjs`; đồng bộ nhân vật và mã tương thích: `tools/finalize-diorama.mjs`.
 
+Các báo cáo và ảnh kiểm thử đã được dọn để giảm dung lượng; đường dẫn báo cáo trong hướng dẫn là vị trí xuất kết quả khi chạy lại công cụ, không phải tệp cần có để chơi game.
+
 Đã dọn các bảng ảnh nguồn trung gian, ảnh/video kiểm thử và tài liệu cũ để giảm dung lượng. Game, thư viện PNG và trình diễn chuyển động vẫn dùng đủ bộ ảnh đã đóng gói. Muốn tạo lại atlas từ đầu cần tạo lại ảnh nguồn theo `docs/diorama-prompts.json`; chơi hoặc đóng gói game không cần ảnh nguồn này. Báo cáo kiểm thử có thể tạo lại bằng các lệnh dưới đây.
 
 180 hình phẩm cấp mới trong `assets/sprites/elite-*`: 72 icon hạt/giống, 36 cây lâu năm, 36 món trang trí và 36 mô hình công trình. Sáu phẩm cấp có hình riêng: từ bao vải, giỏ tre, thùng gỗ đến chậu gốm, sơn son và khảm vàng. Các giống cao cấp giữ hình sinh trưởng của đúng loài; icon trong cửa hàng và kho dùng hình phẩm cấp riêng.
