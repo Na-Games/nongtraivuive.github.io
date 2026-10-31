@@ -19,6 +19,7 @@ function startDecorPlacement(id){
 }
 function cancelDecorPlacement(){decorPlacement=null;document.querySelector('#decor-placement')?.remove()}
 function decorCanPlace(x,y){
+  if(typeof Landscape!=='undefined'&&Landscape.water(x,y))return false;
   if(x>=1&&x<9&&y>=22&&y<29)return false;
   if(x>=26||y<2)return false;
   if(x<.5||y<.5||x>N-.5||y>N-.5)return false;

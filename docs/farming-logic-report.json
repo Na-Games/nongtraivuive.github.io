@@ -1,0 +1,61 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "progression reaches 200",
+      "pass": true
+    },
+    {
+      "name": "advanced crop varieties have matching species and separate art",
+      "pass": true
+    },
+    {
+      "name": "rice takes at least five minutes and advanced crops take longer",
+      "pass": true
+    },
+    {
+      "name": "water reduces growth time once",
+      "pass": true
+    },
+    {
+      "name": "weeding increases yield once",
+      "pass": true
+    },
+    {
+      "name": "fertilizer consumed exactly once",
+      "pass": true
+    },
+    {
+      "name": "empty supply rejects free acceleration",
+      "pass": true
+    },
+    {
+      "name": "ripe crop cannot be cared for repeatedly",
+      "pass": true
+    },
+    {
+      "name": "level cap enforced",
+      "pass": true
+    },
+    {
+      "name": "supplies charge correctly",
+      "pass": true
+    },
+    {
+      "name": "animal requires correct built home",
+      "pass": true
+    },
+    {
+      "name": "animal increases production and limits quantity",
+      "pass": true
+    },
+    {
+      "name": "60 fields have separate expansion area",
+      "pass": true
+    },
+    {
+      "name": "pets can be adopted without a production barn",
+      "pass": true
+    }
+  ]
+}

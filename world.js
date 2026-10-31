@@ -14,13 +14,14 @@ const World={
     const grid=el('div','world-regions');for(const r of this.regions){const b=el('button','world-region',`${Art.icon(r.icon,r.n)}<span><b>${r.n}</b><small>${r.desc}</small></span><span>›</span>`);b.onclick=()=>this.visit(r);grid.append(b)}body.append(grid);
     const village=el('button','village-entry',`${Art.icon('deco-waterwheel','Guồng nước')}<span><b>Nhịp sống làng quê</b><small>Khôi phục công trình và làm hàng thủ công</small></span><span>›</span>`);village.onclick=openVillage;body.append(village);
   },'80%')},
-  visit(region){closeSheet();Scene.centerOn(region.x,region.y,clamp(innerWidth/620,.65,1.1));toast(region.n+' · '+region.desc)},
+  visit(region){closeSheet();if(typeof Camera!=='undefined')Camera.moveTo(region.x,region.y,clamp(innerWidth/620,.65,1.1));else Scene.centerOn(region.x,region.y,clamp(innerWidth/620,.65,1.1));toast(region.n+' · '+region.desc)},
   drawMountains(c,scene,z){
     if(Art.has('scenery-waterfall')){for(const [id,x,y,w,h]of [['scenery-waterfall',18,1,440,360],['scenery-bamboo',22,4,180,210],['scenery-pines',3,2,210,220]]){const p=scene.iso(x,y);Art.draw(c,id,p.x,p.y,w*z,h*z,1)}return}
     if(!this.ridge.complete||!this.ridge.naturalWidth)return;
     for(const x of [6,15,23]){const p=scene.iso(x,.5),w=590*z,h=w*this.ridge.naturalHeight/this.ridge.naturalWidth;c.drawImage(this.ridge,p.x-w/2,p.y-h+30*z,w,h)}
   },
   drawWater(c,scene,z,t){
+    if(typeof Landscape!=='undefined')Landscape.stream(c,z,t);
     c.save();c.strokeStyle='#b9f3ee99';c.lineWidth=1.5*z;
     for(let row=2;row<32;row+=2){const x=27.3+(S.fx.reduceMotion?0:Math.sin(t*.7+row)*.15),a=scene.iso(x,row),b=scene.iso(x,row+1);c.beginPath();c.moveTo(a.x,a.y);c.quadraticCurveTo((a.x+b.x)/2+5*z,(a.y+b.y)/2,b.x,b.y);c.stroke()}
     c.restore();

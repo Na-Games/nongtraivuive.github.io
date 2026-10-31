@@ -3,7 +3,7 @@
 const Art={
   images:{},tiles:{},failed:[],ready:0,total:Object.keys(ART_MANIFEST.sheets).length,emoji:new Map(),
   load(){
-    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','characters','wardrobe-parts']);
+    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','characters','wardrobe-parts','village-landscape']);
     const entries=Object.entries(ART_MANIFEST.sheets),primary=entries.filter(([id])=>critical.has(id)),background=entries.filter(([id])=>!critical.has(id));
     const loadOne=([id,s])=>new Promise(resolve=>{const im=new Image();let settled=false;const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve()};const timer=setTimeout(()=>finish(false),12000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file});
     const queue=async entries=>{let cursor=0;await Promise.all(Array.from({length:Math.min(3,entries.length)},async()=>{while(cursor<entries.length)await loadOne(entries[cursor++])}))};
@@ -33,6 +33,7 @@ const Art={
     parts.forEach((p,i)=>{const id=this.emoji.get(p);if(id&&this.has(id))this.draw(c,id,cursor+widths[i]/2,cy,px,px);else{if(outline)c.strokeText(p,cursor,0);c.fillText(p,cursor,0)}cursor+=widths[i]});c.restore();
   },
   initSymbols(){
+    for(const sheet of ['elite-seeds-a','elite-seeds-b','elite-trees','elite-heritage','elite-models','village-landscape'])if(ART_MANIFEST.sheets[sheet])ART_MANIFEST.sheets[sheet].title=sheet;
     Object.entries(CROPS).forEach(([id,v])=>this.register(v.e,v.art||id));Object.entries(PRODUCTS).forEach(([id,v])=>this.register(v.e,id));Object.entries(FISHES).forEach(([id,v])=>this.register(v.e,v.art||id));
     const pairs={'🪙':'coin','💎':'gem','⭐':'star','🎒':'bag','📋':'orders','🎁':'gift','✉️':'mail','📗':'season','📅':'calendar','🪷':'festival','🏮':'lantern','🏆':'trophy','🏪':'shop','🧺':'friends','💌':'invite','⚙️':'settings','📷':'camera','⊞':'menu','☀️':'sun','🌙':'moon','🔒':'lock','🔨':'hammer','⬆':'upgrade','⚡':'energy','🚚':'truck','🐔':'hen','🐄':'cow','🦆':'duck','🐕':'dog','🦋':'butterfly','🐝':'bee-animal','🐷':'pig','🐑':'sheep','🐐':'goat','🐃':'buffalo','🦢':'crane','🐈':'cat','🌼':'flower','🌿':'bush','🌱':'sprout','✨':'sparkle','🌟':'sparkle-big','🎉':'levelup','❤️':'heart','🪣':'bucket','🎣':'rod-truc','🎋':'rod-tre','🪱':'bait-nho','🐛':'bait-giun','🕸️':'net','🪴':'tea-bush','🏺':'silo','🟫':'soil','📦':'planks','🪵':'planks','🧱':'bricks','🪨':'stones','👑':'crown','📍':'pin','🔥':'oven','🧑‍🌾':'farmer-0-idle','👩':'farmer-1-idle','🧑':'farmer-2-idle','👴':'farmer-3-idle','👵':'farmer-4-idle','👧':'farmer-1-idle','🧒':'farmer-5-idle','🦛':'buffalo','⚙':'settings','✉':'mail'};
     for(const [symbol,id] of Object.entries(pairs))this.register(symbol,id);
@@ -53,7 +54,7 @@ function openArtLibrary(){
   openSheet('art-library','Thư viện hình ảnh',body=>{
     const names={produce:'Nông sản',buildings:'Công trình & xe',nature:'Thiên nhiên & vật nuôi',fishing:'Cá & dụng cụ',ui:'Giao diện',effects:'Hiệu ứng',growth:'Sinh trưởng',terrain:'Địa hình & bản đồ',characters:'Nhân vật',goods:'Chế phẩm & vật liệu','crops-extra':'Rau củ & hoa','botanical':'Thảo mộc & nấm','trees-a':'Cây lâu năm I','trees-b':'Cây lâu năm II',heritage:'Trang trí làng Việt',facilities:'Mô hình công trình'};
 Object.assign(names,{'wardrobe-parts':'Wardrobe',scenery:'Village scenery'});
-    for(const [id,sheet]of Object.entries(MOTION_MANIFEST.sheets))names[id]=sheet.title;
+    for(const [id,sheet]of Object.entries(ART_MANIFEST.sheets))names[id]=names[id]||sheet.title||id;
     body.innerHTML=`<p class="art-intro">${Object.keys(ART_MANIFEST.sprites).length} hình PNG trong suốt · Khoảng đệm an toàn 24 px. Chạm hình để xem và tải PNG riêng.</p><button class="cbtn2 sm" id="art-vfx">Trình diễn bộ hiệu ứng</button><input class="search" id="art-search" placeholder="Tìm mã hình: lua, farmer, rod, soil…"><div id="art-list"></div>`;
     $('#art-vfx',body).onclick=()=>{closeSheet();Object.entries(ART_MANIFEST.sprites).filter(([,s])=>s.sheet==='effects').forEach(([id],i)=>setTimeout(()=>Scene.burst(Scene.w*(.2+(i%5)*.15),Scene.h*(.3+Math.floor(i/5)*.09),id,4),i*90))};
     const render=()=>{const q=$('#art-search',body).value.toLowerCase(),list=$('#art-list',body);list.innerHTML='';for(const [sheet,title]of Object.entries(names)){const entries=Object.entries(ART_MANIFEST.sprites).filter(([id,v])=>v.sheet===sheet&&(!q||id.includes(q)||title.toLowerCase().includes(q)));if(!entries.length)continue;list.append(el('div','lbl',`${title} · ${entries.length}`));const grid=el('div','art-grid');for(const [id,v]of entries){const a=el('a','art-tile',Art.icon(id,id)+`<small>${id}</small>`);a.href=v.file;a.download=id+'.png';a.title='Tải PNG '+id;grid.append(a)}list.append(grid)}};$('#art-search',body).oninput=render;render();

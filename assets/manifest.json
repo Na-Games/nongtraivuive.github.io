@@ -110,6 +110,42 @@
       "cols": 4,
       "rows": 2,
       "cell": 512
+    },
+    "village-landscape": {
+      "file": "assets/village-landscape.png",
+      "cols": 4,
+      "rows": 4,
+      "cell": 256
+    },
+    "elite-seeds-a": {
+      "file": "assets/elite-seeds-a.png",
+      "cols": 6,
+      "rows": 6,
+      "cell": 256
+    },
+    "elite-seeds-b": {
+      "file": "assets/elite-seeds-b.png",
+      "cols": 6,
+      "rows": 6,
+      "cell": 256
+    },
+    "elite-heritage": {
+      "file": "assets/elite-heritage.png",
+      "cols": 6,
+      "rows": 6,
+      "cell": 256
+    },
+    "elite-trees": {
+      "file": "assets/elite-trees.png",
+      "cols": 6,
+      "rows": 6,
+      "cell": 256
+    },
+    "elite-models": {
+      "file": "assets/elite-models.png",
+      "cols": 6,
+      "rows": 6,
+      "cell": 256
     }
   },
   "sprites": {
@@ -6087,6 +6123,2358 @@
         "y": 26,
         "w": 408,
         "h": 460
+      }
+    },
+    "village-retaining-wall": {
+      "sheet": "village-landscape",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/village-landscape/village-retaining-wall.png",
+      "bounds": {
+        "x": 26,
+        "y": 55,
+        "w": 204,
+        "h": 145
+      }
+    },
+    "village-cobblestone": {
+      "sheet": "village-landscape",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/village-landscape/village-cobblestone.png",
+      "bounds": {
+        "x": 26,
+        "y": 57,
+        "w": 204,
+        "h": 141
+      }
+    },
+    "village-stream": {
+      "sheet": "village-landscape",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/village-landscape/village-stream.png",
+      "bounds": {
+        "x": 26,
+        "y": 36,
+        "w": 204,
+        "h": 183
+      }
+    },
+    "village-paddy": {
+      "sheet": "village-landscape",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/village-landscape/village-paddy.png",
+      "bounds": {
+        "x": 26,
+        "y": 56,
+        "w": 204,
+        "h": 144
+      }
+    },
+    "village-pipeline": {
+      "sheet": "village-landscape",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/village-landscape/village-pipeline.png",
+      "bounds": {
+        "x": 25,
+        "y": 47,
+        "w": 204,
+        "h": 161
+      }
+    },
+    "village-wheel": {
+      "sheet": "village-landscape",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/village-landscape/village-wheel.png",
+      "bounds": {
+        "x": 26,
+        "y": 45,
+        "w": 204,
+        "h": 165
+      }
+    },
+    "village-teahouse": {
+      "sheet": "village-landscape",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/village-landscape/village-teahouse.png",
+      "bounds": {
+        "x": 26,
+        "y": 46,
+        "w": 204,
+        "h": 163
+      }
+    },
+    "village-dyehouse": {
+      "sheet": "village-landscape",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/village-landscape/village-dyehouse.png",
+      "bounds": {
+        "x": 26,
+        "y": 46,
+        "w": 204,
+        "h": 164
+      }
+    },
+    "village-spring": {
+      "sheet": "village-landscape",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/village-landscape/village-spring.png",
+      "bounds": {
+        "x": 26,
+        "y": 50,
+        "w": 204,
+        "h": 155
+      }
+    },
+    "village-rocks": {
+      "sheet": "village-landscape",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/village-landscape/village-rocks.png",
+      "bounds": {
+        "x": 26,
+        "y": 49,
+        "w": 204,
+        "h": 157
+      }
+    },
+    "village-maple": {
+      "sheet": "village-landscape",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/village-landscape/village-maple.png",
+      "bounds": {
+        "x": 26,
+        "y": 48,
+        "w": 204,
+        "h": 160
+      }
+    },
+    "village-pine": {
+      "sheet": "village-landscape",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/village-landscape/village-pine.png",
+      "bounds": {
+        "x": 26,
+        "y": 36,
+        "w": 204,
+        "h": 183
+      }
+    },
+    "village-bamboo": {
+      "sheet": "village-landscape",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/village-landscape/village-bamboo.png",
+      "bounds": {
+        "x": 26,
+        "y": 38,
+        "w": 204,
+        "h": 179
+      }
+    },
+    "village-stairs": {
+      "sheet": "village-landscape",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/village-landscape/village-stairs.png",
+      "bounds": {
+        "x": 26,
+        "y": 53,
+        "w": 204,
+        "h": 150
+      }
+    },
+    "village-stone-lantern": {
+      "sheet": "village-landscape",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/village-landscape/village-stone-lantern.png",
+      "bounds": {
+        "x": 53,
+        "y": 26,
+        "w": 149,
+        "h": 204
+      }
+    },
+    "village-stone-bridge": {
+      "sheet": "village-landscape",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/village-landscape/village-stone-bridge.png",
+      "bounds": {
+        "x": 26,
+        "y": 51,
+        "w": 204,
+        "h": 153
+      }
+    },
+    "lua-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/lua-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 36,
+        "w": 204,
+        "h": 183
+      }
+    },
+    "ngo-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 38,
+        "w": 204,
+        "h": 180
+      }
+    },
+    "carot-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/carot-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 198
+      }
+    },
+    "dau-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/dau-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 41,
+        "w": 204,
+        "h": 174
+      }
+    },
+    "cachua-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 47,
+        "w": 204,
+        "h": 162
+      }
+    },
+    "che-lv40": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-a/che-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 45,
+        "w": 204,
+        "h": 165
+      }
+    },
+    "lua-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/lua-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 193
+      }
+    },
+    "ngo-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 32,
+        "w": 204,
+        "h": 192
+      }
+    },
+    "carot-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/carot-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 200
+      }
+    },
+    "dau-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/dau-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 38,
+        "w": 204,
+        "h": 179
+      }
+    },
+    "cachua-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 40,
+        "w": 204,
+        "h": 176
+      }
+    },
+    "che-lv70": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-a/che-lv70.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "lua-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/lua-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 33,
+        "w": 204,
+        "h": 190
+      }
+    },
+    "ngo-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "carot-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/carot-lv100.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "dau-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/dau-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 193
+      }
+    },
+    "cachua-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 197
+      }
+    },
+    "che-lv100": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-a/che-lv100.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "lua-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/lua-lv140.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 181,
+        "h": 204
+      }
+    },
+    "ngo-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv140.png",
+      "bounds": {
+        "x": 49,
+        "y": 26,
+        "w": 158,
+        "h": 204
+      }
+    },
+    "carot-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/carot-lv140.png",
+      "bounds": {
+        "x": 42,
+        "y": 26,
+        "w": 172,
+        "h": 204
+      }
+    },
+    "dau-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/dau-lv140.png",
+      "bounds": {
+        "x": 45,
+        "y": 26,
+        "w": 166,
+        "h": 204
+      }
+    },
+    "cachua-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv140.png",
+      "bounds": {
+        "x": 42,
+        "y": 26,
+        "w": 171,
+        "h": 204
+      }
+    },
+    "che-lv140": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-a/che-lv140.png",
+      "bounds": {
+        "x": 44,
+        "y": 25,
+        "w": 168,
+        "h": 204
+      }
+    },
+    "lua-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/lua-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 194
+      }
+    },
+    "ngo-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv180.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 194,
+        "h": 204
+      }
+    },
+    "carot-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/carot-lv180.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 191,
+        "h": 204
+      }
+    },
+    "dau-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/dau-lv180.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "cachua-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv180.png",
+      "bounds": {
+        "x": 29,
+        "y": 26,
+        "w": 197,
+        "h": 204
+      }
+    },
+    "che-lv180": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-a/che-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 203,
+        "h": 204
+      }
+    },
+    "lua-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 0,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/lua-lv200.png",
+      "bounds": {
+        "x": 34,
+        "y": 26,
+        "w": 188,
+        "h": 204
+      }
+    },
+    "ngo-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 1,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/ngo-lv200.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 173,
+        "h": 204
+      }
+    },
+    "carot-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 2,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/carot-lv200.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 174,
+        "h": 204
+      }
+    },
+    "dau-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 3,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/dau-lv200.png",
+      "bounds": {
+        "x": 29,
+        "y": 26,
+        "w": 198,
+        "h": 204
+      }
+    },
+    "cachua-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 4,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/cachua-lv200.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 189,
+        "h": 204
+      }
+    },
+    "che-lv200": {
+      "sheet": "elite-seeds-a",
+      "col": 5,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-a/che-lv200.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 192,
+        "h": 204
+      }
+    },
+    "cam-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/cam-lv40.png",
+      "bounds": {
+        "x": 39,
+        "y": 26,
+        "w": 178,
+        "h": 204
+      }
+    },
+    "tao-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/tao-lv40.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "xoai-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv40.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "dua-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/dua-lv40.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 191,
+        "h": 204
+      }
+    },
+    "thanhlong-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv40.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "caphe-qua-lv40": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 0,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv40.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 174,
+        "h": 204
+      }
+    },
+    "cam-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/cam-lv70.png",
+      "bounds": {
+        "x": 34,
+        "y": 26,
+        "w": 187,
+        "h": 204
+      }
+    },
+    "tao-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/tao-lv70.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "xoai-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv70.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "dua-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/dua-lv70.png",
+      "bounds": {
+        "x": 40,
+        "y": 26,
+        "w": 176,
+        "h": 204
+      }
+    },
+    "thanhlong-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv70.png",
+      "bounds": {
+        "x": 39,
+        "y": 26,
+        "w": 177,
+        "h": 204
+      }
+    },
+    "caphe-qua-lv70": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 1,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv70.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 181,
+        "h": 204
+      }
+    },
+    "cam-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/cam-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 204
+      }
+    },
+    "tao-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/tao-lv100.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 202,
+        "h": 204
+      }
+    },
+    "xoai-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv100.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "dua-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/dua-lv100.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 202,
+        "h": 204
+      }
+    },
+    "thanhlong-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 200
+      }
+    },
+    "caphe-qua-lv100": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 2,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv100.png",
+      "bounds": {
+        "x": 38,
+        "y": 26,
+        "w": 180,
+        "h": 204
+      }
+    },
+    "cam-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/cam-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 30,
+        "w": 204,
+        "h": 195
+      }
+    },
+    "tao-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/tao-lv140.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 192,
+        "h": 204
+      }
+    },
+    "xoai-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv140.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 192,
+        "h": 204
+      }
+    },
+    "dua-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/dua-lv140.png",
+      "bounds": {
+        "x": 44,
+        "y": 26,
+        "w": 168,
+        "h": 204
+      }
+    },
+    "thanhlong-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv140.png",
+      "bounds": {
+        "x": 34,
+        "y": 26,
+        "w": 187,
+        "h": 204
+      }
+    },
+    "caphe-qua-lv140": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 3,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv140.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "cam-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/cam-lv180.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "tao-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/tao-lv180.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "xoai-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 197
+      }
+    },
+    "dua-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/dua-lv180.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "thanhlong-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv180.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "caphe-qua-lv180": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 4,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv180.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 191,
+        "h": 204
+      }
+    },
+    "cam-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 0,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/cam-lv200.png",
+      "bounds": {
+        "x": 36,
+        "y": 26,
+        "w": 183,
+        "h": 204
+      }
+    },
+    "tao-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 1,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/tao-lv200.png",
+      "bounds": {
+        "x": 36,
+        "y": 26,
+        "w": 184,
+        "h": 204
+      }
+    },
+    "xoai-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 2,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/xoai-lv200.png",
+      "bounds": {
+        "x": 38,
+        "y": 26,
+        "w": 180,
+        "h": 204
+      }
+    },
+    "dua-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 3,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/dua-lv200.png",
+      "bounds": {
+        "x": 39,
+        "y": 26,
+        "w": 178,
+        "h": 204
+      }
+    },
+    "thanhlong-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 4,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/thanhlong-lv200.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 182,
+        "h": 204
+      }
+    },
+    "caphe-qua-lv200": {
+      "sheet": "elite-seeds-b",
+      "col": 5,
+      "row": 5,
+      "file": "assets/sprites/elite-seeds-b/caphe-qua-lv200.png",
+      "bounds": {
+        "x": 51,
+        "y": 26,
+        "w": 154,
+        "h": 204
+      }
+    },
+    "deco-trefence-lv40": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
+      }
+    },
+    "deco-brickpath-lv40": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 64,
+        "w": 204,
+        "h": 127
+      }
+    },
+    "deco-stonebench-lv40": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 43,
+        "w": 204,
+        "h": 170
+      }
+    },
+    "deco-waterjar-lv40": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
+      }
+    },
+    "deco-flowerjar-lv40": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv40.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 173,
+        "h": 204
+      }
+    },
+    "deco-banana-lv40": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 0,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 193
+      }
+    },
+    "deco-trefence-lv70": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 194
+      }
+    },
+    "deco-brickpath-lv70": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 57,
+        "w": 204,
+        "h": 142
+      }
+    },
+    "deco-stonebench-lv70": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 51,
+        "w": 204,
+        "h": 154
+      }
+    },
+    "deco-waterjar-lv70": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv70.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 189,
+        "h": 204
+      }
+    },
+    "deco-flowerjar-lv70": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv70.png",
+      "bounds": {
+        "x": 51,
+        "y": 26,
+        "w": 153,
+        "h": 204
+      }
+    },
+    "deco-banana-lv70": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 1,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv70.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 204
+      }
+    },
+    "deco-trefence-lv100": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 38,
+        "w": 204,
+        "h": 179
+      }
+    },
+    "deco-brickpath-lv100": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 54,
+        "w": 204,
+        "h": 147
+      }
+    },
+    "deco-stonebench-lv100": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 49,
+        "w": 204,
+        "h": 158
+      }
+    },
+    "deco-waterjar-lv100": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv100.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "deco-flowerjar-lv100": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv100.png",
+      "bounds": {
+        "x": 49,
+        "y": 26,
+        "w": 158,
+        "h": 204
+      }
+    },
+    "deco-banana-lv100": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 2,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 203
+      }
+    },
+    "deco-trefence-lv140": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 32,
+        "w": 204,
+        "h": 192
+      }
+    },
+    "deco-brickpath-lv140": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 53,
+        "w": 204,
+        "h": 150
+      }
+    },
+    "deco-stonebench-lv140": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 50,
+        "w": 204,
+        "h": 155
+      }
+    },
+    "deco-waterjar-lv140": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "deco-flowerjar-lv140": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv140.png",
+      "bounds": {
+        "x": 51,
+        "y": 26,
+        "w": 153,
+        "h": 204
+      }
+    },
+    "deco-banana-lv140": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 3,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
+      }
+    },
+    "deco-trefence-lv180": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 31,
+        "w": 204,
+        "h": 194
+      }
+    },
+    "deco-brickpath-lv180": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 50,
+        "w": 204,
+        "h": 156
+      }
+    },
+    "deco-stonebench-lv180": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 48,
+        "w": 204,
+        "h": 160
+      }
+    },
+    "deco-waterjar-lv180": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv180.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 202,
+        "h": 204
+      }
+    },
+    "deco-flowerjar-lv180": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv180.png",
+      "bounds": {
+        "x": 42,
+        "y": 26,
+        "w": 172,
+        "h": 204
+      }
+    },
+    "deco-banana-lv180": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 4,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 35,
+        "w": 204,
+        "h": 186
+      }
+    },
+    "deco-trefence-lv200": {
+      "sheet": "elite-heritage",
+      "col": 0,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-trefence-lv200.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "deco-brickpath-lv200": {
+      "sheet": "elite-heritage",
+      "col": 1,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-brickpath-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 42,
+        "w": 204,
+        "h": 171
+      }
+    },
+    "deco-stonebench-lv200": {
+      "sheet": "elite-heritage",
+      "col": 2,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-stonebench-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 39,
+        "w": 204,
+        "h": 178
+      }
+    },
+    "deco-waterjar-lv200": {
+      "sheet": "elite-heritage",
+      "col": 3,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-waterjar-lv200.png",
+      "bounds": {
+        "x": 29,
+        "y": 26,
+        "w": 198,
+        "h": 204
+      }
+    },
+    "deco-flowerjar-lv200": {
+      "sheet": "elite-heritage",
+      "col": 4,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-flowerjar-lv200.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 182,
+        "h": 204
+      }
+    },
+    "deco-banana-lv200": {
+      "sheet": "elite-heritage",
+      "col": 5,
+      "row": 5,
+      "file": "assets/sprites/elite-heritage/deco-banana-lv200.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 193,
+        "h": 204
+      }
+    },
+    "tree-cam-lv40": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-cam-lv40.png",
+      "bounds": {
+        "x": 51,
+        "y": 26,
+        "w": 154,
+        "h": 204
+      }
+    },
+    "tree-vai-lv40": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-vai-lv40.png",
+      "bounds": {
+        "x": 43,
+        "y": 26,
+        "w": 170,
+        "h": 204
+      }
+    },
+    "tree-tao-lv40": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-tao-lv40.png",
+      "bounds": {
+        "x": 39,
+        "y": 26,
+        "w": 177,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv40": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv40.png",
+      "bounds": {
+        "x": 50,
+        "y": 26,
+        "w": 156,
+        "h": 204
+      }
+    },
+    "tree-na-lv40": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-na-lv40.png",
+      "bounds": {
+        "x": 42,
+        "y": 26,
+        "w": 171,
+        "h": 204
+      }
+    },
+    "tree-tieu-lv40": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 0,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv40.png",
+      "bounds": {
+        "x": 77,
+        "y": 26,
+        "w": 102,
+        "h": 204
+      }
+    },
+    "tree-cam-lv70": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-cam-lv70.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 181,
+        "h": 204
+      }
+    },
+    "tree-vai-lv70": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-vai-lv70.png",
+      "bounds": {
+        "x": 36,
+        "y": 26,
+        "w": 183,
+        "h": 204
+      }
+    },
+    "tree-tao-lv70": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-tao-lv70.png",
+      "bounds": {
+        "x": 36,
+        "y": 26,
+        "w": 183,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv70": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv70.png",
+      "bounds": {
+        "x": 37,
+        "y": 26,
+        "w": 182,
+        "h": 204
+      }
+    },
+    "tree-na-lv70": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-na-lv70.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 194,
+        "h": 204
+      }
+    },
+    "tree-tieu-lv70": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 1,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv70.png",
+      "bounds": {
+        "x": 68,
+        "y": 26,
+        "w": 119,
+        "h": 204
+      }
+    },
+    "tree-cam-lv100": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-cam-lv100.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 174,
+        "h": 204
+      }
+    },
+    "tree-vai-lv100": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-vai-lv100.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 189,
+        "h": 204
+      }
+    },
+    "tree-tao-lv100": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-tao-lv100.png",
+      "bounds": {
+        "x": 34,
+        "y": 26,
+        "w": 187,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv100": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv100.png",
+      "bounds": {
+        "x": 40,
+        "y": 26,
+        "w": 175,
+        "h": 204
+      }
+    },
+    "tree-na-lv100": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-na-lv100.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 200,
+        "h": 204
+      }
+    },
+    "tree-tieu-lv100": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 2,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv100.png",
+      "bounds": {
+        "x": 69,
+        "y": 26,
+        "w": 118,
+        "h": 204
+      }
+    },
+    "tree-cam-lv140": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-cam-lv140.png",
+      "bounds": {
+        "x": 41,
+        "y": 26,
+        "w": 173,
+        "h": 204
+      }
+    },
+    "tree-vai-lv140": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-vai-lv140.png",
+      "bounds": {
+        "x": 38,
+        "y": 26,
+        "w": 179,
+        "h": 204
+      }
+    },
+    "tree-tao-lv140": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-tao-lv140.png",
+      "bounds": {
+        "x": 35,
+        "y": 26,
+        "w": 186,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv140": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv140.png",
+      "bounds": {
+        "x": 39,
+        "y": 26,
+        "w": 178,
+        "h": 204
+      }
+    },
+    "tree-na-lv140": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-na-lv140.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 195,
+        "h": 204
+      }
+    },
+    "tree-tieu-lv140": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 3,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv140.png",
+      "bounds": {
+        "x": 66,
+        "y": 26,
+        "w": 123,
+        "h": 204
+      }
+    },
+    "tree-cam-lv180": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-cam-lv180.png",
+      "bounds": {
+        "x": 38,
+        "y": 26,
+        "w": 180,
+        "h": 204
+      }
+    },
+    "tree-vai-lv180": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-vai-lv180.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "tree-tao-lv180": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-tao-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 203,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv180": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 200
+      }
+    },
+    "tree-na-lv180": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-na-lv180.png",
+      "bounds": {
+        "x": 25,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "tree-tieu-lv180": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 4,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv180.png",
+      "bounds": {
+        "x": 67,
+        "y": 26,
+        "w": 121,
+        "h": 204
+      }
+    },
+    "tree-cam-lv200": {
+      "sheet": "elite-trees",
+      "col": 0,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-cam-lv200.png",
+      "bounds": {
+        "x": 29,
+        "y": 26,
+        "w": 197,
+        "h": 204
+      }
+    },
+    "tree-vai-lv200": {
+      "sheet": "elite-trees",
+      "col": 1,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-vai-lv200.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "tree-tao-lv200": {
+      "sheet": "elite-trees",
+      "col": 2,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-tao-lv200.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "tree-buoi-lv200": {
+      "sheet": "elite-trees",
+      "col": 3,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-buoi-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 198
+      }
+    },
+    "tree-na-lv200": {
+      "sheet": "elite-trees",
+      "col": 4,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-na-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 198
+      }
+    },
+    "tree-tieu-lv200": {
+      "sheet": "elite-trees",
+      "col": 5,
+      "row": 5,
+      "file": "assets/sprites/elite-trees/tree-tieu-lv200.png",
+      "bounds": {
+        "x": 62,
+        "y": 26,
+        "w": 132,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv40": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv40.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv40": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-sugar-lv40.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 203,
+        "h": 204
+      }
+    },
+    "facility-milk-lv40": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-milk-lv40.png",
+      "bounds": {
+        "x": 34,
+        "y": 26,
+        "w": 187,
+        "h": 204
+      }
+    },
+    "facility-juice-lv40": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-juice-lv40.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 194,
+        "h": 204
+      }
+    },
+    "facility-loom-lv40": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-loom-lv40.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 192,
+        "h": 204
+      }
+    },
+    "facility-sticky-lv40": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 0,
+      "file": "assets/sprites/elite-models/facility-sticky-lv40.png",
+      "bounds": {
+        "x": 35,
+        "y": 26,
+        "w": 185,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv70": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv70.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 202,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv70": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-sugar-lv70.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "facility-milk-lv70": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-milk-lv70.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 195,
+        "h": 204
+      }
+    },
+    "facility-juice-lv70": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-juice-lv70.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 200,
+        "h": 204
+      }
+    },
+    "facility-loom-lv70": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-loom-lv70.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "facility-sticky-lv70": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 1,
+      "file": "assets/sprites/elite-models/facility-sticky-lv70.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 194,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv100": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv100.png",
+      "bounds": {
+        "x": 30,
+        "y": 26,
+        "w": 196,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv100": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-sugar-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 203,
+        "h": 204
+      }
+    },
+    "facility-milk-lv100": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-milk-lv100.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "facility-juice-lv100": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-juice-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 204
+      }
+    },
+    "facility-loom-lv100": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-loom-lv100.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "facility-sticky-lv100": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 2,
+      "file": "assets/sprites/elite-models/facility-sticky-lv100.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 200,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv140": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv140.png",
+      "bounds": {
+        "x": 32,
+        "y": 26,
+        "w": 191,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv140": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-sugar-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 30,
+        "w": 204,
+        "h": 195
+      }
+    },
+    "facility-milk-lv140": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-milk-lv140.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 201,
+        "h": 204
+      }
+    },
+    "facility-juice-lv140": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-juice-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "facility-loom-lv140": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-loom-lv140.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "facility-sticky-lv140": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 3,
+      "file": "assets/sprites/elite-models/facility-sticky-lv140.png",
+      "bounds": {
+        "x": 27,
+        "y": 26,
+        "w": 202,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv180": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv180": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-sugar-lv180.png",
+      "bounds": {
+        "x": 25,
+        "y": 26,
+        "w": 204,
+        "h": 203
+      }
+    },
+    "facility-milk-lv180": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-milk-lv180.png",
+      "bounds": {
+        "x": 31,
+        "y": 26,
+        "w": 193,
+        "h": 204
+      }
+    },
+    "facility-juice-lv180": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-juice-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 30,
+        "w": 204,
+        "h": 196
+      }
+    },
+    "facility-loom-lv180": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-loom-lv180.png",
+      "bounds": {
+        "x": 26,
+        "y": 27,
+        "w": 204,
+        "h": 202
+      }
+    },
+    "facility-sticky-lv180": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 4,
+      "file": "assets/sprites/elite-models/facility-sticky-lv180.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 190,
+        "h": 204
+      }
+    },
+    "facility-doghouse-lv200": {
+      "sheet": "elite-models",
+      "col": 0,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-doghouse-lv200.png",
+      "bounds": {
+        "x": 33,
+        "y": 26,
+        "w": 189,
+        "h": 204
+      }
+    },
+    "facility-sugar-lv200": {
+      "sheet": "elite-models",
+      "col": 1,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-sugar-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
+      }
+    },
+    "facility-milk-lv200": {
+      "sheet": "elite-models",
+      "col": 2,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-milk-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 26,
+        "w": 204,
+        "h": 204
+      }
+    },
+    "facility-juice-lv200": {
+      "sheet": "elite-models",
+      "col": 3,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-juice-lv200.png",
+      "bounds": {
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
+      }
+    },
+    "facility-loom-lv200": {
+      "sheet": "elite-models",
+      "col": 4,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-loom-lv200.png",
+      "bounds": {
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 197
+      }
+    },
+    "facility-sticky-lv200": {
+      "sheet": "elite-models",
+      "col": 5,
+      "row": 5,
+      "file": "assets/sprites/elite-models/facility-sticky-lv200.png",
+      "bounds": {
+        "x": 29,
+        "y": 26,
+        "w": 198,
+        "h": 204
       }
     }
   }

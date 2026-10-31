@@ -406,6 +406,90 @@
       "warnings": [],
       "passed": true,
       "auditOnly": false
+    },
+    "village-landscape": {
+      "source": "assets/diorama/source/village-landscape.png",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sprites": 16,
+      "transparentPercent": 43.39,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "elite-seeds-a": {
+      "source": "assets/diorama/source/elite-seeds-a.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 30.08,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "elite-seeds-b": {
+      "source": "assets/diorama/source/elite-seeds-b.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 35.37,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "elite-trees": {
+      "source": "assets/diorama/source/elite-trees.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 51.41,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "elite-heritage": {
+      "source": "assets/diorama/source/elite-heritage.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 32.55,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
+    },
+    "elite-models": {
+      "source": "assets/diorama/source/elite-models.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sprites": 36,
+      "transparentPercent": 51.21,
+      "padding": 24,
+      "commonScale": false,
+      "warnings": [],
+      "passed": true,
+      "auditOnly": false
     }
   }
 }

@@ -19,6 +19,7 @@ const Motion={
     c.drawImage(Art.images[frame.sheet],frame.col*sheet.cell,frame.row*sheet.cell,sheet.cell,sheet.cell,-side*clip.pivot[0]/clip.cell,-side*clip.pivot[1]/clip.cell,side,side);c.restore();return true;
   },
   canOccupy(x,y){
+    if(typeof Landscape!=='undefined'&&Landscape.water(x,y))return false;
     if(x>=2&&x<8&&y>=23&&y<28)return false;
     if(x>=27||y<1.5)return false;
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;

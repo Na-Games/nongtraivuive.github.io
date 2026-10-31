@@ -5,7 +5,7 @@ for(const sheetId of [...new Set(Object.values(frames).map(f=>f.sheet))]){
  const sheet=sheets[sheetId],im=decode(sheet.file),layers=Object.fromEntries(['skin','hair','shirt'].map(k=>[k,Buffer.alloc(im.w*im.h*4)]));
  for(const [id,f]of Object.entries(frames).filter(([,f])=>f.sheet===sheetId)){
   const cell=sheet.cell,b=f.bounds,sprite=Buffer.alloc(cell*cell*4);for(let y=0;y<cell;y++)im.pixels.copy(sprite,y*cell*4,((f.row*cell+y)*im.w+f.col*cell)*4,((f.row*cell+y)*im.w+f.col*cell+cell)*4);rigs[id]=wardrobe.head(sprite,b,cell);
-  for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++){const local=(y*cell+x)*4,r=sprite[local],g=sprite[local+1],bl=sprite[local+2],a=sprite[local+3],ny=(y-b.y)/b.h;if(a<20)continue;let layer;if(ny<.65&&r>g*1.12&&g>bl*1.08&&r>75)layer='skin';else if(ny>.3&&ny<.82&&bl>r*1.12&&bl>g*.96)layer='shirt';else if(ny<.4&&r<105&&g<85&&bl<80)layer='hair';if(!layer)continue;const p=((f.row*cell+y)*im.w+f.col*cell+x)*4;layers[layer][p]=layers[layer][p+1]=layers[layer][p+2]=255;layers[layer][p+3]=a}
+  for(let y=b.y;y<b.y+b.h;y++)for(let x=b.x;x<b.x+b.w;x++){const local=(y*cell+x)*4,r=sprite[local],g=sprite[local+1],bl=sprite[local+2],a=sprite[local+3],ny=(y-b.y)/b.h;if(a<20)continue;let layer;if(ny<.65&&r>g*1.12&&g>bl*1.08&&r>75)layer='skin';else if(ny>.3&&ny<.82&&bl>=r*.85&&bl>=g*.85)layer='shirt';else if(ny<.4&&r<105&&g<85&&bl<80)layer='hair';if(!layer)continue;const p=((f.row*cell+y)*im.w+f.col*cell+x)*4;layers[layer][p]=layers[layer][p+1]=layers[layer][p+2]=255;layers[layer][p+3]=a}
  }
  masks[sheetId]={};for(const [layer,pixels]of Object.entries(layers)){const file='assets/diorama/masks/'+sheetId+'-'+layer+'.png';encode(file,im.w,im.h,pixels);masks[sheetId][layer]=file}
 }

@@ -4,13 +4,14 @@ for(const file of ['data.js','catalog.js','expanded-catalog.js','decor.js','prog
 vm.runInContext(`const Wardrobe={normalize:a=>a};const Motion={workPlayer(){},emit(){}};Haptics.pulse=()=>true;function toast(){}function refreshHud(){}function refreshQuest(){}function onLevelUp(){}Scene.syncAnimals=()=>{};S.fx.sound=false;`,context);
 const run=s=>vm.runInContext(s,context),checks=[];const check=(name,pass)=>{assert.ok(pass,name);checks.push({name,pass})};
 check('progression reaches 200',run('MAX_LEVEL===200&&Object.values(CROPS).some(c=>c.lv===200)&&Object.values(BUILDINGS).some(b=>b.lv===200)'));
-check('all crop varieties have actual matching art',run('Object.values(CROPS).filter(c=>c.art).every(c=>c.art in CROPS)'));
+check('advanced crop varieties have matching species and separate art',run('Object.values(CROPS).filter(c=>c.baseArt).every(c=>c.baseArt in CROPS&&c.art!==c.baseArt)'));
+check('rice takes at least five minutes and advanced crops take longer',run('CROPS.lua.t>=300&&CROPS["lua-lv200"].t>CROPS.lua.t'));
 run('FarmCare.ensure();S.plots[0]={crop:"lua",lv:1,t0:Date.now(),care:{},bonus:0}');
 check('water reduces growth time once',run('(()=>{const t=S.plots[0].t0;return FarmCare.apply(0,"water")&&S.plots[0].t0<t&&!FarmCare.apply(0,"water")})()'));
 check('weeding increases yield once',run('FarmCare.apply(0,"weed")&&yieldQty(S.plots[0])===2&&!FarmCare.apply(0,"weed")'));
 check('fertilizer consumed exactly once',run('(()=>{const n=S.supplies.fertilizer;return FarmCare.apply(0,"fertilize")&&S.supplies.fertilizer===n-1&&!FarmCare.apply(0,"fertilize")&&S.supplies.fertilizer===n-1})()'));
 check('empty supply rejects free acceleration',run('S.supplies.boost=0;!FarmCare.apply(0,"boost")'));
-check('ripe crop cannot be cared for repeatedly',run('S.plots[0].t0=Date.now()-60000;!FarmCare.apply(0,"boost")'));
+check('ripe crop cannot be cared for repeatedly',run('S.plots[0].t0=Date.now()-cropDur(S.plots[0])*2;!FarmCare.apply(0,"boost")'));
 check('level cap enforced',run('S.lv=199;S.xp=0;addXp(xpNeed(199)+xpNeed(200)*4);S.lv===200&&S.xp<=xpNeed(200)'));
 check('supplies charge correctly',run('S.coins=500;Progression.buySupply("boost",3,360)&&S.coins===140&&S.supplies.boost===3&&!Progression.buySupply("boost",3,360)'));
 check('animal requires correct built home',run('S.lv=200;S.coins=1000;!Progression.adopt("hen")'));

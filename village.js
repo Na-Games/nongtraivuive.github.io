@@ -4,9 +4,9 @@
 const Village={
   tab:0,ticker:0,
   projects:[
-    {id:'waterwheel',n:'Guồng nước làng',art:'deco-waterwheel',lv:2,cost:{c:250,i:{lua:6,ngo:2}},seconds:25,reward:{xp:35},desc:'Khôi phục guồng nước bên suối. Mở xay bột và giảm 20% thời gian các mẻ thủ công.',gx:22,gy:7},
-    {id:'dyehouse',n:'Xưởng vải chàm',art:'tea-workshop',lv:5,cost:{c:600,i:{bot:4,dau:4}},seconds:45,reward:{xp:70},desc:'Dựng giàn phơi và mở đơn hàng vải chàm, sử dụng len từ nông trại.',gx:22,gy:11},
-    {id:'hotspring',n:'Suối khoáng làng',art:'scenery-spring',lv:6,cost:{c:900,i:{bot:4,sua:2}},seconds:60,reward:{xp:90},desc:'Sửa lối đá bên suối. Mở pha trà mật ong và quà thư giãn mỗi ngày.',gx:22,gy:16},
+    {id:'waterwheel',n:'Guồng nước làng',art:'village-wheel',lv:2,cost:{c:250,i:{lua:6,ngo:2}},seconds:25,reward:{xp:35},desc:'Khôi phục guồng nước bên suối. Mở xay bột và giảm 20% thời gian các mẻ thủ công.',gx:22,gy:7},
+    {id:'dyehouse',n:'Xưởng vải chàm',art:'village-dyehouse',lv:5,cost:{c:600,i:{bot:4,dau:4}},seconds:45,reward:{xp:70},desc:'Dựng giàn phơi và mở đơn hàng vải chàm, sử dụng len từ nông trại.',gx:22,gy:11},
+    {id:'hotspring',n:'Suối khoáng làng',art:'village-spring',lv:6,cost:{c:900,i:{bot:4,sua:2}},seconds:60,reward:{xp:90},desc:'Sửa lối đá bên suối. Mở pha trà mật ong và quà thư giãn mỗi ngày.',gx:22,gy:16},
   ],
   recipes:[
     {id:'flour',n:'Xay bột bằng guồng nước',project:'waterwheel',art:'bot',cost:{i:{lua:3}},seconds:45,reward:{i:{bot:2},xp:8},product:'2 bột gạo'},

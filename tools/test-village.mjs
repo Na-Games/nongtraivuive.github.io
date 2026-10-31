@@ -29,7 +29,7 @@ run('daily objectives count only new progress and cannot double claim',`const o=
 run('Vietnam daily reset occurs at UTC 17:00',`clock=Date.UTC(2026,9,31,16,59,59);Village.ensure();S.village.day.claimed=['harvest'];const before=Village.dayKey();clock+=2000;Village.ensure();return before==='2026-10-31'&&Village.dayKey()==='2026-11-01'&&S.village.day.claimed.length===0&&S.village.day.base.harvest===S.qp.harvest;`);
 run('hot spring requires construction and grants daily rest once',`if(Village.rest())return false;if(!Village.startProject('hotspring'))return false;clock+=61000;if(!Village.finishProject('hotspring'))return false;const coins=S.coins;return Village.rest()&&!Village.rest()&&S.coins===coins+60;`);
 run('spring reward survives save reload and resets next day',`S=JSON.parse(JSON.stringify(S));if(Village.rest())return false;clock+=86400000;return Village.rest();`);
-run('built project scene objects keep original art IDs and locations',`const objects=Village.sceneObjects();return objects.length===2&&objects.some(o=>o.k==='deco-waterwheel'&&o.gx===22&&o.gy===7)&&objects.some(o=>o.k==='scenery-spring');`);
+run('built project scene objects keep original art IDs and locations',`const objects=Village.sceneObjects();return objects.length===2&&objects.some(o=>o.k==='village-wheel'&&o.gx===22&&o.gy===7)&&objects.some(o=>o.k==='village-spring');`);
 run('malformed pending jobs normalize safely',`S.village.jobs.bogus={startedAt:0,readyAt:10};S.village.jobs.flour={startedAt:NaN,readyAt:10};Village.ensure();return !S.village.jobs.bogus&&!S.village.jobs.flour;`);
 console.log('PASS '+results.length+' village scenarios');
 fs.writeFileSync('docs/village-logic-report.json',JSON.stringify({passed:true,checks:results},null,2));

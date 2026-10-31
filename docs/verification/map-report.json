@@ -1,0 +1,122 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "name": "no sound before user activation",
+      "pass": true
+    },
+    {
+      "name": "trusted tap unlocks map sound",
+      "pass": true,
+      "unlocked": true,
+      "state": "running",
+      "ambient": true,
+      "fullscreen": true
+    },
+    {
+      "name": "map audio produces a nonzero waveform",
+      "pass": true,
+      "rms": 0.031269352051393286
+    },
+    {
+      "name": "master switch stops map audio and effects",
+      "pass": true
+    },
+    {
+      "name": "zero master volume stops map audio",
+      "pass": true
+    },
+    {
+      "name": "map ambience can be off while effects remain on",
+      "pass": true
+    },
+    {
+      "name": "map ambience restarts without duplicate nodes",
+      "pass": true
+    },
+    {
+      "name": "province map also has ambient sound",
+      "pass": true
+    },
+    {
+      "name": "fishing stops farm ambience",
+      "pass": true
+    },
+    {
+      "name": "fishing ambience still works",
+      "pass": true
+    },
+    {
+      "name": "leaving fishing restores farm ambience",
+      "pass": true
+    },
+    {
+      "name": "manual fullscreen control removed from settings",
+      "pass": true
+    },
+    {
+      "name": "late shop tab remains selected and visible",
+      "pass": true,
+      "id": "10",
+      "visible": true,
+      "scroll": 927,
+      "left": 268.84375,
+      "right": 374.453125,
+      "containerLeft": 12,
+      "containerRight": 378
+    },
+    {
+      "name": "refresh keeps active tab",
+      "pass": true
+    },
+    {
+      "name": "wheel zoom is eased and preserves cursor anchor",
+      "pass": true,
+      "before": 0.7,
+      "now": 0.9023649974546868,
+      "target": 0.9449011653032021,
+      "anchor": {
+        "x": 195,
+        "y": 400
+      }
+    },
+    {
+      "name": "map continues gliding after drag release",
+      "pass": true,
+      "x": 381.65930477167984,
+      "velocity": 154.22064462215775,
+      "rebuilds": 0
+    },
+    {
+      "name": "small drag does not rebuild ground every frame",
+      "pass": true,
+      "x": 381.65930477167984,
+      "velocity": 154.22064462215775,
+      "rebuilds": 0
+    },
+    {
+      "name": "crop care shows longer countdown and four actions",
+      "pass": true
+    },
+    {
+      "name": "high-level seed sprites use separate images",
+      "pass": true
+    },
+    {
+      "name": "head anchors stay inside character bounds",
+      "pass": true
+    },
+    {
+      "name": "old crop timing migrates while preserving progress",
+      "pass": true,
+      "version": 2,
+      "progress": 0.5062433333333334,
+      "duration": 300000
+    },
+    {
+      "name": "no runtime exceptions",
+      "pass": true,
+      "errors": []
+    }
+  ]
+}

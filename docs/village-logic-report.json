@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "legacy saves lazily gain village state",
+      "pass": true
+    },
+    {
+      "name": "all recipe inputs and outputs reference real items",
+      "pass": true
+    },
+    {
+      "name": "reject unaffordable restoration without mutation",
+      "pass": true
+    },
+    {
+      "name": "restoration consumes resources once",
+      "pass": true
+    },
+    {
+      "name": "cannot finish restoration early",
+      "pass": true
+    },
+    {
+      "name": "restoration persists offline and rewards once",
+      "pass": true
+    },
+    {
+      "name": "locked crafts cannot consume ingredients",
+      "pass": true
+    },
+    {
+      "name": "waterwheel reduces queued craft duration by twenty percent",
+      "pass": true
+    },
+    {
+      "name": "production cannot be collected before ready",
+      "pass": true
+    },
+    {
+      "name": "full inventory preserves completed production",
+      "pass": true
+    },
+    {
+      "name": "offline completed craft grants once after capacity freed",
+      "pass": true
+    },
+    {
+      "name": "daily objectives count only new progress and cannot double claim",
+      "pass": true
+    },
+    {
+      "name": "Vietnam daily reset occurs at UTC 17:00",
+      "pass": true
+    },
+    {
+      "name": "hot spring requires construction and grants daily rest once",
+      "pass": true
+    },
+    {
+      "name": "spring reward survives save reload and resets next day",
+      "pass": true
+    },
+    {
+      "name": "built project scene objects keep original art IDs and locations",
+      "pass": true
+    },
+    {
+      "name": "malformed pending jobs normalize safely",
+      "pass": true
+    }
+  ]
+}
