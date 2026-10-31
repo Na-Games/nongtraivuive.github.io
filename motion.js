@@ -19,6 +19,7 @@ const Motion={
     c.drawImage(Art.images[frame.sheet],frame.col*sheet.cell,frame.row*sheet.cell,sheet.cell,sheet.cell,-side*clip.pivot[0]/clip.cell,-side*clip.pivot[1]/clip.cell,side,side);c.restore();return true;
   },
   canOccupy(x,y){
+    if(x>=27||y<1.5)return false;
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
     if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+PROWS+.15)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
@@ -73,6 +74,7 @@ const Motion={
   emit(kind,gx,gy,size=24,life=.6,elevation=0){if(!S.fx.particles||this.reduced||this.effects.length>=100)return;this.effects.push({kind,gx,gy,size,life,elevation,age:0})},
   drawEffects(c,scene){for(const e of this.effects){const p=scene.iso(e.gx,e.gy),phase=Math.min(.999,e.age/e.life);this.draw(c,'motion-'+e.kind,phase,p.x,p.y-e.elevation*scene.cam.z,e.size*scene.cam.z,{alpha:Math.min(1,(1-phase)*3)})}},
   avatar(c,x,y,h,av,o={}){
+    if(typeof Wardrobe!=='undefined')return Wardrobe.draw(c,x,y,h,av,o);
     if(av.art===false)return false;const variant=Number.isInteger(av.style)?av.style:Math.max(0,OUTFITS.indexOf(av.outfit)),prefix='farmer'+variant;
     let state=o.fishing?'fish':o.walk?(o.back?'back':'walk'):o.work?'work':o.back?'back':'idle';let phase=o.walk||state==='back'?(o.phase??(o.t||0)*1.5):state==='work'?(o.actionTime??o.t??0)*2.5:(o.t||0)*.7;
     if(state==='fish'){const elapsed=(o.t||0)-(o.castAt||0),clip=this.clip(prefix+'-fish'),n=clip?.frames.length||6,poses=[{hold:3,reel:[5,6,7]},{hold:1,reel:[2,3,4]},{hold:1,reel:[2,3]},{hold:2,reel:[3,4]},{hold:1,reel:[2,3]},{hold:0,reel:[0,1]}][variant];let frame=poses.hold;if(o.caught)frame=n-1;else if(o.fishState==='wait'&&elapsed<.35)frame=Math.min(n-1,Math.floor(elapsed/.12));else if(o.reel)frame=poses.reel[Math.floor((o.t||0)*8)%poses.reel.length];phase=frame/n}

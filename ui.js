@@ -15,7 +15,7 @@ function openSheet(key,title,render,h){
   if(typeof FS!=='undefined'&&FS){FS.paused=true;FS.reel=false;Haptics.stop();Fishing.stopAudio();$('#fpause')?.classList.add('hidden')}
   const L=$('#layer-sheet');L.innerHTML='';sheetKey=key;sheetRefresh=render;
   const bd=el('div','backdrop');bd.onclick=closeSheet;
-  const sh=el('div','sheet');if(h)sh.style.setProperty('--h',h);
+  const sh=el('div','sheet');sh.dataset.sheet=key;if(h)sh.style.setProperty('--h',h);
   sh.innerHTML=`<div class="ribbon">${title}</div><button class="x">✕</button><div class="body"></div>`;
   $('.x',sh).onclick=closeSheet;
   L.append(bd,sh);render($('.body',sh));
@@ -38,7 +38,7 @@ function buildHud(){
     <div class="res" id="r-coin"><span class="ic">🪙</span><span id="v-coin"></span></div>
     <div class="res" id="r-gem"><span class="ic">💎</span><span id="v-gem"></span></div>
     <div class="res" id="r-inv" style="cursor:pointer"><span class="ic">🏺</span><span><b id="v-inv"></b><small id="v-cap"></small></span></div>
-    <div class="sp"></div>
+  </div><div class="hud-actions">
     <button class="cbtn" id="b-day" title="Sáng/Tối"></button>
     <button class="cbtn" id="b-mail">✉️<i class="dot" id="d-mail"></i></button>
     <button class="cbtn" id="b-cam">📷</button>
@@ -48,12 +48,12 @@ function buildHud(){
     <div class="lvbadge" id="v-lv">1</div>
     <div class="prof-info"><div class="xpbar"><i id="xp-i"></i><span id="v-xp"></span></div><div class="loc">📍 <span id="v-loc"></span></div></div>
   </div>
-  <div class="side">
+  <div class="side side-events">
     <button class="sbtn" data-a="event"><div class="ico">🪷</div>Sự kiện</button>
     <button class="sbtn" data-a="season"><div class="ico">📗</div>Mùa vụ</button>
     <button class="sbtn" data-a="checkin"><div class="ico">📅<i class="dot on" id="d-ci"></i></div>Điểm danh</button>
   </div>
-  <div class="side" style="top:auto;bottom:calc(120px + var(--sb))">
+  <div class="side side-social">
     <button class="sbtn" data-a="friends"><div class="ico">🧺</div>Bạn bè</button>
     <button class="sbtn new" data-a="bag"><div class="ico">🎒</div>Túi</button>
     <button class="sbtn" data-a="orders"><div class="ico">📋<i class="dot num on" id="d-ord"></i></div>Đơn hàng</button>
@@ -62,7 +62,7 @@ function buildHud(){
   <button class="cbtn" id="b-harv" style="position:absolute;left:12px;top:calc(46vh);width:56px;height:56px;font-size:30px" title="Thu hoạch nhanh">🌾</button>
   <div class="zoomctl"><button class="cbtn" id="b-zin">＋</button><button class="cbtn" id="b-zout">－</button></div>
   <div class="bl">
-    <div class="bl-row"><button class="cbtn" id="b-menu" style="width:52px;height:52px">⊞<i class="dot on"></i></button><button class="cbtn" id="b-fish" style="width:52px;height:52px">🎣</button></div>
+    <div class="bl-row"><button class="cbtn" id="b-menu" title="Menu">⊞<i class="dot on"></i></button><button class="cbtn" id="b-fish" title="Câu cá">🎣</button><button class="cbtn" id="b-world" title="Bản đồ nông trại">🗺️</button><button class="cbtn" id="b-settings" title="Cài đặt">⚙️</button></div>
     <div class="quest"><div class="qa">👴</div><div class="qbox" id="qbox"></div></div>
     <div class="chat" id="chat"></div>
   </div>
@@ -70,6 +70,7 @@ function buildHud(){
   h.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>({event:openEvents,season:openSeason,checkin:openCheckin,friends:()=>openFriends(0),bag:openBag,orders:openOrders,invite:openInvite})[b.dataset.a]());
   $('#b-day').onclick=toggleNight;$('#b-mail').onclick=openMail;$('#b-cam').onclick=screenshot;
   $('#b-avatar').onclick=openProfile;$('#b-shop').onclick=()=>openShop(0);$('#r-inv').onclick=openStorage;
+  $('#b-world').onclick=()=>World.open();$('#b-settings').onclick=()=>openSettings(0);
   $('#b-menu').onclick=openMenu;$('#b-fish').onclick=openFishing;$('#b-harv').onclick=harvestAll;
   $('#b-zin').onclick=()=>Scene.zoomAt(1.25,Scene.w/2,Scene.h/2);$('#b-zout').onclick=()=>Scene.zoomAt(.8,Scene.w/2,Scene.h/2);
   $('#qbox').onclick=()=>{if(!claimQuest())openQuests()};
@@ -83,7 +84,7 @@ function refreshHud(){
   $('#v-inv').textContent=invTotal();$('#v-cap').textContent='/'+fishCapacity();
   $('#v-lv').textContent=S.lv;$('#xp-i').style.width=(S.xp/xpNeed(S.lv)*100)+'%';$('#v-xp').textContent=`${S.xp}/${xpNeed(S.lv)}`;
   $('#v-loc').textContent=S.province||'—';
-  $('#b-day').innerHTML=S.night?MOON:SUN;
+  const day=$('#b-day');if(day.dataset.night!==String(S.night)){day.innerHTML=S.night?MOON:SUN;day.dataset.night=String(S.night)}
   const ready=S.orders.filter(o=>o.need.every(n=>has(n.id,n.n))).length;
   const d=$('#d-ord');d.textContent=ready;d.classList.toggle('on',ready>0);
   $('#d-mail').classList.toggle('on',S.mail.some(m=>!m.got));
@@ -115,10 +116,15 @@ function onLevelUp(){
 function walkTo(gx,gy){Motion.navigate(Scene.player,clamp(gx-.6,.5,N-.5),clamp(gy-.2,.5,N-.5))}
 function popAt(sx,sy,html,setup){
   const L=$('#layer-pop');L.innerHTML='';const p=el('div','pop',html);
-  p.style.left=clamp(sx,150,Scene.w-150)+'px';p.style.top=Math.max(150,sy-24)+'px';L.appendChild(p);setup&&setup(p);return p;
+  p.style.visibility='hidden';L.appendChild(p);setup&&setup(p);
+  const bounds=window.visualViewport,viewW=bounds?.width||innerWidth,viewH=bounds?.height||innerHeight;
+  p.style.maxHeight=Math.max(120,viewH-24)+'px';
+  const box=p.getBoundingClientRect(),left=clamp(sx-box.width/2,12,Math.max(12,viewW-box.width-12)),top=clamp(sy-box.height-24,12,Math.max(12,viewH-box.height-12));
+  p.style.left=left+'px';p.style.top=top+'px';p.style.visibility='';return p;
 }
 Scene.onTap=(gx,gy,sx,sy)=>{
   if(!$('#hud')||$('#hud').classList.contains('hidden'))return;
+  if(World.tap(gx,gy,sx,sy))return;
   if(decorPlacement){placeDecor(Math.floor(gx)+.5,Math.floor(gy)+.5);return}
   const decoration=(S.decor||[]).filter(d=>DECOR_CATALOG[d.id]).sort((a,b)=>Math.hypot(gx-a.gx,gy-a.gy)-Math.hypot(gx-b.gx,gy-b.gy)).find(d=>Math.hypot(gx-d.gx,gy-d.gy)<.85);if(decoration)return tapDecor(decoration,sx,sy);
   const i=Math.floor(gx),j=Math.floor(gy);hidePop();beep('tap');
@@ -165,7 +171,7 @@ function plant(k,id,sx,sy,quiet){
   const C=CROPS[id];
   if(S.seeds[id]>0)S.seeds[id]--;else{if(S.coins<C.seed)return toast('Không đủ xu mua hạt'),beep('err');addCoins(-C.seed)}
   const pl=S.plots[k];pl.crop=id;pl.t0=Date.now();S.lastSeed=id;
-  if(!quiet){Motion.workPlayer();Scene.burst(sx,sy,'sprout',5);hidePop();beep('tap')}
+  if(!quiet){Haptics.pulse('farm');Motion.workPlayer();Scene.burst(sx,sy,'sprout',5);hidePop();beep('tap')}
 }
 function harvestPlot(k,sx,sy,quiet){
   const pl=S.plots[k],C=CROPS[pl.crop],q=yieldQty(pl);
@@ -410,7 +416,7 @@ function openProfile(){
   openSheet('profile','Hồ sơ',body=>{
     body.innerHTML=`<canvas id="pav" class="av-prev" width="340" height="400"></canvas><div style="text-align:center;font-weight:800;font-size:24px">${S.name}</div><div style="text-align:center;font-weight:700">Cấp ${S.lv} · 📍 ${S.province||'—'}</div>
     <div class="grid3" style="margin:14px 0"><div class="item"><div class="em" style="height:40px">🪙</div>${fmt(S.coins)}</div><div class="item"><div class="em" style="height:40px">💎</div>${S.gems}</div><div class="item"><div class="em" style="height:40px">🐟</div>${S.fish.caught} cá</div></div>
-    <div class="row"><button class="btn-big" id="e1">✏️ Chỉnh nhân vật</button><button class="btn-big" id="e2" style="background:linear-gradient(#f5a43d,#d67410);box-shadow:0 5px 0 #9d520a">⚙️ Cài đặt</button></div>`;
+    <div class="row profile-actions"><button class="btn-big" id="e1">✏️ Chỉnh nhân vật</button><button class="btn-big" id="e2" style="background:linear-gradient(#f5a43d,#d67410);box-shadow:0 5px 0 #9d520a">⚙️ Cài đặt</button></div>`;
     const x=$('#pav',body).getContext('2d');drawAvatar(x,170,380,330,S.av,{t:0});
     $('#e1',body).onclick=openAvatarEditor;$('#e2',body).onclick=()=>openSettings(0);
   },'84%');
@@ -418,11 +424,11 @@ function openProfile(){
 function openAvatarEditor(){
   openSheet('avatar','Nhân vật',body=>{
     body.innerHTML=`<canvas id="pav" class="av-prev" width="340" height="400"></canvas>`;
-    body.appendChild(el('div','lbl','Bộ nhân vật PNG'));const styles=el('div','avatar-styles');for(let i=0;i<6;i++){const b=el('button',(S.av.art!==false&&(S.av.style||0)===i)?'on':'',Art.icon(`farmer-${i}-idle`,'Nhân vật '+(i+1)));b.onclick=()=>{S.av.art=true;S.av.style=i;S.av.outfit=OUTFITS[i];refreshSheet();drawHudAvatar()};styles.appendChild(b)}body.appendChild(styles);const custom=el('button','cbtn2 sm','Tự phối màu da, tóc, áo và mũ');custom.onclick=()=>{S.av.art=false;refreshSheet();drawHudAvatar()};body.appendChild(custom);
+    body.appendChild(el('div','lbl','Chọn nhân vật'));const styles=el('div','avatar-styles');for(let i=0;i<6;i++){const b=el('button',(S.av.style||0)===i?'on':'');b.title=Wardrobe.names[i];b.setAttribute('aria-pressed',String((S.av.style||0)===i));b.append(Wardrobe.icon({...S.av,style:i}),el('small','',Wardrobe.names[i]));b.onclick=()=>{S.av.style=i;S.av.art=true;save();refreshSheet();drawHudAvatar()};styles.appendChild(b)}body.appendChild(styles);body.append(el('p','pref-description','Da, tóc, áo và mũ áp dụng trên chính nhân vật đã chọn, cả trong vườn và khi câu cá.'));
     const redraw=()=>{const x=$('#pav',body).getContext('2d');x.clearRect(0,0,340,400);drawAvatar(x,170,380,330,S.av,{t:0});drawHudAvatar()};
-    const row=(lbl,key,arr)=>{body.appendChild(el('div','lbl',lbl));const r=el('div','sw-row');arr.forEach(c=>{const b=el('button','sw-c'+(S.av[key]===c?' on':''));b.style.background=c;b.onclick=()=>{S.av.art=false;S.av[key]=c;refreshSheet();drawHudAvatar()};r.appendChild(b)});body.appendChild(r)};
+    const row=(lbl,key,arr)=>{body.appendChild(el('div','lbl',lbl));const r=el('div','sw-row');arr.forEach((c,i)=>{const b=el('button','sw-c'+(S.av[key]===c?' on':''));b.title=lbl+' '+(i+1);b.setAttribute('aria-pressed',String(S.av[key]===c));b.style.background=c;b.onclick=()=>{S.av[key]=c;save();refreshSheet();drawHudAvatar()};r.appendChild(b)});body.appendChild(r)};
     row('Màu da','skin',SKINS);row('Tóc','hair',HAIRS);row('Áo','outfit',OUTFITS);
-    body.appendChild(el('div','lbl','Mũ'));const s=el('div','seg');HATS.forEach(([k,n])=>{const b=el('button',S.av.hat===k?'on':'',n);b.onclick=()=>{S.av.art=false;S.av.hat=k;refreshSheet();drawHudAvatar()};s.appendChild(b)});body.appendChild(s);
+    body.appendChild(el('div','lbl','Mũ'));const s=el('div','seg');HATS.forEach(([k,n])=>{const b=el('button',S.av.hat===k?'on':'',n);b.onclick=()=>{S.av.hat=k;save();refreshSheet();drawHudAvatar()};s.appendChild(b)});body.appendChild(s);
     body.appendChild(el('div','lbl','Tên'));const inp=el('input','search');inp.value=S.name;inp.maxLength=16;inp.oninput=()=>S.name=inp.value||'Nông dân';body.appendChild(inp);
     redraw();
   },'88%');

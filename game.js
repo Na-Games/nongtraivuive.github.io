@@ -1,7 +1,7 @@
 'use strict';
 /* ===== Trạng thái & lưu trữ ===== */
 const SAVE_KEY='xom_nong_trai_v2';
-const N=22,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=5;
+const N=32,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=5;
 const defState=()=>({
   name:'Nông dân',coins:500,gems:20,xp:0,lv:1,sxp:0,sclaimed:[],
   inv:{lua:3},seeds:{lua:6},cap:150,province:null,joined:0,
@@ -21,6 +21,7 @@ let S=defState();
 function load(){
   try{const r=localStorage.getItem(SAVE_KEY);if(r){const o=JSON.parse(r);S=Object.assign(defState(),o);S.fx=Object.assign(defState().fx,o.fx||{});S.fish=Object.assign(defState().fish,o.fish||{});}}catch(e){}
   S.fx=Preferences.normalize(S.fx);
+  S.av=Wardrobe.normalize(S.av);
   if(!S.orders.length)genOrders(true);
   if(!Array.isArray(S.decor))S.decor=[];
   S.fish.seen=S.fish.seen||{};
@@ -73,6 +74,7 @@ function market(){const seed=Math.floor(Date.now()/3600000);const keys=Object.ke
 /* ===== Âm thanh ===== */
 let actx;
 function beep(kind){
+  if(typeof Haptics!=='undefined'&&['coin','win','err'].includes(kind))Haptics.pulse(kind==='err'?'danger':'reward');
   if(!S.fx.sound||S.fx.volume<=0||S.fx.sfxVolume<=0)return;
   try{
     actx=actx||new (window.AudioContext||window.webkitAudioContext)();
@@ -101,18 +103,22 @@ const Scene={
   t:0,nf:0,parts:[],floats:[],animals:[],player:{x:6,y:8.5,tx:6,ty:8.5,face:1,work:0},
   objs:[],sel:null,onTap:null,hover:null,
   init(){
-    this.cv=$('#scene');this.ctx=this.cv.getContext('2d',{alpha:false,desynchronized:true});
+    this.cv=$('#scene');this.ctx=this.cv.getContext('2d',{alpha:false});
     addEventListener('resize',()=>this.resize());this.resize();
     this.centerOn(6.5,8.5,clamp(innerWidth/640,.5,1));
     this.buildDecor();this.bindInput();this.syncAnimals();
     let last=performance.now();
-    const loop=n=>{requestAnimationFrame(loop);let remaining=clamp((n-last)/1000,0,.1);this.frameMs=n-last;last=n;try{while(remaining>1e-7){const dt=Math.min(remaining,1/120);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
+    const loop=n=>{requestAnimationFrame(loop);const elapsed=n-last;last=n;if(document.hidden||typeof FS!=='undefined'&&FS)return;let remaining=clamp(elapsed/1000,0,.05);this.frameMs=elapsed;try{while(remaining>1e-7){const dt=Math.min(remaining,1/60);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
     requestAnimationFrame(loop);
   },
   resize(){
-    this.dpr=S.fx.hq?Math.min(devicePixelRatio||1,2.5):1;
+    this.dpr=S.fx.hq?Math.min(devicePixelRatio||1,2):1;
+    if(this.w===innerWidth&&this.h===innerHeight&&this.cv.width===Math.round(innerWidth*this.dpr))return;
+    const anchor=this.w&&this.h?this.grid(this.w/2,this.h/2):null;
     this.w=innerWidth;this.h=innerHeight;
-    this.cv.width=this.w*this.dpr;this.cv.height=this.h*this.dpr;
+    this.cv.width=Math.round(this.w*this.dpr);this.cv.height=Math.round(this.h*this.dpr);
+    if(anchor){const p=this.iso(anchor.x,anchor.y);this.cam.x+=this.w/2-p.x;this.cam.y+=this.h/2-p.y}
+    if(typeof hidePop==='function')hidePop();
   },
   iso(gx,gy){const z=this.cam.z;return{x:this.cam.x+(gx-gy)*TW/2*z,y:this.cam.y+(gx+gy)*TH/2*z}},
   grid(sx,sy){const z=this.cam.z,u=(sx-this.cam.x)/z/(TW/2),v=(sy-this.cam.y)/z/(TH/2);return{x:(v+u)/2,y:(v-u)/2}},
@@ -126,7 +132,6 @@ const Scene={
     cv.addEventListener('pointerdown',e=>{
       cv.setPointerCapture(e.pointerId);ptr.set(e.pointerId,{x:e.clientX,y:e.clientY});
       moved=0;down={x:e.clientX,y:e.clientY};if(ptr.size===2){const[a,b]=[...ptr.values()];pinch=Math.hypot(a.x-b.x,a.y-b.y)}
-      if(!document.fullscreenElement&&document.documentElement.requestFullscreen&&!Scene._fs){Scene._fs=1;document.documentElement.requestFullscreen({navigationUI:'hide'}).catch(()=>{})}
     });
     cv.addEventListener('pointermove',e=>{
       const p=ptr.get(e.pointerId);if(!p)return;
@@ -141,7 +146,7 @@ const Scene={
     const up=e=>{
       if(!ptr.has(e.pointerId))return;ptr.delete(e.pointerId);
       if(ptr.size<2)pinch=0;
-      if(moved<=8&&down&&this.onTap){const g=this.grid(e.clientX,e.clientY);this.onTap(g.x,g.y,e.clientX,e.clientY)}
+      if(e.type!=='pointercancel'&&ptr.size===0&&moved<=8&&down&&this.onTap){Haptics.pulse('tap');const g=this.grid(e.clientX,e.clientY);this.onTap(g.x,g.y,e.clientX,e.clientY)}
       else if(moved>8)hidePop();
     };
     cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
@@ -169,7 +174,9 @@ const Scene={
     }
     o.push({gx:5,gy:5,k:'silo',s:1,ph:0},{gx:12,gy:5.9,k:'sign',s:1,ph:0},{gx:1.2,gy:9,k:'well',s:1,ph:0},{gx:8.4,gy:12.2,k:'scarecrow',s:1,ph:0},{gx:9,gy:6.3,k:'hay',s:1,ph:0});
     o.push({gx:6,gy:1,k:'farmhouse',s:1,ph:0},{gx:7.6,gy:5.5,k:'truck',s:.9,ph:0},{gx:9.7,gy:7,k:'tractor',s:.9,ph:0},{gx:14.5,gy:14.5,k:'shop-stall',s:1,ph:0},{gx:14,gy:4.2,k:'boat',s:.85,ph:0},{gx:14,gy:17,k:'greenhouse',s:1,ph:0},{gx:3,gy:7.1,k:'gate',s:1,ph:0},{gx:10.8,gy:1.2,k:'bridge',s:1,ph:0},{gx:7,gy:3,k:'peach-tree',s:1,ph:0},{gx:6.8,gy:2,k:'cat',s:1,ph:0},{gx:14.8,gy:19,k:'buffalo',s:1,ph:0});
-    this.objs=o.filter(d=>!['cat','buffalo'].includes(d.k));
+    this.objs=o.filter(d=>!['cat','buffalo'].includes(d.k)&&d.gx<25&&d.gy>2);
+    for(let i=0;i<12;i++)this.objs.push({gx:18+i%4*1.6,gy:21+Math.floor(i/4)*1.8,k:['orange-tree','mango-tree','banana-tree'][i%3],s:1,ph:i});
+    this.objs.push({gx:25.7,gy:14,k:'boat',s:1.2,ph:0},{gx:23,gy:5,k:'farmhouse',s:1,ph:0});
   },
   syncAnimals(){
     const want=[];
@@ -247,6 +254,7 @@ const Scene={
     if(this.groundKey!==key){const cv=this.groundCache||(this.groundCache=document.createElement('canvas'));cv.width=this.cv.width;cv.height=this.cv.height;const cached=cv.getContext('2d');cached.setTransform(this.dpr,0,0,this.dpr,0,0);this.drawGroundBase(cached,z);this.groundKey=key;this.groundRebuilds=(this.groundRebuilds||0)+1}
     c.drawImage(this.groundCache,0,0,this.groundCache.width,this.groundCache.height,0,0,this.w,this.h);
     this.drawPond(c,z,t);
+    if(typeof World!=='undefined')World.drawWater(c,this,z,t);
   },
   drawGroundBase(c,z){
     const m=this.grid(this.w/2,this.h/2),rad=Math.ceil(Math.max(this.w,this.h)/(TH*z))+3;
@@ -257,12 +265,15 @@ const Scene={
       const hsh=(i*73856093^j*19349663)>>>0,v=(hsh%100)/100;
       let col;
       const onPath=inWorld&&((j===7&&i>=2&&i<=13)||(i===8&&j>=7&&j<=15)||(j===8&&i>=1&&i<=8&&false));
-      if(onPath)col=`hsl(36,${38+v*8}%,${56+v*5}%)`;
+      if(i>=27&&i<N&&j>=0&&j<N)col=`hsl(190,55%,${43+v*3}%)`;
+      else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(41,58%,${74+v*4}%)`;
+      else if(onPath)col=`hsl(36,${38+v*8}%,${56+v*5}%)`;
       else if(inWorld)col=`hsl(${92+v*10},${46+v*8}%,${52+v*6}%)`;
       else col=`hsl(${84+v*14},${34+v*8}%,${44+v*6}%)`;
       this.diamond(c,i,j);c.fillStyle=col;c.fill();
-      Art.tile(c,onPath?'path':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
+      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'path':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
     }
+    if(typeof World!=='undefined')World.drawMountains(c,this,z);
   },
   drawPond(c,z,t){
     const cx=11.5,cy=3.6,pts=[],M=40;

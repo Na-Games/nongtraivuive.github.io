@@ -19,6 +19,7 @@ function startDecorPlacement(id){
 }
 function cancelDecorPlacement(){decorPlacement=null;document.querySelector('#decor-placement')?.remove()}
 function decorCanPlace(x,y){
+  if(x>=26||y<2)return false;
   if(x<.5||y<.5||x>N-.5||y>N-.5)return false;
   if(x>PX0-1&&x<PX0+PCOLS+1&&y>PY0-1&&y<PY0+PROWS+1)return false;
   if(Math.hypot((x-11.5)/3.6,(y-3.6)/2.9)<1)return false;
