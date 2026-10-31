@@ -3,7 +3,7 @@ import http from 'node:http';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
-const root=process.cwd(),report={errors:[],checks:[]};
+const root=process.cwd(),report={errors:[],checks:[]};fs.mkdirSync("docs/verification",{recursive:true});fs.mkdirSync(".runtime",{recursive:true});
 const server=http.createServer((req,res)=>{
  const file=path.resolve(root,'.'+decodeURIComponent(new URL(req.url,'http://localhost').pathname==='/'?'/index.html':new URL(req.url,'http://localhost').pathname));
  if(!file.startsWith(root+path.sep))return res.writeHead(403).end();
@@ -19,6 +19,7 @@ try{
  let seq=0;const pending=new Map();ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p?.reject(Error(JSON.stringify(m.error))):p?.resolve(m.result)}else if(m.method==='Runtime.exceptionThrown')report.errors.push(m.params.exceptionDetails.exception?.description||m.params.exceptionDetails.text)});
  const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++seq;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}))});
  const run=async expression=>{const result=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(result.exceptionDetails)throw Error(result.exceptionDetails.exception?.description||result.exceptionDetails.text);return result.result.value};
+ const screenshot=async name=>{await sleep(400);const p=await send('Page.captureScreenshot',{format:'png'});fs.writeFileSync('docs/verification/'+name+'.png',Buffer.from(p.data,'base64'))};
  const check=(name,pass,details={})=>{report.checks.push({name,pass,...details});assert.ok(pass,name+' '+JSON.stringify(details))};
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
  // Hold every PNG request indefinitely: the startup must still reach the map.
@@ -49,10 +50,13 @@ try{
  await run("document.querySelector('#screen-map').classList.add('hidden');document.querySelector('#hud').classList.remove('hidden');closeSheet();World.open()");check('four farm regions available',await run('document.querySelectorAll(".world-region").length===4&&N===32'));
  await run('closeSheet();S.hillGiftAt=0;window.giftBefore=S.coins;World.tap(18,3,200,200);document.querySelector("#hill-gift").click();World.tap(18,3,200,200)');check('hill reward has persistent cooldown',await run('S.coins===giftBefore+25&&document.querySelector("#hill-gift").disabled'));
  await run('hidePop();save()');await send('Page.reload');await sleep(800);check('customization and orientation survive reload',await run("S.av.style===2&&S.av.skin===SKINS[2]&&S.av.hat==='none'&&S.fx.orientation==='portrait'"));
+ await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
  await run("S.lv=200;S.coins=999999;S.fx.sound=false;closeSheet();S.plots[0]={crop:'lua',t0:Date.now(),lv:1,care:{},bonus:0};FarmCare.open(0)");check('crop care has four actions',await run('document.querySelectorAll(".care-action").length===4&&!!document.querySelector("#care-clock")'));
+ await screenshot('crop-care-mobile');
  await run("document.querySelector('.care-action').click()");check('water action updates crop',await run('S.plots[0].care.water===true&&document.querySelector(".care-action").disabled'));
  for(const tab of [8,9,10]){await run('openShop('+tab+')');check('new shop category '+tab,await run('document.querySelector(".sheet .body").textContent.length>100'))}
- await run('openVillage()');check('village projects render',await run('document.querySelectorAll(".village-card").length===3'));
+ await screenshot('shop-level-200-mobile');
+ await run('openVillage()');await screenshot('village-mobile');check('village projects render',await run('document.querySelectorAll(".village-card").length===3'));
  check('no runtime exceptions',report.errors.length===0,{errors:report.errors});
  fs.writeFileSync('docs/verification/upgrade-report.json',JSON.stringify(report,null,2));console.log('PASS '+report.checks.length+' upgrade checks');
  await send('Browser.close');

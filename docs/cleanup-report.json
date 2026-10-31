@@ -1,32 +1,126 @@
-﻿[
-    {
-        "path":  "assets/source",
-        "files":  16,
-        "bytes":  35676047
-    },
-    {
-        "path":  "assets/motion/source",
-        "files":  11,
-        "bytes":  18167617
-    },
-    {
-        "path":  "docs/reference",
-        "files":  66,
-        "bytes":  11976420
-    },
-    {
-        "path":  "docs/original",
-        "files":  3,
-        "bytes":  89520
-    },
-    {
-        "path":  "docs/before-motion",
-        "files":  6,
-        "bytes":  112082
-    },
-    {
-        "path":  "docs/before-fishing",
-        "files":  5,
-        "bytes":  122911
-    }
-]
+﻿{
+    "removedFiles":  76,
+    "removedBytes":  80020624,
+    "items":  [
+                  {
+                      "path":  "assets/diorama/source",
+                      "files":  28,
+                      "bytes":  64546034
+                  },
+                  {
+                      "path":  "docs/verification",
+                      "files":  26,
+                      "bytes":  14099906
+                  },
+                  {
+                      "path":  "assets/sources.json",
+                      "files":  1,
+                      "bytes":  12166
+                  },
+                  {
+                      "path":  "tools/build-assets.mjs",
+                      "files":  1,
+                      "bytes":  6363
+                  },
+                  {
+                      "path":  "tools/build-motion.mjs",
+                      "files":  1,
+                      "bytes":  6951
+                  },
+                  {
+                      "path":  "tools/integrate-art.mjs",
+                      "files":  1,
+                      "bytes":  8064
+                  },
+                  {
+                      "path":  "tools/prepare-motion.mjs",
+                      "files":  1,
+                      "bytes":  438
+                  },
+                  {
+                      "path":  "tools/update-motion-links.mjs",
+                      "files":  1,
+                      "bytes":  515
+                  },
+                  {
+                      "path":  "docs/asset-validation.json",
+                      "files":  1,
+                      "bytes":  2456
+                  },
+                  {
+                      "path":  "docs/CAU-CA-VA-CAI-DAT.md",
+                      "files":  1,
+                      "bytes":  12270
+                  },
+                  {
+                      "path":  "docs/CHUYEN-DONG.md",
+                      "files":  1,
+                      "bytes":  7570
+                  },
+                  {
+                      "path":  "docs/farming-logic-report.json",
+                      "files":  1,
+                      "bytes":  1129
+                  },
+                  {
+                      "path":  "docs/fishing-logic-report.json",
+                      "files":  1,
+                      "bytes":  2544
+                  },
+                  {
+                      "path":  "docs/image-prompts.json",
+                      "files":  1,
+                      "bytes":  21724
+                  },
+                  {
+                      "path":  "docs/motion-logic-report.json",
+                      "files":  1,
+                      "bytes":  1021
+                  },
+                  {
+                      "path":  "docs/motion-prompts.json",
+                      "files":  1,
+                      "bytes":  15867
+                  },
+                  {
+                      "path":  "docs/motion-sources.json",
+                      "files":  1,
+                      "bytes":  26811
+                  },
+                  {
+                      "path":  "docs/motion-validation.json",
+                      "files":  1,
+                      "bytes":  1094
+                  },
+                  {
+                      "path":  "docs/PHAN-TICH-VA-TICH-HOP.md",
+                      "files":  1,
+                      "bytes":  11238
+                  },
+                  {
+                      "path":  "docs/references-0.jpg",
+                      "files":  1,
+                      "bytes":  485197
+                  },
+                  {
+                      "path":  "docs/references-1.jpg",
+                      "files":  1,
+                      "bytes":  407487
+                  },
+                  {
+                      "path":  "docs/references-2.jpg",
+                      "files":  1,
+                      "bytes":  339653
+                  },
+                  {
+                      "path":  "docs/source-analysis.txt",
+                      "files":  1,
+                      "bytes":  2431
+                  },
+                  {
+                      "path":  "docs/village-logic-report.json",
+                      "files":  1,
+                      "bytes":  1695
+                  }
+              ]
+}

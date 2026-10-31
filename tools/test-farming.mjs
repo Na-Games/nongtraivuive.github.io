@@ -16,4 +16,5 @@ check('supplies charge correctly',run('S.coins=500;Progression.buySupply("boost"
 check('animal requires correct built home',run('S.lv=200;S.coins=1000;!Progression.adopt("hen")'));
 check('animal increases production and limits quantity',run('S.b.coop={lv:1};S.coins=10000;for(let i=0;i<5;i++)Progression.adopt("hen");S.livestock.hen===5&&!Progression.adopt("hen")&&bQty("coop")===6'));
 check('60 fields have separate expansion area',run('S.plots.length===60&&plotXY(30)[1]===23&&plotReqLv(59)===194'));
+check('pets can be adopted without a production barn',run('S.coins=10000;Progression.adopt("dog")&&S.livestock.dog===1'));
 const report={passed:true,checks};fs.writeFileSync('docs/farming-logic-report.json',JSON.stringify(report,null,2));console.log('PASS '+checks.length+' farming and progression checks');

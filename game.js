@@ -182,7 +182,7 @@ const Scene={
   },
   syncAnimals(){
     const want=[];
-    if(typeof Progression!=='undefined')for(const a of Progression.animals){const home=BUILDINGS[a.home]?.slot;if(!home||!S.b[a.home])continue;for(let i=0;i<(S.livestock?.[a.id]||0);i++)want.push({e:({hen:'🐔',cow:'🐄',duck:'🦆',pig:'🐷',goat:'🐐',sheep:'🐑'})[a.id],home:[home[0]+1,home[1]+2.5],r:1.2,sp:.5,k:'owned-'+a.id+i})}
+    if(typeof Progression!=='undefined')for(const a of Progression.animals){const home=a.pet?[7,5]:BUILDINGS[a.home]?.slot;if(!home||!a.pet&&!S.b[a.home])continue;for(let i=0;i<(S.livestock?.[a.id]||0);i++)want.push({e:({hen:'🐔',cow:'🐄',duck:'🦆',pig:'🐷',goat:'🐐',sheep:'🐑',dog:'🐕',cat:'🐈',crane:'🦢'})[a.id],home:[home[0]+1,home[1]+2.5],r:1.2,sp:.5,k:'owned-'+a.id+i})}
     if(S.b.coop)for(let i=0;i<2+S.b.coop.lv;i++)want.push({e:'🐔',home:[10,10],r:2.2,sp:.7,k:'coop'+i});
     if(S.b.pen)for(let i=0;i<1+Math.ceil(S.b.pen.lv/2);i++)want.push({e:'🐄',home:[12.2,12.4],r:2.4,sp:.45,k:'pen'+i});
     want.push({e:'🐄',home:[4,13.5],r:2,sp:.4,k:'amb1'},{e:'🦆',home:[11.3,3.8],r:1.7,sp:.5,k:'duck1',water:1},{e:'🦆',home:[12.3,3.2],r:1.5,sp:.5,k:'duck2',water:1},{e:'🐕',home:[7,7],r:4,sp:1.2,k:'dog'},{e:'🦋',home:[6,10],r:6,sp:1.6,k:'bf',fly:1});

@@ -12,6 +12,8 @@ Cập nhật 31/10/2026. Thực hiện trong mã nguồn game hiện có, giữ 
 - Bộ prompt, thứ tự hình và thông số: `docs/diorama-prompts.json`. Các lần tạo lại đã được kiểm tra trước khi đóng gói; nhân vật tĩnh cuối cùng lấy từ khung chuyển động thay vì bảng nháp.
 - Kiểm tra nền trong suốt, số hình và khoảng đệm: `docs/diorama-validation.json`. Script đóng gói từ nguồn: `tools/build-diorama.mjs`; đồng bộ nhân vật và mã tương thích: `tools/finalize-diorama.mjs`.
 
+Đã dọn các bảng ảnh nguồn trung gian, ảnh/video kiểm thử và tài liệu cũ để giảm dung lượng. Game, thư viện PNG và trình diễn chuyển động vẫn dùng đủ bộ ảnh đã đóng gói. Muốn tạo lại atlas từ đầu cần tạo lại ảnh nguồn theo `docs/diorama-prompts.json`; chơi hoặc đóng gói game không cần ảnh nguồn này. Báo cáo kiểm thử có thể tạo lại bằng các lệnh dưới đây.
+
 Các phẩm cấp cây và trang trí cấp cao dùng lại hình của đúng loài/mẫu đã thiết kế; chúng có tên, giá và thông số tiến trình khác nhau. Không phải mỗi phẩm cấp có một ảnh mới độc lập.
 
 ## Trồng và chăm cây
@@ -28,7 +30,7 @@ Thời gian còn lại hiển thị trên từng ô đang trồng và trong màn
 
 174 giống cây và 20 công trình sản xuất. Có 6 nhà máy mới ở cấp 40, 65, 90, 120, 160 và 200: xưởng dệt, tiệm bánh, xưởng quả, xưởng mía, xưởng hương thảo và nhà trà di sản. Các mốc giống/phẩm cấp gồm 40, 70, 100, 140, 180 và 200; giống có giá hạt, thời gian, giá bán và XP riêng. Cấp người chơi tối đa 200.
 
-Mục vật nuôi bán gà, bò, vịt, heo, dê và cừu, yêu cầu chuồng phù hợp. Tối đa 5 con bổ sung mỗi loại, có mặt trên bản đồ và tăng sản lượng chuồng. Mục vật phẩm bán phân hữu cơ và thuốc tăng trưởng dùng được ngay khi chăm cây.
+Mục vật nuôi bán gà, bò, vịt, heo, dê và cừu, yêu cầu chuồng phù hợp. Tối đa 5 con bổ sung mỗi loại, có mặt trên bản đồ và tăng sản lượng chuồng. Có thêm chó, mèo và hạc cảnh đi lại trong vườn; thú cảnh không yêu cầu chuồng sản xuất và không sinh sản phẩm. Mục vật phẩm bán phân hữu cơ và thuốc tăng trưởng dùng được ngay khi chăm cây.
 
 ## Làng quê
 
@@ -39,6 +41,7 @@ Menu hoặc bản đồ → Nhịp sống làng quê: khôi phục guồng nư�
 - `node tools/test-farming.mjs`: chăm cây, vật phẩm, vật nuôi, mở đất và cấp 200.
 - `node tools/test-village.mjs`: xây dựng, chế tác, tiến độ ngoại tuyến và thưởng.
 - `node tools/test-diorama.mjs`: tách hình, nền alpha, khoảng đệm và điểm neo chuyển động.
+- Sau khi đóng gói chuyển động, chạy `node tools/finalize-diorama.mjs`, `node tools/build-fishing-rigs.mjs` và `node tools/build-wardrobe-masks.mjs`. Các lớp màu PNG cho phép thay màu cả khi mở bằng `file:` mà không đọc pixel trong trình duyệt.
 - `node tools/verify-game.mjs`, `node tools/verify-upgrade.mjs`, `node tools/verify-fishing.mjs`, `node tools/verify-local-file.mjs`: chạy Chrome với giao diện và thao tác game. Báo cáo trong `docs/verification/`.
 
 Kiểm tra Chrome mô phỏng kích thước điện thoại không thay thế thử nghiệm trên thiết bị thật. Cảm giác rung và khóa chiều màn hình còn tùy trình duyệt/điện thoại.
