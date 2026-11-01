@@ -99,7 +99,7 @@ const Scene={
   t:0,nf:0,parts:[],floats:[],animals:[],player:{x:6,y:8.5,tx:6,ty:8.5,face:1,work:0},
   objs:[],sel:null,onTap:null,hover:null,
   init(){
-    this.cv=$('#scene');this.ctx=this.cv.getContext('2d',{alpha:false});
+    this.cv=$('#scene');this.ctx=this.cv.getContext('2d',{alpha:true});
     addEventListener('resize',()=>this.resize());this.resize();
     this.centerOn(6.5,8.5,clamp(innerWidth/640,.5,1));
     this.buildDecor();this.bindInput();this.syncAnimals();
