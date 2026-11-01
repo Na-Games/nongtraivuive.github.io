@@ -6,6 +6,8 @@ Map WebGL và nhân vật 3D: chạy `node tools/serve-game.mjs`, rồi mở **h
 
 Cập nhật bản đồ Việt Nam, map 40×40, nhân vật có xem chuyển động, ba cảnh câu cá và thao tác chăm cây: [ghi chú thay đổi](docs/PLAYABILITY-REVISION.md), [ảnh mới và prompt](docs/playability-art.json).
 
+Bản nhân vật dựng lại, vật nuôi có khớp, 36 icon và 18 khung hiệu ứng mới, map 48×48 với biên sương: [cập nhật mới nhất](docs/ACTORS-V3.md), [prompt và nguồn ảnh](docs/actors-v3-art.json).
+
 - index.html: game
 - thu-vien-anh.html: PNG gallery
 - chuyen-dong.html: animation preview

@@ -3,7 +3,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const context=vm.createContext({document:{},Math,console,matchMedia:()=>({matches:false})});
 for(const f of ['data.js','catalog.js','expanded-catalog.js','decor.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
-vm.runInContext(`const N=40,PX0=2,PY0=9,PCOLS=6,PROWS=10;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
+vm.runInContext(`const N=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
 vm.runInContext(fs.readFileSync('motion.js','utf8'),context);
 const tests=[];
 for(const fps of [30,60,120]){

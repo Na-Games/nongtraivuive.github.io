@@ -54,7 +54,7 @@ const Motion={
     e.vx=(e.vx||0)+(desiredX-(e.vx||0))*k;e.vy=(e.vy||0)+(desiredY-(e.vy||0))*k;
     const step=Math.hypot(e.vx,e.vy)*dt;
     if(d<.018||step>=d&&e.vx*dx+e.vy*dy>0){e.x=e.tx;e.y=e.ty;e.vx=e.vy=0}else{e.x+=e.vx*dt;e.y+=e.vy*dt}
-    e.speed=Math.hypot(e.vx,e.vy);const distance=Math.hypot(e.x-oldX,e.y-oldY);e.phase=(e.phase||0)+distance/stride;e.moving=e.speed>.035;e.moveBlend=(e.moveBlend||0)+((e.moving?1:0)-(e.moveBlend||0))*this.exp(12,dt);
+    e.speed=Math.hypot(e.vx,e.vy);if(e.speed>.025){const desired=Math.atan2(e.vx,e.vy);e.heading??=desired;const delta=Math.atan2(Math.sin(desired-e.heading),Math.cos(desired-e.heading));e.heading+=delta*this.exp(9,dt)}const distance=Math.hypot(e.x-oldX,e.y-oldY);e.phase=(e.phase||0)+distance/stride;e.moving=e.speed>.035;e.moveBlend=(e.moveBlend||0)+((e.moving?1:0)-(e.moveBlend||0))*this.exp(12,dt);
     if(!e.moving&&e.moveBlend>.01)e.phase+=(Math.round(e.phase*2)/2-e.phase)*this.exp(18,dt);
     const sx=e.vx-e.vy,sy=(e.vx+e.vy)*.5;if(Math.abs(sx)>.08)e.face=sx>0?1:-1;if(Math.abs(sy)>.06)e.back=sy<0;
     e.turn=(e.turn??e.face??-1)+((e.face||-1)-(e.turn??e.face??-1))*this.exp(18,dt);e.walk=e.moveBlend>.06?1:0;
@@ -67,8 +67,8 @@ const Motion={
     this.reduced=!!S.fx.reduceMotion||this.media.matches;
     for(const a of scene.animals){
       if(!a.fly&&(a.water?!this.pond(a.x,a.y):!this.canOccupy(a.x,a.y))){if(a.water){a.x=11.5;a.y=3.6}else{const route=this.route(a.x,a.y,a.home[0],a.home[1]);if(route.length){a.x=route[0].x;a.y=route[0].y}}a.tx=a.x;a.ty=a.y;a.vx=a.vy=0;a.path=null}
-      if(!a.motionStarted){a.motionStarted=true;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=Math.max(.2,a.wait||1)}
-      if(a.path?.length){let waypoint=a.path[a.pathIndex];if(waypoint&&Math.hypot(waypoint.x-a.x,waypoint.y-a.y)<.08&&a.pathIndex<a.path.length-1)waypoint=a.path[++a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
+      if(!a.motionStarted){a.motionStarted=true;a.heading=0;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=Math.max(.2,a.wait||1)}
+      if(a.path?.length){let waypoint=a.path[a.pathIndex];if(waypoint&&Math.hypot(waypoint.x-a.x,waypoint.y-a.y)<Math.max(.10,(a.speed||0)*.28)&&a.pathIndex<a.path.length-1)waypoint=a.path[++a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
       if(!a.path&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);a.wait=rnd(1.2,4)}}
       const distance=this.stepSafe(a,dt,a.sp,a.fly?.6:a.e==='🐄'||a.e==='🐃'?.7:.52);a.footDistance=(a.footDistance||0)+distance;
       if(a.footDistance>(a.water?.3:.55)&&!a.fly){a.footDistance=0;this.emit(a.water?'water':'dust',a.x,a.y,a.water?20:12,.45)}
@@ -85,7 +85,7 @@ const Motion={
     scene.gustTime=(scene.gustTime||0)+dt;if(scene.gustTime>4){scene.gustTime=0;if(S.fx.wind!==false)this.emit('wind',p.x+2,p.y-1,65,1.5,12)}
   },
   emit(kind,gx,gy,size=24,life=.6,elevation=0){if(!S.fx.particles||this.reduced||this.effects.length>=100)return;this.effects.push({kind,gx,gy,size,life,elevation,age:0})},
-  drawEffects(c,scene){for(const e of this.effects){const p=scene.iso(e.gx,e.gy),phase=Math.min(.999,e.age/e.life);this.draw(c,'motion-'+e.kind,phase,p.x,p.y-e.elevation*scene.cam.z,e.size*scene.cam.z,{alpha:Math.min(1,(1-phase)*3)})}},
+  drawEffects(c,scene){for(const e of this.effects){const p=typeof Farm3D!=='undefined'&&Farm3D.active?Farm3D.project(e.gx,e.gy,e.kind==='water'?.16:Farm3D.walkHeight(e.gx,e.gy)):scene.iso(e.gx,e.gy),phase=Math.min(.999,e.age/e.life);this.draw(c,'motion-'+e.kind,phase,p.x,p.y-e.elevation*scene.cam.z,e.size*scene.cam.z,{alpha:Math.min(1,(1-phase)*3)})}},
   avatar(c,x,y,h,av,o={}){
     if(typeof Wardrobe!=='undefined')return Wardrobe.draw(c,x,y,h,av,o);
     if(av.art===false)return false;const variant=Number.isInteger(av.style)?av.style:Math.max(0,OUTFITS.indexOf(av.outfit)),prefix='farmer'+variant;

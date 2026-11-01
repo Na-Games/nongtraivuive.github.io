@@ -4000,11 +4000,16 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-0.png",
       "bounds": {
-        "x": 95,
-        "y": 161,
-        "w": 67,
-        "h": 67
-      }
+        "x": 62,
+        "y": 147,
+        "w": 133,
+        "h": 81
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-dust-1": {
       "sheet": "anim-effects",
@@ -4012,11 +4017,16 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-1.png",
       "bounds": {
-        "x": 73,
-        "y": 123,
-        "w": 111,
-        "h": 105
-      }
+        "x": 45,
+        "y": 110,
+        "w": 167,
+        "h": 118
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-dust-2": {
       "sheet": "anim-effects",
@@ -4024,11 +4034,16 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-2.png",
       "bounds": {
-        "x": 38,
-        "y": 71,
-        "w": 181,
-        "h": 157
-      }
+        "x": 33,
+        "y": 43,
+        "w": 191,
+        "h": 185
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-dust-3": {
       "sheet": "anim-effects",
@@ -4037,10 +4052,15 @@
       "file": "assets/motion/sprites/anim-effects/motion-dust-3.png",
       "bounds": {
         "x": 29,
-        "y": 34,
+        "y": 95,
         "w": 199,
-        "h": 194
-      }
+        "h": 133
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-dust-4": {
       "sheet": "anim-effects",
@@ -4048,11 +4068,16 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-4.png",
       "bounds": {
-        "x": 56,
-        "y": 94,
-        "w": 145,
-        "h": 134
-      }
+        "x": 37,
+        "y": 161,
+        "w": 183,
+        "h": 67
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-dust-5": {
       "sheet": "anim-effects",
@@ -4060,11 +4085,16 @@
       "row": 0,
       "file": "assets/motion/sprites/anim-effects/motion-dust-5.png",
       "bounds": {
-        "x": 91,
-        "y": 151,
-        "w": 75,
-        "h": 77
-      }
+        "x": 68,
+        "y": 182,
+        "w": 120,
+        "h": 46
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-0": {
       "sheet": "anim-effects",
@@ -4072,11 +4102,16 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-0.png",
       "bounds": {
-        "x": 72,
-        "y": 145,
-        "w": 113,
-        "h": 83
-      }
+        "x": 70,
+        "y": 146,
+        "w": 117,
+        "h": 82
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-1": {
       "sheet": "anim-effects",
@@ -4085,10 +4120,15 @@
       "file": "assets/motion/sprites/anim-effects/motion-water-1.png",
       "bounds": {
         "x": 54,
-        "y": 129,
+        "y": 102,
         "w": 149,
-        "h": 99
-      }
+        "h": 126
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-2": {
       "sheet": "anim-effects",
@@ -4097,10 +4137,15 @@
       "file": "assets/motion/sprites/anim-effects/motion-water-2.png",
       "bounds": {
         "x": 37,
-        "y": 90,
+        "y": 105,
         "w": 183,
-        "h": 138
-      }
+        "h": 123
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-3": {
       "sheet": "anim-effects",
@@ -4108,11 +4153,16 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-3.png",
       "bounds": {
-        "x": 29,
-        "y": 63,
-        "w": 199,
-        "h": 165
-      }
+        "x": 31,
+        "y": 152,
+        "w": 195,
+        "h": 76
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-4": {
       "sheet": "anim-effects",
@@ -4120,11 +4170,16 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-4.png",
       "bounds": {
-        "x": 48,
-        "y": 120,
-        "w": 161,
-        "h": 108
-      }
+        "x": 29,
+        "y": 137,
+        "w": 199,
+        "h": 91
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-water-5": {
       "sheet": "anim-effects",
@@ -4132,11 +4187,16 @@
       "row": 1,
       "file": "assets/motion/sprites/anim-effects/motion-water-5.png",
       "bounds": {
-        "x": 52,
-        "y": 134,
-        "w": 153,
-        "h": 94
-      }
+        "x": 53,
+        "y": 185,
+        "w": 151,
+        "h": 43
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-ripple-0": {
       "sheet": "anim-effects",
@@ -4216,11 +4276,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-0.png",
       "bounds": {
-        "x": 89,
-        "y": 148,
-        "w": 79,
-        "h": 80
-      }
+        "x": 91,
+        "y": 158,
+        "w": 75,
+        "h": 70
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-harvest-1": {
       "sheet": "anim-effects",
@@ -4228,11 +4293,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-1.png",
       "bounds": {
-        "x": 69,
-        "y": 124,
-        "w": 119,
-        "h": 104
-      }
+        "x": 58,
+        "y": 102,
+        "w": 141,
+        "h": 126
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-harvest-2": {
       "sheet": "anim-effects",
@@ -4240,11 +4310,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-2.png",
       "bounds": {
-        "x": 32,
-        "y": 58,
-        "w": 193,
-        "h": 170
-      }
+        "x": 29,
+        "y": 77,
+        "w": 199,
+        "h": 151
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-harvest-3": {
       "sheet": "anim-effects",
@@ -4252,11 +4327,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-3.png",
       "bounds": {
-        "x": 29,
-        "y": 34,
-        "w": 199,
-        "h": 194
-      }
+        "x": 66,
+        "y": 102,
+        "w": 125,
+        "h": 126
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-harvest-4": {
       "sheet": "anim-effects",
@@ -4264,11 +4344,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-4.png",
       "bounds": {
-        "x": 29,
-        "y": 88,
-        "w": 199,
-        "h": 140
-      }
+        "x": 69,
+        "y": 136,
+        "w": 119,
+        "h": 92
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-harvest-5": {
       "sheet": "anim-effects",
@@ -4276,11 +4361,16 @@
       "row": 3,
       "file": "assets/motion/sprites/anim-effects/motion-harvest-5.png",
       "bounds": {
-        "x": 81,
-        "y": 132,
-        "w": 95,
-        "h": 96
-      }
+        "x": 119,
+        "y": 209,
+        "w": 19,
+        "h": 19
+      },
+      "pivot": [
+        128,
+        227
+      ],
+      "extent": 208
     },
     "motion-wind-0": {
       "sheet": "anim-effects",

@@ -1647,9 +1647,9 @@
       "file": "assets/sprites/ui/coin.png",
       "bounds": {
         "x": 26,
-        "y": 39,
+        "y": 26,
         "w": 204,
-        "h": 177
+        "h": 204
       }
     },
     "gem": {
@@ -1658,9 +1658,9 @@
       "row": 0,
       "file": "assets/sprites/ui/gem.png",
       "bounds": {
-        "x": 40,
+        "x": 38,
         "y": 26,
-        "w": 176,
+        "w": 180,
         "h": 204
       }
     },
@@ -1671,9 +1671,9 @@
       "file": "assets/sprites/ui/star.png",
       "bounds": {
         "x": 26,
-        "y": 29,
+        "y": 31,
         "w": 204,
-        "h": 197
+        "h": 194
       }
     },
     "bag": {
@@ -1683,9 +1683,9 @@
       "file": "assets/sprites/ui/bag.png",
       "bounds": {
         "x": 26,
-        "y": 28,
+        "y": 26,
         "w": 204,
-        "h": 200
+        "h": 204
       }
     },
     "orders": {
@@ -1694,9 +1694,9 @@
       "row": 0,
       "file": "assets/sprites/ui/orders.png",
       "bounds": {
-        "x": 33,
+        "x": 38,
         "y": 26,
-        "w": 189,
+        "w": 179,
         "h": 204
       }
     },
@@ -1708,7 +1708,7 @@
       "bounds": {
         "x": 28,
         "y": 26,
-        "w": 200,
+        "w": 199,
         "h": 204
       }
     },
@@ -1719,9 +1719,9 @@
       "file": "assets/sprites/ui/mail.png",
       "bounds": {
         "x": 26,
-        "y": 49,
+        "y": 48,
         "w": 204,
-        "h": 158
+        "h": 160
       }
     },
     "season": {
@@ -1730,9 +1730,9 @@
       "row": 1,
       "file": "assets/sprites/ui/season.png",
       "bounds": {
-        "x": 34,
-        "y": 25,
-        "w": 187,
+        "x": 31,
+        "y": 26,
+        "w": 193,
         "h": 204
       }
     },
@@ -1742,10 +1742,10 @@
       "row": 1,
       "file": "assets/sprites/ui/calendar.png",
       "bounds": {
-        "x": 40,
-        "y": 26,
-        "w": 175,
-        "h": 204
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 197
       }
     },
     "festival": {
@@ -1754,10 +1754,10 @@
       "row": 1,
       "file": "assets/sprites/ui/festival.png",
       "bounds": {
-        "x": 31,
-        "y": 26,
-        "w": 193,
-        "h": 204
+        "x": 25,
+        "y": 27,
+        "w": 204,
+        "h": 202
       }
     },
     "lantern": {
@@ -1766,9 +1766,9 @@
       "row": 1,
       "file": "assets/sprites/ui/lantern.png",
       "bounds": {
-        "x": 65,
+        "x": 73,
         "y": 26,
-        "w": 125,
+        "w": 110,
         "h": 204
       }
     },
@@ -1778,9 +1778,9 @@
       "row": 1,
       "file": "assets/sprites/ui/trophy.png",
       "bounds": {
-        "x": 38,
+        "x": 28,
         "y": 26,
-        "w": 179,
+        "w": 200,
         "h": 204
       }
     },
@@ -1790,10 +1790,10 @@
       "row": 2,
       "file": "assets/sprites/ui/shop.png",
       "bounds": {
-        "x": 26,
-        "y": 33,
-        "w": 204,
-        "h": 189
+        "x": 33,
+        "y": 26,
+        "w": 189,
+        "h": 204
       }
     },
     "friends": {
@@ -1802,10 +1802,10 @@
       "row": 2,
       "file": "assets/sprites/ui/friends.png",
       "bounds": {
-        "x": 35,
-        "y": 26,
-        "w": 186,
-        "h": 204
+        "x": 26,
+        "y": 46,
+        "w": 204,
+        "h": 164
       }
     },
     "invite": {
@@ -1814,10 +1814,10 @@
       "row": 2,
       "file": "assets/sprites/ui/invite.png",
       "bounds": {
-        "x": 26,
-        "y": 37,
-        "w": 204,
-        "h": 181
+        "x": 28,
+        "y": 26,
+        "w": 199,
+        "h": 204
       }
     },
     "settings": {
@@ -1826,9 +1826,9 @@
       "row": 2,
       "file": "assets/sprites/ui/settings.png",
       "bounds": {
-        "x": 26,
+        "x": 25,
         "y": 26,
-        "w": 203,
+        "w": 204,
         "h": 204
       }
     },
@@ -1839,9 +1839,9 @@
       "file": "assets/sprites/ui/camera.png",
       "bounds": {
         "x": 26,
-        "y": 52,
+        "y": 55,
         "w": 204,
-        "h": 151
+        "h": 146
       }
     },
     "menu": {
@@ -1850,10 +1850,10 @@
       "row": 2,
       "file": "assets/sprites/ui/menu.png",
       "bounds": {
-        "x": 29,
-        "y": 26,
-        "w": 197,
-        "h": 204
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
       }
     },
     "sun": {
@@ -1863,9 +1863,9 @@
       "file": "assets/sprites/ui/sun.png",
       "bounds": {
         "x": 26,
-        "y": 29,
+        "y": 27,
         "w": 204,
-        "h": 197
+        "h": 202
       }
     },
     "moon": {
@@ -1874,9 +1874,9 @@
       "row": 3,
       "file": "assets/sprites/ui/moon.png",
       "bounds": {
-        "x": 31,
+        "x": 35,
         "y": 26,
-        "w": 193,
+        "w": 185,
         "h": 204
       }
     },
@@ -1886,9 +1886,9 @@
       "row": 3,
       "file": "assets/sprites/ui/lock.png",
       "bounds": {
-        "x": 46,
+        "x": 51,
         "y": 26,
-        "w": 163,
+        "w": 154,
         "h": 204
       }
     },
@@ -1898,10 +1898,10 @@
       "row": 3,
       "file": "assets/sprites/ui/hammer.png",
       "bounds": {
-        "x": 33,
-        "y": 26,
-        "w": 190,
-        "h": 204
+        "x": 26,
+        "y": 29,
+        "w": 204,
+        "h": 198
       }
     },
     "upgrade": {
@@ -1910,9 +1910,9 @@
       "row": 3,
       "file": "assets/sprites/ui/upgrade.png",
       "bounds": {
-        "x": 29,
+        "x": 36,
         "y": 26,
-        "w": 198,
+        "w": 184,
         "h": 204
       }
     },
@@ -1922,9 +1922,9 @@
       "row": 3,
       "file": "assets/sprites/ui/energy.png",
       "bounds": {
-        "x": 57,
+        "x": 55,
         "y": 26,
-        "w": 141,
+        "w": 145,
         "h": 204
       }
     },
@@ -1935,9 +1935,9 @@
       "file": "assets/sprites/ui/watering-can.png",
       "bounds": {
         "x": 26,
-        "y": 43,
+        "y": 36,
         "w": 204,
-        "h": 169
+        "h": 184
       }
     },
     "sickle": {
@@ -1946,10 +1946,10 @@
       "row": 4,
       "file": "assets/sprites/ui/sickle.png",
       "bounds": {
-        "x": 45,
-        "y": 26,
-        "w": 166,
-        "h": 204
+        "x": 26,
+        "y": 28,
+        "w": 204,
+        "h": 199
       }
     },
     "hoe": {
@@ -1958,10 +1958,10 @@
       "row": 4,
       "file": "assets/sprites/ui/hoe.png",
       "bounds": {
-        "x": 26,
-        "y": 31,
-        "w": 204,
-        "h": 194
+        "x": 36,
+        "y": 26,
+        "w": 183,
+        "h": 204
       }
     },
     "shovel": {
@@ -1970,10 +1970,10 @@
       "row": 4,
       "file": "assets/sprites/ui/shovel.png",
       "bounds": {
-        "x": 26,
-        "y": 33,
-        "w": 204,
-        "h": 190
+        "x": 37,
+        "y": 26,
+        "w": 181,
+        "h": 204
       }
     },
     "axe": {
@@ -1983,9 +1983,9 @@
       "file": "assets/sprites/ui/axe.png",
       "bounds": {
         "x": 26,
-        "y": 44,
+        "y": 35,
         "w": 204,
-        "h": 167
+        "h": 185
       }
     },
     "fertilizer": {
@@ -1994,10 +1994,10 @@
       "row": 4,
       "file": "assets/sprites/ui/fertilizer.png",
       "bounds": {
-        "x": 26,
-        "y": 31,
-        "w": 204,
-        "h": 194
+        "x": 30,
+        "y": 26,
+        "w": 195,
+        "h": 204
       }
     },
     "planks": {
@@ -2007,9 +2007,9 @@
       "file": "assets/sprites/ui/planks.png",
       "bounds": {
         "x": 26,
-        "y": 61,
+        "y": 38,
         "w": 204,
-        "h": 133
+        "h": 180
       }
     },
     "bricks": {
@@ -2019,9 +2019,9 @@
       "file": "assets/sprites/ui/bricks.png",
       "bounds": {
         "x": 26,
-        "y": 46,
+        "y": 49,
         "w": 204,
-        "h": 164
+        "h": 158
       }
     },
     "stones": {
@@ -2030,10 +2030,10 @@
       "row": 5,
       "file": "assets/sprites/ui/stones.png",
       "bounds": {
-        "x": 26,
-        "y": 43,
-        "w": 204,
-        "h": 169
+        "x": 27,
+        "y": 46,
+        "w": 203,
+        "h": 163
       }
     },
     "iron": {
@@ -2043,9 +2043,9 @@
       "file": "assets/sprites/ui/iron.png",
       "bounds": {
         "x": 26,
-        "y": 62,
+        "y": 57,
         "w": 204,
-        "h": 131
+        "h": 142
       }
     },
     "crown": {
@@ -2055,9 +2055,9 @@
       "file": "assets/sprites/ui/crown.png",
       "bounds": {
         "x": 26,
-        "y": 53,
+        "y": 52,
         "w": 204,
-        "h": 150
+        "h": 151
       }
     },
     "pin": {
@@ -2066,10 +2066,10 @@
       "row": 5,
       "file": "assets/sprites/ui/pin.png",
       "bounds": {
-        "x": 26,
-        "y": 30,
-        "w": 204,
-        "h": 195
+        "x": 52,
+        "y": 26,
+        "w": 152,
+        "h": 204
       }
     },
     "sparkle": {

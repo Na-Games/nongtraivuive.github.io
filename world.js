@@ -6,6 +6,7 @@ const World={
     {id:'hills',n:'Đồi xanh',desc:'Đường mòn ngắm núi và nhặt quà mỗi 5 phút',x:18,y:3,icon:'mountains'},
     {id:'coast',n:'Bờ biển',desc:'Bãi cát, sóng biển và lối vào khu câu cá',x:25,y:14,icon:'boat'},
     {id:'orchard',n:'Vườn cây',desc:'Khoảng đất mới để trồng cây ăn quả',x:20,y:24,icon:'orange-tree'},
+    {id:'meadow',n:'Đồng cỏ ven rừng',desc:'Đường dạo và khoảng vườn mới phía Nam',x:12,y:43,icon:'tree'},
     {id:'garden',n:'Vườn phương Nam',desc:'Đường dạo và vườn hoa trong phần đất mở rộng',x:12,y:35,icon:'flower'},
   ],
   open(){openSheet('world','Khám phá nông trại',body=>{

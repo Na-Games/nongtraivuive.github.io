@@ -1,0 +1,67 @@
+{
+  "tool": "built-in image_gen",
+  "outputs": {"iconAtlas":"assets/ui.png","individualIcons":"assets/sprites/ui/","effectAtlas":"assets/motion/anim-effects.png","individualEffects":"assets/motion/sprites/anim-effects/","effectFrames":["motion-dust-0..5","motion-water-0..5","motion-harvest-0..5"]},
+  "vfxPrompt": "Use case: stylized-concept. Production transparent animation VFX atlas, EXACTLY 18 separate frames in 6 columns by 3 rows, equal cells with generous gutters and no overlap. Row 1 six sequential frames of a tiny soft warm earth footstep dust puff: first subtle impact, then small rising sandy wisps, expanding airy puff, thinning, fading, final sparse specks. Row 2 six sequential frames of shallow-water footstep splash: tiny jade water crown into low scattered clear droplets and an expanding flat elliptical ripple, fading outward, realistic water. Row 3 six sequential frames of a soft golden harvest reward sparkle: small gleam grows into a few fine warm sparks then disperses and fades, no coins and no objects. Whole atlas true transparent background; no black backdrop, no text, no borders, no checkerboard, no thick clouds, no opaque colored discs. Sharp polished physically rendered miniature farming game effects, fine soft alpha edges. All frames same isometric ground camera, ground contact centered near lower third within each cell, consistent sizes within each row, at least 16 percent empty padding per cell, no elements touching neighboring cells. Prefer subtle readable effects that do not hide feet or crops.",
+  "jobs": [
+    {
+      "name": "ui-resources-v3",
+      "ids": [
+        "coin",
+        "gem",
+        "star",
+        "bag",
+        "orders",
+        "gift",
+        "mail",
+        "season",
+        "calendar",
+        "festival",
+        "lantern",
+        "trophy"
+      ],
+      "items": "row 1: single gold coin with rice engraving, teal faceted gemstone, gold reward star, rustic woven backpack. row 2: parchment order clipboard, wrapped small gift box, cream envelope with red seal, green leather season journal with leaf. row 3: desk calendar with blank cream pages, red festival lantern on bamboo branch, single hanging amber lantern, small brass trophy cup.",
+      "prompt": "Use case: stylized-concept. Production game icon atlas on truly transparent background. EXACTLY 12 distinct isolated icons in strict 4 columns by 3 rows. row 1: single gold coin with rice engraving, teal faceted gemstone, gold reward star, rustic woven backpack. row 2: parchment order clipboard, wrapped small gift box, cream envelope with red seal, green leather season journal with leaf. row 3: desk calendar with blank cream pages, red festival lantern on bamboo branch, single hanging amber lantern, small brass trophy cup. Each icon centered in its own equal cell with 18 percent empty padding on all sides. Nothing crossing cells, no background cards, no text or letters or numbers. Elegant polished physically rendered miniature farm diorama style, realistic wood grain, hand-forged metal, woven cloth, warm light upper left, readable simple silhouette at 32 pixels, restrained teal and warm brass palette, crisp detail, no dark outline, no huge ground shadows. Transparent gutters between every object. All objects fully visible.",
+      "source": "exec-85152990-b95a-4fe4-ba21-c029270ce77f.png"
+    },
+    {
+      "name": "ui-navigation-v3",
+      "ids": [
+        "shop",
+        "friends",
+        "invite",
+        "settings",
+        "camera",
+        "menu",
+        "sun",
+        "moon",
+        "lock",
+        "hammer",
+        "upgrade",
+        "energy"
+      ],
+      "items": "row 1: miniature rustic wooden market shop with cream canopy, two friendly farmer busts together, open invitation envelope with small leaf, brass settings cog. row 2: old fashioned camera, four separated wooden menu squares forming one grid icon, warm golden sun, crescent moon. row 3: brass padlock, carpenter hammer, upward gold arrow over wooden step, vivid amber lightning energy symbol.",
+      "prompt": "Use case: stylized-concept. Production game icon atlas on truly transparent background. EXACTLY 12 distinct isolated icons in strict 4 columns by 3 rows. row 1: miniature rustic wooden market shop with cream canopy, two friendly farmer busts together, open invitation envelope with small leaf, brass settings cog. row 2: old fashioned camera, four separated wooden menu squares forming one grid icon, warm golden sun, crescent moon. row 3: brass padlock, carpenter hammer, upward gold arrow over wooden step, vivid amber lightning energy symbol. Each icon centered in its own equal cell with 18 percent empty padding on all sides. Nothing crossing cells, no background cards, no text or letters or numbers. Elegant polished physically rendered miniature farm diorama style, realistic wood grain, hand-forged metal, woven cloth, warm light upper left, readable simple silhouette at 32 pixels, restrained teal and warm brass palette, crisp detail, no dark outline, no huge ground shadows. Transparent gutters between every object. All objects fully visible.",
+      "source": "exec-cbf0fbe9-19ab-4cf8-a721-71e31b8ce18b.png"
+    },
+    {
+      "name": "ui-tools-v3",
+      "ids": [
+        "watering-can",
+        "sickle",
+        "hoe",
+        "shovel",
+        "axe",
+        "fertilizer",
+        "planks",
+        "bricks",
+        "stones",
+        "iron",
+        "crown",
+        "pin"
+      ],
+      "items": "row 1: teal metal watering can with wooden handle, curved steel rice sickle, gardening hoe, small garden shovel. row 2: wood handled axe, jute fertilizer sack with green leaf emblem, neat stack of three wooden planks, small stack of terracotta bricks. row 3: small pile smooth gray stones, two iron ingots, modest brass crown, teal map location pin with empty round center.",
+      "prompt": "Use case: stylized-concept. Production game icon atlas on truly transparent background. EXACTLY 12 distinct isolated icons in strict 4 columns by 3 rows. row 1: teal metal watering can with wooden handle, curved steel rice sickle, gardening hoe, small garden shovel. row 2: wood handled axe, jute fertilizer sack with green leaf emblem, neat stack of three wooden planks, small stack of terracotta bricks. row 3: small pile smooth gray stones, two iron ingots, modest brass crown, teal map location pin with empty round center. Each icon centered in its own equal cell with 18 percent empty padding on all sides. Nothing crossing cells, no background cards, no text or letters or numbers. Elegant polished physically rendered miniature farm diorama style, realistic wood grain, hand-forged metal, woven cloth, warm light upper left, readable simple silhouette at 32 pixels, restrained teal and warm brass palette, crisp detail, no dark outline, no huge ground shadows. Transparent gutters between every object. All objects fully visible.",
+      "source": "exec-3a576d24-7c85-4ba8-ab14-cbf811d9bcc5.png"
+    }
+  ]
+}

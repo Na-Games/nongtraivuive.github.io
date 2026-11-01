@@ -1,7 +1,7 @@
 'use strict';
 /* ===== Trạng thái & lưu trữ ===== */
 const SAVE_KEY='xom_nong_trai_v2';
-const N=40,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
+const N=48,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
 const defState=()=>({
   name:'Nông dân',coins:500,gems:20,xp:0,lv:1,sxp:0,sclaimed:[],
   inv:{lua:3},seeds:{lua:6},cap:150,province:null,joined:0,
