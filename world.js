@@ -6,11 +6,12 @@ const World={
     {id:'hills',n:'Đồi xanh',desc:'Đường mòn ngắm núi và nhặt quà mỗi 5 phút',x:18,y:3,icon:'mountains'},
     {id:'coast',n:'Bờ biển',desc:'Bãi cát, sóng biển và lối vào khu câu cá',x:25,y:14,icon:'boat'},
     {id:'orchard',n:'Vườn cây',desc:'Khoảng đất mới để trồng cây ăn quả',x:20,y:24,icon:'orange-tree'},
+    {id:'garden',n:'Vườn phương Nam',desc:'Đường dạo và vườn hoa trong phần đất mở rộng',x:12,y:35,icon:'flower'},
   ],
   open(){openSheet('world','Khám phá nông trại',body=>{
-    body.append(el('p','pref-description','Bản đồ 32 × 32 ô. Kéo để khám phá, chụm hai ngón để thu phóng hoặc chọn một vùng bên dưới.'));
+    body.append(el('p','pref-description',`Bản đồ ${N} × ${N} ô. Kéo để khám phá, chụm hai ngón để thu phóng. Dùng ↶ / ↻ để xoay, ⌂ để trở về góc nhìn ban đầu.`));
     const map=el('div','world-overview');map.innerHTML='<span class="world-north">ĐỒI XANH</span><span class="world-east">BIỂN</span>';
-    for(const r of this.regions){const b=el('button','world-pin',Art.icon(r.icon,r.n)+`<span>${r.n}</span>`);b.style.left=(r.x/32*85)+'%';b.style.top=(r.y/32*76+8)+'%';b.onclick=()=>this.visit(r);map.append(b)}body.append(map);
+    for(const r of this.regions){const b=el('button','world-pin',Art.icon(r.icon,r.n)+`<span>${r.n}</span>`);b.style.left=(r.x/N*85)+'%';b.style.top=(r.y/N*76+8)+'%';b.onclick=()=>this.visit(r);map.append(b)}body.append(map);
     const grid=el('div','world-regions');for(const r of this.regions){const b=el('button','world-region',`${Art.icon(r.icon,r.n)}<span><b>${r.n}</b><small>${r.desc}</small></span><span>›</span>`);b.onclick=()=>this.visit(r);grid.append(b)}body.append(grid);
     const village=el('button','village-entry',`${Art.icon('deco-waterwheel','Guồng nước')}<span><b>Nhịp sống làng quê</b><small>Khôi phục công trình và làm hàng thủ công</small></span><span>›</span>`);village.onclick=openVillage;body.append(village);
   },'80%')},
@@ -27,7 +28,7 @@ const World={
     c.restore();
   },
   tap(gx,gy,sx,sy){
-    if(gx>=25&&gx<32&&gy>=0&&gy<32){hidePop();popAt(sx,sy,'<h4>Bờ biển</h4><p>Nghe sóng biển và khám phá các điểm câu.</p><button class="cbtn2 sm" id="coast-fish">🎣 Đi câu cá</button>',p=>$('#coast-fish',p).onclick=openFishing);return true}
+    if(gx>=25&&gx<N&&gy>=0&&gy<N){hidePop();popAt(sx,sy,'<h4>Bờ biển</h4><p>Nghe sóng biển và khám phá các điểm câu.</p><button class="cbtn2 sm" id="coast-fish">🎣 Đi câu cá</button>',p=>$('#coast-fish',p).onclick=openFishing);return true}
     if(Math.hypot(gx-18,gy-3)<1.8){hidePop();const remaining=Math.max(0,300000-(Date.now()-(S.hillGiftAt||0)));popAt(sx,sy,`<h4>Đường mòn đồi xanh</h4><p>${remaining?'Quà tiếp theo sau '+fmtT(remaining):'Có một giỏ quà nhỏ trên đường mòn.'}</p><button class="cbtn2 sm" id="hill-gift" ${remaining?'disabled':''}>Nhặt giỏ · 25 xu + 5 XP</button>`,p=>$('#hill-gift',p).onclick=()=>{if(Date.now()-(S.hillGiftAt||0)<300000)return;S.hillGiftAt=Date.now();addCoins(25);addXp(5);beep('coin');save();hidePop();Scene.burst(sx,sy,'sparkle',6);toast('Đã nhận 25 xu và 5 XP trên đồi!')});return true}
     return false;
   },

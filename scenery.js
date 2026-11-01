@@ -1,13 +1,14 @@
 'use strict';
 const Scenery={
- images:{},
- load(){for(const id of ['village-panorama','fishing-lake','terrain-meadow','province-relief']){const image=new Image();image.onload=()=>{this.images[id]=image;Scene.groundKey=null};image.src='assets/backgrounds/'+id+'.png'}},
+ images:{},pending:new Set(),
+ loadOne(id){if(this.images[id]||this.pending.has(id))return;this.pending.add(id);const image=new Image();image.onload=()=>{this.images[id]=image;this.pending.delete(id);Scene.groundKey=null};image.onerror=()=>{this.pending.delete(id)};image.src='assets/backgrounds/'+id+'.png'},
+ load(){for(const id of ['village-panorama','fishing-lake','terrain-meadow','province-relief','fishing-lotus','fishing-river','fishing-bay']){this.loadOne(id);if(id.startsWith('fishing-')&&innerWidth>innerHeight&&id!=='fishing-lake')this.loadOne(id+'-wide')}},
  cover(c,id,x,y,w,h){const image=this.images[id];if(!image)return false;const s=Math.max(w/image.width,h/image.height),sw=w/s,sh=h/s;c.drawImage(image,(image.width-sw)/2,(image.height-sh)/2,sw,sh,x,y,w,h);return true},
  ground(c,i,j,p,z){const image=this.images['terrain-meadow'];if(!image)return Art.tile(c,'grass',p.x,p.y,TW*z+.5,TH*z+.5);const sx=((i%8+8)%8)*128,sy=((j%8+8)%8)*128;c.save();Scene.diamond(c,i,j);c.clip();c.globalAlpha=.36;c.drawImage(image,sx,sy,128,128,p.x-TW*z/2-.5,p.y-TH*z/2-.5,TW*z+1,TH*z+1);c.restore()},
- fishing(c,W,H,t){const image=this.images['fishing-lake'];if(!image)return false;c.drawImage(image,0,0,W,H);c.save();if(S.night){c.fillStyle='#102a4f66';c.fillRect(0,0,W,H)}c.beginPath();c.rect(0,H*.24,W*.67,H*.76);c.clip();for(let i=0;i<16;i++){const y=H*(.3+(i*.043)%.65),x=W*(.08+(i*.137)%.55)+(S.fx.reduceMotion?0:Math.sin(t*.65+i)*6);c.strokeStyle='#d7fcf433';c.lineWidth=1;c.beginPath();c.ellipse(x,y,16+i%3*6,2,0,0,Math.PI*2);c.stroke()}c.restore();return true},
+ fishing(c,W,H,t){const id='fishing-'+S.fish.spot+(W>H?'-wide':'');this.loadOne(id);const image=this.images[id]||this.images['fishing-'+S.fish.spot];if(!image)return false;const scale=Math.max(W/image.width,H/image.height),sw=W/scale,sh=H/scale;c.drawImage(image,(image.width-sw)*.8,(image.height-sh)*.44,sw,sh,0,0,W,H);c.save();if(S.night){c.fillStyle='#102a4f66';c.fillRect(0,0,W,H)}c.beginPath();c.rect(0,H*.24,W*.67,H*.76);c.clip();for(let i=0;i<16;i++){const y=H*(.3+(i*.043)%.65),x=W*(.08+(i*.137)%.55)+(S.fx.reduceMotion?0:Math.sin(t*.65+i)*6);c.strokeStyle='#d7fcf433';c.lineWidth=1;c.beginPath();c.ellipse(x,y,16+i%3*6,2,0,0,Math.PI*2);c.stroke()}c.restore();return true},
 };
 Scenery.load();
-Scene.cropVisual=function(plot){const C=CROPS[plot.crop],stage=cropProg(plot)<.3?0:cropProg(plot)<1?1:2,base=C.growthArt||C.art||plot.crop,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'};return{stage,sprite:Art.has(base+'-'+stage)?base+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||plot.crop]||base}};
+Scene.cropVisual=function(plot){const C=CROPS[plot.crop],stage=cropProg(plot)<.3?0:cropProg(plot)<1?1:2,base=C.growthArt||C.art||plot.crop,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'};return{stage,sprite:stage===2?Art.cropModel(plot.crop):Art.has(base+'-'+stage)?base+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||plot.crop]||base}};
 
 /* Resolve visible silhouettes in exactly the scene's painter order. */
 Scene.pick=function(sx,sy){

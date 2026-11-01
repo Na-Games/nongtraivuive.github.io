@@ -166,6 +166,13 @@
       "rows": 1,
       "cell": 256,
       "title": "Vịt bơi"
+    },
+    "plot-states": {
+      "file": "assets/plot-states.png",
+      "cols": 2,
+      "rows": 2,
+      "cell": 384,
+      "title": "Trạng thái ruộng đất"
     }
   },
   "sprites": {
@@ -8615,6 +8622,54 @@
         "y": 64,
         "w": 204,
         "h": 127
+      }
+    },
+    "plot-empty": {
+      "sheet": "plot-states",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/plot-states/plot-empty.png",
+      "bounds": {
+        "x": 26,
+        "y": 86,
+        "w": 332,
+        "h": 211
+      }
+    },
+    "plot-watered": {
+      "sheet": "plot-states",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/plot-states/plot-watered.png",
+      "bounds": {
+        "x": 26,
+        "y": 86,
+        "w": 332,
+        "h": 212
+      }
+    },
+    "plot-locked": {
+      "sheet": "plot-states",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/plot-states/plot-locked.png",
+      "bounds": {
+        "x": 26,
+        "y": 65,
+        "w": 332,
+        "h": 253
+      }
+    },
+    "plot-rich": {
+      "sheet": "plot-states",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/plot-states/plot-rich.png",
+      "bounds": {
+        "x": 26,
+        "y": 71,
+        "w": 332,
+        "h": 242
       }
     }
   }

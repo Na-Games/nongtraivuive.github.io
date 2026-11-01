@@ -3,7 +3,7 @@
 const Art={
   images:{},tiles:{},failed:[],ready:0,total:Object.keys(ART_MANIFEST.sheets).length,emoji:new Map(),
   load(){
-    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','village-people','wardrobe-parts','village-landscape','duck-swim']);
+    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','village-people','wardrobe-parts','village-landscape','duck-swim','plot-states']);
     const entries=Object.entries(ART_MANIFEST.sheets),primary=entries.filter(([id])=>critical.has(id)),background=entries.filter(([id])=>!critical.has(id));
     const loadOne=([id,s])=>new Promise(resolve=>{const im=new Image();let settled=false;const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve()};const timer=setTimeout(()=>finish(false),12000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file});
     const queue=async entries=>{let cursor=0;await Promise.all(Array.from({length:Math.min(3,entries.length)},async()=>{while(cursor<entries.length)await loadOne(entries[cursor++])}))};
@@ -17,6 +17,7 @@ const Art={
     c.save();c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.translate(x,y);if(flip)c.scale(-1,1);
     c.drawImage(this.images[s.sheet],s.col*sheet.cell+b.x,s.row*sheet.cell+b.y,b.w,b.h,-dw/2,-dh*anchor,dw,dh);c.restore();return true;
   },
+  cropModel(id){const c=CROPS[id];if(!c)return id;const trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},grown=(c.growthArt||c.art||id)+'-2';return c.baseArt?(c.art||id):trees[c.art||id]||(ART_MANIFEST.sprites[grown]?grown:c.art||id)},
   icon(id,label='',cls=''){const s=ART_MANIFEST.sprites[id];if(!s)return '';return `<img class="game-icon ${cls}" src="${s.file}" alt="${label}" title="${label}" draggable="false" loading="lazy">`},
   tile(c,id,x,y,w,h){
     if(!this.has(id))return;

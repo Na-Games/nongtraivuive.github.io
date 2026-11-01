@@ -1,7 +1,7 @@
 'use strict';
 /* ===== Trạng thái & lưu trữ ===== */
 const SAVE_KEY='xom_nong_trai_v2';
-const N=32,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
+const N=40,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
 const defState=()=>({
   name:'Nông dân',coins:500,gems:20,xp:0,lv:1,sxp:0,sclaimed:[],
   inv:{lua:3},seeds:{lua:6},cap:150,province:null,joined:0,
@@ -104,7 +104,7 @@ const Scene={
     this.centerOn(6.5,8.5,clamp(innerWidth/640,.5,1));
     this.buildDecor();this.bindInput();this.syncAnimals();
     let last=performance.now();
-    const loop=n=>{requestAnimationFrame(loop);const elapsed=n-last;last=n;if(document.hidden||typeof FS!=='undefined'&&FS)return;let remaining=clamp(elapsed/1000,0,.05);this.frameMs=elapsed;try{while(remaining>1e-7){const dt=Math.min(remaining,1/60);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
+    const loop=n=>{requestAnimationFrame(loop);const elapsed=n-last;last=n;if(document.hidden||typeof FS!=='undefined'&&FS)return;let remaining=clamp(elapsed/1000,0,.12);this.frameMs=elapsed;try{while(remaining>1e-7){const dt=Math.min(remaining,1/60);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
     requestAnimationFrame(loop);
   },
   resize(){
@@ -374,11 +374,11 @@ const Scene={
     if(b.t0&&!b.ready){c.save();c.translate(peak.x+14*z,peak.y-8*z);c.fillStyle='rgba(220,220,220,.7)';for(let k=0;k<3;k++){const r=((t*.5+k/3)%1);c.globalAlpha=1-r;c.beginPath();c.arc(Math.sin(t*2+k)*4*z,-r*30*z,(4+r*6)*z,0,6.283);c.fill()}c.restore();c.globalAlpha=1}
   },
   drawPlot(c,k,i,j,z,t){
-    if(k>=S.plotsOpen){this.diamond(c,i,j,1,1,.08);c.fillStyle='rgba(60,90,30,.28)';c.fill();return}
+    if(k>=S.plotsOpen){const p=this.iso(i+.5,j+.5);if(!Art.draw(c,'plot-locked',p.x,p.y,92*z,64*z,.7)){this.diamond(c,i,j,1,1,.08);c.fillStyle='rgba(60,90,30,.28)';c.fill()}return}
     const pl=S.plots[k];
-    const ground=this.iso(i+.5,j+.5);Art.draw(c,pl.lv>2?'rich-soil':pl.crop?'wet-soil':'soil',ground.x,ground.y+2*z,92*z,46*z);
+    const ground=this.iso(i+.5,j+.5);Art.draw(c,pl.lv>2?'plot-rich':pl.crop?'plot-watered':'plot-empty',ground.x,ground.y+2*z,92*z,46*z);
     this.diamond(c,i,j,1,1,.04);c.fillStyle=pl.crop?'#6b4325':'#7a4f2c';c.fill();
-    Art.draw(c,pl.lv>2?'rich-soil':pl.crop?'wet-soil':'soil',ground.x,ground.y,89*z,44*z);
+    Art.draw(c,pl.lv>2?'plot-rich':pl.crop?'plot-watered':'plot-empty',ground.x,ground.y,89*z,44*z);
     this.diamond(c,i,j,1,1,.04);c.strokeStyle='#4a2c14';c.lineWidth=1.5*z;c.stroke();
     c.strokeStyle='rgba(40,20,5,.35)';c.lineWidth=1.6*z;
     for(let m=1;m<4;m++){const a=this.iso(i+m/4,j+.08),b=this.iso(i+m/4,j+.92);c.beginPath();c.moveTo(a.x,a.y);c.lineTo(b.x,b.y);c.stroke()}
@@ -405,7 +405,7 @@ const Scene={
     const P=this.player,p=this.iso(P.x,P.y);
     this.shadow(c,p.x,p.y,13*z,5*z);
     const bob=P.walk?Math.sin((P.phase||0)*Math.PI*4)*.45*z:0;
-    drawAvatar(c,p.x,p.y-bob,54*z,S.av,{walk:P.walk,t,face:P.face,turn:P.turn,phase:P.phase,back:P.back,work:P.work>0,actionTime:P.workClock});
+    drawAvatar(c,p.x,p.y-bob,54*z*(S.fx.avatarScale||1.25),S.av,{walk:P.walk,t,face:P.face,turn:P.turn,phase:P.phase,back:P.back,work:P.work>0,actionTime:P.workClock});
   },
   drawPart(c,q,t){
     const a=1-q.t/q.life;

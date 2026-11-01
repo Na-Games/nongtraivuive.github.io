@@ -12,8 +12,8 @@ Tán cây trồng nhô sang ô bên cạnh không chiếm vùng chạm của ô 
 
 - Kéo một ngón/chuột trái: di chuyển góc nhìn; thả để trượt theo quán tính.
 - Chụm hai ngón hoặc lăn chuột: thu phóng quanh vị trí thao tác.
-- Xoay hai ngón, kéo chuột phải hoặc Shift + kéo: xoay góc nhìn; chuột phải kéo dọc thay độ nghiêng.
-- Nút ↻: xoay 45 độ. Nút ◎: trở về vị trí nhân vật.
+- Kéo chuột phải hoặc Shift + kéo: xoay góc nhìn; kéo dọc thay độ nghiêng trong giới hạn dễ nhìn. Chụm hai ngón ưu tiên zoom/pan, tránh vô tình xoay.
+- Nút ↶ / ↻: xoay trái/phải 30 độ. Nút ⌂: về góc nhìn ban đầu. Nút ◎: trở về vị trí nhân vật.
 - Chạm đất trống để gieo, cây đang lớn để chăm, cây chín để thu.
 
 Các phần hình học tĩnh được gộp theo vật liệu, chất liệu có mipmap và lọc anisotropic. Bóng đổ cập nhật theo nhịp riêng, nền tạm giữ khi mở bảng để dành tài nguyên cho giao diện và chỉnh nhân vật. Cài đặt Độ nét cao, Bóng đổ và Chuyển động nhẹ vẫn áp dụng.

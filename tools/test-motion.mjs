@@ -3,7 +3,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const context=vm.createContext({document:{},Math,console,matchMedia:()=>({matches:false})});
 for(const f of ['data.js','catalog.js','expanded-catalog.js','decor.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
-vm.runInContext(`const N=22,PX0=2,PY0=9,PCOLS=6,PROWS=5;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
+vm.runInContext(`const N=40,PX0=2,PY0=9,PCOLS=6,PROWS=10;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
 vm.runInContext(fs.readFileSync('motion.js','utf8'),context);
 const tests=[];
 for(const fps of [30,60,120]){
@@ -13,6 +13,9 @@ for(const fps of [30,60,120]){
 assert.ok(Math.max(...tests.map(t=>t.phase))-Math.min(...tests.map(t=>t.phase))<.001,'Gait must stay in sync across frame rates');
 const routes=vm.runInContext(`(()=>{const routes=[[6,8.5,12,4],[6,8.5,18,10],[6,8.5,3,11]].map(v=>Motion.route(...v));return routes.map(r=>({points:r.length,allWalkable:r.every(p=>Motion.canOccupy(p.x,p.y)),validDiagonals:r.every((p,i)=>!i||Math.abs(p.x-r[i-1].x)<.9||Math.abs(p.y-r[i-1].y)<.9||Motion.canOccupy(p.x,r[i-1].y)&&Motion.canOccupy(r[i-1].x,p.y))}))})()`,context);
 for(const r of routes){assert.ok(r.points>0);assert.ok(r.allWalkable);assert.ok(r.validDiagonals)}
+const shortcut=vm.runInContext(`(()=>{const p={x:6,y:8.5};const original=Motion.route(p.x,p.y,18,10);Motion.navigate(p,18,10);const points=[{x:p.x,y:p.y},...p.path];return{shorter:p.path.length<original.length,clear:points.slice(1).every((b,i)=>Motion.canTravel(points[i].x,points[i].y,b.x,b.y)),end:p.path.at(-1)}})()`,context);
+assert.ok(shortcut.shorter&&shortcut.clear,'Route smoothing must remove stops without cutting through obstacles');
+assert.ok(Math.hypot(shortcut.end.x-18,shortcut.end.y-10)<1);
 const turn=vm.runInContext(`(()=>{const a={x:0,y:0,tx:10,ty:0,face:1,turn:1};for(let i=0;i<120;i++)Motion.stepEntity(a,1/120,2.8);a.tx=-10;const values=[];for(let i=0;i<60;i++){Motion.stepEntity(a,1/120,2.8);values.push(a.turn)}return {intermediate:values.some(x=>x>-.8&&x<.8),reversed:values.at(-1)<-.9,maxJump:Math.max(...values.slice(1).map((v,i)=>Math.abs(v-values[i])))}})()`,context);
 assert.ok(turn.intermediate&&turn.reversed);assert.ok(turn.maxJump<.3);
 const result={passed:true,frameRates:tests,routes,turn};fs.writeFileSync('docs/motion-logic-report.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

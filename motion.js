@@ -19,6 +19,7 @@ const Motion={
     c.drawImage(Art.images[frame.sheet],frame.col*sheet.cell,frame.row*sheet.cell,sheet.cell,sheet.cell,-side*clip.pivot[0]/clip.cell,-side*clip.pivot[1]/clip.cell,side,side);c.restore();return true;
   },
   canOccupy(x,y){
+    if(typeof Farm3D!=='undefined'&&Farm3D.active&&Math.abs(y-35)<.36&&[10,17,22].some(b=>Math.abs(x-b)<.62))return false;
     if(typeof Landscape!=='undefined'&&Landscape.water(x,y))return false;
     if(x>=2&&x<8&&y>=23&&y<28)return false;
     if(x>=27||y<1.5)return false;
@@ -37,14 +38,14 @@ const Motion={
   canTravel(x,y,tx,ty,allowed=(x,y)=>this.canOccupy(x,y)){const steps=Math.max(1,Math.ceil(Math.hypot(tx-x,ty-y)/.1));for(let i=1;i<=steps;i++)if(!allowed(x+(tx-x)*i/steps,y+(ty-y)*i/steps))return false;return true},
   stepSafe(e,dt,speed,stride){const x=e.x,y=e.y,phase=e.phase,allowed=e.fly?()=>true:e.water?(x,y)=>this.pond(x,y):(x,y)=>this.canOccupy(x,y);const distance=this.stepEntity(e,dt,speed,stride);if(this.canTravel(x,y,e.x,e.y,allowed))return distance;e.x=x;e.y=y;e.phase=phase||0;e.tx=x;e.ty=y;e.vx=e.vy=0;e.path=null;e.walk=0;e.speed=0;e.moving=false;e.wait=.1;return 0},
   route(x,y,tx,ty){
-    const cells=Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5)),nearest=(px,py)=>{let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
+    const now=Date.now(),key=JSON.stringify([S.decor||[],Object.keys(S.b||{}),typeof Scene!=='undefined'?Scene.objs?.length:0]);if(!this.navCache||this.navCache.key!==key||now-this.navCache.time>500)this.navCache={key,time:now,cells:Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5))};const cells=this.navCache.cells,nearest=(px,py)=>{let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
     const start=nearest(x,y),goal=nearest(tx,ty);if(start<0||goal<0)return [];
     const open=new Set([start]),cost=new Float64Array(N*N).fill(Infinity),from=new Int32Array(N*N).fill(-1),closed=new Set();cost[start]=0;const heuristic=i=>Math.hypot(i%N-goal%N,Math.floor(i/N)-Math.floor(goal/N));
     while(open.size){let current=-1,score=Infinity;for(const i of open){const s=cost[i]+heuristic(i);if(s<score){current=i;score=s}}if(current===goal){const path=[];for(let i=goal;i>=0;i=from[i]){path.push({x:i%N+.5,y:Math.floor(i/N)+.5});if(i===start)break}path.reverse();if(this.canOccupy(tx,ty))path.push({x:tx,y:ty});return path}open.delete(current);closed.add(current);
       const cx=current%N,cy=Math.floor(current/N);for(const [dx,dy]of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]){const nx=cx+dx,ny=cy+dy;if(nx<0||ny<0||nx>=N||ny>=N)continue;const n=ny*N+nx;if(!cells[n]||closed.has(n)||dx&&dy&&(!cells[cy*N+nx]||!cells[ny*N+cx]))continue;const next=cost[current]+Math.hypot(dx,dy);if(next<cost[n]){cost[n]=next;from[n]=current;open.add(n)}}
     }return [];
   },
-  navigate(p,tx,ty){p.path=this.route(p.x,p.y,tx,ty);p.pathIndex=0;p.goal={x:tx,y:ty};if(p.path.length){p.tx=p.path[0].x;p.ty=p.path[0].y}return p.path.length>0},
+  navigate(p,tx,ty){const route=this.route(p.x,p.y,tx,ty),path=[];let x=p.x,y=p.y;for(let i=0;i<route.length;){let end=i;for(let j=i+1;j<route.length;j++){if(!this.canTravel(x,y,route[j].x,route[j].y))break;end=j}path.push(route[end]);x=route[end].x;y=route[end].y;i=end+1}p.path=path;p.pathIndex=0;p.goal={x:tx,y:ty};if(p.path.length){p.tx=p.path[0].x;p.ty=p.path[0].y}return p.path.length>0},
   workPlayer(duration=.85){const p=Scene.player;if(p.walk||p.path?.length)p.pendingWork=duration;else p.work=duration},
   stepEntity(e,dt,maxSpeed,stride=1){
     const dx=e.tx-e.x,dy=e.ty-e.y,d=Math.hypot(dx,dy),oldX=e.x,oldY=e.y;
