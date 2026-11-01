@@ -13,7 +13,7 @@ const Avatar3D={
   this.renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'low-power'});this.renderer.setSize(320,400);this.renderer.setPixelRatio(1);this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.0;
   this.scene=new THREE.Scene();this.scene.add(new THREE.HemisphereLight(0xfff7e6,0x6d8078,1.65));const light=new THREE.DirectionalLight(0xffe6c7,2.1);light.position.set(-3,5,6);this.scene.add(light);const rim=new THREE.DirectionalLight(0xc9e5ef,.8);rim.position.set(3,3,-2);this.scene.add(rim);this.camera=new THREE.OrthographicCamera(-.8,.8,1,-1,.1,20);
   this.ball=new THREE.SphereGeometry(1,20,16);this.box=new THREE.BoxGeometry(1,1,1);this.cylinder=new THREE.CylinderGeometry(1,1,1,20);this.cone=new THREE.ConeGeometry(1,1,40);this.capsule=new THREE.CapsuleGeometry(1,1,6,16);
-  const points=[[0,.14],[.035,.185],[.10,.194],[.28,.205],[.40,.181],[.445,.12]].map(([y,x])=>new THREE.Vector2(x,y));this.torsoGeometry=new THREE.LatheGeometry(points,24);
+  const points=[[-.035,.18],[0,.185],[.035,.19],[.10,.194],[.28,.205],[.40,.181],[.445,.12]].map(([y,x])=>new THREE.Vector2(x,y));this.torsoGeometry=new THREE.LatheGeometry(points,24);
   this.headGeometry=this.ball.clone();const pos=this.headGeometry.attributes.position;for(let i=0;i<pos.count;i++){const y=pos.getY(i),jaw=y<-.25?1-(Math.abs(y)-.25)*.16:1;pos.setX(i,pos.getX(i)*jaw);if(y<-.25)pos.setZ(i,pos.getZ(i)*.96)}this.headGeometry.computeVertexNormals();const weave=document.createElement('canvas');weave.width=weave.height=64;const wc=weave.getContext('2d');wc.fillStyle='#888';wc.fillRect(0,0,64,64);for(let i=0;i<64;i+=4){wc.fillStyle='#a5a5a5';wc.fillRect(i,0,1,64);wc.fillStyle='#707070';wc.fillRect(0,i,64,1)}this.fabric=new THREE.CanvasTexture(weave);this.fabric.wrapS=this.fabric.wrapT=THREE.RepeatWrapping;this.fabric.repeat.set(3,3);this.ready=true;return true;
  }catch(error){console.warn('Avatar renderer unavailable',error);return false}},
  updateColors(root,input){const a=Wardrobe.normalize(input),seen=new Set();root.traverse(o=>{const m=o.material;if(!m||seen.has(m))return;seen.add(m);if(m.userData.avatarRole)m.color.set(a[m.userData.avatarRole]);if(m.userData.skinMultiplier)m.color.set(a.skin).multiplyScalar(m.userData.skinMultiplier);if(m.userData.skinTint)m.color.set(a.skin).lerp(new THREE.Color('#d98f78'),m.userData.skinTint)});root.userData.signature=this.signature(a);root.userData.avatar=a},
@@ -22,7 +22,7 @@ const Avatar3D={
   const skin=this.material(a.skin,.72),hair=this.material(a.hair,.83),cloth=this.material(a.outfit,.94),linen=this.material('#e8dfcb',.95),pants=this.material(a.shirtStyle==='overalls'?a.outfit:'#45505a'),shoe=this.material('#594432'),sole=this.material('#b49872'),eye=this.material('#30231d',.28),white=this.material('#fffbef',.5),brass=this.material('#b89a55',.46);
   for(const m of [cloth,linen,pants]){m.bumpMap=this.fabric;m.bumpScale=.0025}skin.userData.avatarRole='skin';hair.userData.avatarRole='hair';cloth.userData.avatarRole='outfit';if(a.shirtStyle==='overalls')pants.userData.avatarRole='outfit';
   const ball=(p,m,x,y,z,sx,sy,sz=sx)=>this.sphere(p,m,x,y,z,sx,sy,sz),box=(p,m,x,y,z,sx,sy,sz)=>this.mesh(p,this.box,m,x,y,z,sx,sy,sz);
-  this.mesh(body,this.torsoGeometry,a.shirtStyle==='overalls'?linen:cloth,0,.565,0,1,1,.72);ball(body,pants,0,.555,0,.178,.10,.129);
+  this.mesh(body,this.torsoGeometry,a.shirtStyle==='overalls'?linen:cloth,0,.565,0,1,1,.72);ball(body,pants,0,.555,0,.167,.065,.115);
   if(a.shirtStyle==='overalls'){
    box(body,cloth,0,.776,.139,.275,.29,.028);box(body,cloth,0,.735,.16,.12,.09,.022);
    for(const x of [-.105,.105]){box(body,cloth,x,.917,.127,.045,.245,.023);ball(body,brass,x,.85,.15,.014,.014,.008)}
@@ -36,21 +36,21 @@ const Avatar3D={
    const arm=new THREE.Group();arm.position.set(side*.202,.96,0);body.add(arm);arm.rotation.z=side*.09;
    ball(arm,a.shirtStyle==='overalls'?linen:cloth,side*.018,-.107,0,.073,.145,.073);const elbow=new THREE.Group();elbow.position.set(side*.025,-.205,0);arm.add(elbow);ball(elbow,skin,0,-.082,0,.046,.102,.047);ball(elbow,skin,0,-.176,.008,.048,.058,.038);
    for(let i=0;i<4;i++)ball(elbow,skin,-.027+i*.018,-.204,.018,.010,.025,.011);ball(elbow,skin,side*.043,-.175,.023,.018,.029,.017);arms.push(arm);elbows.push(elbow);hands.push(elbow);
-   const leg=new THREE.Group();leg.position.set(side*.095,.548,0);body.add(leg);ball(leg,pants,0,-.111,0,.081,.145,.080);const knee=new THREE.Group();knee.position.y=-.23;leg.add(knee);ball(knee,pants,0,-.106,0,.065,.128,.066);ball(knee,shoe,0,-.253,.038,.075,.049,.112);box(knee,sole,0,-.287,.043,.137,.020,.198);box(knee,linen,0,-.205,.015,.127,.025,.12);legs.push(leg);knees.push(knee);feet.push(knee);
+   const leg=new THREE.Group();leg.position.set(side*.095,.548,0);body.add(leg);this.mesh(leg,this.capsule,pants,0,-.111,0,.073,.088,.074);const knee=new THREE.Group();knee.position.y=-.23;leg.add(knee);this.mesh(knee,this.capsule,pants,0,-.106,0,.060,.081,.061);ball(knee,shoe,0,-.253,.038,.075,.049,.112);box(knee,sole,0,-.287,.043,.137,.020,.198);box(knee,linen,0,-.205,.015,.127,.025,.12);legs.push(leg);knees.push(knee);feet.push(knee);
   }
   const head=new THREE.Group();head.position.set(0,1.247,-.006);head.scale.setScalar(profile.head);body.add(head);ball(body,skin,0,1.028,0,.057,.077,.056);this.mesh(head,this.headGeometry,skin,0,0,0,.226,.250,.204);
   const eyeParts=[];for(const side of [-1,1]){
    ball(head,skin,side*.216,-.028,-.002,.034,.052,.029);const inner=this.material(new THREE.Color(a.skin).multiplyScalar(.88));inner.userData.skinMultiplier=.88;ball(head,inner,side*.229,-.027,.015,.010,.025,.009);
    const eyes=new THREE.Group();eyes.position.set(side*.084,.012,.193);head.add(eyes);ball(eyes,white,0,0,0,.046,.032,.011);ball(eyes,eye,-side*.003,-.001,.010,.025,.028,.009);ball(eyes,white,-.008,.010,.020,.008,.009,.003);ball(eyes,white,.010,-.009,.020,.0035,.004,.002);eyeParts.push(eyes);
    this.tube(head,[[side*.041,.082,.175],[side*.082,.095,.180],[side*.125,.079,.161]],.006,hair);
-   const cheek=new THREE.Color(a.skin).lerp(new THREE.Color('#d98f78'),.24);const blush=this.material(cheek);blush.userData.skinTint=.24;ball(head,blush,side*.143,-.063,.158,.031,.017,.009);
+   const cheek=new THREE.Color(a.skin).lerp(new THREE.Color('#d98f78'),.24);// Cheek color is shaded into the skin; no protruding cheek spheres.
    if(a.style===1||a.style===4)this.tube(head,[[side*.049,.028,.184],[side*.09,.044,.184],[side*.129,.035,.170]],.0035,hair);
   }
-  ball(head,skin,0,-.047,.195,.023,.027,.025);this.tube(head,[[-.035,-.112,.190],[0,-.122,.190],[.035,-.111,.190]],.0035,this.material('#925947'));
+  ball(head,skin,0,-.047,.195,.021,.025,.020);this.tube(head,[[-.035,-.112,.190],[0,-.122,.190],[.035,-.111,.190]],.0035,this.material('#925947'));
   if(a.style===3){const grey=this.material('#c0bdac');for(const side of [-1,1])ball(head,grey,side*.03,-.092,.183,.042,.018,.019);ball(head,grey,0,-.155,.146,.056,.044,.026)}
   // A continuous cap and swept locks replace the old clusters of floating balls.
   const cap=new THREE.SphereGeometry(1,24,16,0,Math.PI*2,0,1.40);this.mesh(head,cap,hair,0,.018,-.021,.233,.254,.205);ball(head,hair,0,.065,-.10,.221,.19,.108);
-  const locks=a.hairStyle==='curly'?10:5;for(let i=0;i<locks;i++){const x=-.155+i/(locks-1)*.31,rootX=a.hairStyle==='swept'?.10:x*.5,tipY=a.hairStyle==='curly'?.10+Math.sin(i*2)*.025:.105-i*.006;this.tube(head,[[rootX,.239,.035],[x*.8,.211,.141],[x,tipY,.184]],a.hairStyle==='curly'?.027:.035,hair)}
+  const locks=a.hairStyle==='curly'?0:5;for(let i=0;i<locks;i++){const x=-.155+i/(locks-1)*.31,rootX=a.hairStyle==='swept'?.10:x*.5,tipY=a.hairStyle==='curly'?.10+Math.sin(i*2)*.025:.105-i*.006;this.tube(head,[[rootX,.239,.035],[x*.8,.211,.141],[x,tipY,.184]],a.hairStyle==='curly'?.027:.035,hair)}
   if(a.hairStyle==='curly')for(let i=0;i<13;i++){const x=-.17+(i%7)*.055,y=.17+Math.floor(i/7)*.045,points=[];for(let j=0;j<12;j++){const angle=j/11*Math.PI*2;points.push([x+Math.cos(angle)*.026,y+Math.sin(angle)*.025,.21+Math.floor(i/7)*-.04+j*.001])}this.tube(head,points,.014,hair)}if(a.hairStyle==='long'||a.hairStyle==='braid'){
    ball(head,hair,0,-.07,-.158,.20,.248,.088);for(const side of [-1,1])this.tube(head,[[side*.17,.10,.08],[side*.21,-.04,.045],[side*.19,-.26,-.015]],.040,hair);
    if(a.hairStyle==='braid'){for(let i=0;i<8;i++)ball(head,hair,.18+Math.sin(i*2.5)*.016,-.17-i*.036,-.14,.029-i*.0015,.029,.025);box(head,this.material('#986653'),.18,-.425,-.14,.047,.023,.027)}

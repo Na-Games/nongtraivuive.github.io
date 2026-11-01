@@ -1,8 +1,0 @@
-import fs from 'node:fs';
-const edit=(file,from,to)=>{const s=fs.readFileSync(file,'utf8');if(!s.includes(from))throw Error('Missing anchor '+file);fs.writeFileSync(file,s.replace(from,to))};
-edit('avatar-3d.js',"this.ready=true;return true;", "const weave=document.createElement('canvas');weave.width=weave.height=64;const wc=weave.getContext('2d');wc.fillStyle='#888';wc.fillRect(0,0,64,64);for(let i=0;i<64;i+=4){wc.fillStyle='#a5a5a5';wc.fillRect(i,0,1,64);wc.fillStyle='#707070';wc.fillRect(0,i,64,1)}this.fabric=new THREE.CanvasTexture(weave);this.fabric.wrapS=this.fabric.wrapT=THREE.RepeatWrapping;this.fabric.repeat.set(3,3);this.ready=true;return true;");
-edit('avatar-3d.js',"skin.userData.avatarRole='skin';", "for(const m of [cloth,linen,pants]){m.bumpMap=this.fabric;m.bumpScale=.0025}skin.userData.avatarRole='skin';");
-edit('avatar-3d.js',"if(a.hairStyle==='long'||a.hairStyle==='braid'){", "if(a.hairStyle==='curly')for(let i=0;i<13;i++){const x=-.17+(i%7)*.055,y=.17+Math.floor(i/7)*.045,points=[];for(let j=0;j<12;j++){const angle=j/11*Math.PI*2;points.push([x+Math.cos(angle)*.026,y+Math.sin(angle)*.025,.15+Math.floor(i/7)*-.035+j*.001])}this.tube(head,points,.014,hair)}if(a.hairStyle==='long'||a.hairStyle==='braid'){");
-edit('farming.js','button.title=action.desc;', "button.title=action.desc;button.setAttribute('aria-label',action.n+' — '+action.desc+(action.supply?' — Còn '+S.supplies[action.supply]:''));if(done||action.supply){const badge=el('em','care-count',done?'✓':String(S.supplies[action.supply]));button.append(badge)}");
-edit('sw.js',"nongtrai-shell-20261101-playability", "nongtrai-shell-20261101-actors-v3");
-console.log('Added woven garment detail, curled hair and compact supply badges');
