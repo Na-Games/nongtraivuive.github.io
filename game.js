@@ -265,13 +265,13 @@ const Scene={
       const hsh=(i*73856093^j*19349663)>>>0,v=(hsh%100)/100;
       let col;
       const onPath=inWorld&&((typeof Landscape!=='undefined'&&Landscape.path(i,j))||(j===7&&i>=2&&i<=13));
-      if(i>=27&&i<N&&j>=0&&j<N)col=`hsl(185,32%,${37+v*2}%)`;
+      if(i>=27)col=`hsl(185,43%,${33+v*2}%)`;
       else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(38,31%,${66+v*2}%)`;
       else if(onPath)col=`hsl(39,18%,${46+v*2}%)`;
       else if(inWorld)col=`hsl(${79+v*3},${24+v*3}%,${41+v*2}%)`;
       else col=`hsl(${85+v*3},${21+v*3}%,${32+v*2}%)`;
       this.diamond(c,i,j);c.fillStyle=col;c.fill();
-      if(i<25||i>=N||j<0||j>=N)Art.tile(c,onPath?'village-cobblestone':'grass',p.x,p.y,TW*z+.5,TH*z+.5);
+      if(i<25){if(onPath)Art.tile(c,'village-cobblestone',p.x,p.y,TW*z+.5,TH*z+.5);else Scenery.ground(c,i,j,p,z)}
     }
     if(typeof World!=='undefined')World.drawMountains(c,this,z);
   },
@@ -302,6 +302,7 @@ const Scene={
     seg(x0,y1,x1,y1);seg(x1,y0,x1,y1);seg(x0,y0,x0,y1);
   },
   drawLabels(c,z,t){
+    this.regionHits=[];for(const r of World.regions.filter(r=>r.id!=='farm')){const p=this.iso(r.x,r.y),offset=r.id==='coast'?94:r.id==='orchard'?135:160,x=p.x,y=p.y-offset*z,title=r.n+(r.id==='coast'?' · Câu cá':'');c.font="800 12px 'Segoe UI',sans-serif";const w=c.measureText(title).width+24;if(x>-w&&x<this.w+w&&y>0&&y<this.h){this.label(c,title,x,y,12,true);this.regionHits.push({id:r.id,x:x-w/2,y:y-13,w,h:26})}}
     // nhãn mở đất
     const k=S.plotsOpen;if(k<PCOLS*PROWS){const[i,j]=plotXY(k),p=this.iso(i+.5,j+.5);this.label(c,`🔒 Mở đất · Cấp ${plotReqLv(k)}`,p.x,p.y-8*z,Math.max(11,13*z),S.lv>=plotReqLv(k))}
     for(const id in BUILDINGS){const b=BUILDINGS[id];if(S.b[id]||b.lv>S.lv+5)continue;const p=this.iso(b.slot[0]+1,b.slot[1]+1);this.label(c,S.lv>=b.lv?`🔨 Xây ${b.n}`:`🔒 ${b.n} · Cấp ${b.lv}`,p.x,p.y-6*z,Math.max(11,13*z),S.lv>=b.lv)}
@@ -326,7 +327,8 @@ const Scene={
   drawObj(c,o,z,t){
     const p=this.iso(o.gx,o.gy),s=o.s*z,sw=Math.sin(t*1.4+o.ph)*2*z;
     if(p.x<-180*z||p.x>this.w+180*z||p.y<-40*z||p.y>this.h+180*z)return;
-    const sizes={'village-teahouse':[245,215],'village-dyehouse':[220,190],'village-wheel':[145,150],'village-stone-bridge':[130,80],'village-spring':[190,150],'village-maple':[110,140],'village-pine':[110,150],'village-bamboo':[110,170],'village-stairs':[100,60],'village-rocks':[56,48],'village-stone-lantern':[35,70],'village-pipeline':[160,85],tree:[78,102],palm:[92,122],bamboo:[76,112],bush:[45,40],flower:[32,28],rock:[34,26],silo:[64,94],sign:[54,68],well:[70,78],scarecrow:[48,72],hay:[43,32],farmhouse:[160,140],truck:[80,65],tractor:[70,64],'shop-stall':[100,90],boat:[74,48],greenhouse:[106,90],gate:[56,62],bridge:[85,46],'peach-tree':[78,104],cat:[30,35],buffalo:[54,46]};
+    if(o.k==='village-stone-bridge'){const a=this.iso(o.gx-1.35,o.gy),b=this.iso(o.gx+1.35,o.gy),span=Math.hypot(b.x-a.x,b.y-a.y);c.save();c.translate(p.x,p.y);c.rotate(Math.atan2(b.y-a.y,b.x-a.x));Art.draw(c,o.k,0,span*.19,span*1.28,span*.84,.72);c.restore();return}
+    const sizes=this.objectSizes={'village-teahouse':[245,215],'village-dyehouse':[220,190],'village-wheel':[145,150],'village-stone-bridge':[130,80],'village-spring':[190,150],'village-maple':[110,140],'village-pine':[110,150],'village-bamboo':[110,170],'village-stairs':[100,60],'village-rocks':[56,48],'village-stone-lantern':[35,70],'village-pipeline':[160,85],tree:[78,102],palm:[92,122],bamboo:[76,112],bush:[45,40],flower:[32,28],rock:[34,26],silo:[64,94],sign:[54,68],well:[70,78],scarecrow:[48,72],hay:[43,32],farmhouse:[160,140],truck:[80,65],tractor:[70,64],'shop-stall':[100,90],boat:[74,48],greenhouse:[106,90],gate:[56,62],bridge:[85,46],'peach-tree':[78,104],cat:[30,35],buffalo:[54,46]};
     if(Art.has(o.k)){const meta=DECOR_CATALOG[o.k],[w,h]=meta?[meta.w,meta.h]:sizes[o.k]||[60,70];this.shadow(c,p.x,p.y+2*s,w*.3*s,7*s);if(Motion.isFoliage(o.k))Motion.foliage(c,o.k,p.x,p.y+3*s,w*s,h*s,t,o.ph+o.gx*.7+o.gy*.4);else Art.draw(c,o.k,p.x,p.y+3*s+(['truck','tractor','boat'].includes(o.k)?Math.sin(t*(o.k==='boat'?1.8:11))*.35*s:0),w*s,h*s,1);return}
     switch(o.k){
       case'tree':this.shadow(c,p.x+8*s,p.y+2*s,26*s,10*s);c.fillStyle='#6b4423';c.fillRect(p.x-4*s,p.y-30*s,8*s,32*s);

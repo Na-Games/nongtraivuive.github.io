@@ -152,6 +152,20 @@
       "rows": 6,
       "cell": 256,
       "title": "Mô hình cao cấp"
+    },
+    "village-people": {
+      "file": "assets/village-people.png",
+      "cols": 3,
+      "rows": 2,
+      "cell": 384,
+      "title": "Nhân vật làng quê"
+    },
+    "duck-swim": {
+      "file": "assets/duck-swim.png",
+      "cols": 4,
+      "rows": 1,
+      "cell": 256,
+      "title": "Vịt bơi"
     }
   },
   "sprites": {
@@ -8481,6 +8495,126 @@
         "y": 26,
         "w": 198,
         "h": 204
+      }
+    },
+    "villager-0": {
+      "sheet": "village-people",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/village-people/villager-0.png",
+      "bounds": {
+        "x": 134,
+        "y": 26,
+        "w": 116,
+        "h": 332
+      }
+    },
+    "villager-1": {
+      "sheet": "village-people",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/village-people/villager-1.png",
+      "bounds": {
+        "x": 134,
+        "y": 26,
+        "w": 116,
+        "h": 332
+      }
+    },
+    "villager-2": {
+      "sheet": "village-people",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/village-people/villager-2.png",
+      "bounds": {
+        "x": 113,
+        "y": 26,
+        "w": 157,
+        "h": 332
+      }
+    },
+    "villager-3": {
+      "sheet": "village-people",
+      "col": 0,
+      "row": 1,
+      "file": "assets/sprites/village-people/villager-3.png",
+      "bounds": {
+        "x": 105,
+        "y": 26,
+        "w": 173,
+        "h": 332
+      }
+    },
+    "villager-4": {
+      "sheet": "village-people",
+      "col": 1,
+      "row": 1,
+      "file": "assets/sprites/village-people/villager-4.png",
+      "bounds": {
+        "x": 135,
+        "y": 26,
+        "w": 113,
+        "h": 332
+      }
+    },
+    "villager-5": {
+      "sheet": "village-people",
+      "col": 2,
+      "row": 1,
+      "file": "assets/sprites/village-people/villager-5.png",
+      "bounds": {
+        "x": 125,
+        "y": 26,
+        "w": 134,
+        "h": 332
+      }
+    },
+    "duck-swim-0": {
+      "sheet": "duck-swim",
+      "col": 0,
+      "row": 0,
+      "file": "assets/sprites/duck-swim/duck-swim-0.png",
+      "bounds": {
+        "x": 26,
+        "y": 60,
+        "w": 204,
+        "h": 135
+      }
+    },
+    "duck-swim-1": {
+      "sheet": "duck-swim",
+      "col": 1,
+      "row": 0,
+      "file": "assets/sprites/duck-swim/duck-swim-1.png",
+      "bounds": {
+        "x": 26,
+        "y": 64,
+        "w": 204,
+        "h": 127
+      }
+    },
+    "duck-swim-2": {
+      "sheet": "duck-swim",
+      "col": 2,
+      "row": 0,
+      "file": "assets/sprites/duck-swim/duck-swim-2.png",
+      "bounds": {
+        "x": 26,
+        "y": 59,
+        "w": 204,
+        "h": 137
+      }
+    },
+    "duck-swim-3": {
+      "sheet": "duck-swim",
+      "col": 3,
+      "row": 0,
+      "file": "assets/sprites/duck-swim/duck-swim-3.png",
+      "bounds": {
+        "x": 26,
+        "y": 64,
+        "w": 204,
+        "h": 127
       }
     }
   }

@@ -25,7 +25,6 @@ const World={
     c.save();c.strokeStyle='#b9f3ee99';c.lineWidth=1.5*z;
     for(let row=2;row<32;row+=2){const x=27.3+(S.fx.reduceMotion?0:Math.sin(t*.7+row)*.15),a=scene.iso(x,row),b=scene.iso(x,row+1);c.beginPath();c.moveTo(a.x,a.y);c.quadraticCurveTo((a.x+b.x)/2+5*z,(a.y+b.y)/2,b.x,b.y);c.stroke()}
     c.restore();
-    for(const [gx,gy,title]of [[18,3,'⛰ Đồi xanh'],[25,14,'Bờ biển · Câu cá'],[20,24,'Vườn cây']]){const p=scene.iso(gx,gy);if(p.x>-100&&p.x<scene.w+100&&p.y>0&&p.y<scene.h)scene.label(c,title,p.x,p.y-30*z,12,true)}
   },
   tap(gx,gy,sx,sy){
     if(gx>=25&&gx<32&&gy>=0&&gy<32){hidePop();popAt(sx,sy,'<h4>Bờ biển</h4><p>Nghe sóng biển và khám phá các điểm câu.</p><button class="cbtn2 sm" id="coast-fish">🎣 Đi câu cá</button>',p=>$('#coast-fish',p).onclick=openFishing);return true}

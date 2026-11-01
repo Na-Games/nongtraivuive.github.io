@@ -3,7 +3,7 @@
 const Art={
   images:{},tiles:{},failed:[],ready:0,total:Object.keys(ART_MANIFEST.sheets).length,emoji:new Map(),
   load(){
-    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','characters','wardrobe-parts','village-landscape']);
+    const critical=new Set(['terrain','nature','buildings','growth','produce','ui','village-people','wardrobe-parts','village-landscape','duck-swim']);
     const entries=Object.entries(ART_MANIFEST.sheets),primary=entries.filter(([id])=>critical.has(id)),background=entries.filter(([id])=>!critical.has(id));
     const loadOne=([id,s])=>new Promise(resolve=>{const im=new Image();let settled=false;const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve()};const timer=setTimeout(()=>finish(false),12000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file});
     const queue=async entries=>{let cursor=0;await Promise.all(Array.from({length:Math.min(3,entries.length)},async()=>{while(cursor<entries.length)await loadOne(entries[cursor++])}))};

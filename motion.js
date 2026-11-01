@@ -27,8 +27,15 @@ const Motion={
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
     if(Object.values(BUILDINGS).some(b=>x>b.slot[0]-.15&&x<b.slot[0]+2.15&&y>b.slot[1]-.15&&y<b.slot[1]+2.15))return false;
     if((S.decor||[]).some(d=>Math.hypot(x-d.gx,y-d.gy)<.65))return false;
+    if(typeof Scene!=='undefined'&&Scene.objs?.some(o=>this.solid(o.k)&&Math.hypot(x-o.gx,y-o.gy)<this.radius(o.k)))return false;
+    if(typeof Village!=='undefined'&&Village.sceneObjects().some(o=>Math.hypot(x-o.gx,y-o.gy)<1.05))return false;
     return true;
   },
+  solid(id){return !['flower','sign','boat','village-stairs','village-stone-bridge','village-pipeline','hay'].includes(id)},
+  radius(id){return /house|greenhouse|stall/.test(id)?1.18:/tree|pine|maple|bamboo|palm/.test(id)?.57:/rock/.test(id)?.42:.5},
+  pond(x,y){return Math.hypot((x-11.5)/2.75,(y-3.6)/2.05)<1},
+  canTravel(x,y,tx,ty,allowed=(x,y)=>this.canOccupy(x,y)){const steps=Math.max(1,Math.ceil(Math.hypot(tx-x,ty-y)/.1));for(let i=1;i<=steps;i++)if(!allowed(x+(tx-x)*i/steps,y+(ty-y)*i/steps))return false;return true},
+  stepSafe(e,dt,speed,stride){const x=e.x,y=e.y,phase=e.phase,allowed=e.fly?()=>true:e.water?(x,y)=>this.pond(x,y):(x,y)=>this.canOccupy(x,y);const distance=this.stepEntity(e,dt,speed,stride);if(this.canTravel(x,y,e.x,e.y,allowed))return distance;e.x=x;e.y=y;e.phase=phase||0;e.tx=x;e.ty=y;e.vx=e.vy=0;e.path=null;e.walk=0;e.speed=0;e.moving=false;e.wait=.1;return 0},
   route(x,y,tx,ty){
     const cells=Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5)),nearest=(px,py)=>{let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
     const start=nearest(x,y),goal=nearest(tx,ty);if(start<0||goal<0)return [];
@@ -53,19 +60,22 @@ const Motion={
     return distance;
   },
   chooseTarget(a){
-    for(let i=0;i<24;i++){const x=clamp(a.home[0]+rnd(-a.r,a.r),.4,N-.4),y=clamp(a.home[1]+rnd(-a.r,a.r),.4,N-.4);if(a.water?Math.hypot((x-11.5)/2.9,(y-3.6)/2.2)<1:a.fly||this.canOccupy(x,y)){a.tx=x;a.ty=y;return true}}a.tx=a.x;a.ty=a.y;return false;
+    for(let i=0;i<24;i++){const x=clamp(a.home[0]+rnd(-a.r,a.r),.4,N-.4),y=clamp(a.home[1]+rnd(-a.r,a.r),.4,N-.4);if(a.water?this.pond(x,y):a.fly||this.canOccupy(x,y)){if(a.water||a.fly){a.tx=x;a.ty=y;return true}if(this.navigate(a,x,y))return true}}a.tx=a.x;a.ty=a.y;return false;
   },
   update(scene,dt){
     this.reduced=!!S.fx.reduceMotion||this.media.matches;
     for(const a of scene.animals){
+      if(!a.fly&&(a.water?!this.pond(a.x,a.y):!this.canOccupy(a.x,a.y))){if(a.water){a.x=11.5;a.y=3.6}else{const route=this.route(a.x,a.y,a.home[0],a.home[1]);if(route.length){a.x=route[0].x;a.y=route[0].y}}a.tx=a.x;a.ty=a.y;a.vx=a.vy=0;a.path=null}
       if(!a.motionStarted){a.motionStarted=true;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=Math.max(.2,a.wait||1)}
-      if(Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);a.wait=rnd(1.2,4)}}
-      const distance=this.stepEntity(a,dt,a.sp,a.fly?.6:a.e==='🐄'||a.e==='🐃'?.7:.52);a.footDistance=(a.footDistance||0)+distance;
+      if(a.path?.length){let waypoint=a.path[a.pathIndex];if(waypoint&&Math.hypot(waypoint.x-a.x,waypoint.y-a.y)<.08&&a.pathIndex<a.path.length-1)waypoint=a.path[++a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
+      if(!a.path&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);a.wait=rnd(1.2,4)}}
+      const distance=this.stepSafe(a,dt,a.sp,a.fly?.6:a.e==='🐄'||a.e==='🐃'?.7:.52);a.footDistance=(a.footDistance||0)+distance;
       if(a.footDistance>(a.water?.3:.55)&&!a.fly){a.footDistance=0;this.emit(a.water?'water':'dust',a.x,a.y,a.water?20:12,.45)}
     }
     const p=scene.player;
     if(p.path?.length){let waypoint=p.path[p.pathIndex];if(waypoint&&Math.hypot(waypoint.x-p.x,waypoint.y-p.y)<.13&&p.pathIndex<p.path.length-1)waypoint=p.path[++p.pathIndex];if(waypoint){p.tx=waypoint.x;p.ty=waypoint.y}}
-    const distance=this.stepEntity(p,dt,2.8,1.35);p.footDistance=(p.footDistance||0)+distance;
+    if(!this.canOccupy(p.x,p.y)){const path=this.route(p.x,p.y,p.tx,p.ty);if(path.length){p.x=path[0].x;p.y=path[0].y;p.path=path;p.pathIndex=0;p.vx=p.vy=0}}
+    const distance=this.stepSafe(p,dt,2.8,1.35);p.footDistance=(p.footDistance||0)+distance;
     if(p.footDistance>.48){p.footDistance=0;this.emit('dust',p.x,p.y,14,.4)}
     if(!p.moving&&Math.hypot(p.tx-p.x,p.ty-p.y)<.025){p.path=null;if(p.pendingWork){p.work=p.pendingWork;p.pendingWork=0}}
     p.workClock=p.work>0?(p.workClock||0)+dt:0;p.work=Math.max(0,p.work-dt);
@@ -85,6 +95,7 @@ const Motion={
     c.save();c.translate(x,y);c.scale(1,breathing);const drawn=this.draw(c,prefix+'-'+state,phase,0,0,h*1.16,{flipScale:flip,angle,cleanFishing:state==='fish'&&o.cleanFishing});c.restore();return drawn;
   },
   animal(c,a,z,t,scene){
+    if(a.water&&a.e==='🦆'&&Art.has('duck-swim-0')){const p=scene.iso(a.x,a.y),phase=S.fx.reduceMotion?0:Math.floor(t*2+(a.phase||0)*4)%4;return Art.draw(c,'duck-swim-'+phase,p.x,p.y+2*z,45*z,32*z,1,(a.turn??-1)>0)}
     const id=Art.emoji.get(a.e);if(!id)return false;const active=a.moving||a.fly,turning=Math.abs(a.turn??1)<.55&&this.has(id+'-turn'),state=turning?'turn':active?'walk':'idle',phase=turning?Math.abs(a.turn):a.fly?t*2.7+(a.phase||0):active?a.phase:t*.6+a.x;
     const p=scene.iso(a.x,a.y),elevation=a.fly?24+Math.sin(t*3+a.x)*3:a.water?Math.sin(t*2+a.x)*.8:Math.sin((a.phase||0)*Math.PI*4)*.35*(a.moveBlend||0),size=(id==='cow'||id==='buffalo'?47:id==='butterfly'||id==='bee-animal'?24:35)*z;
     return this.draw(c,id+'-'+state,phase,p.x,p.y-elevation*z,size,{flipScale:(a.turn??a.face??-1)>0?-1:1});
