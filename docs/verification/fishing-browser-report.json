@@ -1,0 +1,107 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "name": "three locations, all species and live PNGs",
+      "pass": true
+    },
+    {
+      "name": "real pointer casts chosen inexpensive bait only",
+      "pass": true
+    },
+    {
+      "name": "bite hooks, pointer release clears hold",
+      "pass": true
+    },
+    {
+      "name": "complete playable catch and reject duplicate reward",
+      "pass": true
+    },
+    {
+      "name": "sale once, collection survives selling",
+      "pass": true
+    },
+    {
+      "name": "settings pause fish and appear above fishing screen",
+      "pass": true
+    },
+    {
+      "name": "vibration levels and off switch with mocked device",
+      "pass": true,
+      "pulses": [
+        14,
+        32,
+        58
+      ]
+    },
+    {
+      "name": "theme preserves preferences and fishing layer",
+      "pass": true
+    },
+    {
+      "name": "progression unlocks river after five catches",
+      "pass": true
+    },
+    {
+      "name": "earned chest cannot be claimed twice",
+      "pass": true
+    },
+    {
+      "name": "daily goal claims once",
+      "pass": true
+    },
+    {
+      "name": "bucket capacity and actual net sale bonus",
+      "pass": true
+    },
+    {
+      "name": "tap control stays engaged after pointer release",
+      "pass": true
+    },
+    {
+      "name": "second tap releases line",
+      "pass": true
+    },
+    {
+      "name": "leaving window pauses and clears input",
+      "pass": true
+    },
+    {
+      "name": "optional timing produces a valid cast",
+      "pass": true
+    },
+    {
+      "name": "responsive fishing 390x844",
+      "pass": true
+    },
+    {
+      "name": "responsive fishing 320x568",
+      "pass": true
+    },
+    {
+      "name": "responsive fishing 844x390",
+      "pass": true
+    },
+    {
+      "name": "unsupported devices show honest disabled vibration test",
+      "pass": true
+    },
+    {
+      "name": "bag filling during catch preserves pending fish",
+      "pass": true
+    },
+    {
+      "name": "preferences and pending catch survive reload",
+      "pass": true
+    },
+    {
+      "name": "restored pending fish sells once without inventory overflow",
+      "pass": true
+    },
+    {
+      "name": "exit stops fishing and resumes farm",
+      "pass": true
+    }
+  ],
+  "passed": true
+}

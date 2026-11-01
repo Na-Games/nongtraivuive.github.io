@@ -327,7 +327,7 @@ const Scene={
   drawObj(c,o,z,t){
     const p=this.iso(o.gx,o.gy),s=o.s*z,sw=Math.sin(t*1.4+o.ph)*2*z;
     if(p.x<-180*z||p.x>this.w+180*z||p.y<-40*z||p.y>this.h+180*z)return;
-    if(o.k==='village-stone-bridge'){const a=this.iso(o.gx-1.35,o.gy),b=this.iso(o.gx+1.35,o.gy),span=Math.hypot(b.x-a.x,b.y-a.y);c.save();c.translate(p.x,p.y);c.rotate(Math.atan2(b.y-a.y,b.x-a.x));Art.draw(c,o.k,0,span*.19,span*1.28,span*.84,.72);c.restore();return}
+    if(o.k==='village-stone-bridge'){const a=this.iso(o.gx-1.35,o.gy),b=this.iso(o.gx+1.35,o.gy),span=Math.hypot(b.x-a.x,b.y-a.y);c.save();c.translate(p.x,p.y);c.rotate(Math.atan2(b.y-a.y,b.x-a.x));Art.draw(c,o.k,0,-span*.04,span*1.28,span*.84,.72);c.restore();return}
     const sizes=this.objectSizes={'village-teahouse':[245,215],'village-dyehouse':[220,190],'village-wheel':[145,150],'village-stone-bridge':[130,80],'village-spring':[190,150],'village-maple':[110,140],'village-pine':[110,150],'village-bamboo':[110,170],'village-stairs':[100,60],'village-rocks':[56,48],'village-stone-lantern':[35,70],'village-pipeline':[160,85],tree:[78,102],palm:[92,122],bamboo:[76,112],bush:[45,40],flower:[32,28],rock:[34,26],silo:[64,94],sign:[54,68],well:[70,78],scarecrow:[48,72],hay:[43,32],farmhouse:[160,140],truck:[80,65],tractor:[70,64],'shop-stall':[100,90],boat:[74,48],greenhouse:[106,90],gate:[56,62],bridge:[85,46],'peach-tree':[78,104],cat:[30,35],buffalo:[54,46]};
     if(Art.has(o.k)){const meta=DECOR_CATALOG[o.k],[w,h]=meta?[meta.w,meta.h]:sizes[o.k]||[60,70];this.shadow(c,p.x,p.y+2*s,w*.3*s,7*s);if(Motion.isFoliage(o.k))Motion.foliage(c,o.k,p.x,p.y+3*s,w*s,h*s,t,o.ph+o.gx*.7+o.gy*.4);else Art.draw(c,o.k,p.x,p.y+3*s+(['truck','tractor','boat'].includes(o.k)?Math.sin(t*(o.k==='boat'?1.8:11))*.35*s:0),w*s,h*s,1);return}
     switch(o.k){
@@ -384,7 +384,7 @@ const Scene={
     if(pl.lv>1){const p=this.iso(i+.5,j+.95);c.font=`800 ${10*z}px 'Baloo 2'`;c.textAlign='center';c.fillStyle='#ffe27a';Art.text(c,'★'.repeat(Math.min(pl.lv,5)),p.x,p.y)}
     if(!pl.crop)return;
     const pr=cropProg(pl),C=CROPS[pl.crop],p=this.iso(i+.5,j+.5),sw=Math.sin(t*2+k)*1.5*z;
-    const stage=pr<.3?0:pr<1?1:2,trees={xoai:'mango-tree',chuoi:'banana-tree',cam:'orange-tree',dua:'palm',che:'tea-bush','caphe-qua':'coffee-bush'},sprite=Art.has((C.growthArt||C.art||pl.crop)+'-'+stage)?(C.growthArt||C.art||pl.crop)+'-'+stage:stage===0?'sprout':stage===1?'bush':trees[C.art||pl.crop]||(C.growthArt||C.art||pl.crop);
+    const {stage,sprite}=this.cropVisual(pl);
     if(Art.has(sprite)){for(const [dx,dy]of [[-17,-3],[16,-3],[0,10]]){if(Motion.isFoliage(sprite))Motion.foliage(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,t,k*.7);else Art.draw(c,sprite,p.x+dx*z,p.y+dy*z+6*z,(stage===2?36:28)*z,(stage===2?42:30)*z,1)}return}
     if(pr<.15){c.fillStyle='#3a2410';c.beginPath();c.arc(p.x,p.y,3*z,0,6.283);c.fill();for(let m=-1;m<=1;m++){c.beginPath();c.arc(p.x+m*10*z,p.y+m*2*z,2*z,0,6.283);c.fill()}return}
     const sz=(pr<.55?14:pr<1?22:30)*z;
@@ -394,7 +394,7 @@ const Scene={
   },
   drawAnimal(c,a,z,t){
     const p=this.iso(a.x,a.y),bob=a.fly?Math.sin(t*9+a.x)*8*z-22*z:Math.abs(Math.sin(t*5+a.x*3))*(Math.hypot(a.tx-a.x,a.ty-a.y)>.06?4:0.6)*z;
-    this.shadow(c,p.x,p.y,10*z,4*z);
+    if(!a.water)this.shadow(c,p.x,p.y,10*z,4*z);
     if(Motion.animal(c,a,z,t,this))return;
     const sprite=Art.emoji.get(a.e);if(sprite&&Art.has(sprite)){const sz=(a.e==='🐄'?46:a.fly?24:34)*z;Art.draw(c,sprite,p.x,p.y-bob,sz,sz,1,a.face>0);return}
     c.save();c.translate(p.x,p.y-bob);c.scale(a.face*-1,1);c.font=`${(a.e==='🐄'?34:24)*z}px serif`;c.textAlign='center';c.textBaseline='alphabetic';Art.text(c,a.e,0,0);c.restore();

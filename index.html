@@ -63,5 +63,6 @@
 <script src="fishing.js"></script>
 <script src="village.js"></script>
 <script src="ui.js"></script>
+<script>if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));</script>
 </body>
 </html>

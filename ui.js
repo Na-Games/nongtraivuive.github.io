@@ -148,13 +148,6 @@ function tapPlot(k,sx,sy){
   if(!pl.crop)return seedPicker(k,sx,sy);
   if(cropProg(pl)>=1)return harvestPlot(k,sx,sy);
   return FarmCare.quick(k,sx,sy);
-  const C=CROPS[pl.crop],rem=cropDur(pl)-(Date.now()-pl.t0),gc=Math.max(1,Math.ceil(rem/15000));
-  const up=plotUpCost(pl);
-  popAt(sx,sy,`<h4>${C.e} ${C.n} <small>(Đất ★${pl.lv})</small></h4><p>⏳ Còn <b id="pt">${fmtT(rem)}</b> · Sản lượng ×${yieldQty(pl)}</p><div class="acts"><button class="cbtn2 orange sm" id="pf">⚡ ${gc}💎 Tăng tốc</button><button class="cbtn2 blue sm" id="pu">⬆ Đất 🪙${fmt(up)}</button></div>`,p=>{
-    $('#pf',p).onclick=()=>{if(S.gems<gc)return toast('Không đủ ngọc'),beep('err');addGems(-gc);pl.t0-=cropDur(pl);hidePop();Scene.burst(sx,sy,'⚡');beep('win')};
-    $('#pu',p).onclick=()=>upgradePlot(k,sx,sy);
-    const iv=setInterval(()=>{const t=$('#pt');if(!t||!p.isConnected)return clearInterval(iv);t.textContent=fmtT(Math.max(0,cropDur(pl)-(Date.now()-pl.t0)))},500);
-  });
 }
 function upgradePlot(k,sx,sy){
   const pl=S.plots[k];if(pl.lv>=20)return toast('Đất đã đạt cấp tối đa!');if(pl.lv>=5&&S.lv<pl.lv*10)return toast(`Cần cấp ${pl.lv*10} để nâng đất tiếp.`);
@@ -429,17 +422,115 @@ function openProfile(){
   },'84%');
 }
 function openAvatarEditor(){
-  openSheet('avatar','Nh?n v?t',body=>{
+  openSheet('avatar','Nhân vật',body=>{
     body.innerHTML='<canvas id="pav" class="av-prev" width="340" height="400"></canvas><p class="avatar-description"></p>';
-    const redraw=()=>{const c=$('#pav',body).getContext('2d');c.clearRect(0,0,340,400);Wardrobe.draw(c,170,382,326,S.av,{t:0});$('.avatar-description',body).textContent=Wardrobe.names[S.av.style||0]+' ? '+['N?ng d?n tr?','C? g?i l?m v??n','N?ng d?n l?c ?i?n','?ng l?o l?ng','Ngh? nh?n l?ng','Em b? hi?u ??ng'][S.av.style||0];drawHudAvatar()};
+    const redraw=()=>{const c=$('#pav',body).getContext('2d');c.clearRect(0,0,340,400);Wardrobe.draw(c,170,382,326,S.av,{t:0});$('.avatar-description',body).textContent=Wardrobe.names[S.av.style||0]+' · '+['Nông dân trẻ','Cô gái làm vườn','Nông dân lực điền','Ông lão làng','Nghệ nhân làng','Em bé hiếu động'][S.av.style||0];drawHudAvatar()};
     const choose=(key,value)=>{S.av[key]=value;S.av.art=true;for(const b of body.querySelectorAll('[data-avatar-key="'+key+'"]')){const on=b.dataset.avatarValue===String(value);b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on))}save();redraw()};
     const option=(key,value,label,content)=>{const b=el('button',String(S.av[key])===String(value)?'on':'',content||label);b.type='button';b.dataset.avatarKey=key;b.dataset.avatarValue=value;b.title=label;b.setAttribute('aria-label',label);b.setAttribute('aria-pressed',String(String(S.av[key])===String(value)));b.onclick=()=>choose(key,value);return b};
-    body.append(el('div','lbl','Ch?n nh?n v?t'));const styles=el('div','avatar-styles');for(let i=0;i<6;i++){const b=option('style',i,Wardrobe.names[i]);b.replaceChildren(Wardrobe.icon({...S.av,style:i}),el('small','',Wardrobe.names[i]));styles.append(b)}body.append(styles);
-    const colors=(label,key,values,names)=>{body.append(el('div','lbl',label));const row=el('div','sw-row');values.forEach((color,i)=>{const b=option(key,color,names[i]);b.classList.add('sw-c');b.style.background=color;row.append(b)});body.append(row)};
-    colors('M?u da','skin',SKINS,['Da s?ng','Da v?ng','Da n?u','Da s?m']);colors('M?u t?c','hair',HAIRS,['N?u ?en','N?u h?t d?','N?u ??ng','V?ng','?en']);colors('M?u ?o','outfit',OUTFITS,['Xanh l?','?? san h?','Xanh d??ng','V?ng','T?m','Tr?ng ng?']);
+    body.append(el('div','lbl','Chọn nhân vật'));const styles=el('div','avatar-styles');for(let i=0;i<6;i++){const b=option('style',i,Wardrobe.names[i]);b.replaceChildren(Wardrobe.icon({...S.av,style:i}),el('small','',Wardrobe.names[i]));styles.append(b)}body.append(styles);
+    const colors=(label,key,values,names)=>{body.append(el('div','lbl',label));const row=el('div','sw-row');values.forEach((color,i)=>{const b=option(key,color,names[i]);b.textContent='';b.classList.add('sw-c');b.style.background=color;row.append(b)});body.append(row)};
+    colors('Màu da','skin',SKINS,['Da sáng','Da vàng','Da nâu','Da sẫm']);colors('Màu tóc','hair',HAIRS,['Nâu đen','Nâu hạt dẻ','Nâu đồng','Vàng','Đen']);colors('Màu áo','outfit',OUTFITS,['Xanh lá','Đỏ san hô','Xanh dương','Vàng','Tím','Trắng ngà']);
     const choices=(title,key,values,artPrefix)=>{body.append(el('div','lbl',title));const row=el('div','seg avatar-options');for(const [id,label]of values){const art=artPrefix&&Art.icon(artPrefix+id,label);row.append(option(key,id,label,(art||'')+'<span>'+label+'</span>'))}body.append(row)};
-    choices('Ki?u t?c','hairStyle',Wardrobe.hairStyles,'hair-');choices('Ki?u ?o','shirtStyle',[['shirt','?o s? mi'],['overalls','Qu?n y?m'],['jacket','?o kho?c']],'shirt-');choices('M?','hat',HATS,'hat-');
-    body.append(el('div','lbl','T?n'));const input=el('input','search');input.value=S.name;input.maxLength=16;input.oninput=()=>{S.name=input.value||'N?ng d?n';save()};body.append(input);redraw();
+    choices('Kiểu tóc','hairStyle',Wardrobe.hairStyles,'hair-');choices('Kiểu áo','shirtStyle',[['shirt','Áo sơ mi'],['overalls','Quần yếm'],['jacket','Áo khoác']],'shirt-');choices('Mũ','hat',HATS,'hat-');
+    body.append(el('div','lbl','Tên'));const input=el('input','search');input.value=S.name;input.maxLength=16;input.oninput=()=>{S.name=input.value||'Nông dân';save()};body.append(input);redraw();
   },'88%');
 }
 
+
+function changeProvince(){closeSheet();$('#hud').classList.add('hidden');fadeTo(()=>showMapScreen(true))}
+
+/* ===== Màn hình tải ===== */
+function runLoader(done){
+  const screen=$('#screen-load'),bar=$('#load-bar'),pct=$('#load-pct'),msg=$('#load-msg');
+  let finished=false,p=8;const start=performance.now();
+  const progress=value=>{p=Math.max(p,Math.min(100,value));bar.style.width=p+'%';pct.textContent=`Đang tải ${Math.floor(p)}%`};
+  progress(p);msg.textContent='Đang chuẩn bị nông trại…';
+  const iv=setInterval(()=>{const elapsed=performance.now()-start;progress(Math.min(92,12+Art.ready*10+elapsed/70));if(elapsed>1200)msg.textContent='Sắp vào vườn, hình ảnh còn lại tải ở nền…'},80);
+  const finish=()=>{if(finished)return;finished=true;clearInterval(iv);clearTimeout(deadline);progress(100);msg.textContent='Nông trại đã sẵn sàng!';setTimeout(()=>{screen.classList.add('out');done();setTimeout(()=>{screen.remove();GameAudio.sync()},500)},120)};
+  // Enter even on a slow/missing image. All gameplay has a canvas fallback.
+  const deadline=setTimeout(finish,3000);
+  Promise.resolve(Art.criticalPromise).then(()=>{const minimum=Math.max(0,350-(performance.now()-start));setTimeout(finish,minimum)},finish);
+}
+
+/* ===== Màn hình chọn tỉnh (bản đồ Việt Nam) ===== */
+let mapState=null;
+function showMapScreen(change){
+  const scr=$('#screen-map');scr.classList.remove('hidden','out');
+  const SC=34,PW=330,PH=620,proj=(lon,lat)=>[(lon-101.5)*SC+10,(23.8-lat)*SC+10];
+  const outline=VN_OUTLINE.map(([a,b])=>proj(a,b).join(',')).join(' ');
+  let sel=null;
+  const marks=PROVINCES.map(p=>{const[x,y]=proj(p[1],p[2]);const col=p[3]==='Bắc'?'#6fae4e':p[3]==='Trung'?'#e5b45a':'#d98f4a';return`<g class="pv" data-n="${p[0]}" role="button" tabindex="0" aria-label="Chọn ${p[0]}" style="cursor:pointer"><circle class="map-hit" cx="${x}" cy="${y}" r="13"/><circle class="map-marker" cx="${x}" cy="${y}" r="5" fill="${col}" data-color="${col}" stroke="#fff" stroke-width="1.5"/><text x="${x+9}" y="${y+4}" font-size="10" font-weight="800" fill="#fff" stroke="#16384f" stroke-width="2.5" paint-order="stroke" font-family="Baloo 2">${p[0]}</text></g>`}).join('');
+  scr.innerHTML=`<div id="mapSvgWrap"><svg id="mapSvg" width="${PW*1.4}" height="${PH*1.4}" viewBox="0 0 ${PW} ${PH}">
+   <defs><pattern id="relief" width="330" height="620" patternUnits="userSpaceOnUse"><image href="assets/backgrounds/province-relief.png" width="330" height="620" preserveAspectRatio="none"/></pattern><filter id="map-depth" x="-30%" y="-20%" width="160%" height="160%"><feDropShadow dx="-3" dy="5" stdDeviation="3" flood-color="#102f32" flood-opacity=".8"/></filter><pattern id="gr" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,.07)"/></pattern><linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7ba3"/><stop offset="1" stop-color="#1d5478"/></linearGradient></defs>
+   <rect x="-600" y="-600" width="2000" height="2400" fill="url(#sea)"/><rect x="-600" y="-600" width="2000" height="2400" fill="url(#gr)"/>
+   <polygon points="${outline}" fill="#9cd06e" stroke="#e9f7c8" stroke-width="4" stroke-linejoin="round" opacity=".5" transform="translate(0 0)"/>
+   <polygon points="${outline}" fill="url(#relief)" filter="url(#map-depth)" stroke="#dce7b1" stroke-width="1.5" stroke-linejoin="round"/>
+   <g fill="#ffd45e" stroke="#fff" stroke-width="1"><circle cx="${proj(112,16.5)[0]}" cy="${proj(112,16.5)[1]}" r="3"/><circle cx="${proj(114,10)[0]}" cy="${proj(114,10)[1]}" r="3"/></g>
+   <text x="${proj(111,17.5)[0]}" y="${proj(111,17.5)[1]}" font-size="9" fill="#fff" font-weight="800" font-family="Baloo 2" stroke="#16384f" stroke-width="2" paint-order="stroke">QĐ. Hoàng Sa</text>
+   <text x="${proj(112.5,11)[0]}" y="${proj(112.5,11)[1]}" font-size="9" fill="#fff" font-weight="800" font-family="Baloo 2" stroke="#16384f" stroke-width="2" paint-order="stroke">QĐ. Trường Sa</text>
+   <text x="${proj(107.8,19.5)[0]}" y="${proj(107.8,19.5)[1]}" font-size="10" fill="#cfe8f7" font-style="italic" font-family="Baloo 2">Biển Đông</text>
+   ${marks}</svg></div>
+   <div class="map-top"><div>${change?'<button class="pill" id="mback">‹ Quay lại</button>':'<button class="pill" id="mback">‹ Đăng nhập</button>'}</div><div class="pill" style="pointer-events:none">Chọn quê</div><div><button class="rbtn" id="mz1">+</button><button class="rbtn" id="mz2">−</button><button class="rbtn" id="mz3">⛶</button></div></div>
+   <div class="map-sheet" id="msheet"><div class="grab"></div><div class="card"><div class="sel-info" id="msel">Chạm vào một tỉnh trên bản đồ, hoặc tìm tên tỉnh ở danh sách bên dưới.</div><button class="btn-big" id="mgo" disabled>Chọn một tỉnh</button></div><input class="search" id="msearch" placeholder="Tìm tỉnh… (vd: Đà Nẵng, Bình Dương)"><div class="plist" id="plist"></div></div>`;
+  const svg=$('#mapSvg',scr),T={x:(innerWidth-PW*1.4)/2+20,y:30,z:1};
+  const apply=()=>svg.style.transform=`translate(${T.x}px,${T.y}px) scale(${T.z})`;apply();
+  const fit=()=>{const landscape=innerWidth>innerHeight&&innerHeight<600,availableW=landscape?innerWidth-360:innerWidth,availableH=landscape?innerHeight-80:innerHeight*.46;T.z=clamp(Math.min(availableW/(PW*1.4),availableH/(PH*1.4)),.3,1.2);T.x=(availableW-PW*1.4*T.z)/2;T.y=60;apply()};fit();
+  mapState={resize:fit};
+  const zoom=(f,cx=innerWidth/2,cy=innerHeight/3)=>{const nz=clamp(T.z*f,.25,4),k=nz/T.z;T.x=cx-(cx-T.x)*k;T.y=cy-(cy-T.y)*k;T.z=nz;apply()};
+  $('#mz1',scr).onclick=()=>zoom(1.4);$('#mz2',scr).onclick=()=>zoom(.7);$('#mz3',scr).onclick=fit;
+  const wrap=$('#mapSvgWrap',scr);let drag=null,pts=new Map(),pd=0,mv=0;
+  wrap.onpointerdown=e=>{wrap.setPointerCapture(e.pointerId);pts.set(e.pointerId,[e.clientX,e.clientY]);mv=0;if(pts.size===2){const[a,b]=[...pts.values()];pd=Math.hypot(a[0]-b[0],a[1]-b[1])}};
+  wrap.onpointermove=e=>{const p=pts.get(e.pointerId);if(!p)return;
+    if(pts.size===1){const dx=e.clientX-p[0],dy=e.clientY-p[1];mv+=Math.abs(dx)+Math.abs(dy);T.x+=dx;T.y+=dy;apply()}
+    else{pts.set(e.pointerId,[e.clientX,e.clientY]);const[a,b]=[...pts.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pd)zoom(d/pd,(a[0]+b[0])/2,(a[1]+b[1])/2);pd=d;mv=99;return}
+    pts.set(e.pointerId,[e.clientX,e.clientY])};
+  wrap.onpointerup=wrap.onpointercancel=e=>{pts.delete(e.pointerId);if(pts.size<2)pd=0;if(e.type==='pointerup'&&mv<8){const g=document.elementFromPoint(e.clientX,e.clientY)?.closest('.pv');if(g)choose(g.dataset.n)}};
+  wrap.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.15:.87,e.clientX,e.clientY)},{passive:false});
+  const choose=n=>{sel=n;$('#msel',scr).innerHTML=`📍 <b>${n}</b> — quê hương của bạn?`;const g=$('#mgo',scr);g.disabled=false;g.textContent=`Chọn ${n}`;
+    scr.querySelectorAll('.pv .map-marker').forEach(c=>{const on=c.parentNode.dataset.n===n;c.parentNode.classList.toggle('selected',on);c.setAttribute('r',on?8:5);c.setAttribute('fill',on?'#e76148':c.dataset.color)});
+    const p=PROVINCES.find(x=>x[0]===n),[x,y]=proj(p[1],p[2]);T.z=Math.max(T.z,1.8);T.x=innerWidth/2-x*1.4*T.z;T.y=innerHeight*.28-y*1.4*T.z;svg.style.transition='transform .5s';apply();setTimeout(()=>svg.style.transition='',520);renderList();beep('pop')};
+  const renderList=()=>{const q=$('#msearch',scr).value.trim().toLowerCase(),L=$('#plist',scr);L.innerHTML='';
+    ['Bắc','Trung','Nam'].forEach(r=>{const items=PROVINCES.filter(p=>p[3]===r&&p[0].toLowerCase().includes(q));if(!items.length)return;L.appendChild(el('div','reg',r));const g=el('div','pgrid');
+      items.forEach(p=>{const it=el('button','pitem'+(sel===p[0]?' sel':''),`${Art.icon('pin',p[0])} ${p[0]}<small>${sel===p[0]?'Đã chọn':'Miền '+r+' · Chạm để chọn'}</small>`);it.onclick=()=>choose(p[0]);g.appendChild(it)});L.appendChild(g)})};
+  renderList();$('#msearch',scr).oninput=renderList;
+  scr.querySelectorAll('.pv').forEach(g=>g.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose(g.dataset.n)}});
+  $('#msearch',scr).onfocus=()=>$('#msheet',scr).classList.add('big');
+  $('#mgo',scr).onclick=()=>{if(!sel)return;S.province=sel;if(!S.joined)S.joined=ri(40,300);save();enterFarm(true)};
+  $('#mback',scr).onclick=()=>{if(change&&S.province)enterFarm(false);else toast('Chào mừng bạn đến Xóm Nông Trại! 🌾')};
+}
+function enterFarm(welcome){
+  fadeTo(()=>{
+    $('#screen-map').classList.add('hidden');$('#hud').classList.remove('hidden');
+    GameAudio.sync();
+    refreshHud();Scene.syncAnimals();
+    if(welcome){
+      const r=S.province;
+      setTimeout(()=>{modal(`<div class="mribbon">Chào đồng hương ${r}!</div>
+      <svg class="illu" viewBox="0 0 300 150" width="100%"><defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd3f2"/><stop offset="1" stop-color="#e6f5d8"/></linearGradient></defs><rect width="300" height="150" fill="url(#sk)"/><ellipse cx="60" cy="30" rx="30" ry="10" fill="#fff"/><ellipse cx="230" cy="40" rx="34" ry="11" fill="#fff"/><path d="M0 80 Q60 40 120 75 T300 70 V150 H0z" fill="#6eae4e"/><path d="M0 105 Q100 80 150 110 T300 100 V150 H0z" fill="#4f9a3e"/><path d="M140 150 Q150 120 150 100 Q170 90 190 80" stroke="#d9b46a" stroke-width="14" fill="none"/><rect x="120" y="68" width="14" height="42" fill="#b8402e"/><rect x="170" y="68" width="14" height="42" fill="#b8402e"/><path d="M110 70 L152 46 L194 70z" fill="#c95a3a"/><rect x="132" y="66" width="40" height="8" fill="#a8362a"/></svg>
+      <p>Bạn là người chơi thứ ${S.joined+1} của tỉnh.<br>Mỗi người tính như nhau, nên tỉnh ít người vẫn đua ngang tỉnh đông người.</p>
+      <div class="box"><b>${r} mùa này</b>${ri(2,9)}/20 người chơi · chưa xếp hạng</div>
+      <ol><li>Chơi như thường: thu hoạch, giao đơn, giúp bạn.</li><li>Đạt Lv6 để được tính vào bình quân tỉnh.</li><li>Xem hạng tỉnh ở Mùa vụ Pass, tab Đua tỉnh.</li></ol>
+      <button class="btn-big" id="mv">Vào vườn</button>`);$('#mv').onclick=()=>{closeModal();Scene.burst(Scene.w/2,Scene.h/2,'🌾',12);beep('win')}},600);
+    }
+    save();
+  });
+}
+
+/* ===== Khởi động ===== */
+(function boot(){
+  load();
+  Village.ensure();
+  FarmCare.ensure();
+  const ref=new URLSearchParams(location.search).get('ref');
+  if(ref&&!S.refUsed){S.refUsed=ref;S.mail.unshift({id:Date.now(),t:'Bạn được mời!',d:'Cảm ơn bạn đã vào xóm theo lời mời của bạn bè.',c:300,g:5,got:false})}
+  document.body.classList.toggle('dark',!!S.night);setTheme(S.theme);Preferences.apply(false);
+  Scene.init();buildHud();Art.observe();
+  // tiến độ vắng mặt: thông báo
+  runLoader(()=>{
+    if(S.province){$('#hud').classList.remove('hidden');refreshHud();const away=Date.now()-S.ts;if(away>60000)toast('🌾 Chào mừng trở lại! Nông sản của bạn đã lớn lên.')}
+    else showMapScreen(false);
+  });
+  window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();cancelDecorPlacement()}});
+  window.addEventListener('resize',()=>{if(!$('#screen-map').classList.contains('hidden'))mapState?.resize()});
+  document.addEventListener('click',e=>{if(e.target.closest('button,[role=button],.avatar-ring,.item'))Haptics.pulse('tap')});
+})();

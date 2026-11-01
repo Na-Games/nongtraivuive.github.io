@@ -23,7 +23,7 @@ const World={
   drawWater(c,scene,z,t){
     if(typeof Landscape!=='undefined')Landscape.stream(c,z,t);
     c.save();c.strokeStyle='#b9f3ee99';c.lineWidth=1.5*z;
-    for(let row=2;row<32;row+=2){const x=27.3+(S.fx.reduceMotion?0:Math.sin(t*.7+row)*.15),a=scene.iso(x,row),b=scene.iso(x,row+1);c.beginPath();c.moveTo(a.x,a.y);c.quadraticCurveTo((a.x+b.x)/2+5*z,(a.y+b.y)/2,b.x,b.y);c.stroke()}
+    for(let row=-4;row<42;row+=2)for(let band=0;band<8;band++){const x=27.2+band*1.7+(S.fx.reduceMotion?0:Math.sin(t*.7+row+band)*.18),a=scene.iso(x,row),b=scene.iso(x,row+1.2);if(a.x<-100||a.x>scene.w+100||a.y<-100||a.y>scene.h+100)continue;c.globalAlpha=band? .28:.8;c.beginPath();c.moveTo(a.x,a.y);c.quadraticCurveTo((a.x+b.x)/2+5*z,(a.y+b.y)/2,b.x,b.y);c.stroke()}
     c.restore();
   },
   tap(gx,gy,sx,sy){

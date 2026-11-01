@@ -1,0 +1,38 @@
+[
+  {
+    "name": "village-panorama",
+    "prompt": "Use case: stylized-concept. Asset type: wide 3D miniature rural farming game exploration panorama, landscape 1536x1024. Create a richly detailed realistic miniature Asian village seen from elevated isometric camera: terraced rice fields at lower left, dark timber tiled cottages, bamboo grove and rugged green mountains at top, a winding long clear stream from upper middle to lower right, two stone bridges reaching both banks, a waterwheel, fruit orchard near lower middle, expansive turquoise ocean on right quarter with sandy curving coastline. Natural mossy stone, warm morning sun, soft atmospheric depth, physically realistic materials, polished handcrafted diorama matching reference rural Japanese village aesthetic. No text, no icons, no HUD, no characters. Continuous edge to edge landscape.",
+    "tool": "built-in image_gen",
+    "file": "assets/backgrounds/village-panorama.png"
+  },
+  {
+    "name": "fishing-lake",
+    "prompt": "Use case: stylized-concept. Asset type: portrait background for interactive fishing game, 1024x1536. Elevated isometric view of serene realistic miniature lake. Water occupies left 72 percent and entire center from top 25 percent downward to bottom edge, with subtle underwater stones, turquoise green depth, natural delicate ripples, open clear water for moving bobber. A vertical natural mossy stone and warm earth shore stays at right 28 percent from top to bottom, flat walkable stone fishing ledge at right center around 48 percent height for separate character sprite. Mountain bamboo forest and small distant waterfall only along top 24 percent. Lotus at lower left corner, realistic clear water reflections, warm morning light, exquisite detailed materials like handcrafted 3D rural Asian village diorama. No people, no boats, no rods, no text, no UI. Camera looks down 40 degrees.",
+    "tool": "built-in image_gen",
+    "file": "assets/backgrounds/fishing-lake.png"
+  },
+  {
+    "name": "terrain-meadow",
+    "prompt": "Use case: stylized-concept. Asset type: seamless square ground texture for miniature 3D farm game. Orthographic top-down macro of closely cropped realistic rural meadow ground: moss, tiny soft short grass, very subtle scattered soil, tiny pebbles, muted natural olive sage greens, soft even ambient daylight. Even scale, continuous seamlessly tileable edges, no large objects, no perspective, no tiles, no text, no shadows, no horizon. High material definition, subdued contrast to keep game sprites legible.",
+    "tool": "built-in image_gen",
+    "file": "assets/backgrounds/terrain-meadow.png"
+  },
+  {
+    "name": "province-relief",
+    "prompt": "Use case: stylized-concept. Asset type: portrait texture for clipped relief-style province selector map in rural farming game. Top-down orthographic relief terrain, 1024x1536. Continuous edge to edge green countryside: rugged forest mountain ridges in upper left half, gentler green hills centrally, finely textured patchwork rice paddies and meandering rivers in lower half, mossy olive greens and ochre earth, physically realistic 3D raised relief materials, ambient occlusion in valleys, soft morning light from upper left. No coastline, no country outline, no borders, no political markings, no text, no UI. This texture will be clipped to an existing accurate country polygon by the application.",
+    "tool": "built-in image_gen",
+    "file": "assets/backgrounds/province-relief.png"
+  },
+  {
+    "name": "duck-swim",
+    "prompt": "Use case: stylized-concept. Asset type: horizontal four-frame sprite strip for a farming game, 1536x1024 transparent background. EXACTLY four identical size white domestic ducks arranged at four evenly spaced columns, all facing three-quarter left in isometric miniature realistic 3D style. Each duck is FLOATING with lower belly submerged: low horizontal body, folded wings, orange bill, no feet or legs visible at all, no standing poses. Four subtle sequential swim poses with neck slightly moving, gentle small transparent turquoise oval wake ring around each body, no solid water patch. Same scale and identical anatomy in every frame. Each full silhouette contained in its own column, large transparent gutters, no overlap, no text, no other objects.",
+    "tool": "built-in image_gen",
+    "file": "assets/duck-swim.png"
+  },
+  {
+    "name": "village-people",
+    "prompt": "Use case: stylized-concept. Asset type: 6 separated full-body character sprites for a farming game, transparent background, landscape 1536x1024. A precise 3 columns by 2 rows contact sheet with 6 clearly different rural Asian 3D miniature farmers, one per equal cell, ample transparent margin around each silhouette. All standing relaxed facing three-quarter LEFT, hands at sides, feet aligned at bottom of each cell. Same art style and camera. All are BALD (smooth bare head so game hair and hats can be layered), no hat. Neutral pale light grey simple long sleeve shirt, dark brown trousers, sandals. Row1: (1) slim youthful boy round cheeks large friendly eyes; (2) youthful girl round face gentle eyes, petite body; (3) tall broad-shouldered adult muscular farmer square face thick eyebrows. Row2: (4) short elderly man prominent grey mustache wrinkled smiling face and stocky body; (5) tall slender adult woman elegant oval face, distinctly feminine proportions; (6) small playful child girl with very round head rosy cheeks freckles and short body. Realistic detailed skin and cloth, stylized appealing miniature proportions, exquisite rendered lighting, physically realistic materials. No tools, no baskets, no hair, no hats, no plinths, no backgrounds, no text. Six separate silhouettes, never touch each other.",
+    "tool": "built-in image_gen",
+    "file": "assets/village-people.png"
+  }
+]

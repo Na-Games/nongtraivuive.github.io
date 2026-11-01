@@ -1,17 +1,29 @@
-﻿{
-    "name":  "Xóm Nông Trại",
-    "short_name":  "Nông Trại",
-    "start_url":  "./index.html",
-    "display":  "fullscreen",
-    "orientation":  "any",
-    "background_color":  "#8fc66a",
-    "theme_color":  "#fff6e6",
-    "icons":  [
-                  {
-                      "purpose":  "any",
-                      "type":  "image/png",
-                      "sizes":  "256x256",
-                      "src":  "assets/sprites/terrain/farm-map.png"
-                  }
-              ]
+{
+  "name": "Xóm Nông Trại",
+  "short_name": "Nông Trại",
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#8fc66a",
+  "theme_color": "#fff6e6",
+  "icons": [
+    {
+      "purpose": "any",
+      "type": "image/png",
+      "sizes": "256x256",
+      "src": "assets/sprites/terrain/farm-map.png"
+    },
+    {
+      "src": "assets/sprites/scenery/scenery-paddy.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "scope": "./",
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ]
 }
