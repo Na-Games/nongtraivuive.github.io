@@ -1,0 +1,17 @@
+{
+  "tool": "built-in image_gen",
+  "file": "assets/backgrounds/farm-surfaces.png",
+  "columns": 4,
+  "rows": 2,
+  "materials": [
+    "grass",
+    "path",
+    "soil",
+    "roof",
+    "wood",
+    "plaster",
+    "rock",
+    "water"
+  ],
+  "prompt": "Use case: stylized-concept. Asset type: production PBR albedo material atlas for real interactive 3D rural village game, landscape 2048x1024, a precise four columns by two rows grid of eight square texture swatches, each fills its entire cell. Exact reading order: top row 1 muted fine olive moss and short grass ground, 2 irregular weathered grey cobblestone path with moss in joints, 3 rich dark brown tilled farm soil with fine organic furrows, 4 rows of traditional curved charcoal Japanese roof tiles; bottom row 5 weathered honey-brown timber planks, 6 warm ivory rough lime plaster wall, 7 rugged grey limestone cliff rocks with subtle moss, 8 clear turquoise shallows with tiny sandy stones on lake bed. Orthographic directly overhead for every swatch, flat even diffuse light, high resolution physically realistic photographic material detail. No perspective, no borders or gutters between cells, no shadows of objects, no labels, no text, no objects, no houses. Seamless repeating material inside each swatch. Match miniature Japanese rural stone terraces and timber villages in warm sunshine."
+}

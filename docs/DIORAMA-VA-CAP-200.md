@@ -2,6 +2,8 @@
 
 Cập nhật 01/11/2026 theo tài liệu lỗi mới. Thực hiện trong mã nguồn game hiện có, giữ khóa lưu `xom_nong_trai_v2`.
 
+Bản mới nhất đã bổ sung **map WebGL và nhân vật 3D dùng chung cấu hình**, xem [FARM-3D.md](FARM-3D.md). Bộ PNG bên dưới được giữ cho icon, cây/vật nuôi trong không gian 3D, thư viện và chế độ tương thích.
+
 ## Hình ảnh đã tích hợp
 
 1.070 PNG riêng trong 37 nhóm: 704 hình tĩnh và 366 khung chuyển động. Có thêm 4 ảnh nền trong `assets/backgrounds/`. Ảnh được tạo bằng công cụ imagegen tích hợp theo phong cách các ảnh tham chiếu: mô hình làng quê 3D thu nhỏ, mái ngói, tre, gỗ, đá và vải chàm. Mỗi sprite có nền alpha trong suốt, khoảng đệm ít nhất 24 px; bảng ảnh nguồn không được dùng trực tiếp làm icon. Ảnh nền toàn cảnh được giữ kín nền.
