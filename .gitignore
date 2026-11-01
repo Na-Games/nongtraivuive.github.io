@@ -1,4 +1,7 @@
 .runtime/
+docs/verification/
+docs/*-report.json
+docs/diorama-validation.json
 output/
 Thumbs.db
 Desktop.ini

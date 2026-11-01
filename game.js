@@ -281,6 +281,8 @@ const Scene={
     const path=(s)=>{c.beginPath();pts.forEach((p,k)=>{const x=this.iso(cx,cy);const px=x.x+(p.x-x.x)*s,py=x.y+(p.y-x.y)*s;k?c.lineTo(px,py):c.moveTo(px,py)});c.closePath()};
     path(1.1);c.fillStyle='#e8d8a8';c.fill();
     path(1);const ctr=this.iso(cx,cy);const g=c.createRadialGradient(ctr.x,ctr.y,10*z,ctr.x,ctr.y,150*z);g.addColorStop(0,'#1f6a78');g.addColorStop(1,'#3b9aa0');c.fillStyle=g;c.fill();
+    const lake=typeof Scenery!=='undefined'&&Scenery.images['fishing-lake'];
+    if(lake){c.save();path(1);c.clip();c.globalAlpha=.62;const top=this.iso(cx-3.3,cy-2.6),bottom=this.iso(cx+3.3,cy+2.6),width=6.2*TW*z; c.drawImage(lake,0,lake.height*.3,lake.width*.65,lake.height*.5,ctr.x-width/2,top.y,width,bottom.y-top.y);c.restore();for(let k=0;k<16;k++){const p=pts[Math.floor(k*M/16)];Art.draw(c,'village-rocks',p.x,p.y+7*z,(23+k%3*6)*z,(17+k%3*4)*z,1)}}
     c.save();path(1);c.clip();
     c.strokeStyle='rgba(255,255,255,.25)';c.lineWidth=1.5*z;
     for(let k=0;k<5;k++){const r=((t*.25+k/5)%1);c.globalAlpha=1-r;c.beginPath();c.ellipse(ctr.x+Math.sin(k*5)*40*z,ctr.y+Math.cos(k*3)*14*z,r*50*z,r*25*z,0,0,6.283);c.stroke()}

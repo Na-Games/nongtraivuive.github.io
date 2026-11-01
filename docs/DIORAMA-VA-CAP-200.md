@@ -1,13 +1,13 @@
 # Bộ ảnh diorama, chăm cây và tiến trình cấp 200
 
-Cập nhật 31/10/2026. Thực hiện trong mã nguồn game hiện có, giữ khóa lưu `xom_nong_trai_v2`.
+Cập nhật 01/11/2026 theo tài liệu lỗi mới. Thực hiện trong mã nguồn game hiện có, giữ khóa lưu `xom_nong_trai_v2`.
 
 ## Hình ảnh đã tích hợp
 
-1.060 PNG riêng trong 35 nhóm: 694 hình tĩnh và 366 khung chuyển động. Ảnh được tạo bằng công cụ imagegen tích hợp theo phong cách các ảnh tham chiếu: mô hình làng quê 3D thu nhỏ, mái ngói, tre, gỗ, đá và vải chàm. Mỗi hình xuất ra có nền alpha trong suốt, khoảng đệm ít nhất 24 px; bảng ảnh nguồn không được dùng trực tiếp làm icon.
+1.070 PNG riêng trong 37 nhóm: 704 hình tĩnh và 366 khung chuyển động. Có thêm 4 ảnh nền trong `assets/backgrounds/`. Ảnh được tạo bằng công cụ imagegen tích hợp theo phong cách các ảnh tham chiếu: mô hình làng quê 3D thu nhỏ, mái ngói, tre, gỗ, đá và vải chàm. Mỗi sprite có nền alpha trong suốt, khoảng đệm ít nhất 24 px; bảng ảnh nguồn không được dùng trực tiếp làm icon. Ảnh nền toàn cảnh được giữ kín nền.
 
 - Tệp dùng khi chơi: `assets/*.png`, `assets/motion/*.png` và các PNG riêng trong `assets/sprites/`, `assets/motion/sprites/`.
-- Tóc, áo và mũ: `assets/sprites/wardrobe-parts/`. Nhân vật tĩnh được trích từ chính bộ chuyển động để giữ cùng khuôn mặt. `wardrobe.js` ghép lớp phụ kiện và đổi màu có bộ nhớ đệm.
+- Tóc, áo và mũ: `assets/sprites/wardrobe-parts/`. Sáu nhân vật mới trong `assets/sprites/village-people/` có vóc dáng và khuôn mặt khác nhau, ghép tóc/mũ theo đầu trọc làm chuẩn, phân lớp chân để chuyển động. `wardrobe.js` ghép lớp phụ kiện và đổi màu có bộ nhớ đệm. Bộ khung chuyển động cũ vẫn có trong thư viện và trình diễn.
 - Phong cảnh mới: `assets/sprites/scenery/`, gồm thác nước, rừng tre, thông, bờ biển, suối khoáng, sân làng, ruộng và đồi chè.
 - Bộ prompt, thứ tự hình và thông số: `docs/diorama-prompts.json`. Các lần tạo lại đã được kiểm tra trước khi đóng gói; nhân vật tĩnh cuối cùng lấy từ khung chuyển động thay vì bảng nháp.
 - Kiểm tra nền trong suốt, số hình và khoảng đệm: `docs/diorama-validation.json`. Script đóng gói từ nguồn: `tools/build-diorama.mjs`; đồng bộ nhân vật và mã tương thích: `tools/finalize-diorama.mjs`.
@@ -34,7 +34,7 @@ Chạm đất trống để gieo. Chạm ô đang trồng để mở màn hình 
 
 Thời gian còn lại hiển thị trên từng ô đang trồng và trong màn hình chăm sóc. Lúa mặc định 5 phút, ngô 7 phút; các cây khác lâu hơn, tối đa 12 giờ với giống cao cấp. Thời gian trồng đã tăng so với bản cũ. Tiến trình của vụ cũ được chuyển đổi theo tỷ lệ đã lớn, cây đã chín vẫn giữ chín. Menu → Ruộng & vườn xem toàn bộ ô đã mở. Thời gian dùng mốc thực tế nên cây tiếp tục lớn khi rời game.
 
-Thanh công cụ Gieo / Thu / Chăm / Hái nằm ở cuối màn hình. Chọn Chăm rồi chạm ô đất để mở bảng thao tác nhanh; nút Chi tiết ô đất mở đầy đủ thông tin và tiến trình. Số trên nút là số ô hoặc cây hiện có thể thao tác.
+Đã bỏ thanh Chọn / Gieo / Thu / Chăm / Hái theo yêu cầu mới. Chạm thẳng ô đang trồng để mở các nút chăm sóc dạng kính trong suốt; nút Chi tiết ô đất mở đầy đủ thông tin và tiến trình. Chạm ô trống để gieo, cây chín để thu. Thu hoạch có nông sản bật lên, hạt sáng và thông báo sản lượng.
 
 60 ô đất: 30 ô ban đầu và 30 ô mở rộng ở phía nam bản đồ. Ô mở rộng yêu cầu cấp 20–194. Tự bổ sung ô mới khi tải bản lưu cũ. Đất và công trình nâng được đến cấp 20; từ cấp nâng thứ 5 cần thêm cấp người chơi tương ứng.
 
@@ -58,5 +58,19 @@ Menu hoặc bản đồ → Nhịp sống làng quê: khôi phục guồng nư�
 - Sau khi đóng gói chuyển động, chạy `node tools/finalize-diorama.mjs`, `node tools/build-fishing-rigs.mjs` và `node tools/build-wardrobe-masks.mjs`. Các lớp màu PNG cho phép thay màu cả khi mở bằng `file:` mà không đọc pixel trong trình duyệt.
 - `node tools/verify-game.mjs`, `node tools/verify-upgrade.mjs`, `node tools/verify-fishing.mjs`, `node tools/verify-local-file.mjs`: chạy Chrome với giao diện và thao tác game. Báo cáo trong `docs/verification/`.
 - `node tools/verify-map.mjs`: kiểm tra dạng sóng âm thanh thực, bật/tắt tiếng, chuyển cảnh, kéo/zoom, tab, đổi màu trang phục và chuyển đổi thời gian vụ cũ.
+- `node tools/verify-document.mjs`: 20 kiểm tra bổ sung cho tài liệu mới, bao gồm 33 lựa chọn ngoại hình, tốc độ đổi trang phục, đường đi không xuyên vật cản, ba cầu qua suối, vùng chạm hình PNG, 5 chủ đề âm thanh và giao diện câu cá dọc/ngang.
+
+## Các thay đổi theo tài liệu lỗi ngày 01/11
+
+- Bản đồ chọn tỉnh dùng địa hình phù điêu, giữ nguyên tọa độ và vùng chọn. Địa hình là ảnh minh họa nghệ thuật, không phải dữ liệu cao độ địa lý.
+- Khám phá nông trại dùng toàn cảnh làng quê mới. Nền cỏ và mặt hồ có chất liệu ảnh, biển mở rộng ra ngoài mép đông của khu đất, suối chạy xuống hết bản đồ, nước có gợn chuyển động.
+- Ba cầu căn theo tâm dòng suối và hướng nối hai bờ. Nhãn Bờ biển / Câu cá và Vườn cây vẽ sau vật thể, đặt cao khỏi thuyền và tán cây.
+- Vịt ao dùng 4 PNG bơi mới, thân nổi thấp, không lộ chân, có vệt sóng và bỏ bóng trên mặt đất. Vật nuôi trên bờ vẫn dùng dáng đi.
+- Chạm hình dựa trên mặt nạ alpha đã tính sẵn trong `assets/hit-shapes.js`, xét đúng thứ tự che khuất. Không đọc pixel trong lúc chơi hoặc khi mở bằng `file:`.
+- Người và vật nuôi đi theo đường tránh nhà, cây, đá, ao, suối; kiểm tra cả đoạn di chuyển, không chỉ điểm đến. Vịt nước chỉ bơi trong lòng ao.
+- Cài đặt chuyển lên góc trên bên phải, bỏ nút chụp ảnh. Cụm cần/mồi/sổ cá/mục tiêu cùng hàng Cài đặt câu cá, thu gọn bảng điều khiển phía dưới.
+- 5 chủ đề âm thanh tổng hợp bằng Web Audio: vườn sớm có chim, suối, biển theo nhịp sóng, mưa nhẹ và làng quê có giai điệu mộc. Không cần tải tệp nhạc lớn.
+- Toàn màn hình tự yêu cầu khi chạm/phím đầu tiên; mở từ ứng dụng đã cài lên màn hình chính dùng manifest fullscreen. Không thể ép trình duyệt ẩn thanh địa chỉ trước thao tác người dùng trên mọi thiết bị. Có service worker nhỏ hỗ trợ ứng dụng cài đặt; không tải thêm bản sao bộ sprite vào cache.
+- Prompt và đường dẫn 6 ảnh nguồn mới lưu ở `docs/document-art-prompts.json`; PNG đã tách/đóng gói dùng trong game ở `assets/backgrounds/`, `assets/village-people.png`, `assets/duck-swim.png` và các thư mục sprite tương ứng.
 
 Kiểm tra Chrome mô phỏng kích thước điện thoại không thay thế thử nghiệm trên thiết bị thật. Cảm giác rung và khóa chiều màn hình còn tùy trình duyệt/điện thoại.
