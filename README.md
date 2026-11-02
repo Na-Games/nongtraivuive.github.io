@@ -1,5 +1,7 @@
 # Xóm Nông Trại — diorama 3D và cấp 200
 
+Cập nhật 02/11/2026: nhân vật và 12 loài vật làm mới, hiệu ứng câu cá, nhãn công trình luôn hiện, nông trại 64×64 với đất liền rộng hơn, bản đồ chọn quê mới và ảnh PNG nhẹ hơn 25,36 MiB. Xem [chi tiết cập nhật](docs/COUNTRYSIDE-V4.md).
+
 Mở **index.html** để chơi. Xem thay đổi, cách chăm cây, cửa hàng mới, nguồn ảnh và kiểm tra tại [docs/DIORAMA-VA-CAP-200.md](docs/DIORAMA-VA-CAP-200.md).
 
 Map WebGL và nhân vật 3D: chạy `node tools/serve-game.mjs`, rồi mở **http://127.0.0.1:8788/**, hoặc chơi trên hosting HTTP/HTTPS. Xem [hướng dẫn 3D](docs/FARM-3D.md). Mở trực tiếp bằng tệp vẫn chơi được bằng chế độ tương thích.

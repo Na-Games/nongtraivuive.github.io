@@ -2,7 +2,7 @@
 /* One articulated sculpt for the editor, farm, portraits and fishing. */
 const Avatar3D={
  ready:false,cache:new Map(),
- profiles:[{h:1.50,w:1,head:1.08},{h:1.46,w:.94,head:1.10},{h:1.72,w:1.15,head:1.00},{h:1.43,w:1.04,head:1.08},{h:1.61,w:.96,head:1.04},{h:1.26,w:.88,head:1.22}],
+ profiles:[{h:1.46,w:1.04,head:1.17},{h:1.43,w:.96,head:1.19},{h:1.64,w:1.14,head:1.11},{h:1.40,w:1.10,head:1.18},{h:1.54,w:.98,head:1.16},{h:1.24,w:.92,head:1.27}],
  signature(input){const a=Wardrobe.normalize(input);return[a.style,a.skin,a.hair,a.outfit,a.hairStyle,a.shirtStyle,a.hat].join('|')},
  geometrySignature(input){const a=Wardrobe.normalize(input);return[a.style,a.hairStyle,a.shirtStyle,a.hat].join('|')},
  material(color,roughness=.8){return new THREE.MeshStandardMaterial({color,roughness,metalness:0})},
@@ -32,6 +32,15 @@ const Avatar3D={
    if(a.shirtStyle==='jacket'){for(const side of [-1,1]){const lapel=box(body,cloth,side*.09,.87,.147,.09,.27,.025);lapel.rotation.z=side*-.19;box(body,linen,side*.135,.735,.141,.072,.005,.007)}box(body,shoe,0,.659,.14,.36,.035,.022)}
   }
   const arms=[],elbows=[],hands=[],legs=[],knees=[],feet=[];
+  // Soft workwear: stitched pockets, a neckerchief and a small brass clasp.
+  for(const side of [-1,1]){
+   box(body,linen,side*.107,.74,.147,.071,.073,.012);
+   this.tube(body,[[side*.14,.77,.156],[side*.14,.714,.156],[side*.075,.714,.156]],.0024,brass);
+  }
+  const scarf=this.material(['#da7951','#cf817c','#d8ac51','#6c9388','#b394bf','#76a796'][a.style]);
+  this.tube(body,[[-.077,1.015,.03],[0,.975,.105],[.077,1.015,.03]],.021,scarf);
+  const knot=ball(body,scarf,.021,.985,.13,.029,.025,.021);knot.rotation.z=-.3;
+  const scarfEnd=box(body,scarf,.034,.931,.147,.04,.09,.018);scarfEnd.rotation.z=-.24;
   for(const side of [-1,1]){
    const arm=new THREE.Group();arm.position.set(side*.202,.96,0);body.add(arm);arm.rotation.z=side*.09;
    ball(arm,a.shirtStyle==='overalls'?linen:cloth,side*.018,-.107,0,.073,.145,.073);const elbow=new THREE.Group();elbow.position.set(side*.025,-.205,0);arm.add(elbow);ball(elbow,skin,0,-.082,0,.046,.102,.047);ball(elbow,skin,0,-.176,.008,.048,.058,.038);
@@ -41,9 +50,10 @@ const Avatar3D={
   const head=new THREE.Group();head.position.set(0,1.247,-.006);head.scale.setScalar(profile.head);body.add(head);ball(body,skin,0,1.028,0,.057,.077,.056);this.mesh(head,this.headGeometry,skin,0,0,0,.226,.250,.204);
   const eyeParts=[];for(const side of [-1,1]){
    ball(head,skin,side*.216,-.028,-.002,.034,.052,.029);const inner=this.material(new THREE.Color(a.skin).multiplyScalar(.88));inner.userData.skinMultiplier=.88;ball(head,inner,side*.229,-.027,.015,.010,.025,.009);
-   const eyes=new THREE.Group();eyes.position.set(side*.084,.012,.193);head.add(eyes);ball(eyes,white,0,0,0,.046,.032,.011);ball(eyes,eye,-side*.003,-.001,.010,.025,.028,.009);ball(eyes,white,-.008,.010,.020,.008,.009,.003);ball(eyes,white,.010,-.009,.020,.0035,.004,.002);eyeParts.push(eyes);
+   const eyes=new THREE.Group();eyes.position.set(side*.084,.012,.193);head.add(eyes);ball(eyes,white,0,0,0,.048,.039,.011);ball(eyes,eye,-side*.003,-.001,.010,.029,.035,.009);ball(eyes,white,-.008,.012,.020,.010,.011,.003);ball(eyes,white,.012,-.011,.020,.004,.005,.002);eyeParts.push(eyes);
    this.tube(head,[[side*.041,.082,.175],[side*.082,.095,.180],[side*.125,.079,.161]],.006,hair);
-   const cheek=new THREE.Color(a.skin).lerp(new THREE.Color('#d98f78'),.24);// Cheek color is shaded into the skin; no protruding cheek spheres.
+   const cheek=this.material(new THREE.Color(a.skin).lerp(new THREE.Color('#e99a88'),.35));cheek.userData.skinTint=.35;
+   ball(head,cheek,side*.142,-.064,.159,.032,.016,.004);
    if(a.style===1||a.style===4)this.tube(head,[[side*.049,.028,.184],[side*.09,.044,.184],[side*.129,.035,.170]],.0035,hair);
   }
   ball(head,skin,0,-.047,.195,.021,.025,.020);this.tube(head,[[-.035,-.112,.190],[0,-.122,.190],[.035,-.111,.190]],.0035,this.material('#925947'));
@@ -63,11 +73,12 @@ const Avatar3D={
  },
  animate(root,o={}){
   const r=root.userData.rig;if(!r)return;const t=o.t||0,moving=o.walk?Math.min(1,o.blend??1):0,phase=(o.phase||0)*Math.PI*2,wave=Math.sin(phase),reduced=typeof S!=='undefined'&&S.fx.reduceMotion;
-  r.body.position.y=(reduced?0:Math.cos(phase*2)*.007*moving+Math.sin(t*1.8)*.003*(1-moving));r.body.rotation.z=reduced?0:wave*.022*moving;r.head.rotation.y=reduced?0:Math.sin(t*.7)*.025*(1-moving);r.head.rotation.z=reduced?0:Math.sin(t*1.2)*.012;
-  for(let i=0;i<2;i++){const cycle=phase+i*Math.PI,step=Math.sin(cycle)*moving;r.legs[i].rotation.x=step*.43;r.knees[i].rotation.x=Math.max(0,-step)*.62;r.arms[i].rotation.x=-step*.31;r.elbows[i].rotation.x=-.10-Math.max(0,step)*.20}
+  r.body.position.y=reduced?0:Math.abs(Math.sin(phase))*.022*moving+Math.sin(t*1.8)*.007*(1-moving);r.body.rotation.z=reduced?0:wave*.035*moving;r.body.rotation.y=reduced?0:Math.sin(phase)*.035*moving;r.head.rotation.y=reduced?0:Math.sin(t*.7)*.065*(1-moving);r.head.rotation.z=reduced?0:Math.sin(t*1.2)*.023;
+  r.hat.rotation.z=reduced?0:-wave*.025*moving;
+  for(let i=0;i<2;i++){const cycle=phase+i*Math.PI,step=Math.sin(cycle)*moving;r.legs[i].rotation.x=reduced?0:step*.50;r.knees[i].rotation.x=reduced?0:Math.max(0,-step)*.78;r.arms[i].rotation.x=reduced?0:-step*.40;r.arms[i].rotation.z=(i?1:-1)*(.09+(reduced?0:Math.sin(t*1.8)*.015));r.elbows[i].rotation.x=-.14-(reduced?0:Math.max(0,step)*.24)}
   const blink=!reduced&&t%4.7>4.54?.16:1;for(const eyes of r.eyeParts)eyes.scale.y=blink;
-  if(o.work){for(let i=0;i<2;i++){r.arms[i].rotation.x=-.55+Math.sin(t*4)*.16;r.elbows[i].rotation.x=-.45-Math.sin(t*4)*.15}r.body.rotation.x=.07}else r.body.rotation.x=0;
-  if(o.fishing){const cast=o.fishState==='wait'?Math.max(0,1-((t-(o.castAt||0))/.5)):0,reel=o.reel?Math.sin(t*9)*.14:0;r.arms[0].rotation.x=-.74-cast*.65;r.arms[1].rotation.x=-.44;r.elbows[0].rotation.x=-.48+reel;r.elbows[1].rotation.x=-.85-reel;r.head.rotation.x=.04}else r.head.rotation.x=0;
+  if(o.work){for(let i=0;i<2;i++){r.arms[i].rotation.x=-.65+(reduced?0:Math.sin(t*4)*.24);r.elbows[i].rotation.x=-.45-(reduced?0:Math.sin(t*4)*.22)}r.body.rotation.x=.10}else r.body.rotation.x=0;
+  if(o.fishing){const cast=o.fishState==='wait'?Math.max(0,1-((t-(o.castAt||0))/.5)):0,reel=o.reel&&!reduced?Math.sin(t*9)*.18:0;r.arms[0].rotation.x=-.74-cast*.65;r.arms[1].rotation.x=-.44;r.elbows[0].rotation.x=-.48+reel;r.elbows[1].rotation.x=-.85-reel;r.head.rotation.x=.08;r.body.rotation.x=o.reel?-.08:0}else r.head.rotation.x=0;
  },
  draw(c,x,y,h,input,o={}){
   if(!this.ready)return false;const a=Wardrobe.normalize(input),signature=this.signature(a),dynamic=!!(o.preview||o.walk||o.work||o.fishing),key=signature+'|'+(o.back?'back':'front');let cv=!dynamic&&this.cache.get(key);

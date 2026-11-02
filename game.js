@@ -1,7 +1,7 @@
 'use strict';
 /* ===== Trạng thái & lưu trữ ===== */
 const SAVE_KEY='xom_nong_trai_v2';
-const N=48,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
+const N=64,COAST_X=41,TW=96,TH=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;
 const defState=()=>({
   name:'Nông dân',coins:500,gems:20,xp:0,lv:1,sxp:0,sclaimed:[],
   inv:{lua:3},seeds:{lua:6},cap:150,province:null,joined:0,
@@ -220,7 +220,7 @@ const Scene={
     const c=this.ctx,dpr=this.dpr;c.setTransform(dpr,0,0,dpr,0,0);
     const z=this.cam.z,t=this.t;
     // nền
-    const g=c.createLinearGradient(0,0,0,this.h);g.addColorStop(0,'#8fb45a');g.addColorStop(1,'#7aa84a');
+    const g=c.createLinearGradient(0,0,0,this.h);g.addColorStop(0,'#f6eedc');g.addColorStop(1,'#e4d9c3');
     c.fillStyle=g;c.fillRect(0,0,this.w,this.h);
     this.drawGround(c,z,t);
     // vật thể sắp xếp theo độ sâu
@@ -265,13 +265,13 @@ const Scene={
       const hsh=(i*73856093^j*19349663)>>>0,v=(hsh%100)/100;
       let col;
       const onPath=inWorld&&((typeof Landscape!=='undefined'&&Landscape.path(i,j))||(j===7&&i>=2&&i<=13));
-      if(i>=27)col=`hsl(185,43%,${33+v*2}%)`;
-      else if(i>=25&&i<N&&j>=0&&j<N)col=`hsl(38,31%,${66+v*2}%)`;
+      if(i>=COAST_X+2)col=`hsl(185,43%,${43+v*2}%)`;
+      else if(i>=COAST_X&&i<N&&j>=0&&j<N)col=`hsl(38,31%,${76+v*2}%)`;
       else if(onPath)col=`hsl(39,18%,${46+v*2}%)`;
       else if(inWorld)col=`hsl(${79+v*3},${24+v*3}%,${41+v*2}%)`;
-      else col=`hsl(${85+v*3},${21+v*3}%,${32+v*2}%)`;
+      else col=`hsl(40,27%,${84+v*2}%)`;
       this.diamond(c,i,j);c.fillStyle=col;c.fill();
-      if(i<25){if(onPath)Art.tile(c,'village-cobblestone',p.x,p.y,TW*z+.5,TH*z+.5);else Scenery.ground(c,i,j,p,z)}
+      if(i<COAST_X){if(onPath)Art.tile(c,'village-cobblestone',p.x,p.y,TW*z+.5,TH*z+.5);else if(inWorld)Scenery.ground(c,i,j,p,z)}
     }
     if(typeof World!=='undefined')World.drawMountains(c,this,z);
   },
@@ -307,7 +307,7 @@ const Scene={
     this.regionHits=[];for(const r of World.regions.filter(r=>r.id!=='farm')){const p=this.iso(r.x,r.y),offset=r.id==='coast'?94:r.id==='orchard'?135:160,x=p.x,y=p.y-offset*z,title=r.n+(r.id==='coast'?' · Câu cá':'');c.font="800 12px 'Segoe UI',sans-serif";const w=c.measureText(title).width+24;if(x>-w&&x<this.w+w&&y>0&&y<this.h){this.label(c,title,x,y,12,true);this.regionHits.push({id:r.id,x:x-w/2,y:y-13,w,h:26})}}
     // nhãn mở đất
     const k=S.plotsOpen;if(k<PCOLS*PROWS){const[i,j]=plotXY(k),p=this.iso(i+.5,j+.5);this.label(c,`🔒 Mở đất · Cấp ${plotReqLv(k)}`,p.x,p.y-8*z,Math.max(11,13*z),S.lv>=plotReqLv(k))}
-    for(const id in BUILDINGS){const b=BUILDINGS[id];if(S.b[id]||b.lv>S.lv+5)continue;const p=this.iso(b.slot[0]+1,b.slot[1]+1);this.label(c,S.lv>=b.lv?`🔨 Xây ${b.n}`:`🔒 ${b.n} · Cấp ${b.lv}`,p.x,p.y-6*z,Math.max(11,13*z),S.lv>=b.lv)}
+    if(typeof FarmLabels!=='undefined')FarmLabels.draw(c,false);
     // đợi thu hoạch
     PLOTS_EACH((k,i,j)=>{const pl=S.plots[k];if(k>=S.plotsOpen||!pl.crop)return;const pr=cropProg(pl);const p=this.iso(i+.5,j+.5);
       if(pr>=1){const by=p.y-34*z-Math.abs(Math.sin(t*3+k))*6*z;c.fillStyle='rgba(255,246,200,.95)';c.strokeStyle='#d6a23a';c.lineWidth=2*z;c.beginPath();c.arc(p.x,by,16*z,0,6.283);c.fill();c.stroke();c.font=`${20*z}px serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle='#000';Art.text(c,CROPS[pl.crop].e,p.x,by+1*z)}

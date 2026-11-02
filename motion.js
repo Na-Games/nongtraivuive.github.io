@@ -22,7 +22,7 @@ const Motion={
     if(typeof Farm3D!=='undefined'&&Farm3D.active&&Math.abs(y-35)<.36&&[10,17,22].some(b=>Math.abs(x-b)<.62))return false;
     if(typeof Landscape!=='undefined'&&Landscape.water(x,y))return false;
     if(x>=2&&x<8&&y>=23&&y<28)return false;
-    if(x>=27||y<1.5)return false;
+    if(x>=(typeof COAST_X==='undefined'?25:COAST_X)+1||y<1.5)return false;
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
     if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+Math.min(PROWS,5)+.15)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;

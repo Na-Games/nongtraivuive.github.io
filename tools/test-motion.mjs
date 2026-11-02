@@ -3,7 +3,7 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const context=vm.createContext({document:{},Math,console,matchMedia:()=>({matches:false})});
 for(const f of ['data.js','catalog.js','expanded-catalog.js','decor.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
-vm.runInContext(`const N=48,PX0=2,PY0=9,PCOLS=6,PROWS=10;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
+vm.runInContext(`const N=64,COAST_X=41,PX0=2,PY0=9,PCOLS=6,PROWS=10;let S={decor:[],fx:{particles:false,hq:true},b:{}};const MOTION_MANIFEST={clips:{}};`,context);
 vm.runInContext(fs.readFileSync('motion.js','utf8'),context);
 const tests=[];
 for(const fps of [30,60,120]){
@@ -18,4 +18,5 @@ assert.ok(shortcut.shorter&&shortcut.clear,'Route smoothing must remove stops wi
 assert.ok(Math.hypot(shortcut.end.x-18,shortcut.end.y-10)<1);
 const turn=vm.runInContext(`(()=>{const a={x:0,y:0,tx:10,ty:0,face:1,turn:1};for(let i=0;i<120;i++)Motion.stepEntity(a,1/120,2.8);a.tx=-10;const values=[];for(let i=0;i<60;i++){Motion.stepEntity(a,1/120,2.8);values.push(a.turn)}return {intermediate:values.some(x=>x>-.8&&x<.8),reversed:values.at(-1)<-.9,maxJump:Math.max(...values.slice(1).map((v,i)=>Math.abs(v-values[i])))}})()`,context);
 assert.ok(turn.intermediate&&turn.reversed);assert.ok(turn.maxJump<.3);
+assert.ok(vm.runInContext('Motion.canOccupy(32,21)&&Motion.canOccupy(22,55)&&!Motion.canOccupy(43,21)',context),'New countryside is walkable and the sea is blocked');
 const result={passed:true,frameRates:tests,routes,turn};fs.writeFileSync('docs/motion-logic-report.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));

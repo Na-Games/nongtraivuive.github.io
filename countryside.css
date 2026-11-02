@@ -1,0 +1,41 @@
+/* A quiet, illustrated atlas for choosing home. */
+#screen-map{background:linear-gradient(145deg,#c8e5da,#8dc5bf);color:#294f43}
+#mapSvg>rect:first-of-type{fill:transparent}
+#screen-map .map-top{z-index:4;align-items:flex-start}
+#screen-map .pill,#screen-map .rbtn{background:#fff9e8ed;color:#315e50;border:1px solid #b7c9ad;box-shadow:0 3px 12px #2b605316}
+.homeland-heading{position:absolute;z-index:2;top:72px;left:28px;pointer-events:none;max-width:360px}
+.homeland-heading>span{font:700 9px system-ui;letter-spacing:2.4px;color:#49766a}
+.homeland-heading h1{font-size:clamp(24px,3.1vw,40px);line-height:1.15;margin:9px 0;color:#2b5b4b;letter-spacing:-1px}
+.homeland-heading p{font:12px/1.7 system-ui;margin:0;color:#507668}
+.homeland-legend{display:flex;align-items:center;gap:7px;font:10px system-ui;margin-top:15px;color:#456b5c}
+.homeland-legend i{height:6px;width:6px;border-radius:50%;background:#6fae4e;margin-left:8px}.homeland-legend i:first-child{margin-left:0}.homeland-legend i:nth-child(2){background:#e5b45a}.homeland-legend i:nth-child(3){background:#d98f4a}
+#screen-map .map-sheet{background:#fff9ecf5;border:1px solid #d7dac1;box-shadow:0 -8px 45px #345f5020;backdrop-filter:blur(16px)}
+#screen-map .map-sheet .card{background:#f1f0db;border:1px solid #d4dbbb;border-radius:18px}
+#screen-map .sel-info{color:#355f4d;font-size:14px;line-height:1.55}
+#screen-map .btn-big{background:linear-gradient(135deg,#3a7965,#245b4c);border:0;color:#fffbed;box-shadow:0 4px 0 #1c493c}
+#screen-map .btn-big:disabled{background:#c3cbb7;color:#f9f9ec;box-shadow:none}
+#screen-map .search{background:#fffef5;border:1px solid #cdd8bd;border-radius:14px;color:#355c49}
+#screen-map .reg{font:700 10px system-ui;letter-spacing:1.8px;text-transform:uppercase;color:#78906c;padding:14px 2px 8px;background:none;border:0;border-radius:0}
+#screen-map .pitem{background:#fffdf4;border:1px solid #dce2c9;color:#365a45;box-shadow:none;text-align:left;transition:background .16s,transform .16s}
+#screen-map .pitem small{color:#819079;font-size:10px}
+#screen-map .pitem:hover,#screen-map .pitem.sel{background:#e8efda;border-color:#72a18a;transform:translateY(-1px)}
+#screen-map .pitem:focus-visible,#screen-map .pv:focus-visible{outline:3px solid #b47d37;outline-offset:3px}
+#mapSvg .pv.selected .map-marker{stroke:#fff7c6;stroke-width:3px;filter:drop-shadow(0 0 5px #ffe7a0)}
+#mapSvg .pv text{fill:#fff9e9;stroke:#355d50;stroke-width:2px}
+.homeland-sail{animation:homeland-sail 5s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.homeland-cloud{animation:homeland-cloud 12s ease-in-out infinite alternate}
+.homeland-empty{font:13px system-ui;color:#7d8d71;text-align:center;padding:18px}
+@keyframes homeland-sail{50%{translate:3px -3px;rotate:3deg}}
+@keyframes homeland-cloud{to{translate:9px 0}}
+.angler-console{background:linear-gradient(145deg,#fffdf2f7,#eef3e4f5);border:1px solid #d7e1c5;box-shadow:0 12px 50px #133c4133}
+.angler-cast{background:linear-gradient(135deg,#398c7b,#256757);box-shadow:0 5px 0 #164b40}
+#screen-fish[data-phase=bite] .angler-console{border-color:#e4ba59;box-shadow:0 0 35px #ffdc7c70}
+#screen-fish[data-phase=bite] #fhold{background:linear-gradient(135deg,#e4af50,#c38833)}
+#screen-fish[data-phase=fight] .angler-dot{background:#e19d52}
+#screen-fish[data-phase=result] .result-art{animation:catch-reveal .55s ease-out both}
+@keyframes catch-reveal{from{opacity:0;transform:translateY(18px) scale(.7) rotate(-8deg)}to{opacity:1;transform:none}}
+@media(max-width:899px) and (orientation:portrait){.homeland-heading{top:65px;left:20px}.homeland-heading>span{font-size:8px;letter-spacing:1.6px}.homeland-heading h1{font-size:25px;margin:6px 0}.homeland-heading p,.homeland-legend{display:none}#screen-map .map-sheet{height:47%}#screen-map .map-sheet.big{height:62%}}
+@media(min-width:900px){.homeland-heading{max-width:650px}.homeland-heading h1{white-space:nowrap}#screen-map .map-sheet{height:auto;margin:0;top:76px;bottom:16px}}
+@media(orientation:landscape) and (max-height:600px){.homeland-heading{top:63px;left:20px}.homeland-heading h1{font-size:23px}.homeland-heading p,.homeland-legend,.homeland-heading>span{display:none}}
+body.reduce-motion .homeland-sail,body.reduce-motion .homeland-cloud,body.reduce-motion .result-art{animation:none}
+@media(prefers-reduced-motion:reduce){.homeland-sail,.homeland-cloud,.result-art{animation:none!important}#screen-map .pitem{transition:none}}
