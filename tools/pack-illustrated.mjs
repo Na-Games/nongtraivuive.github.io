@@ -24,7 +24,7 @@ for(const shirt of ['shirt','overalls','jacket']){
   for(let y=b.y;y<Math.min(640,b.y+b.h*.27);y++)for(let x=0;x<512;x++){const p=(y*512+x)*4;if(pixels[p+3]>160&&pixels[p]>pixels[p+1]*1.10&&pixels[p+1]>pixels[p+2]*1.08){minHX=Math.min(minHX,x);maxHX=Math.max(maxHX,x)}}
   const headW=Math.max(64,maxHX-minHX),head={x:(minHX+maxHX)/2,y:b.y+2,w:headW};
   for(let y=0;y<640;y++)for(let x=0;x<512;x++){const p=(y*512+x)*4,r=pixels[p],g=pixels[p+1],bl=pixels[p+2],a=pixels[p+3],ny=(y-b.y)/b.h;if(!a)continue;
-   const warm=r>g*1.08&&g>bl*1.10&&r-bl>25&&r>115,grey=Math.max(r,g,bl)-Math.min(r,g,bl)<27&&(r+g+bl)/3<210;
+   const warm=r>g*1.08&&g>bl*1.10&&r-bl>25&&r>115,grey=Math.max(r,g,bl)-Math.min(r,g,bl)<27&&(r+g+bl)/3<210&&!(bl>r*1.10&&bl>g*1.06);
    if(warm&&(ny<.29||ny>.4)){skin[p]=skin[p+1]=skin[p+2]=255;skin[p+3]=a}
    if(grey&&ny>.25&&ny<(shirt==='overalls'?.94:.60)){cloth[p]=cloth[p+1]=cloth[p+2]=255;cloth[p+3]=a}
   }

@@ -24,7 +24,7 @@ const Farm3D={
   if(this.active||typeof THREE==='undefined'||!Scene.ctx||location.protocol==='file:')return;
   const anchor=Scene.grid(Scene.w/2,Scene.h/2);this.focus={x:anchor.x,y:anchor.y};this.zoom=this.targetZoom=Scene.cam.z;
   try{
-   this.renderer=new THREE.WebGLRenderer({alpha:false,antialias:true,powerPreference:'high-performance'});this.renderer.domElement.id='farm-webgl';this.renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();this.active=false;document.body.classList.remove('farm-3d-active');this.renderer.domElement.style.display='none';document.querySelector('.three-controls')?.remove()});this.renderer.domElement.setAttribute('aria-label','Nông trại 3D');document.body.insertBefore(this.renderer.domElement,Scene.cv);
+   this.renderer=new THREE.WebGLRenderer({alpha:false,antialias:true,preserveDrawingBuffer:true,powerPreference:'high-performance'});this.renderer.domElement.id='farm-webgl';this.renderer.domElement.addEventListener('webglcontextlost',event=>{event.preventDefault();this.active=false;document.body.classList.remove('farm-3d-active');this.renderer.domElement.style.display='none';document.querySelector('.three-controls')?.remove()});this.renderer.domElement.setAttribute('aria-label','Nông trại 3D');document.body.insertBefore(this.renderer.domElement,Scene.cv);
    this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.18;this.renderer.shadowMap.enabled=!!S.fx.shadow;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false;
    this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#f6eedc');this.scene.fog=new THREE.Fog('#f6eedc',75,155);this.camera=new THREE.OrthographicCamera(-10,10,10,-10,.1,220);this.ray=new THREE.Raycaster();this.ndc=new THREE.Vector2();this.point=new THREE.Vector3();
    this.scene.add(new THREE.HemisphereLight(0xfff5df,0x657554,2.0));this.sun=new THREE.DirectionalLight(0xffe3b6,2.6);this.sun.position.set(-14,30,18);this.sun.castShadow=true;this.sun.shadow.mapSize.set(1024,1024);Object.assign(this.sun.shadow.camera,{left:-23,right:23,top:23,bottom:-23,near:1,far:90});this.sun.shadow.camera.updateProjectionMatrix();this.sun.shadow.bias=-.0005;this.sun.shadow.normalBias=.03;this.scene.add(this.sun);this.scene.add(this.sun.target);
@@ -153,4 +153,4 @@ const Farm3D={
  },
 };
 Avatar3D.init();drawHudAvatar();
-Promise.resolve(Art.criticalPromise).then(()=>Farm3D.init());
+Promise.all([Art.criticalPromise,IllustratedAvatar.criticalPromise]).then(()=>Farm3D.init());

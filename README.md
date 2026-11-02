@@ -1,5 +1,7 @@
 # Xóm Nông Trại — diorama 3D và cấp 200
 
+Bộ nhân vật và vật nuôi minh họa theo mẫu người chơi, PNG nền trong suốt và 43.200 tổ hợp tùy chỉnh đã dùng chung trên map, chân dung và câu cá: [hướng dẫn bộ ảnh mới](docs/ILLUSTRATED-ACTORS.md).
+
 Cập nhật 02/11/2026: nhân vật và 12 loài vật làm mới, hiệu ứng câu cá, nhãn công trình luôn hiện, nông trại 64×64 với đất liền rộng hơn, bản đồ chọn quê mới và ảnh PNG nhẹ hơn 25,36 MiB. Xem [chi tiết cập nhật](docs/COUNTRYSIDE-V4.md).
 
 Mở **index.html** để chơi. Xem thay đổi, cách chăm cây, cửa hàng mới, nguồn ảnh và kiểm tra tại [docs/DIORAMA-VA-CAP-200.md](docs/DIORAMA-VA-CAP-200.md).
