@@ -1,0 +1,459 @@
+{
+  "version": 6,
+  "width": 256,
+  "height": 320,
+  "foot": [
+    128,
+    310
+  ],
+  "bodies": {
+    "0-shirt": {
+      "file": "assets/illustrated/body-0-shirt.png",
+      "skin": "assets/illustrated/skin-0-shirt.png",
+      "cloth": "assets/illustrated/cloth-0-shirt.png",
+      "head": {
+        "x": 128,
+        "y": 58,
+        "w": 58
+      },
+      "bounds": {
+        "x": 75,
+        "y": 56,
+        "w": 107,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "1-shirt": {
+      "file": "assets/illustrated/body-1-shirt.png",
+      "skin": "assets/illustrated/skin-1-shirt.png",
+      "cloth": "assets/illustrated/cloth-1-shirt.png",
+      "head": {
+        "x": 124,
+        "y": 58,
+        "w": 56
+      },
+      "bounds": {
+        "x": 78,
+        "y": 56,
+        "w": 101,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "2-shirt": {
+      "file": "assets/illustrated/body-2-shirt.png",
+      "skin": "assets/illustrated/skin-2-shirt.png",
+      "cloth": "assets/illustrated/cloth-2-shirt.png",
+      "head": {
+        "x": 133,
+        "y": 58,
+        "w": 52
+      },
+      "bounds": {
+        "x": 63,
+        "y": 56,
+        "w": 130,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "3-shirt": {
+      "file": "assets/illustrated/body-3-shirt.png",
+      "skin": "assets/illustrated/skin-3-shirt.png",
+      "cloth": "assets/illustrated/cloth-3-shirt.png",
+      "head": {
+        "x": 131.5,
+        "y": 58,
+        "w": 63
+      },
+      "bounds": {
+        "x": 67,
+        "y": 56,
+        "w": 123,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "4-shirt": {
+      "file": "assets/illustrated/body-4-shirt.png",
+      "skin": "assets/illustrated/skin-4-shirt.png",
+      "cloth": "assets/illustrated/cloth-4-shirt.png",
+      "head": {
+        "x": 123,
+        "y": 58,
+        "w": 58
+      },
+      "bounds": {
+        "x": 75,
+        "y": 56,
+        "w": 107,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "5-shirt": {
+      "file": "assets/illustrated/body-5-shirt.png",
+      "skin": "assets/illustrated/skin-5-shirt.png",
+      "cloth": "assets/illustrated/cloth-5-shirt.png",
+      "head": {
+        "x": 122.5,
+        "y": 58,
+        "w": 67
+      },
+      "bounds": {
+        "x": 69,
+        "y": 56,
+        "w": 119,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "0-overalls": {
+      "file": "assets/illustrated/body-0-overalls.png",
+      "skin": "assets/illustrated/skin-0-overalls.png",
+      "cloth": "assets/illustrated/cloth-0-overalls.png",
+      "head": {
+        "x": 128,
+        "y": 58,
+        "w": 58
+      },
+      "bounds": {
+        "x": 74,
+        "y": 56,
+        "w": 109,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "1-overalls": {
+      "file": "assets/illustrated/body-1-overalls.png",
+      "skin": "assets/illustrated/skin-1-overalls.png",
+      "cloth": "assets/illustrated/cloth-1-overalls.png",
+      "head": {
+        "x": 123,
+        "y": 58,
+        "w": 56
+      },
+      "bounds": {
+        "x": 77,
+        "y": 56,
+        "w": 102,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "2-overalls": {
+      "file": "assets/illustrated/body-2-overalls.png",
+      "skin": "assets/illustrated/skin-2-overalls.png",
+      "cloth": "assets/illustrated/cloth-2-overalls.png",
+      "head": {
+        "x": 129.5,
+        "y": 58,
+        "w": 59
+      },
+      "bounds": {
+        "x": 64,
+        "y": 56,
+        "w": 129,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "3-overalls": {
+      "file": "assets/illustrated/body-3-overalls.png",
+      "skin": "assets/illustrated/skin-3-overalls.png",
+      "cloth": "assets/illustrated/cloth-3-overalls.png",
+      "head": {
+        "x": 132,
+        "y": 58,
+        "w": 64
+      },
+      "bounds": {
+        "x": 67,
+        "y": 56,
+        "w": 123,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "4-overalls": {
+      "file": "assets/illustrated/body-4-overalls.png",
+      "skin": "assets/illustrated/skin-4-overalls.png",
+      "cloth": "assets/illustrated/cloth-4-overalls.png",
+      "head": {
+        "x": 122,
+        "y": 58,
+        "w": 60
+      },
+      "bounds": {
+        "x": 74,
+        "y": 56,
+        "w": 108,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "5-overalls": {
+      "file": "assets/illustrated/body-5-overalls.png",
+      "skin": "assets/illustrated/skin-5-overalls.png",
+      "cloth": "assets/illustrated/cloth-5-overalls.png",
+      "head": {
+        "x": 122.5,
+        "y": 58,
+        "w": 67
+      },
+      "bounds": {
+        "x": 69,
+        "y": 56,
+        "w": 119,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "0-jacket": {
+      "file": "assets/illustrated/body-0-jacket.png",
+      "skin": "assets/illustrated/skin-0-jacket.png",
+      "cloth": "assets/illustrated/cloth-0-jacket.png",
+      "head": {
+        "x": 128.5,
+        "y": 58,
+        "w": 59
+      },
+      "bounds": {
+        "x": 74,
+        "y": 56,
+        "w": 109,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "1-jacket": {
+      "file": "assets/illustrated/body-1-jacket.png",
+      "skin": "assets/illustrated/skin-1-jacket.png",
+      "cloth": "assets/illustrated/cloth-1-jacket.png",
+      "head": {
+        "x": 123.5,
+        "y": 58,
+        "w": 57
+      },
+      "bounds": {
+        "x": 76,
+        "y": 56,
+        "w": 104,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "2-jacket": {
+      "file": "assets/illustrated/body-2-jacket.png",
+      "skin": "assets/illustrated/skin-2-jacket.png",
+      "cloth": "assets/illustrated/cloth-2-jacket.png",
+      "head": {
+        "x": 133.5,
+        "y": 58,
+        "w": 53
+      },
+      "bounds": {
+        "x": 62,
+        "y": 56,
+        "w": 132,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "3-jacket": {
+      "file": "assets/illustrated/body-3-jacket.png",
+      "skin": "assets/illustrated/skin-3-jacket.png",
+      "cloth": "assets/illustrated/cloth-3-jacket.png",
+      "head": {
+        "x": 132,
+        "y": 58,
+        "w": 64
+      },
+      "bounds": {
+        "x": 65,
+        "y": 56,
+        "w": 126,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "4-jacket": {
+      "file": "assets/illustrated/body-4-jacket.png",
+      "skin": "assets/illustrated/skin-4-jacket.png",
+      "cloth": "assets/illustrated/cloth-4-jacket.png",
+      "head": {
+        "x": 122,
+        "y": 58,
+        "w": 60
+      },
+      "bounds": {
+        "x": 73,
+        "y": 56,
+        "w": 111,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    },
+    "5-jacket": {
+      "file": "assets/illustrated/body-5-jacket.png",
+      "skin": "assets/illustrated/skin-5-jacket.png",
+      "cloth": "assets/illustrated/cloth-5-jacket.png",
+      "head": {
+        "x": 122.5,
+        "y": 58,
+        "w": 67
+      },
+      "bounds": {
+        "x": 68,
+        "y": 56,
+        "w": 121,
+        "h": 254
+      },
+      "hip": 193.16,
+      "shoulder": 132.2,
+      "hand": 238.88
+    }
+  },
+  "hair": {
+    "short": {
+      "file": "assets/illustrated/hair-short.png",
+      "w": 395,
+      "h": 303
+    },
+    "swept": {
+      "file": "assets/illustrated/hair-swept.png",
+      "w": 382,
+      "h": 425
+    },
+    "braid": {
+      "file": "assets/illustrated/hair-braid.png",
+      "w": 358,
+      "h": 644
+    },
+    "long": {
+      "file": "assets/illustrated/hair-long.png",
+      "w": 418,
+      "h": 438
+    },
+    "curly": {
+      "file": "assets/illustrated/hair-curly.png",
+      "w": 400,
+      "h": 330
+    }
+  },
+  "hats": {
+    "non": {
+      "file": "assets/illustrated/hat-non.png",
+      "w": 336,
+      "h": 263
+    },
+    "rom": {
+      "file": "assets/illustrated/hat-rom.png",
+      "w": 336,
+      "h": 227
+    },
+    "khan": {
+      "file": "assets/illustrated/hat-khan.png",
+      "w": 336,
+      "h": 273
+    }
+  },
+  "animals": {
+    "cow": {
+      "file": "assets/illustrated/animal-cow.png",
+      "w": 236,
+      "h": 261
+    },
+    "buffalo": {
+      "file": "assets/illustrated/animal-buffalo.png",
+      "w": 244,
+      "h": 250
+    },
+    "pig": {
+      "file": "assets/illustrated/animal-pig.png",
+      "w": 201,
+      "h": 205
+    },
+    "goat": {
+      "file": "assets/illustrated/animal-goat.png",
+      "w": 175,
+      "h": 249
+    },
+    "sheep": {
+      "file": "assets/illustrated/animal-sheep.png",
+      "w": 221,
+      "h": 258
+    },
+    "dog": {
+      "file": "assets/illustrated/animal-dog.png",
+      "w": 218,
+      "h": 256
+    },
+    "cat": {
+      "file": "assets/illustrated/animal-cat.png",
+      "w": 190,
+      "h": 225
+    },
+    "hen": {
+      "file": "assets/illustrated/animal-hen.png",
+      "w": 182,
+      "h": 243
+    },
+    "duck": {
+      "file": "assets/illustrated/animal-duck.png",
+      "w": 198,
+      "h": 246
+    },
+    "crane": {
+      "file": "assets/illustrated/animal-crane.png",
+      "w": 215,
+      "h": 285
+    },
+    "bee-animal": {
+      "file": "assets/illustrated/animal-bee-animal.png",
+      "w": 235,
+      "h": 218
+    },
+    "butterfly": {
+      "file": "assets/illustrated/animal-butterfly.png",
+      "w": 196,
+      "h": 205
+    }
+  }
+}
