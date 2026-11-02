@@ -38,4 +38,5 @@
 @media(min-width:900px){.homeland-heading{max-width:650px}.homeland-heading h1{white-space:nowrap}#screen-map .map-sheet{height:auto;margin:0;top:76px;bottom:16px}}
 @media(orientation:landscape) and (max-height:600px){.homeland-heading{top:63px;left:20px}.homeland-heading h1{font-size:23px}.homeland-heading p,.homeland-legend,.homeland-heading>span{display:none}}
 body.reduce-motion .homeland-sail,body.reduce-motion .homeland-cloud,body.reduce-motion .result-art{animation:none}
+.avatar-export-actions{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 7px}.avatar-export-actions button{font-size:13px;flex:1;min-height:42px}.avatar-export-note{font:12px/1.6 system-ui,sans-serif;color:#718166;margin:0 0 14px}.avatar-styles canvas{height:100px!important;width:80px!important;object-fit:contain}.avatar-option-art canvas{image-rendering:auto}.avatar-options button{min-height:64px}
 @media(prefers-reduced-motion:reduce){.homeland-sail,.homeland-cloud,.result-art{animation:none!important}#screen-map .pitem{transition:none}}

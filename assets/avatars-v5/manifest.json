@@ -1,0 +1,2045 @@
+{
+  "version": 5,
+  "generator": "Shared FarmerDesign WebGL model; exact RGBA alpha export",
+  "combinationCount": 43200,
+  "options": {
+    "skin": [
+      "#f6d2b0",
+      "#eab98a",
+      "#c98f5f",
+      "#8d5a36"
+    ],
+    "hair": [
+      "#2a1a10",
+      "#5a3216",
+      "#a85d1f",
+      "#d9b25a",
+      "#222"
+    ],
+    "outfit": [
+      "#9bd36a",
+      "#e9695a",
+      "#5aa7e8",
+      "#f0c04a",
+      "#b07ad8",
+      "#f6f0e0"
+    ],
+    "hairStyle": [
+      [
+        "short",
+        "Tóc ngắn"
+      ],
+      [
+        "swept",
+        "Tóc mái"
+      ],
+      [
+        "braid",
+        "Tóc tết"
+      ],
+      [
+        "long",
+        "Tóc dài"
+      ],
+      [
+        "curly",
+        "Tóc xoăn"
+      ]
+    ],
+    "shirtStyle": [
+      "shirt",
+      "overalls",
+      "jacket"
+    ],
+    "hat": [
+      [
+        "non",
+        "Nón lá"
+      ],
+      [
+        "rom",
+        "Mũ rơm"
+      ],
+      [
+        "khan",
+        "Khăn mỏ quạ"
+      ],
+      [
+        "none",
+        "Không mũ"
+      ]
+    ]
+  },
+  "sprites": [
+    {
+      "id": "character-0",
+      "group": "characters",
+      "name": "An",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-0.png"
+    },
+    {
+      "id": "character-1",
+      "group": "characters",
+      "name": "Mây",
+      "avatar": {
+        "style": 1,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#e9695a",
+        "hairStyle": "braid",
+        "shirtStyle": "overalls",
+        "hat": "rom",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-1.png"
+    },
+    {
+      "id": "character-2",
+      "group": "characters",
+      "name": "Bình",
+      "avatar": {
+        "style": 2,
+        "skin": "#c98f5f",
+        "hair": "#5a3216",
+        "outfit": "#5aa7e8",
+        "hairStyle": "swept",
+        "shirtStyle": "jacket",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-2.png"
+    },
+    {
+      "id": "character-3",
+      "group": "characters",
+      "name": "Tư",
+      "avatar": {
+        "style": 3,
+        "skin": "#eab98a",
+        "hair": "#222",
+        "outfit": "#f6f0e0",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "rom",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-3.png"
+    },
+    {
+      "id": "character-4",
+      "group": "characters",
+      "name": "Lan",
+      "avatar": {
+        "style": 4,
+        "skin": "#eab98a",
+        "hair": "#2a1a10",
+        "outfit": "#b07ad8",
+        "hairStyle": "long",
+        "shirtStyle": "shirt",
+        "hat": "khan",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-4.png"
+    },
+    {
+      "id": "character-5",
+      "group": "characters",
+      "name": "Sóc",
+      "avatar": {
+        "style": 5,
+        "skin": "#c98f5f",
+        "hair": "#5a3216",
+        "outfit": "#f0c04a",
+        "hairStyle": "curly",
+        "shirtStyle": "overalls",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/character-5.png"
+    },
+    {
+      "id": "skin-0",
+      "group": "skin",
+      "name": "Da sáng",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/skin-0.png"
+    },
+    {
+      "id": "skin-1",
+      "group": "skin",
+      "name": "Da vàng",
+      "avatar": {
+        "style": 0,
+        "skin": "#eab98a",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/skin-1.png"
+    },
+    {
+      "id": "skin-2",
+      "group": "skin",
+      "name": "Da nâu",
+      "avatar": {
+        "style": 0,
+        "skin": "#c98f5f",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/skin-2.png"
+    },
+    {
+      "id": "skin-3",
+      "group": "skin",
+      "name": "Da sẫm",
+      "avatar": {
+        "style": 0,
+        "skin": "#8d5a36",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/skin-3.png"
+    },
+    {
+      "id": "hair-color-0",
+      "group": "hair-color",
+      "name": "Nâu đen",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-color-0.png"
+    },
+    {
+      "id": "hair-color-1",
+      "group": "hair-color",
+      "name": "Nâu hạt dẻ",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#5a3216",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-color-1.png"
+    },
+    {
+      "id": "hair-color-2",
+      "group": "hair-color",
+      "name": "Nâu đồng",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#a85d1f",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-color-2.png"
+    },
+    {
+      "id": "hair-color-3",
+      "group": "hair-color",
+      "name": "Vàng",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#d9b25a",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-color-3.png"
+    },
+    {
+      "id": "hair-color-4",
+      "group": "hair-color",
+      "name": "Đen",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#222",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-color-4.png"
+    },
+    {
+      "id": "outfit-color-0",
+      "group": "outfit-color",
+      "name": "Xanh lá",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-0.png"
+    },
+    {
+      "id": "outfit-color-1",
+      "group": "outfit-color",
+      "name": "Đỏ san hô",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#e9695a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-1.png"
+    },
+    {
+      "id": "outfit-color-2",
+      "group": "outfit-color",
+      "name": "Xanh dương",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#5aa7e8",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-2.png"
+    },
+    {
+      "id": "outfit-color-3",
+      "group": "outfit-color",
+      "name": "Vàng",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#f0c04a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-3.png"
+    },
+    {
+      "id": "outfit-color-4",
+      "group": "outfit-color",
+      "name": "Tím",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#b07ad8",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-4.png"
+    },
+    {
+      "id": "outfit-color-5",
+      "group": "outfit-color",
+      "name": "Trắng ngà",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#f6f0e0",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/outfit-color-5.png"
+    },
+    {
+      "id": "hair-style-0",
+      "group": "hair-style",
+      "name": "Tóc ngắn",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-style-0.png"
+    },
+    {
+      "id": "hair-style-1",
+      "group": "hair-style",
+      "name": "Tóc mái",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "swept",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-style-1.png"
+    },
+    {
+      "id": "hair-style-2",
+      "group": "hair-style",
+      "name": "Tóc tết",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "braid",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-style-2.png"
+    },
+    {
+      "id": "hair-style-3",
+      "group": "hair-style",
+      "name": "Tóc dài",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "long",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-style-3.png"
+    },
+    {
+      "id": "hair-style-4",
+      "group": "hair-style",
+      "name": "Tóc xoăn",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "curly",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hair-style-4.png"
+    },
+    {
+      "id": "garment-0",
+      "group": "garment",
+      "name": "Áo sơ mi",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/garment-0.png"
+    },
+    {
+      "id": "garment-1",
+      "group": "garment",
+      "name": "Quần yếm",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "overalls",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/garment-1.png"
+    },
+    {
+      "id": "garment-2",
+      "group": "garment",
+      "name": "Áo khoác",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "jacket",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/garment-2.png"
+    },
+    {
+      "id": "hat-0",
+      "group": "hat",
+      "name": "Nón lá",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "non",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hat-0.png"
+    },
+    {
+      "id": "hat-1",
+      "group": "hat",
+      "name": "Mũ rơm",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "rom",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hat-1.png"
+    },
+    {
+      "id": "hat-2",
+      "group": "hat",
+      "name": "Khăn mỏ quạ",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "khan",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hat-2.png"
+    },
+    {
+      "id": "hat-3",
+      "group": "hat",
+      "name": "Không mũ",
+      "avatar": {
+        "style": 0,
+        "skin": "#f6d2b0",
+        "hair": "#2a1a10",
+        "outfit": "#9bd36a",
+        "hairStyle": "short",
+        "shirtStyle": "shirt",
+        "hat": "none",
+        "art": true
+      },
+      "file": "assets/avatars-v5/hat-3.png"
+    }
+  ],
+  "animations": [
+    {
+      "style": 0,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-0-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-0-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-0-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-0-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-0-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-0-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-0-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-0-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-0-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-0-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-0-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-0-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-0-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-0-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-0-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-0-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-0-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-0-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-0-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-0-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-0-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-0-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-0-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-0-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-0-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-0-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-0-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-0-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-0-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 0,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-0-fish-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-1-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-1-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-1-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-1-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-1-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-1-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-1-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-1-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-1-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-1-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-1-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-1-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-1-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-1-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-1-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-1-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-1-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-1-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-1-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-1-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-1-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-1-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-1-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-1-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-1-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-1-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-1-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-1-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-1-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 1,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-1-fish-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-2-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-2-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-2-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-2-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-2-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-2-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-2-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-2-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-2-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-2-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-2-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-2-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-2-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-2-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-2-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-2-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-2-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-2-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-2-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-2-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-2-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-2-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-2-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-2-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-2-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-2-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-2-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-2-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-2-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 2,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-2-fish-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-3-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-3-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-3-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-3-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-3-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-3-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-3-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-3-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-3-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-3-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-3-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-3-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-3-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-3-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-3-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-3-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-3-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-3-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-3-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-3-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-3-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-3-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-3-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-3-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-3-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-3-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-3-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-3-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-3-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 3,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-3-fish-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-4-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-4-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-4-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-4-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-4-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-4-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-4-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-4-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-4-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-4-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-4-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-4-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-4-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-4-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-4-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-4-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-4-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-4-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-4-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-4-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-4-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-4-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-4-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-4-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-4-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-4-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-4-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-4-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-4-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 4,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-4-fish-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "idle",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-5-idle-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "idle",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-5-idle-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "idle",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-5-idle-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "idle",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-5-idle-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-5-walk-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-5-walk-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-5-walk-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-5-walk-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-5-walk-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-5-walk-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-5-walk-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "walk",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-5-walk-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-5-back-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-5-back-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-5-back-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-5-back-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-5-back-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-5-back-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 6,
+      "file": "assets/avatars-v5/motion-5-back-06.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "back",
+      "index": 7,
+      "file": "assets/avatars-v5/motion-5-back-07.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-5-work-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-5-work-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-5-work-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-5-work-03.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 4,
+      "file": "assets/avatars-v5/motion-5-work-04.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "work",
+      "index": 5,
+      "file": "assets/avatars-v5/motion-5-work-05.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "fish",
+      "index": 0,
+      "file": "assets/avatars-v5/motion-5-fish-00.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "fish",
+      "index": 1,
+      "file": "assets/avatars-v5/motion-5-fish-01.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "fish",
+      "index": 2,
+      "file": "assets/avatars-v5/motion-5-fish-02.png",
+      "width": 192,
+      "height": 240
+    },
+    {
+      "style": 5,
+      "state": "fish",
+      "index": 3,
+      "file": "assets/avatars-v5/motion-5-fish-03.png",
+      "width": 192,
+      "height": 240
+    }
+  ]
+}
