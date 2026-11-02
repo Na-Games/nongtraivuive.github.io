@@ -25,7 +25,8 @@ for(const shirt of ['shirt','overalls','jacket']){
   const headW=Math.max(64,maxHX-minHX),head={x:(minHX+maxHX)/2,y:b.y+2,w:headW};
   for(let y=0;y<640;y++)for(let x=0;x<512;x++){const p=(y*512+x)*4,r=pixels[p],g=pixels[p+1],bl=pixels[p+2],a=pixels[p+3],ny=(y-b.y)/b.h;if(!a)continue;
    const warm=r>g*1.08&&g>bl*1.10&&r-bl>25&&r>115,grey=Math.max(r,g,bl)-Math.min(r,g,bl)<27&&(r+g+bl)/3<210&&!(bl>r*1.10&&bl>g*1.06);
-   if(warm&&(ny<.29||ny>.4)){skin[p]=skin[p+1]=skin[p+2]=Math.min(255,(r/237+g/178+bl/126)*85);skin[p+3]=a}
+   const armSkin=ny>.49&&ny<.77&&r>g*1.16&&(x<b.x+b.w*.28||x>b.x+b.w*.72),footSkin=ny>.88&&r>165;
+   if(warm&&(ny<.29||armSkin||footSkin)){skin[p]=r;skin[p+1]=Math.min(255,g/220*255);skin[p+2]=Math.min(255,bl/188*255);skin[p+3]=a}
    if(grey&&ny>.25&&ny<(shirt==='overalls'?.94:.60)){cloth[p]=cloth[p+1]=cloth[p+2]=Math.min(255,(r+g+bl)/3/155*255);cloth[p+3]=a}
   }
   const id=style+'-'+shirt,file=out+'/body-'+id+'.png',skinFile=out+'/skin-'+id+'.png',clothFile=out+'/cloth-'+id+'.png';encode(file,512,640,pixels);encode(skinFile,512,640,skin);encode(clothFile,512,640,cloth);

@@ -1,4 +1,4 @@
-﻿param([string]$Workspace)
+param([string]$Workspace)
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $taskRoot=if($Workspace){(Resolve-Path -LiteralPath $Workspace).Path}else{(Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..')).Path}
@@ -11,7 +11,7 @@ try {
   $runtimeFiles=@(Get-ChildItem -LiteralPath $taskRoot -File | Where-Object {$_.Extension -in @('.html','.js','.css','.webmanifest') -or $_.Name -eq 'README.md'})
   $runtimeFiles+=@(Get-ChildItem -LiteralPath (Join-Path $taskRoot 'assets') -File -Recurse | Where-Object {$_.FullName -notlike '*\source\*'})
   $runtimeFiles+=@(Get-Item -LiteralPath (Join-Path $taskRoot 'docs/DIORAMA-VA-CAP-200.md'))
-  foreach($guide in @('docs/FARM-3D.md','docs/farm-3d-art.json','docs/PLAYABILITY-REVISION.md','docs/playability-art.json','docs/ACTORS-V3.md','docs/actors-v3-art.json','docs/COUNTRYSIDE-V4.md')){if(Test-Path -LiteralPath (Join-Path $taskRoot $guide)){$runtimeFiles+=@(Get-Item -LiteralPath (Join-Path $taskRoot $guide))}}
+  foreach($guide in @('docs/FARM-3D.md','docs/farm-3d-art.json','docs/PLAYABILITY-REVISION.md','docs/playability-art.json','docs/ACTORS-V3.md','docs/actors-v3-art.json','docs/COUNTRYSIDE-V4.md','docs/ILLUSTRATED-ACTORS.md','docs/illustrated-art-prompts.json')){if(Test-Path -LiteralPath (Join-Path $taskRoot $guide)){$runtimeFiles+=@(Get-Item -LiteralPath (Join-Path $taskRoot $guide))}}
   $localServer=Join-Path $taskRoot 'tools/serve-game.mjs'
   if(Test-Path -LiteralPath $localServer){$runtimeFiles+=@(Get-Item -LiteralPath $localServer)}
   foreach($file in $runtimeFiles){$relative=$file.FullName.Substring($taskRoot.Length+1).Replace('\','/');[IO.Compression.ZipFileExtensions]::CreateEntryFromFile($zip,$file.FullName,$relative) | Out-Null}
