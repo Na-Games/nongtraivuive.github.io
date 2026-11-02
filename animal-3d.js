@@ -39,7 +39,7 @@ const Animal3D={
   if(type==='pig')for(const side of [-1,1])this.ball(head,'#dc8f91',side*.105,-.045,.13,.026,.019,.008);
   if(type==='sheep')for(let i=0;i<5;i++)this.ball(head,'#fff7e1',(i-2)*.04,.12,.04,.05,.044,.047);
   head.scale.setScalar(insect?1:bird?1.12:1.16);
-  this.batchRigid(core);for(const eye of eyes)head.remove(eye);this.batchRigid(head);head.add(...eyes);this.batchRigid(tail);for(const knee of knees)if(knee)this.batchRigid(knee);if(bird)for(const leg of legs)this.batchRigid(leg);
+  this.batchRigid(core);for(const eye of eyes)head.remove(eye);this.batchRigid(head);if(eyes.length)head.add(...eyes);this.batchRigid(tail);for(const knee of knees)if(knee)this.batchRigid(knee);if(bird)for(const leg of legs)this.batchRigid(leg);
   root.scale.setScalar(large?.90:insect?1:.92);root.userData.rig={body,head,tail,legs,knees,wings,eyes,bird,insect,large,water:entity.water,homeHeadY:head.position.y};return root;
  },
  animate(root,e,t,dt){const r=root.userData.rig,blend=e.moveBlend||0,phase=(e.phase||0)*Math.PI*2,target=e.heading??Math.atan2(e.vx||0,e.vy||1),delta=Math.atan2(Math.sin(target-root.rotation.y),Math.cos(target-root.rotation.y));root.rotation.y+=delta*(1-Math.exp(-9*dt));
