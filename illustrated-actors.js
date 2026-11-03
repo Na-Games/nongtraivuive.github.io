@@ -26,7 +26,7 @@ const IllustratedAvatar={
  },
  paint(c,value,o={}){const reduced=!!S.fx.reduceMotion&&!o.exportPose,t=o.work?(o.actionTime??o.t??0):(o.t||0),moving=!!o.walk&&!reduced,phase=(o.phase||0)*Math.PI*2,blend=o.blend??1,wave=Math.sin(phase+.25)*blend;
   if(!moving&&!o.work&&!o.fishing&&!o.jump){c.save();const breath=reduced?0:Math.sin(t*2.1)*.0025;c.translate(0,620);c.scale(1,1+breath);c.drawImage(value.cv,0,-620);c.restore();return}
-  const rig=this.rig(value),angles=[0,0,0,0,0,0];if(moving){angles[2]=-wave*.24;angles[3]=wave*.24;angles[4]=wave*.18;angles[5]=-wave*.18}if(o.work&&!reduced){angles[2]=-.18+Math.sin(t*4)*.10;angles[3]=.18-Math.sin(t*4)*.10;angles[0]=.035}if(o.fishing){angles[2]=-.28-(o.reel&&!reduced?Math.sin(t*7)*.06:0);angles[3]=.13;angles[0]=.025}
+  const rig=this.rig(value),angles=[0,0,0,0,0,0];if(moving){angles[2]=-wave*.24;angles[3]=wave*.24;angles[4]=wave*.18;angles[5]=-wave*.18}if(o.work&&!reduced){angles[2]=-.18+Math.sin(t*4)*.10;angles[3]=.18-Math.sin(t*4)*.10;angles[0]=.035}if(o.fishing){angles[2]=-.28-(o.reel&&!reduced?Math.sin(t*7)*.06:0);angles[3]=.13-(reduced?0:Math.sin(t*(o.reel?7:2))*(o.reel?.05:.008));angles[0]=.025+(reduced?0:Math.sin(t*2)*.006);angles[1]=reduced?0:Math.sin(t*2)*.004}
   if(o.run&&moving){angles[2]*=1.6;angles[3]*=1.6;angles[4]*=1.5;angles[5]*=1.5;angles[1]=-.025}
   c.save();if(o.jump&&!reduced)c.translate(0,-Math.sin(((o.phase||0)%1)*Math.PI)*62);if(moving)c.translate(0,-Math.abs(Math.sin(phase))*(o.run?7:3)*blend);
   const draw=i=>{const p=rig[i];c.save();c.translate(...p.pivot);c.rotate(angles[i]);c.drawImage(p.cv,-p.pivot[0],-p.pivot[1]);c.restore()};
@@ -34,7 +34,7 @@ const IllustratedAvatar={
    // The thighs fold toward the water; lower legs hang beneath the seat.
    const hip=value.meta.hip,knee=hip+(620-hip)*.48,center=value.meta.bounds.x+value.meta.bounds.w/2;
    for(let side=0;side<2;side++){const x=side?center:0,w=side?512-center:center,pivot=center+(side?1:-1)*value.meta.bounds.w*.13;
-    c.save();c.translate(pivot,hip+42);c.rotate(.95);c.drawImage(rig[4+side].cv,x,hip,w,knee-hip,x-pivot,0,w,knee-hip);c.translate(0,knee-hip-3);c.rotate(-1.08);c.drawImage(rig[4+side].cv,x,knee,w,640-knee,x-pivot,0,w,640-knee);c.restore();
+    c.save();c.translate(pivot,hip+42);c.rotate(-.95);c.drawImage(rig[4+side].cv,x,hip,w,knee-hip,x-pivot,0,w,knee-hip);c.translate(0,knee-hip-3);c.rotate(1.08);c.drawImage(rig[4+side].cv,x,knee,w,640-knee,x-pivot,0,w,640-knee);c.restore();
    }
    c.translate(0,42);for(const i of [2,3,1,0])draw(i);
   }else for(const i of [4,5,2,3,1,0])draw(i);
@@ -49,7 +49,7 @@ const IllustratedAvatar={
   const clip=typeof ILLUSTRATED_CLIPS!=='undefined'?ILLUSTRATED_CLIPS.avatars[input.style]:null,state=o.jump?'jump':o.work?(o.action==='fertilize'?'care':o.action||'hoe'):o.walk?(o.run?'run':o.back?'back':'walk'):'idle';
   if(o.atlas&&!o.fishing&&clip?.signature===this.signature(input)&&IllustratedClips.draw(c,clip,state,S.fx.reduceMotion?0:o.walk||o.jump?o.phase||0:(o.t||0)*.8,x,y,h,flip))return true;
   c.save();c.translate(x,y);c.scale(flip*width/512,h/640);c.translate(-256,-620);this.paint(c,value,o);c.restore();
-  if(o.fishing){const hx=x+flip*h*.14,hy=y-h*(o.seated?.23:.30),tx=hx-h*.34,ty=hy-h*.47;c.save();c.strokeStyle='#785535';c.lineWidth=Math.max(1.6,h*.012);c.beginPath();c.moveTo(hx,hy);c.quadraticCurveTo(hx-h*.12,ty,tx,ty);c.stroke();c.restore();if(o.rigOut)Object.assign(o.rigOut,{x:tx,y:ty,handX:hx,handY:hy})}return true;
+  if(o.fishing){const m=value.meta,b=m.bounds,center=b.x+b.w/2,px=center+b.w*.25,py=m.shoulder+5,dx=b.w*.11,dy=m.hand-py,angle=.13-(S.fx.reduceMotion?0:Math.sin((o.t||0)*(o.reel?7:2))*(o.reel?.05:.008)),hx=x+flip*(px+dx*Math.cos(angle)-dy*Math.sin(angle)-256)*h/640,hy=y+(py+dx*Math.sin(angle)+dy*Math.cos(angle)+(o.seated?42:0)-620)*h/640,tx=hx-h*.36,ty=hy-h*.45+(o.reel&&!S.fx.reduceMotion?Math.sin((o.t||0)*7)*h*.012:0);c.save();c.strokeStyle='#785535';c.lineWidth=Math.max(1.6,h*.012);c.beginPath();c.moveTo(hx,hy);c.quadraticCurveTo(hx-h*.12,ty,tx,ty);c.stroke();c.restore();if(o.rigOut)Object.assign(o.rigOut,{x:tx,y:ty,handX:hx,handY:hy})}return true;
  },
  capture(input,o={},width=512){const cv=document.createElement('canvas');cv.width=width;cv.height=Math.round(width*1.25);if(!this.draw(cv.getContext('2d'),width/2,cv.height*620/640,cv.height,input,{...o,exportPose:true}))throw Error('Bộ ảnh nhân vật đang tải. Thử lại sau một chút.');return cv},
  icon(input,key,size=64){const value=this.compose(input),cv=document.createElement('canvas');cv.width=cv.height=size;if(!value)return cv;const c=cv.getContext('2d'),head=value.meta.head;if(key==='shirtStyle')c.drawImage(value.cv,128,220,256,260,0,0,size,size);else c.drawImage(value.cv,head.x-head.w*.95,Math.max(0,head.y-head.w*.65),head.w*1.9,head.w*1.9,0,0,size,size);return cv},

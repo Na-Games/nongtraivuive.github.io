@@ -26,7 +26,7 @@ const Motion={
     for(const d of decor)circle(d.gx,d.gy,.65);
     for(const o of objects||[])if(this.solid(o.k))circle(o.gx,o.gy,this.radius(o.k));
     if(typeof Village!=='undefined')for(const o of Village.sceneObjects())circle(o.gx,o.gy,1.05);
-    return this.collision={objects,key,cells,version:(this.collision?.version||0)+1};
+    return this.collision={objects,key,cells,decorRef:S.decor,decorCount:decor.length,version:(this.collision?.version||0)+1};
   },
   canOccupy(x,y){
     if(typeof Farm3D!=='undefined'&&Farm3D.active&&Math.abs(y-35)<.36&&[10,17,22].some(b=>Math.abs(x-b)<.62))return false;
@@ -36,7 +36,7 @@ const Motion={
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
     if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+Math.min(PROWS,5)+.15)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
-    const cache=this.collision||this.prepareCollision(),near=cache.cells.get(Math.floor(x/2)+Math.floor(y/2)*128);
+    const cache=!this.collision||this.collision.decorRef!==S.decor||this.collision.decorCount!==(S.decor?.length||0)?this.prepareCollision():this.collision,near=cache.cells.get(Math.floor(x/2)+Math.floor(y/2)*128);
     if(near)for(const s of near){if(s.r2!==undefined?(x-s.x)**2+(y-s.y)**2<s.r2:x>s.left&&x<s.right&&y>s.top&&y<s.bottom)return false}
     return true;
   },

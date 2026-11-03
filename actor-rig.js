@@ -38,13 +38,14 @@ const ActorRig={
   const side=Math.sin(Farm3D.yaw)*(p.vy||0)-Math.cos(Farm3D.yaw)*(p.vx||0),flip=this.facing(d,Math.abs(side)>.035?(side>0?-1:1):0,dt);mesh.scale.x=flip;
   const desired=reduced?0:o.blend??(o.walk?1:0);d.blend=reduced?0:(d.blend||0)+(desired-(d.blend||0))*(1-Math.exp(-12*dt));d.run=(d.run||0)+((o.run?1:0)-(d.run||0))*(1-Math.exp(-7*dt));
   const phase=(o.phase||0)*Math.PI*2,wave=Math.sin(phase),move=d.blend,run=d.run,jump=o.jump&&!reduced?Math.sin(clamp(o.phase||0,0,1)*Math.PI):0;
-  mesh.position.y=jump*.23+Math.abs(Math.sin(phase*2))*.016*move;
+  mesh.position.y=jump*.38+Math.abs(Math.sin(phase*2))*.016*move;
   d.hip.position.y=d.hipY+(reduced?0:Math.sin(t*2.1)*.003)*(1-move);d.spine.rotation.z=-.045*run*move+wave*.018*move;d.head.rotation.z=-d.spine.rotation.z*.45;
   for(let i=0;i<2;i++){const s=i?1:-1,v=wave*s,a=d.arms[i],l=d.legs[i];a.upper.rotation.z=-v*(.29+run*.16)*move;a.lower.rotation.z=(-.09-run*.23)*move;l.upper.rotation.z=v*(.37+run*.18)*move;l.lower.rotation.z=-Math.max(0,-v)*(.42+run*.25)*move;l.lower.scale.y=1;
    if(jump){a.upper.rotation.z+=s*jump*.22;l.upper.rotation.z+=jump*.14;l.lower.rotation.z-=jump*.30}
   }
   const work=o.work||o.fishing;d.workBlend=(d.workBlend||0)+((work?1:0)-(d.workBlend||0))*(1-Math.exp(-14*dt));
   if(d.workBlend>.005){const a=d.arms[1],clock=o.actionTime??t,w=reduced?0:Math.sin(clock*5),amount=d.workBlend;d.spine.rotation.z+=(-.04+w*.035)*amount;a.upper.rotation.z+=(-.35+w*.32)*amount;a.lower.rotation.z+=(-.24+w*.22)*amount;d.arms[0].upper.rotation.z+=(.16+w*.10)*amount}
+  const joints=[d.spine,d.head,...d.arms.flatMap(a=>[a.upper,a.lower]),...d.legs.flatMap(l=>[l.upper,l.lower])];d.poseState??=joints.map(j=>j.rotation.z);const ease=reduced?1:1-Math.exp(-22*dt);for(let i=0;i<joints.length;i++){d.poseState[i]+=(joints[i].rotation.z-d.poseState[i])*ease;joints[i].rotation.z=d.poseState[i]}
   this.tool(root,o);d.animationFrames=(d.animationFrames||0)+1;
  },
  tool(root,o){
@@ -87,6 +88,15 @@ const ActorRig={
   for(let i=0;i<4;i++){d.legs[i].rotation.z=Math.sin(phase+(i%2)*Math.PI)*.25*blend;d.legs[i].scale.y=e.water?.15:1}
   if(d.insect){const flap=reduced?0:Math.sin(t*(d.species==='butterfly'?12:35)+e.x)*1.05;d.wings[0].rotation.y=flap;d.wings[1].rotation.y=-flap}
   d.animationFrames=(d.animationFrames||0)+1;
+ },
+ shadows(farm){
+  if(!S.fx.shadow){if(this.shadowMesh)this.shadowMesh.visible=false;return}
+  if(!this.shadowMesh){const cv=document.createElement('canvas');cv.width=cv.height=64;const c=cv.getContext('2d'),g=c.createRadialGradient(32,32,3,32,32,31);g.addColorStop(0,'#18241960');g.addColorStop(1,'#18241900');c.fillStyle=g;c.fillRect(0,0,64,64);this.shadowMesh=new THREE.InstancedMesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:this.texture(cv),transparent:true,depthWrite:false}),128);this.shadowMesh.frustumCulled=false;this.shadowMatrix=new THREE.Matrix4();this.shadowScale=new THREE.Vector3();farm.scene.add(this.shadowMesh)}
+  const mesh=this.shadowMesh;mesh.visible=true;let count=0;
+  const add=(x,z,w,h)=>{if(count>=128)return;this.shadowMatrix.makeRotationX(-Math.PI/2);this.shadowMatrix.scale(this.shadowScale.set(w,h,1));this.shadowMatrix.setPosition(x,farm.walkHeight(x,z)+.025,z);mesh.setMatrixAt(count++,this.shadowMatrix)};
+  if(farm.player?.visible){const p=Scene.player,jump=p.jump>0?Math.sin((1-p.jump/.65)*Math.PI):0;add(p.x,p.y,.58-jump*.16,.35-jump*.09)}
+  for(const e of Scene.animals)if(!e.water&&farm.actors.get(e.k)?.visible){const id=IllustratedAnimals.species(e),w=e.fly?.18:['cow','buffalo'].includes(id)?.85:.48;add(e.x,e.y,w,w*.55)}
+  mesh.count=count;mesh.instanceMatrix.needsUpdate=true;
  },
 };
 Avatar3D.build=input=>ActorRig.human(input);

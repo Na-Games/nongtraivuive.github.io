@@ -84,7 +84,7 @@ function fishDraw(){
   }
   GameVisuals.water(c,W,H,t);
   Scenery.fishingLife(c,W,H,t);const stage=Scenery.fishingStage(c,W,H,t),px=stage.x,py=stage.y;F.stage=stage;if(!realistic)Art.draw(c,'boat',W*.22,horizon+75+Math.sin(t*.7)*2,100,55);if(spot.id==='lotus'){Art.draw(c,'lotus',W*.2,H*.61+Math.sin(t)*2,80,46);Art.draw(c,'lily',W*.52,H*.28,48,32)}
-  const rig={};drawAvatar(c,px,py,stage.h,S.av,{t,face:1,fishing:true,seated:true,cleanFishing:true,rigOut:rig,fishState:F.state,castAt:F.castAt,reel:F.reel,caught:F.catchT>0,work:F.state==='fight'&&F.reel});F.lastRig=rig;
+  const rig={};drawAvatar(c,px,py,stage.h,S.av,{t,face:-1,fishing:true,seated:true,cleanFishing:true,rigOut:rig,fishState:F.state,castAt:F.castAt,reel:F.reel,caught:F.catchT>0,work:F.state==='fight'&&F.reel});F.lastRig=rig;
   if(['wait','bite','fight'].includes(F.state)){
    const visualTime=S.fx.reduceMotion?0:t,jiggle=F.state==='fight'&&F.moodName==='burst'?12:2;
    const bx=W*F.bob.x+Math.sin(visualTime*2.2)*jiggle,by=H*F.bob.y+Math.sin(visualTime*3.2)*jiggle*.65,progress=F.state==='fight'?F.prog/100*.3:0;

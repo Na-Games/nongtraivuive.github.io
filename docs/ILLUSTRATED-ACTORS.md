@@ -1,3 +1,5 @@
+Cập nhật bản 8: map hiện dùng [khớp GPU liên tục](SMOOTH-MOTION.md). Phần canvas và xuất PNG vẫn dùng bộ ảnh bên dưới.
+
 # Bộ nhân vật minh họa · 02/11/2026
 
 Bộ ảnh đang chạy dùng phong cách 3D hoạt hình mềm, chi tiết như mẫu người chơi gửi. Nhân vật trên map là sprite minh họa trong cảnh 3D; phần thân, tóc và mũ có cùng điểm ghép với chân dung, màn chỉnh sửa và câu cá.

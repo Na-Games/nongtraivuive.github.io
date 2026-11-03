@@ -1,3 +1,5 @@
+Map 3D bản 8: [khớp chuyển động GPU liên tục, tối ưu thao tác và kết quả đo](docs/SMOOTH-MOTION.md).
+
 Bản sửa theo tài liệu ngày 03/11/2026: [chi tiết và cách bật tên cây](docs/DOCUMENT-FIXES-V7.md). Bộ chuyển động có 80 PNG cho mỗi nhân vật tùy chỉnh.
 
 # Xóm Nông Trại — diorama 3D và cấp 200
