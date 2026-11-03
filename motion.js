@@ -46,7 +46,7 @@ const Motion={
     }return [];
   },
   navigate(p,tx,ty){const route=this.route(p.x,p.y,tx,ty),path=[];let x=p.x,y=p.y;for(let i=0;i<route.length;){let end=i;for(let j=i+1;j<route.length;j++){if(!this.canTravel(x,y,route[j].x,route[j].y))break;end=j}path.push(route[end]);x=route[end].x;y=route[end].y;i=end+1}p.path=path;p.pathIndex=0;p.goal={x:tx,y:ty};if(p.path.length){p.tx=p.path[0].x;p.ty=p.path[0].y}return p.path.length>0},
-  workPlayer(duration=.85){const p=Scene.player;if(p.walk||p.path?.length)p.pendingWork=duration;else p.work=duration},
+  workPlayer(duration=.85,action='hoe'){const p=Scene.player;p.action=action;if(p.walk||p.path?.length)p.pendingWork=duration;else p.work=duration},
   stepEntity(e,dt,maxSpeed,stride=1){
     const dx=e.tx-e.x,dy=e.ty-e.y,d=Math.hypot(dx,dy),oldX=e.x,oldY=e.y;
     const speed=d<.018?0:Math.min(maxSpeed,Math.sqrt(2*maxSpeed*3*d));
@@ -79,7 +79,7 @@ const Motion={
     const distance=this.stepSafe(p,dt,2.8,1.35);p.footDistance=(p.footDistance||0)+distance;
     if(p.footDistance>.48){p.footDistance=0;this.emit('dust',p.x,p.y,14,.4)}
     if(!p.moving&&Math.hypot(p.tx-p.x,p.ty-p.y)<.025){p.path=null;if(p.pendingWork){p.work=p.pendingWork;p.pendingWork=0}}
-    p.workClock=p.work>0?(p.workClock||0)+dt:0;p.work=Math.max(0,p.work-dt);
+    p.jump=Math.max(0,(p.jump||0)-dt);p.workClock=p.work>0?(p.workClock||0)+dt:0;p.work=Math.max(0,p.work-dt);
     for(const e of this.effects)e.age+=dt;this.effects=this.effects.filter(e=>e.age<e.life);
     scene.smokeTime=(scene.smokeTime||0)+dt;if(scene.smokeTime>.65){scene.smokeTime=0;for(const [id,b]of Object.entries(S.b))if(b.t0&&!b.ready){const d=BUILDINGS[id];this.emit('smoke',d.slot[0]+1,d.slot[1]+1,30,.95,105)}}
     scene.gustTime=(scene.gustTime||0)+dt;if(scene.gustTime>4){scene.gustTime=0;if(S.fx.wind!==false)this.emit('wind',p.x+2,p.y-1,65,1.5,12)}

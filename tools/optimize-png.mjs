@@ -9,7 +9,7 @@ const crcTable=Array.from({length:256},(_,n)=>{for(let k=0;k<8;k++)n=n&1?0xedb88
 function chunk(type,data){const name=Buffer.from(type),out=Buffer.alloc(data.length+12);out.writeUInt32BE(data.length);name.copy(out,4);data.copy(out,8);let crc=0xffffffff;for(const n of Buffer.concat([name,data]))crc=crcTable[(crc^n)&255]^(crc>>>8);out.writeUInt32BE((crc^0xffffffff)>>>0,out.length-4);return out}
 function* files(dir){for(const e of fs.readdirSync(dir,{withFileTypes:true})){const file=path.join(dir,e.name);if(e.isDirectory())yield* files(file);else if(file.endsWith('.png'))yield file}}
 const report={files:0,optimized:0,before:0,after:0,skipped:[]};
-for(const file of files('assets')){
+for(const file of files(process.argv[2]||'assets')){
  const original=fs.readFileSync(file);report.files++;report.before+=original.length;
  let image;try{image=decode(file)}catch{report.skipped.push(file);report.after+=original.length;continue}
  const {w,h,pixels}=image,stride=w*4,rows=Buffer.alloc(h*(stride+1)),candidates=Array.from({length:5},()=>Buffer.alloc(stride));

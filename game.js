@@ -104,7 +104,7 @@ const Scene={
     this.centerOn(6.5,8.5,clamp(innerWidth/640,.5,1));
     this.buildDecor();this.bindInput();this.syncAnimals();
     let last=performance.now();
-    const loop=n=>{requestAnimationFrame(loop);const elapsed=n-last;last=n;if(document.hidden||typeof FS!=='undefined'&&FS)return;let remaining=clamp(elapsed/1000,0,.12);this.frameMs=elapsed;try{while(remaining>1e-7){const dt=Math.min(remaining,1/60);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
+    const loop=n=>{requestAnimationFrame(loop);const elapsed=n-last;last=n;if(document.hidden||typeof FS!=='undefined'&&FS||!document.querySelector('#screen-map').classList.contains('hidden'))return;if(typeof sheetKey!=='undefined'&&sheetKey){this.draw();return}let remaining=clamp(elapsed/1000,0,.12);this.frameMs=elapsed;try{while(remaining>1e-7){const dt=Math.min(remaining,1/60);this.t+=dt;this.update(dt);remaining-=dt}this.draw()}catch(e){if(!this._e){this._e=1;console.error(e.stack)}}};
     requestAnimationFrame(loop);
   },
   resize(){
@@ -311,7 +311,7 @@ const Scene={
     // đợi thu hoạch
     PLOTS_EACH((k,i,j)=>{const pl=S.plots[k];if(k>=S.plotsOpen||!pl.crop)return;const pr=cropProg(pl);const p=this.iso(i+.5,j+.5);
       if(pr>=1){const by=p.y-34*z-Math.abs(Math.sin(t*3+k))*6*z;c.fillStyle='rgba(255,246,200,.95)';c.strokeStyle='#d6a23a';c.lineWidth=2*z;c.beginPath();c.arc(p.x,by,16*z,0,6.283);c.fill();c.stroke();c.font=`${20*z}px serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle='#000';Art.text(c,CROPS[pl.crop].e,p.x,by+1*z)}
-      else {const w=46*z;c.fillStyle='rgba(0,0,0,.5)';c.fillRect(p.x-w/2,p.y-30*z,w,5*z);c.fillStyle='#a2bb79';c.fillRect(p.x-w/2,p.y-30*z,w*pr,5*z);this.text(c,fmtT(Math.max(0,cropDur(pl)-(Date.now()-pl.t0))),p.x,p.y-39*z,Math.max(9,10*z),'#fff6d7')}
+      else {const w=46*z;c.fillStyle='rgba(0,0,0,.5)';c.fillRect(p.x-w/2,p.y-30*z,w,5*z);c.fillStyle='#a2bb79';c.fillRect(p.x-w/2,p.y-30*z,w*pr,5*z);this.text(c,(S.fx.cropNames?CROPS[pl.crop].n+' · ':'')+fmtT(Math.max(0,cropDur(pl)-(Date.now()-pl.t0))),p.x,p.y-39*z,Math.max(9,10*z),'#fff6d7')}
     });
     for(const id in S.b){const b=S.b[id],d=BUILDINGS[id],p=this.iso(d.slot[0]+1,d.slot[1]+1);
       const by=p.y-86*z;
@@ -405,7 +405,7 @@ const Scene={
     const P=this.player,p=this.iso(P.x,P.y);
     this.shadow(c,p.x,p.y,13*z,5*z);
     const bob=P.walk?Math.sin((P.phase||0)*Math.PI*4)*.45*z:0;
-    drawAvatar(c,p.x,p.y-bob,54*z*(S.fx.avatarScale||1.25),S.av,{walk:P.walk,t,face:P.face,turn:P.turn,phase:P.phase,back:P.back,work:P.work>0,actionTime:P.workClock});
+    drawAvatar(c,p.x,p.y-bob,54*z*(S.fx.avatarScale||1.25),S.av,{walk:P.walk,t,face:P.face,turn:P.turn,phase:P.jump>0?1-P.jump/.65:P.phase,jump:P.jump>0,back:P.back,work:P.work>0&&P.action!=='harvest',action:P.action,run:P.speed>2.1,actionTime:P.workClock});
   },
   drawPart(c,q,t){
     const a=1-q.t/q.life;

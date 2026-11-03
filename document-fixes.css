@@ -1,0 +1,61 @@
+/* Layout follows the actual viewport, including phone landscape and safe areas. */
+#hud .three-controls,#hud .zoomctl{left:max(8px,env(safe-area-inset-left));gap:6px;flex-wrap:nowrap;max-width:none}
+#hud .three-controls{bottom:calc(218px + var(--sb));flex-direction:column}
+#hud .zoomctl{bottom:calc(136px + var(--sb));flex-direction:column}
+#hud .three-controls .cbtn,#hud .zoomctl .cbtn,#hud #b-harv{width:36px!important;height:36px!important;min-height:36px;font-size:21px!important;border:1px solid #fff6;background:#263b2440;box-shadow:0 2px 6px #15261424;backdrop-filter:none;color:#fff}
+#hud #b-harv{left:max(8px,env(safe-area-inset-left))!important;top:auto!important;bottom:calc(388px + var(--sb))}
+#hud .three-controls .game-icon,#hud #b-harv .game-icon{width:26px;height:26px}
+.sheet[data-sheet=avatar] .avatar-styles{grid-template-columns:repeat(3,minmax(0,1fr));clear:both}
+.sheet[data-sheet=avatar] .avatar-styles button{display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;min-width:0;padding:5px 3px;gap:3px}
+.sheet[data-sheet=avatar] .avatar-styles canvas{display:block;width:100%!important;max-width:88px;height:94px!important;margin:0 auto;object-fit:contain}
+.sheet[data-sheet=avatar] .avatar-styles small{line-height:1.3;font-size:13px}
+.sheet[data-sheet=avatar] .avatar-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.sheet[data-sheet=avatar] .avatar-options button{min-width:0;justify-content:flex-start;padding:7px;gap:8px;font-size:13px}
+.sheet[data-sheet=avatar] .avatar-option-art{width:48px;height:48px;overflow:hidden}
+.sheet[data-sheet=avatar] .avatar-option-art canvas{width:48px;height:48px;object-fit:contain}
+.avatar-preview-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:5px}.avatar-preview-controls button{font-size:12px;padding:7px 10px;flex:0 1 auto}
+.illustrated-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.illustrated-gallery a{display:flex;flex-direction:column;align-items:center;background:#e5dfc9;border-radius:12px;padding:6px;color:#40533a;text-decoration:none;font-size:12px;text-align:center}.illustrated-gallery img{width:100%;height:112px;object-fit:contain}
+#screen-map .map-sheet{backdrop-filter:none;background:#fff9eef5}
+#screen-map .homeland-heading{top:68px;left:20px;max-width:calc(100% - 100px)}
+#screen-map .homeland-heading h1{font-size:23px;margin:4px 0}
+#screen-map .homeland-heading>span{font-size:8px;letter-spacing:1.2px}
+#screen-map .homeland-heading p,#screen-map .homeland-legend{display:none}
+#mapSvgWrap{contain:layout paint;overflow:hidden}
+#mapSvg{backface-visibility:hidden}
+#mapSvg .homeland-cloud,#mapSvg .homeland-sail{pointer-events:none}
+#mapSvg .pv .map-hit{r:8px;vector-effect:non-scaling-stroke;stroke:transparent;stroke-width:8px}
+#mapSvg .pv text,#mapSvg .map-leader{pointer-events:none}
+#mapSvg .pv.selected .map-hit{r:10px}
+#mapSvg .pv.selected .map-marker{filter:none}
+.angler-console{backdrop-filter:none}
+.angler-tools .game-icon{flex:none}
+@media(min-width:650px){.sheet[data-sheet=avatar] .avatar-styles{grid-template-columns:repeat(6,minmax(0,1fr))}.sheet[data-sheet=avatar] .avatar-options{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(orientation:landscape) and (max-height:650px){
+ #hud .three-controls{left:max(8px,env(safe-area-inset-left));bottom:calc(112px + var(--sb));flex-direction:row;gap:6px}
+ #hud .zoomctl{left:180px;bottom:calc(112px + var(--sb));flex-direction:row}
+ #hud #b-harv{left:266px!important;bottom:calc(112px + var(--sb))}
+ #hud .side-events{top:calc(52px + var(--st));gap:2px}
+ #hud .side-social{top:calc(104px + var(--st));gap:2px}
+ #hud .sbtn{width:48px;min-height:44px;font-size:10px}
+ #hud .sbtn .ico{width:30px;height:30px}
+ #hud .prof-info{max-width:135px}
+ .angler-header{top:max(8px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));gap:7px}
+ .angler-round{width:36px;height:36px;border-radius:12px;font-size:27px}
+ .angler-location b{font-size:20px}.angler-location small{display:none}
+ .angler-tools{left:auto;right:60px;top:8px;max-width:54%;gap:5px;flex-wrap:nowrap}
+ .angler-tools>button{min-height:36px;padding:4px 7px;font-size:10px;flex:1}
+ .angler-tools .game-icon{width:24px;height:25px}.angler-tools small{display:none}
+ .angler-waterlabel{top:55px;bottom:auto;left:14px;font-size:9px}
+ .angler-console{left:12px;right:auto;bottom:max(8px,env(safe-area-inset-bottom));transform:none;width:clamp(270px,42vw,380px);padding:9px 12px;border-radius:18px;max-height:calc(100dvh - 100px);overflow:auto}
+ .angler-status{font-size:10px;margin-bottom:5px;min-height:18px}.angler-status #fphase{display:none}
+ .angler-gauges{margin-bottom:6px}.gauge-label{margin:3px 0;font-size:9px}.angler-progress{height:7px}.angler-tension{height:17px;line-height:17px}.angler-tension i{height:23px}
+ .angler-cast{min-height:44px;padding:8px;font-size:13px;border-radius:12px}.angler-cast small{font-size:8px;margin-top:2px}
+ .angler-secondary{min-width:38px;border-radius:12px;font-size:8px}.angler-secondary .game-icon{width:24px;height:24px}
+ .angler-hint{display:none}.angler-console footer{padding-top:5px;margin-top:6px;font-size:8px}
+ #screen-map .homeland-heading{top:55px;max-width:calc(100% - 360px)}
+ #screen-map .homeland-heading h1{font-size:18px}
+ #screen-map .map-sheet{width:300px;top:58px;right:8px;bottom:8px;height:auto;margin:0;border-radius:18px}
+ #screen-map .map-top{right:322px}#screen-map .map-top>div:last-child{display:flex;gap:4px}
+ .sheet[data-sheet=avatar] .av-prev{float:none;display:block;margin:0 auto 8px}
+}
+@media(orientation:landscape) and (max-height:360px){#hud .three-controls,#hud .zoomctl,#hud #b-harv{bottom:calc(92px + var(--sb))}.angler-console footer{display:none}}

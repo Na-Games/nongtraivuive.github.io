@@ -1,3 +1,5 @@
+Bản sửa theo tài liệu ngày 03/11/2026: [chi tiết và cách bật tên cây](docs/DOCUMENT-FIXES-V7.md). Bộ chuyển động có 80 PNG cho mỗi nhân vật tùy chỉnh.
+
 # Xóm Nông Trại — diorama 3D và cấp 200
 
 Bộ nhân vật và vật nuôi minh họa theo mẫu người chơi, PNG nền trong suốt và 43.200 tổ hợp tùy chỉnh đã dùng chung trên map, chân dung và câu cá: [hướng dẫn bộ ảnh mới](docs/ILLUSTRATED-ACTORS.md).

@@ -7,27 +7,26 @@ const FarmLabels={
   const layoutKey=W+'|'+H,now=performance.now();
   if(this.layoutKey!==layoutKey||now-(this.layoutAt||0)>400){this.layoutKey=layoutKey;this.layoutAt=now;this.obstacles=[...document.querySelectorAll('#hud .side>*,#hud .zoomctl button,#hud .three-controls button,#hud .bl-row,#hud .shopbtn')].map(n=>n.getBoundingClientRect()).filter(r=>r.width&&r.height).map(r=>({x:r.x-3,y:r.y-3,w:r.width+6,h:r.height+6}))}
   const font=W<360?10:11,small=W<360?9:10;c.save();c.font=`700 ${font}px system-ui,sans-serif`;
+  const zoom=three?Farm3D.zoom:Scene.cam.z;
+  if(zoom<.92){c.restore();this.last=[];if(!three)Scene.buildingHits=[];return}
   const entries=Object.entries(BUILDINGS).map(([id,d])=>{const b=S.b[id],x=d.slot[0]+1,y=d.slot[1]+1;
    const p=three?Farm3D.project(x,y,Farm3D.height(x,y)+(b?2.8:.45)):Scene.iso(x,y);
    if(!three&&b)p.y-=108*Scene.cam.z;
-   return{id,d,b,p};
-  }).filter(e=>e.p.x>-60&&e.p.x<W+60&&e.p.y>top-70&&e.p.y<bottom+70).sort((a,b)=>a.p.y-b.p.y||a.p.x-b.p.x);
+   const base=three?Farm3D.project(x,y):Scene.iso(x,y);
+   return{id,d,b,p,base};
+  }).filter(e=>e.base.x>20&&e.base.x<W-20&&e.base.y>top&&e.base.y<bottom&&e.p.y>top&&e.p.y<bottom).sort((a,b)=>Number(!!b.b?.ready)-Number(!!a.b?.ready)||a.p.y-b.p.y);
   for(const {id,d,b,p} of entries){
    const title=d.n,lines=[];let line='';
    for(const word of title.split(' ')){if(line&&c.measureText(line+' '+word).width>143){lines.push(line);line=word}else line+=(line?' ':'')+word}lines.push(line);
    const status=!b?(S.lv>=d.lv?'Xây dựng · Cấp '+d.lv:'Mở khóa cấp '+d.lv):b.ready?'Thu '+ITEMS[d.out].n:b.t0?fmtT(Math.max(0,bTime(id)-(Date.now()-b.t0))):'Cấp '+b.lv+' · Sẵn sàng';
    const w=Math.min(W-20,Math.max(W<360?98:116,...[...lines,status].map(s=>c.measureText(s).width+20))),h=lines.length*14+21;
-   let box=null;const gap=4,occupied=[...used,...this.obstacles],xs=[p.x-w/2,10,W-w-10],ys=[p.y-h/2,top,bottom-h];
-   // Include obstacle boundaries so narrow screens can pack signs into free lanes.
-   for(const b of occupied){xs.push(b.x-w-gap,b.x+b.w+gap);ys.push(b.y-h-gap,b.y+b.h+gap)}
-   const xValues=[...new Set(xs.map(x=>clamp(x,10,W-w-10)))],yValues=[...new Set(ys.map(y=>clamp(y,top,bottom-h)))];
-   const candidates=[];for(const x of xValues)for(const y of yValues)candidates.push({x,y,w,h,score:(x+w/2-p.x)**2+(y+h/2-p.y)**2});
-   candidates.sort((a,b)=>a.score-b.score);
-   box=candidates.find(r=>!occupied.some(b=>r.x<b.x+b.w+gap&&r.x+r.w+gap>b.x&&r.y<b.y+b.h+gap&&r.y+r.h+gap>b.y));
-   // On very small screens, retain every sign and let the player pan to separate them.
-   box??={x:clamp(p.x-w/2,10,W-w-10),y:clamp(p.y-h/2,top,bottom-h),w,h};used.push(box);
+   const gap=4,occupied=[...used,...this.obstacles];
+   // Signs stay attached to their roof/pad. Hide crowded signs instead of routing wires across the map.
+   const box={x:p.x-w/2,y:p.y-h/2,w,h};
+   if(box.x<8||box.x+w>W-8||box.y<top||box.y+h>bottom||occupied.some(b=>box.x<b.x+b.w+gap&&box.x+w+gap>b.x&&box.y<b.y+b.h+gap&&box.y+h+gap>b.y))continue;
+   used.push(box);
    const {x,y}=box,ready=!!b?.ready,locked=!b&&S.lv<d.lv;
-   c.strokeStyle=locked?'#b6a383':'#8eae8b';c.lineWidth=1;c.beginPath();c.moveTo(p.x,p.y);c.lineTo(x+w/2,y+h/2);c.stroke();
+   c.strokeStyle=locked?'#b6a383':'#8eae8b';c.lineWidth=1;
    c.shadowColor='#293f3826';c.shadowBlur=8;c.shadowOffsetY=3;c.fillStyle=ready?'#fff1bd':locked?'#fff8e9f5':'#fffff6f5';c.beginPath();c.roundRect(x,y,w,h,10);c.fill();c.shadowBlur=0;c.shadowOffsetY=0;c.stroke();
    c.textAlign='center';c.textBaseline='middle';c.fillStyle='#2a4d40';c.font=`700 ${font}px system-ui,sans-serif`;lines.forEach((s,i)=>c.fillText(s,x+w/2,y+11+i*14));
    c.fillStyle=ready?'#9a641c':locked?'#92744e':'#527963';c.font=`500 ${small}px system-ui,sans-serif`;c.fillText(status,x+w/2,y+h-10);

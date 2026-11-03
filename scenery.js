@@ -4,6 +4,23 @@ const Scenery={
  loadOne(id){if(this.images[id]||this.pending.has(id))return;this.pending.add(id);const image=new Image();image.onload=()=>{this.images[id]=image;this.pending.delete(id);Scene.groundKey=null};image.onerror=()=>{this.pending.delete(id)};image.src='assets/backgrounds/'+id+'.png'},
  load(){for(const id of ['village-panorama','fishing-lake','terrain-meadow','province-relief','fishing-lotus','fishing-river','fishing-bay']){this.loadOne(id);if(id.startsWith('fishing-')&&innerWidth>innerHeight&&id!=='fishing-lake')this.loadOne(id+'-wide')}},
  cover(c,id,x,y,w,h){const image=this.images[id];if(!image)return false;const s=Math.max(w/image.width,h/image.height),sw=w/s,sh=h/s;c.drawImage(image,(image.width-sw)/2,(image.height-sh)/2,sw,sh,x,y,w,h);return true},
+ fishingStage(c,W,H,t){
+  const wide=W>H,h=Math.min(wide?116:144,W*.29,H*.32),x=W*(wide?.81:.79),y=H*(wide?.77:.57),left=x-h*.95,right=Math.min(W+20,x+h*1.05),back=y-h*.15,front=y+h*.18;
+  c.save();c.fillStyle='#294d4655';c.beginPath();c.ellipse(x,y+h*.23,h*1.12,h*.15,0,0,Math.PI*2);c.fill();
+  // A foreground landing supplies a common contact plane in all six backgrounds.
+  c.fillStyle='#725338';c.beginPath();c.moveTo(left,back);c.lineTo(right,back-h*.12);c.lineTo(right,front);c.lineTo(left,front+h*.06);c.closePath();c.fill();
+  c.strokeStyle='#b08b5a';c.lineWidth=Math.max(2,h*.035);for(let i=0;i<7;i++){const yy=back+(front-back)*i/6;c.beginPath();c.moveTo(left+3,yy);c.lineTo(right,yy-h*.06);c.stroke()}
+  for(const px of [left+8,right-12]){c.strokeStyle='#5f4933';c.lineWidth=h*.07;c.beginPath();c.moveTo(px,front);c.lineTo(px,front+h*.3);c.stroke()}
+  const seatY=y-h*.30;c.strokeStyle='#65472e';c.lineWidth=h*.045;for(const dx of [-.12,.13]){c.beginPath();c.moveTo(x+dx*h,seatY);c.lineTo(x+dx*h*1.3,y);c.stroke()}c.fillStyle='#b68b50';c.beginPath();c.ellipse(x,seatY,h*.23,h*.065,0,0,Math.PI*2);c.fill();
+  Art.draw(c,'bucket',Math.min(W-14,x+h*.55),y+h*.03,h*.32,h*.36,1);Art.draw(c,'tackle',left+h*.22,front,h*.38,h*.26,1);
+  c.restore();return{x,y,h,seatY,deck:{left,right,back,front}};
+ },
+ fishingLife(c,W,H,t){
+  const still=S.fx.reduceMotion,time=still?0:t,spot=S.fish.spot;c.save();
+  if(S.fx.particles)for(let i=0;i<(S.fx.hq?7:3);i++){const x=((i*131+time*(spot==='bay'?15:5))%(W*.63+50))-20,y=H*(.42+(i*.071)%.31)+Math.sin(time+i)*4;c.globalAlpha=.22;c.fillStyle=spot==='lotus'?'#edbfc6':spot==='river'?'#e3c77c':'#fff3bd';c.beginPath();c.ellipse(x,y,spot==='bay'?2:4,1.8,Math.sin(i+time*.3),0,Math.PI*2);c.fill()}
+  c.globalAlpha=.38;c.strokeStyle=S.night?'#d0ddd4':'#345c61';c.lineWidth=1.4;for(let i=0;i<3;i++){const x=(W*.15+i*67+time*8)%(W*.6),y=H*.23+Math.sin(time*.8+i)*6,wing=still?3:Math.sin(time*3+i)*4;c.beginPath();c.moveTo(x-7,y+wing);c.quadraticCurveTo(x-3,y-3,x,y);c.quadraticCurveTo(x+3,y-3,x+7,y+wing);c.stroke()}
+  c.restore();
+ },
  ground(c,i,j,p,z){const image=this.images['terrain-meadow'];if(!image)return Art.tile(c,'grass',p.x,p.y,TW*z+.5,TH*z+.5);const sx=((i%8+8)%8)*128,sy=((j%8+8)%8)*128;c.save();Scene.diamond(c,i,j);c.clip();c.globalAlpha=.36;c.drawImage(image,sx,sy,128,128,p.x-TW*z/2-.5,p.y-TH*z/2-.5,TW*z+1,TH*z+1);c.restore()},
  fishing(c,W,H,t){const id='fishing-'+S.fish.spot+(W>H?'-wide':'');this.loadOne(id);const image=this.images[id]||this.images['fishing-'+S.fish.spot];if(!image)return false;const scale=Math.max(W/image.width,H/image.height),sw=W/scale,sh=H/scale;c.drawImage(image,(image.width-sw)*.8,(image.height-sh)*.44,sw,sh,0,0,W,H);c.save();if(S.night){c.fillStyle='#102a4f66';c.fillRect(0,0,W,H)}c.beginPath();c.rect(0,H*.24,W*.67,H*.76);c.clip();for(let i=0;i<16;i++){const y=H*(.3+(i*.043)%.65),x=W*(.08+(i*.137)%.55)+(S.fx.reduceMotion?0:Math.sin(t*.65+i)*6);c.strokeStyle='#d7fcf433';c.lineWidth=1;c.beginPath();c.ellipse(x,y,16+i%3*6,2,0,0,Math.PI*2);c.stroke()}c.restore();return true},
 };

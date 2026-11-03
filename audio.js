@@ -6,6 +6,22 @@ const GameAudio={
   context(){const Constructor=window.AudioContext||window.webkitAudioContext;if(!Constructor)return null;try{if(!actx||actx.state==='closed')actx=new Constructor();return actx}catch{return null}},
   activate(){this.unlocked=true;const context=this.context();if(!context)return;try{if(context.state!=='running'){const pending=context.resume();this.resuming=pending;Promise.resolve(pending).then(()=>{if(this.resuming===pending)this.resuming=null;this.sync();if(typeof Fishing!=='undefined'&&FS)Fishing.updateAudio(true)}).catch(()=>{this.resuming=null})}else{this.sync();if(typeof Fishing!=='undefined'&&FS)Fishing.updateAudio(true)}}catch{}},
   enabled(){return !!S.fx.sound&&S.fx.volume>0&&!document.hidden},
+  animalCue(species){
+    if(!this.unlocked||!this.enabled()||S.fx.animalSound===false||!(S.fx.animalVolume>0)||!this.mapVisible()||(typeof FS!=='undefined'&&FS))return false;
+    const c=this.context();if(!c||c.state!=='running')return false;
+    const voices={cow:[110,85,.65,'sawtooth'],buffalo:[85,60,.75,'sawtooth'],pig:[170,95,.28,'sawtooth'],goat:[340,260,.36,'triangle'],sheep:[280,210,.45,'triangle'],hen:[640,380,.18,'triangle'],duck:[410,260,.19,'sawtooth'],dog:[240,140,.2,'triangle'],cat:[730,410,.5,'sine'],crane:[950,620,.24,'sine']},v=voices[species];if(!v)return false;
+    const now=c.currentTime;
+    for(let i=0;i<(species==='hen'||species==='duck'?3:2);i++){
+      const start=now+i*(v[2]+.07),source=c.createOscillator(),gain=c.createGain(),filter=c.createBiquadFilter();
+      source.type=v[3];source.frequency.setValueAtTime(v[0],start);source.frequency.exponentialRampToValueAtTime(v[1],start+v[2]);filter.type='lowpass';filter.frequency.value=species==='hen'?1900:850;
+      gain.gain.setValueAtTime(.0001,start);gain.gain.exponentialRampToValueAtTime(Math.max(.0001,S.fx.volume*S.fx.animalVolume*.065),start+.025);gain.gain.exponentialRampToValueAtTime(.0001,start+v[2]);source.connect(filter);filter.connect(gain);gain.connect(c.destination);this.effects.add(source);source.onended=()=>{source.disconnect();filter.disconnect();gain.disconnect();this.effects.delete(source)};source.start(start);source.stop(start+v[2]+.02);
+    }return true;
+  },
+  nearbyAnimal(){
+    if(typeof IllustratedAnimals==='undefined'||!Scene.animals?.length)return;
+    const near=Scene.animals.filter(a=>Math.hypot(a.x-Scene.player.x,a.y-Scene.player.y)<8&&!a.fly);
+    if(near.length){this.animalIndex=((this.animalIndex||0)+1)%near.length;this.animalCue(IllustratedAnimals.species(near[this.animalIndex]))}
+  },
   play(kind='tap'){
     if(!this.enabled()||S.fx.sfxVolume<=0||!this.unlocked)return;
     const context=this.context();if(!context)return;
@@ -35,4 +51,5 @@ document.addEventListener('pointerdown',event=>{if(!event.isTrusted)return;GameA
 document.addEventListener('keydown',event=>{if(!event.isTrusted||event.repeat)return;GameAudio.activate();AutoFullscreen.enter()},{capture:true});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){GameAudio.stopAmbient();GameAudio.stopEffects()}else GameAudio.sync()});
 addEventListener('pagehide',()=>{GameAudio.stopAmbient();GameAudio.stopEffects()});
+setInterval(()=>GameAudio.nearbyAnimal(),8500);
 document.addEventListener('click',event=>{if(event.target.closest('button,.item,.avatar-ring'))GameAudio.play('tap')});
