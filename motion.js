@@ -18,6 +18,16 @@ const Motion={
     if(options.cleanFishing){const rig=this.fishingRig(this.frame(id,phase)),scale=size/extent,px=v=>(v-clip.pivot[0])*scale,py=v=>(v-clip.pivot[1])*scale;c.beginPath();c.rect(px(0),py(0),side,side);c.moveTo(px(rig.x-9),py(rig.y+3));c.lineTo(px(rig.x+rig.width),py(rig.y+rig.width+12));c.lineTo(px(rig.x+rig.width),py(clip.cell));c.lineTo(px(rig.x-9),py(clip.cell));c.closePath();c.clip('evenodd')}
     c.drawImage(Art.images[frame.sheet],frame.col*sheet.cell,frame.row*sheet.cell,sheet.cell,sheet.cell,-side*clip.pivot[0]/clip.cell,-side*clip.pivot[1]/clip.cell,side,side);c.restore();return true;
   },
+  prepareCollision(){
+    const objects=typeof Scene==='undefined'?null:Scene.objs,decor=S.decor||[],projects=S.village?.projects||{},key=[objects?.length||0,Object.keys(BUILDINGS).length,typeof Farm3D!=='undefined'&&Farm3D.active?1:0,decor.map(d=>d.uid+':'+d.gx+','+d.gy).join(';'),Object.entries(projects).map(([k,v])=>k+':'+(v.builtAt||0)).join(';')].join('|');
+    if(this.collision?.objects===objects&&this.collision.key===key)return this.collision;
+    const cells=new Map(),add=shape=>{for(let ix=Math.floor(shape.left/2);ix<=Math.floor(shape.right/2);ix++)for(let iy=Math.floor(shape.top/2);iy<=Math.floor(shape.bottom/2);iy++){const k=ix+iy*128;let list=cells.get(k);if(!list)cells.set(k,list=[]);list.push(shape)}},circle=(x,y,r)=>add({x,y,r2:r*r,left:x-r,right:x+r,top:y-r,bottom:y+r});
+    for(const b of Object.values(BUILDINGS))add({left:b.slot[0]-.15,right:b.slot[0]+2.15,top:b.slot[1]-.15,bottom:b.slot[1]+2.15});
+    for(const d of decor)circle(d.gx,d.gy,.65);
+    for(const o of objects||[])if(this.solid(o.k))circle(o.gx,o.gy,this.radius(o.k));
+    if(typeof Village!=='undefined')for(const o of Village.sceneObjects())circle(o.gx,o.gy,1.05);
+    return this.collision={objects,key,cells,version:(this.collision?.version||0)+1};
+  },
   canOccupy(x,y){
     if(typeof Farm3D!=='undefined'&&Farm3D.active&&Math.abs(y-35)<.36&&[10,17,22].some(b=>Math.abs(x-b)<.62))return false;
     if(typeof Landscape!=='undefined'&&Landscape.water(x,y))return false;
@@ -26,10 +36,8 @@ const Motion={
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
     if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+Math.min(PROWS,5)+.15)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
-    if(Object.values(BUILDINGS).some(b=>x>b.slot[0]-.15&&x<b.slot[0]+2.15&&y>b.slot[1]-.15&&y<b.slot[1]+2.15))return false;
-    if((S.decor||[]).some(d=>Math.hypot(x-d.gx,y-d.gy)<.65))return false;
-    if(typeof Scene!=='undefined'&&Scene.objs?.some(o=>this.solid(o.k)&&Math.hypot(x-o.gx,y-o.gy)<this.radius(o.k)))return false;
-    if(typeof Village!=='undefined'&&Village.sceneObjects().some(o=>Math.hypot(x-o.gx,y-o.gy)<1.05))return false;
+    const cache=this.collision||this.prepareCollision(),near=cache.cells.get(Math.floor(x/2)+Math.floor(y/2)*128);
+    if(near)for(const s of near){if(s.r2!==undefined?(x-s.x)**2+(y-s.y)**2<s.r2:x>s.left&&x<s.right&&y>s.top&&y<s.bottom)return false}
     return true;
   },
   solid(id){return !['flower','sign','boat','village-stairs','village-stone-bridge','village-pipeline','hay'].includes(id)},
@@ -38,7 +46,7 @@ const Motion={
   canTravel(x,y,tx,ty,allowed=(x,y)=>this.canOccupy(x,y)){const steps=Math.max(1,Math.ceil(Math.hypot(tx-x,ty-y)/.1));for(let i=1;i<=steps;i++)if(!allowed(x+(tx-x)*i/steps,y+(ty-y)*i/steps))return false;return true},
   stepSafe(e,dt,speed,stride){const x=e.x,y=e.y,phase=e.phase,allowed=e.fly?()=>true:e.water?(x,y)=>this.pond(x,y):(x,y)=>this.canOccupy(x,y);const distance=this.stepEntity(e,dt,speed,stride);if(this.canTravel(x,y,e.x,e.y,allowed))return distance;e.x=x;e.y=y;e.phase=phase||0;e.tx=x;e.ty=y;e.vx=e.vy=0;e.path=null;e.walk=0;e.speed=0;e.moving=false;e.wait=.1;return 0},
   route(x,y,tx,ty){
-    const now=Date.now(),key=JSON.stringify([S.decor||[],Object.keys(S.b||{}),typeof Scene!=='undefined'?Scene.objs?.length:0]);if(!this.navCache||this.navCache.key!==key||now-this.navCache.time>500)this.navCache={key,time:now,cells:Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5))};const cells=this.navCache.cells,nearest=(px,py)=>{let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
+    const collision=this.prepareCollision(),key=collision.version;if(!this.navCache||this.navCache.key!==key)this.navCache={key,cells:Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5))};const cells=this.navCache.cells,nearest=(px,py)=>{const ix=Math.floor(px),iy=Math.floor(py),direct=iy*N+ix;if(ix>=0&&ix<N&&iy>=0&&iy<N&&cells[direct])return direct;let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
     const start=nearest(x,y),goal=nearest(tx,ty);if(start<0||goal<0)return [];
     const open=new Set([start]),cost=new Float64Array(N*N).fill(Infinity),from=new Int32Array(N*N).fill(-1),closed=new Set();cost[start]=0;const heuristic=i=>Math.hypot(i%N-goal%N,Math.floor(i/N)-Math.floor(goal/N));
     while(open.size){let current=-1,score=Infinity;for(const i of open){const s=cost[i]+heuristic(i);if(s<score){current=i;score=s}}if(current===goal){const path=[];for(let i=goal;i>=0;i=from[i]){path.push({x:i%N+.5,y:Math.floor(i/N)+.5});if(i===start)break}path.reverse();if(this.canOccupy(tx,ty))path.push({x:tx,y:ty});return path}open.delete(current);closed.add(current);
@@ -46,7 +54,7 @@ const Motion={
     }return [];
   },
   navigate(p,tx,ty){const route=this.route(p.x,p.y,tx,ty),path=[];let x=p.x,y=p.y;for(let i=0;i<route.length;){let end=i;for(let j=i+1;j<route.length;j++){if(!this.canTravel(x,y,route[j].x,route[j].y))break;end=j}path.push(route[end]);x=route[end].x;y=route[end].y;i=end+1}p.path=path;p.pathIndex=0;p.goal={x:tx,y:ty};if(p.path.length){p.tx=p.path[0].x;p.ty=p.path[0].y}return p.path.length>0},
-  workPlayer(duration=.85,action='hoe'){const p=Scene.player;p.action=action;if(p.walk||p.path?.length)p.pendingWork=duration;else p.work=duration},
+  workPlayer(duration=.85,action='hoe'){const p=Scene.player;p.action=action;if(p.walk||p.path?.length)p.pendingWork=duration;else{p.work=duration;p.workClock=0}},
   stepEntity(e,dt,maxSpeed,stride=1){
     const dx=e.tx-e.x,dy=e.ty-e.y,d=Math.hypot(dx,dy),oldX=e.x,oldY=e.y;
     const speed=d<.018?0:Math.min(maxSpeed,Math.sqrt(2*maxSpeed*3*d));
@@ -64,7 +72,7 @@ const Motion={
     for(let i=0;i<24;i++){const x=clamp(a.home[0]+rnd(-a.r,a.r),.4,N-.4),y=clamp(a.home[1]+rnd(-a.r,a.r),.4,N-.4);if(a.water?this.pond(x,y):a.fly||this.canOccupy(x,y)){if(a.water||a.fly){a.tx=x;a.ty=y;return true}if(this.navigate(a,x,y))return true}}a.tx=a.x;a.ty=a.y;return false;
   },
   update(scene,dt){
-    this.reduced=!!S.fx.reduceMotion||this.media.matches;
+    this.prepareCollision();this.reduced=!!S.fx.reduceMotion||this.media.matches;
     for(const a of scene.animals){
       if(!a.fly&&(a.water?!this.pond(a.x,a.y):!this.canOccupy(a.x,a.y))){if(a.water){a.x=11.5;a.y=3.6}else{const route=this.route(a.x,a.y,a.home[0],a.home[1]);if(route.length){a.x=route[0].x;a.y=route[0].y}}a.tx=a.x;a.ty=a.y;a.vx=a.vy=0;a.path=null}
       if(!a.motionStarted){a.motionStarted=true;a.heading=0;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=Math.max(.2,a.wait||1)}

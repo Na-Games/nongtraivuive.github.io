@@ -1,0 +1,877 @@
+﻿{
+    "date":  "2026-11-03",
+    "reason":  "Unused v5 character exports superseded by illustrated assets; no incoming runtime or library references. Legacy parts retained for avatar-raster.js.",
+    "files":  216,
+    "removedBytes":  6975097,
+    "preserved":  [
+                      ".runtime",
+                      "docs/verification",
+                      "assets/avatars-v5/parts"
+                  ],
+    "removed":  [
+                    {
+                        "path":  "assets/avatars-v5/character-0.png",
+                        "bytes":  96698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/character-1.png",
+                        "bytes":  89984
+                    },
+                    {
+                        "path":  "assets/avatars-v5/character-2.png",
+                        "bytes":  91191
+                    },
+                    {
+                        "path":  "assets/avatars-v5/character-3.png",
+                        "bytes":  100107
+                    },
+                    {
+                        "path":  "assets/avatars-v5/character-4.png",
+                        "bytes":  86369
+                    },
+                    {
+                        "path":  "assets/avatars-v5/character-5.png",
+                        "bytes":  104526
+                    },
+                    {
+                        "path":  "assets/avatars-v5/garment-0.png",
+                        "bytes":  96698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/garment-1.png",
+                        "bytes":  96618
+                    },
+                    {
+                        "path":  "assets/avatars-v5/garment-2.png",
+                        "bytes":  98464
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-color-0.png",
+                        "bytes":  87417
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-color-1.png",
+                        "bytes":  88817
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-color-2.png",
+                        "bytes":  90135
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-color-3.png",
+                        "bytes":  90169
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-color-4.png",
+                        "bytes":  87427
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-style-0.png",
+                        "bytes":  87417
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-style-1.png",
+                        "bytes":  87147
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-style-2.png",
+                        "bytes":  88941
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-style-3.png",
+                        "bytes":  88842
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hair-style-4.png",
+                        "bytes":  88895
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hat-0.png",
+                        "bytes":  96698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hat-1.png",
+                        "bytes":  90775
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hat-2.png",
+                        "bytes":  90374
+                    },
+                    {
+                        "path":  "assets/avatars-v5/hat-3.png",
+                        "bytes":  87417
+                    },
+                    {
+                        "path":  "assets/avatars-v5/manifest.js",
+                        "bytes":  28297
+                    },
+                    {
+                        "path":  "assets/avatars-v5/manifest.json",
+                        "bytes":  43753
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-00.png",
+                        "bytes":  20301
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-01.png",
+                        "bytes":  20910
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-02.png",
+                        "bytes":  20663
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-03.png",
+                        "bytes":  20864
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-04.png",
+                        "bytes":  20422
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-05.png",
+                        "bytes":  20203
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-06.png",
+                        "bytes":  20083
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-back-07.png",
+                        "bytes":  20238
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-fish-00.png",
+                        "bytes":  22041
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-fish-01.png",
+                        "bytes":  22072
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-fish-02.png",
+                        "bytes":  21943
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-fish-03.png",
+                        "bytes":  22078
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-idle-00.png",
+                        "bytes":  21727
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-idle-01.png",
+                        "bytes":  21638
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-idle-02.png",
+                        "bytes":  21891
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-idle-03.png",
+                        "bytes":  21775
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-00.png",
+                        "bytes":  21727
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-01.png",
+                        "bytes":  22108
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-02.png",
+                        "bytes":  21913
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-03.png",
+                        "bytes":  22251
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-04.png",
+                        "bytes":  21724
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-05.png",
+                        "bytes":  21892
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-06.png",
+                        "bytes":  21770
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-walk-07.png",
+                        "bytes":  21907
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-00.png",
+                        "bytes":  21561
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-01.png",
+                        "bytes":  21553
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-02.png",
+                        "bytes":  21573
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-03.png",
+                        "bytes":  21722
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-04.png",
+                        "bytes":  21621
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-0-work-05.png",
+                        "bytes":  21484
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-00.png",
+                        "bytes":  19446
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-01.png",
+                        "bytes":  19909
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-02.png",
+                        "bytes":  19603
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-03.png",
+                        "bytes":  19909
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-04.png",
+                        "bytes":  19518
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-05.png",
+                        "bytes":  19454
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-06.png",
+                        "bytes":  19299
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-back-07.png",
+                        "bytes":  19484
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-fish-00.png",
+                        "bytes":  21492
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-fish-01.png",
+                        "bytes":  21565
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-fish-02.png",
+                        "bytes":  21420
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-fish-03.png",
+                        "bytes":  21515
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-idle-00.png",
+                        "bytes":  21093
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-idle-01.png",
+                        "bytes":  21161
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-idle-02.png",
+                        "bytes":  21158
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-idle-03.png",
+                        "bytes":  21147
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-00.png",
+                        "bytes":  21093
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-01.png",
+                        "bytes":  21561
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-02.png",
+                        "bytes":  21373
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-03.png",
+                        "bytes":  21543
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-04.png",
+                        "bytes":  21153
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-05.png",
+                        "bytes":  21462
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-06.png",
+                        "bytes":  21408
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-walk-07.png",
+                        "bytes":  21430
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-00.png",
+                        "bytes":  21228
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-01.png",
+                        "bytes":  21221
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-02.png",
+                        "bytes":  21294
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-03.png",
+                        "bytes":  21112
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-04.png",
+                        "bytes":  21061
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-1-work-05.png",
+                        "bytes":  21065
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-00.png",
+                        "bytes":  18892
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-01.png",
+                        "bytes":  19378
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-02.png",
+                        "bytes":  19215
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-03.png",
+                        "bytes":  19478
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-04.png",
+                        "bytes":  18967
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-05.png",
+                        "bytes":  18902
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-06.png",
+                        "bytes":  18844
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-back-07.png",
+                        "bytes":  18894
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-fish-00.png",
+                        "bytes":  20552
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-fish-01.png",
+                        "bytes":  20509
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-fish-02.png",
+                        "bytes":  20674
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-fish-03.png",
+                        "bytes":  20539
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-idle-00.png",
+                        "bytes":  20255
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-idle-01.png",
+                        "bytes":  20351
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-idle-02.png",
+                        "bytes":  20299
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-idle-03.png",
+                        "bytes":  20294
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-00.png",
+                        "bytes":  20255
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-01.png",
+                        "bytes":  20940
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-02.png",
+                        "bytes":  20765
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-03.png",
+                        "bytes":  20864
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-04.png",
+                        "bytes":  20355
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-05.png",
+                        "bytes":  20658
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-06.png",
+                        "bytes":  20428
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-walk-07.png",
+                        "bytes":  20550
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-00.png",
+                        "bytes":  20143
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-01.png",
+                        "bytes":  20189
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-02.png",
+                        "bytes":  20061
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-03.png",
+                        "bytes":  20167
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-04.png",
+                        "bytes":  20079
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-2-work-05.png",
+                        "bytes":  20023
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-00.png",
+                        "bytes":  21472
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-01.png",
+                        "bytes":  21911
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-02.png",
+                        "bytes":  21888
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-03.png",
+                        "bytes":  21973
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-04.png",
+                        "bytes":  21493
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-05.png",
+                        "bytes":  21286
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-06.png",
+                        "bytes":  21115
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-back-07.png",
+                        "bytes":  21323
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-fish-00.png",
+                        "bytes":  23321
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-fish-01.png",
+                        "bytes":  23249
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-fish-02.png",
+                        "bytes":  23157
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-fish-03.png",
+                        "bytes":  23324
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-idle-00.png",
+                        "bytes":  23153
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-idle-01.png",
+                        "bytes":  23157
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-idle-02.png",
+                        "bytes":  23148
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-idle-03.png",
+                        "bytes":  23071
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-00.png",
+                        "bytes":  23153
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-01.png",
+                        "bytes":  23724
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-02.png",
+                        "bytes":  23570
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-03.png",
+                        "bytes":  23738
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-04.png",
+                        "bytes":  23182
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-05.png",
+                        "bytes":  23352
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-06.png",
+                        "bytes":  23229
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-walk-07.png",
+                        "bytes":  23366
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-00.png",
+                        "bytes":  22769
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-01.png",
+                        "bytes":  22741
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-02.png",
+                        "bytes":  22947
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-03.png",
+                        "bytes":  22915
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-04.png",
+                        "bytes":  22822
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-3-work-05.png",
+                        "bytes":  22680
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-00.png",
+                        "bytes":  17839
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-01.png",
+                        "bytes":  18250
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-02.png",
+                        "bytes":  18081
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-03.png",
+                        "bytes":  18267
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-04.png",
+                        "bytes":  17870
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-05.png",
+                        "bytes":  17853
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-06.png",
+                        "bytes":  17560
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-back-07.png",
+                        "bytes":  17888
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-fish-00.png",
+                        "bytes":  20092
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-fish-01.png",
+                        "bytes":  20088
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-fish-02.png",
+                        "bytes":  19937
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-fish-03.png",
+                        "bytes":  20084
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-idle-00.png",
+                        "bytes":  19674
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-idle-01.png",
+                        "bytes":  19813
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-idle-02.png",
+                        "bytes":  19698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-idle-03.png",
+                        "bytes":  19629
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-00.png",
+                        "bytes":  19674
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-01.png",
+                        "bytes":  20099
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-02.png",
+                        "bytes":  19798
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-03.png",
+                        "bytes":  20069
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-04.png",
+                        "bytes":  19729
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-05.png",
+                        "bytes":  19968
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-06.png",
+                        "bytes":  19876
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-walk-07.png",
+                        "bytes":  19969
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-00.png",
+                        "bytes":  19424
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-01.png",
+                        "bytes":  19355
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-02.png",
+                        "bytes":  19422
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-03.png",
+                        "bytes":  19483
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-04.png",
+                        "bytes":  19381
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-4-work-05.png",
+                        "bytes":  19396
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-00.png",
+                        "bytes":  21667
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-01.png",
+                        "bytes":  21923
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-02.png",
+                        "bytes":  21961
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-03.png",
+                        "bytes":  22019
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-04.png",
+                        "bytes":  21720
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-05.png",
+                        "bytes":  21613
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-06.png",
+                        "bytes":  21275
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-back-07.png",
+                        "bytes":  21575
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-fish-00.png",
+                        "bytes":  23683
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-fish-01.png",
+                        "bytes":  23671
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-fish-02.png",
+                        "bytes":  23543
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-fish-03.png",
+                        "bytes":  23541
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-idle-00.png",
+                        "bytes":  23473
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-idle-01.png",
+                        "bytes":  23408
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-idle-02.png",
+                        "bytes":  23294
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-idle-03.png",
+                        "bytes":  23367
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-00.png",
+                        "bytes":  23473
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-01.png",
+                        "bytes":  23782
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-02.png",
+                        "bytes":  23787
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-03.png",
+                        "bytes":  23820
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-04.png",
+                        "bytes":  23466
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-05.png",
+                        "bytes":  23660
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-06.png",
+                        "bytes":  23511
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-walk-07.png",
+                        "bytes":  23543
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-00.png",
+                        "bytes":  23270
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-01.png",
+                        "bytes":  23297
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-02.png",
+                        "bytes":  23201
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-03.png",
+                        "bytes":  23217
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-04.png",
+                        "bytes":  23116
+                    },
+                    {
+                        "path":  "assets/avatars-v5/motion-5-work-05.png",
+                        "bytes":  23196
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-0.png",
+                        "bytes":  96698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-1.png",
+                        "bytes":  96582
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-2.png",
+                        "bytes":  96762
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-3.png",
+                        "bytes":  96508
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-4.png",
+                        "bytes":  96769
+                    },
+                    {
+                        "path":  "assets/avatars-v5/outfit-color-5.png",
+                        "bytes":  95707
+                    },
+                    {
+                        "path":  "assets/avatars-v5/skin-0.png",
+                        "bytes":  96698
+                    },
+                    {
+                        "path":  "assets/avatars-v5/skin-1.png",
+                        "bytes":  96773
+                    },
+                    {
+                        "path":  "assets/avatars-v5/skin-2.png",
+                        "bytes":  96650
+                    },
+                    {
+                        "path":  "assets/avatars-v5/skin-3.png",
+                        "bytes":  95820
+                    },
+                    {
+                        "path":  "tools/export-avatar-art.mjs",
+                        "bytes":  6035
+                    }
+                ]
+}

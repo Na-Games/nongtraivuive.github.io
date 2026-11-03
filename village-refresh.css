@@ -16,3 +16,5 @@
 @media(max-width:359px){.hud-top .res{font-size:11px;padding-right:5px}.hud-top .res .ic>.game-icon{width:16px;height:18px}.hud-actions .cbtn{width:29px}.hud-actions{gap:2px}.hud-top{max-width:calc(100% - 105px)}.angler-tools{width:calc(100% - 186px)}.angler-location{max-width:82px}}
 @media(orientation:portrait) and (max-height:700px){.side-social{bottom:110px}.shopbtn{bottom:18px}.bl{bottom:14px}}
 @media(orientation:landscape) and (max-height:600px){.bl{bottom:10px}.shopbtn{bottom:12px}.side-social{top:115px;bottom:auto}.angler-tools{width:300px;max-width:calc(100% - 255px);top:calc(9px + var(--st));left:auto;right:57px;flex-wrap:nowrap}.angler-console{width:40%;right:12px;left:auto;transform:none}.angler-waterlabel{top:61px;bottom:auto}}
+
+.fishing-active #farm-still{display:none!important}
