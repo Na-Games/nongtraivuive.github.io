@@ -47,9 +47,10 @@ const FarmerDesign={
    ball(elbow,skin,0,-.176,.008,.049,.059,.035);for(let i=0;i<4;i++)ball(elbow,skin,-.026+i*.017,-.205,.013,.010,.025,.011);ball(elbow,skin,side*.042,-.176,.03,.018,.028,.017);arms.push(arm);elbows.push(elbow);hands.push(elbow);
    const leg=new THREE.Group();leg.position.set(side*.103,.65,0);body.add(leg);Avatar3D.mesh(leg,Avatar3D.capsule,pants,0,-.136,0,.079,.093,.077);
    const knee=new THREE.Group();knee.position.y=-.285;leg.add(knee);Avatar3D.mesh(knee,Avatar3D.capsule,pants,0,-.115,0,.064,.081,.065);ball(knee,pants,0,-.222,0,.068,.024,.068);
-   ball(knee,sole,0,-.296,.044,.081,.022,.137);ball(knee,skin,0,-.265,.049,.065,.036,.108);
-   for(const z of [-.005,.071]){const sandal=ball(knee,leather,0,-.247,z,.075,.013,.024);sandal.rotation.z=side*.05}tube(knee,[[-.068,-.267,-.015],[-.063,-.243,-.058],[.063,-.243,-.058],[.068,-.267,-.015]],.012,leather);
-   legs.push(leg);knees.push(knee);feet.push(knee);
+   const foot=new THREE.Group();foot.position.y=-.274;knee.add(foot);
+   ball(foot,sole,0,-.022,.044,.081,.022,.137);ball(foot,skin,0,.009,.049,.065,.036,.108);
+   for(const z of [-.005,.071]){const sandal=ball(foot,leather,0,.027,z,.075,.013,.024);sandal.rotation.z=side*.05}tube(foot,[[-.068,.007,-.015],[-.063,.031,-.058],[.063,.031,-.058],[.068,.007,-.015]],.012,leather);
+   legs.push(leg);knees.push(knee);feet.push(foot);
   }
   ball(torso,skin,0,1.133,0,.064,.087,.06);
   const head=new THREE.Group();head.position.set(0,1.40,-.002);head.scale.setScalar(profile.head);body.add(head);
@@ -72,7 +73,7 @@ const FarmerDesign={
   const hat=new THREE.Group();hat.position.y=.268;hat.name='hat-'+a.hat;head.add(hat);this.hat(hat,a,ball,tube);
   root.userData.rig={body,head,arms,elbows,hands,legs,knees,feet,eyeParts,hat,height:profile.h,groundOffset:0};
   // Merge only rigid pieces of the same material; all animated joints stay separate.
-  this.batch(torso);for(const arm of arms){const elbow=elbows[arms.indexOf(arm)];arm.remove(elbow);this.batch(arm);arm.add(elbow);this.batch(elbow)}for(const knee of knees)this.batch(knee);
+  this.batch(torso);for(const arm of arms){const elbow=elbows[arms.indexOf(arm)];arm.remove(elbow);this.batch(arm);arm.add(elbow);this.batch(elbow)}for(let i=0;i<knees.length;i++){knees[i].remove(feet[i]);this.batch(knees[i]);knees[i].add(feet[i]);this.batch(feet[i])}
   head.remove(hat,...eyeParts);this.batch(head);head.add(hat,...eyeParts);this.batch(hat);for(const eye of eyeParts)this.batch(eye);
   return root;
  },

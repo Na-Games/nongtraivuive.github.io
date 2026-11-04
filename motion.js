@@ -84,7 +84,7 @@ const Motion={
     const p=scene.player;
     if(p.path?.length){let waypoint=p.path[p.pathIndex];if(waypoint&&Math.hypot(waypoint.x-p.x,waypoint.y-p.y)<.13&&p.pathIndex<p.path.length-1)waypoint=p.path[++p.pathIndex];if(waypoint){p.tx=waypoint.x;p.ty=waypoint.y}}
     if(!this.canOccupy(p.x,p.y)){const path=this.route(p.x,p.y,p.tx,p.ty);if(path.length){p.x=path[0].x;p.y=path[0].y;p.path=path;p.pathIndex=0;p.vx=p.vy=0}}
-    const distance=this.stepSafe(p,dt,2.8,(.95+.4*clamp(((p.speed||0)-1.4)/1.4,0,1))*(.72*(S.fx.avatarScale||1.25))*(S.av?.style===5?.82:1));p.footDistance=(p.footDistance||0)+distance;
+    const distance=this.stepSafe(p,dt,2.8,(.8+.35*clamp(((p.speed||0)-1.4)/1.4,0,1))*(.72*(S.fx.avatarScale||1.25))*(S.av?.style===5?.82:1));p.footDistance=(p.footDistance||0)+distance;
     if(p.footDistance>.48){p.footDistance=0;this.emit('dust',p.x,p.y,14,.4)}
     if(!p.moving&&Math.hypot(p.tx-p.x,p.ty-p.y)<.025){p.path=null;if(p.pendingWork){p.work=p.pendingWork;p.pendingWork=0}}
     p.jump=Math.max(0,(p.jump||0)-dt);p.workClock=p.work>0?(p.workClock||0)+dt:0;p.work=Math.max(0,p.work-dt);
