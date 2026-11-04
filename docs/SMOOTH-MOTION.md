@@ -1,8 +1,10 @@
-# Chuyển động map 3D — bản 8, ngày 03/11/2026
+# Chuyển động map 3D — bản 8, ngày 04/11/2026
 
 Map giữ bộ nhân vật minh họa và toàn bộ màu sắc, tóc, áo, mũ hiện có. Chuyển động trên map chuyển từ ảnh đổi khung sang lưới có khớp trên GPU.
 
 ## Thay đổi
+
+Mặc định bật đầy đủ chuyển động và tự cân bằng độ nét. Người chơi đứng nghỉ vẫn có nhịp thở, đầu và tay cử động nhẹ; vật nuôi tự bắt đầu di chuyển sau khoảng 0,15–0,8 giây và nghỉ ngắn tự nhiên giữa các lượt đi. Chế độ Chuyển động nhẹ chỉ áp dụng khi được chủ động bật trong game.
 
 - `actor-rig.js`: mỗi người/con vật có một `SkinnedMesh`, ảnh tĩnh và trọng số khớp. Vẽ liên tục theo nhịp màn hình; không vẽ lại canvas rồi upload bitmap mỗi khung. Gối, khuỷu tay, thân, đầu và cánh chuyển động riêng; tư thế chuyển tiếp được làm dịu theo thời gian.
 - Bước chân theo quãng đường thực; chạy có biên độ và nghiêng thân riêng; nhảy có độ cao trên điểm tiếp đất. Vật nuôi có nhịp chân, đầu, nhịp thở, bơi và cánh bay. Nhân vật/con vật ngoài khung nhìn không cập nhật tư thế.

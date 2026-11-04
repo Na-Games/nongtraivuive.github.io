@@ -75,7 +75,7 @@ const Motion={
     this.prepareCollision();this.reduced=!!S.fx.reduceMotion||this.media.matches;
     for(const a of scene.animals){
       if(!a.fly&&(a.water?!this.pond(a.x,a.y):!this.canOccupy(a.x,a.y))){if(a.water){a.x=11.5;a.y=3.6}else{const route=this.route(a.x,a.y,a.home[0],a.home[1]);if(route.length){a.x=route[0].x;a.y=route[0].y}}a.tx=a.x;a.ty=a.y;a.vx=a.vy=0;a.path=null}
-      if(!a.motionStarted){a.motionStarted=true;a.heading=0;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=Math.max(.2,a.wait||1)}
+      if(!a.motionStarted){a.motionStarted=true;a.heading=0;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=.15+a.phase*.65}
       if(a.path?.length){let waypoint=a.path[a.pathIndex];if(waypoint&&Math.hypot(waypoint.x-a.x,waypoint.y-a.y)<Math.max(.10,(a.speed||0)*.28)&&a.pathIndex<a.path.length-1)waypoint=a.path[++a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
       if(!a.path&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);a.wait=rnd(1.2,4)}}
       const distance=this.stepSafe(a,dt,a.sp,a.fly?.6:a.e==='🐄'||a.e==='🐃'?.7:.52);a.footDistance=(a.footDistance||0)+distance;
