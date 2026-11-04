@@ -87,9 +87,9 @@ function fishDraw(){
   const rig={};drawAvatar(c,px,py,stage.h,S.av,{t,face:-1,fishing:true,seated:true,cleanFishing:true,rigOut:rig,fishState:F.state,castAt:F.castAt,reel:F.reel,caught:F.catchT>0,work:F.state==='fight'&&F.reel});F.lastRig=rig;
   if(['wait','bite','fight'].includes(F.state)){
    const visualTime=S.fx.reduceMotion?0:t,jiggle=F.state==='fight'&&F.moodName==='burst'?12:2;
-   const bx=W*F.bob.x+Math.sin(visualTime*2.2)*jiggle,by=H*F.bob.y+Math.sin(visualTime*3.2)*jiggle*.65,progress=F.state==='fight'?F.prog/100*.3:0;
-   const x=bx+(px-bx)*progress,y=by+(py-by)*progress,castPhase=S.fx.reduceMotion?1:clamp((F.t-F.castAt)/.65,0,1),tipX=rig.x??px-32,tipY=rig.y??py-45;
-   const flyX=tipX+(x-tipX)*castPhase,flyY=tipY+(y-tipY)*castPhase-Math.sin(castPhase*Math.PI)*H*.18;
+   const bx=Math.min(W*F.bob.x,stage.deck.left-20)+Math.sin(visualTime*2.2)*jiggle,by=H*F.bob.y+Math.sin(visualTime*3.2)*jiggle*.65,progress=F.state==='fight'?F.prog/100*.3:0;
+   const x=Math.min(stage.deck.left-14,bx+(px-bx)*progress),y=by+(py-by)*progress,castPhase=S.fx.reduceMotion?1:clamp((F.t-F.castAt)/.65,0,1),tipX=rig.x??px-32,tipY=rig.y??py-45;
+   F.lastBob={x,y};const flyX=tipX+(x-tipX)*castPhase,flyY=tipY+(y-tipY)*castPhase-Math.sin(castPhase*Math.PI)*H*.18;
    c.strokeStyle=F.state==='fight'&&F.tension>70?'#f4b989':'#fff9df';c.lineWidth=F.reel?1.8:1.2;c.beginPath();c.moveTo(tipX,tipY);c.quadraticCurveTo((tipX+flyX)/2,(tipY+flyY)/2+(F.reel?4:23)*castPhase,flyX,flyY);c.stroke();
    if(castPhase<1){Art.draw(c,'bobber',flyX,flyY,17,24)}else{
     GameVisuals.ripple(c,x,y+8,visualTime,F.state==='bite'?48:30);

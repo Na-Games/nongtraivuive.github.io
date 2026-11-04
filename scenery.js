@@ -9,14 +9,19 @@ const Scenery={
   c.save();c.fillStyle='#294d4655';c.beginPath();c.ellipse(x,y+h*.23,h*1.12,h*.15,0,0,Math.PI*2);c.fill();
   // A foreground landing supplies a common contact plane in all six backgrounds.
   c.fillStyle='#725338';c.beginPath();c.moveTo(left,back);c.lineTo(right,back-h*.12);c.lineTo(right,front);c.lineTo(left,front+h*.06);c.closePath();c.fill();
+  if(typeof Farm3D!=='undefined'&&Farm3D.materials?.wood.map?.image){if(!this.jettyPattern){this.jettyPattern=c.createPattern(Farm3D.materials.wood.map.image,'repeat');this.jettyPattern.setTransform(new DOMMatrix().scale(.2))}c.save();c.globalAlpha=.65;c.fillStyle=this.jettyPattern;c.fill();c.restore()}
   c.strokeStyle='#b08b5a';c.lineWidth=Math.max(2,h*.035);for(let i=0;i<7;i++){const yy=back+(front-back)*i/6;c.beginPath();c.moveTo(left+3,yy);c.lineTo(right,yy-h*.06);c.stroke()}
   for(const px of [left+8,right-12]){c.strokeStyle='#5f4933';c.lineWidth=h*.07;c.beginPath();c.moveTo(px,front);c.lineTo(px,front+h*.3);c.stroke()}
-  const seatY=y-h*.30;c.strokeStyle='#65472e';c.lineWidth=h*.045;for(const dx of [-.12,.13]){c.beginPath();c.moveTo(x+dx*h,seatY);c.lineTo(x+dx*h*1.3,y);c.stroke()}c.fillStyle='#b68b50';c.beginPath();c.ellipse(x,seatY,h*.23,h*.065,0,0,Math.PI*2);c.fill();
+  const seatX=x+h*.12,seatY=y-h*.29;c.strokeStyle='#65472e';c.lineWidth=h*.045;for(const dx of [-.12,.13]){c.beginPath();c.moveTo(seatX+dx*h,seatY);c.lineTo(seatX+dx*h*1.3,y);c.stroke()}c.fillStyle='#b68b50';c.beginPath();c.ellipse(seatX,seatY,h*.23,h*.065,0,0,Math.PI*2);c.fill();
   Art.draw(c,'bucket',Math.min(W-14,x+h*.55),y+h*.03,h*.32,h*.36,1);Art.draw(c,'tackle',left+h*.22,front,h*.38,h*.26,1);
   c.restore();return{x,y,h,seatY,deck:{left,right,back,front}};
  },
  fishingLife(c,W,H,t){
   const still=S.fx.reduceMotion,time=still?0:t,spot=S.fish.spot;c.save();
+  const avatarH=Math.min(W>H?116:144,W*.29,H*.32),edge=W*(W>H?.81:.79)-avatarH*.95-12;c.save();c.beginPath();c.rect(0,H*.27,Math.max(0,edge),H*.65);c.clip();
+  const species=FISH_SPOTS[spot].fish;for(let i=0;i<3;i++){const x=W*(.08+i*.12)+Math.sin(time*.32+i)*24,y=H*(.39+i*.085)+Math.sin(time*.7+i)*5;c.globalAlpha=.13;Art.draw(c,FISHES[species[i%species.length]]?.art||species[i%species.length],x,y,34+i*5,19+i*3,.5,Math.cos(time*.32+i)<0)}c.globalAlpha=1;
+  if(spot==='lotus'){for(let i=0;i<2;i++){const x=W*(.12+i*.18)+Math.sin(time*.25+i)*13,y=H*(.35+i*.08);if(typeof IllustratedAnimals!=='undefined')IllustratedAnimals.draw(c,{species:'duck',x:i,water:true,phase:time*.25,moveBlend:0,face:i?-1:1,rawPose:true},x,y,25,time)}}
+  else if(spot==='bay'){c.strokeStyle='#f4ffef44';c.lineWidth=1.4;for(let i=0;i<4;i++){const y=H*(.38+i*.1)+Math.sin(time*.8+i)*4;c.beginPath();c.moveTo(0,y);c.bezierCurveTo(edge*.3,y-5,edge*.65,y+6,edge,y-3);c.stroke()}}c.restore();
   if(S.fx.particles)for(let i=0;i<(S.fx.hq?7:3);i++){const x=((i*131+time*(spot==='bay'?15:5))%(W*.63+50))-20,y=H*(.42+(i*.071)%.31)+Math.sin(time+i)*4;c.globalAlpha=.22;c.fillStyle=spot==='lotus'?'#edbfc6':spot==='river'?'#e3c77c':'#fff3bd';c.beginPath();c.ellipse(x,y,spot==='bay'?2:4,1.8,Math.sin(i+time*.3),0,Math.PI*2);c.fill()}
   c.globalAlpha=.38;c.strokeStyle=S.night?'#d0ddd4':'#345c61';c.lineWidth=1.4;for(let i=0;i<3;i++){const x=(W*.15+i*67+time*8)%(W*.6),y=H*.23+Math.sin(time*.8+i)*6,wing=still?3:Math.sin(time*3+i)*4;c.beginPath();c.moveTo(x-7,y+wing);c.quadraticCurveTo(x-3,y-3,x,y);c.quadraticCurveTo(x+3,y-3,x+7,y+wing);c.stroke()}
   c.restore();

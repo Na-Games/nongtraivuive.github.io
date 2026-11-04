@@ -36,6 +36,20 @@ const FarmLabels={
  },
 };
 
+/* Product badges are independent of the zoom-dependent name labels. */
+const FarmProducts={
+ last:[],
+ draw(c,three){const hits=[],used=[],now=Date.now(),zoom=three?Farm3D.zoom:Scene.cam.z,r=clamp(18*zoom,13,19);c.save();
+  for(const [id,b]of Object.entries(S.b)){const d=BUILDINGS[id];if(!d||!(b.ready||b.t0&&now-b.t0>=bTime(id)))continue;const gx=d.slot[0]+1,gy=d.slot[1]+1,base=three?Farm3D.project(gx,gy):Scene.iso(gx,gy),p=three?Farm3D.project(gx,gy,Farm3D.height(gx,gy)+3.25):{x:base.x,y:base.y-126*zoom};
+   if(base.x<0||base.x>innerWidth||base.y<70||base.y>innerHeight-65||p.x<r||p.x>innerWidth-r||p.y<60+r||p.y>innerHeight-65-r)continue;
+   let y=p.y;for(let n=0;n<3&&used.some(q=>Math.hypot(q.x-p.x,q.y-y)<r*2.1);n++)y-=r*2.1;
+   const pulse=S.fx.reduceMotion?0:Math.sin(Scene.t*2.4+gx)*1.5;c.fillStyle='#fff9da';c.strokeStyle='#cf9c38';c.lineWidth=2;c.shadowColor='#9b6a2650';c.shadowBlur=6;c.beginPath();c.arc(p.x,y+pulse,r,0,Math.PI*2);c.fill();c.stroke();c.shadowBlur=0;
+   Art.draw(c,ITEMS[d.out]?.art||d.out,p.x,y+pulse,r*1.55,r*1.55,.5);c.fillStyle='#488953';c.beginPath();c.arc(p.x+r*.72,y-r*.67,6,0,Math.PI*2);c.fill();c.fillStyle='#fff';c.font='bold 9px system-ui';c.textAlign='center';c.textBaseline='middle';c.fillText('✓',p.x+r*.72,y-r*.67);
+   hits.push({x:p.x-r-3,y:y-r-3,w:r*2+6,h:r*2+6,hit:{kind:'building',id},product:d.out});used.push({x:p.x,y});
+  }c.restore();this.last=hits;if(three)Farm3D.overlayHits.unshift(...hits);else Scene.buildingHits=[...hits,...Scene.buildingHits||[]];
+ },
+};
+
 /* No extra textures: bounded, deterministic water and motion effects. */
 const GameVisuals={
  water(c,W,H,time){

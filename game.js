@@ -307,7 +307,7 @@ const Scene={
     this.regionHits=[];for(const r of World.regions.filter(r=>r.id!=='farm')){const p=this.iso(r.x,r.y),offset=r.id==='coast'?94:r.id==='orchard'?135:160,x=p.x,y=p.y-offset*z,title=r.n+(r.id==='coast'?' · Câu cá':'');c.font="800 12px 'Segoe UI',sans-serif";const w=c.measureText(title).width+24;if(x>-w&&x<this.w+w&&y>0&&y<this.h){this.label(c,title,x,y,12,true);this.regionHits.push({id:r.id,x:x-w/2,y:y-13,w,h:26})}}
     // nhãn mở đất
     const k=S.plotsOpen;if(k<PCOLS*PROWS){const[i,j]=plotXY(k),p=this.iso(i+.5,j+.5);this.label(c,`🔒 Mở đất · Cấp ${plotReqLv(k)}`,p.x,p.y-8*z,Math.max(11,13*z),S.lv>=plotReqLv(k))}
-    if(typeof FarmLabels!=='undefined')FarmLabels.draw(c,false);
+    if(typeof FarmLabels!=='undefined'){FarmLabels.draw(c,false);FarmProducts.draw(c,false);}
     // đợi thu hoạch
     PLOTS_EACH((k,i,j)=>{const pl=S.plots[k];if(k>=S.plotsOpen||!pl.crop)return;const pr=cropProg(pl);const p=this.iso(i+.5,j+.5);
       if(pr>=1){const by=p.y-34*z-Math.abs(Math.sin(t*3+k))*6*z;c.fillStyle='rgba(255,246,200,.95)';c.strokeStyle='#d6a23a';c.lineWidth=2*z;c.beginPath();c.arc(p.x,by,16*z,0,6.283);c.fill();c.stroke();c.font=`${20*z}px serif`;c.textAlign='center';c.textBaseline='middle';c.fillStyle='#000';Art.text(c,CROPS[pl.crop].e,p.x,by+1*z)}

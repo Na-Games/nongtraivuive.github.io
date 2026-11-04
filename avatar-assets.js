@@ -24,7 +24,7 @@ const AvatarAssets={
  states:{idle:{fps:4,frames:8},walk:{fps:10,frames:8},back:{fps:10,frames:8},run:{fps:14,frames:8},jump:{fps:10,frames:8},hoe:{fps:10,frames:8},plant:{fps:10,frames:8},water:{fps:10,frames:8},care:{fps:10,frames:8},fish:{fps:8,frames:8}},
  frames(){const frames=[];for(const [state,spec]of Object.entries(this.states))for(let i=0;i<spec.frames;i++)frames.push({id:state+'-'+String(i).padStart(2,'0'),state,index:i,options:{preview:true,exportPose:true,t:i/spec.frames*Math.PI*2/5,phase:i/spec.frames,walk:['walk','back','run'].includes(state),run:state==='run',jump:state==='jump',back:state==='back',work:['hoe','plant','water','care'].includes(state),action:state==='care'?'fertilize':state,fishing:state==='fish',seated:state==='fish',reel:state==='fish'}});return frames},
  async downloadMotion(input,onProgress=()=>{}){
-  const a=Wardrobe.normalize(input),files=[],frames=this.frames();await IllustratedAvatar.ready(a);
+  const a=Wardrobe.normalize(input),files=[],frames=this.frames();await Promise.all([IllustratedAvatar.ready(a),IllustratedAvatar.ready(a,'seated')]);
   for(let i=0;i<frames.length;i++){const frame=frames[i],cv=this.capture(a,frame.options,256);files.push({name:frame.id+'.png',data:await this.bytes(cv)});onProgress(i+1,frames.length);await new Promise(resolve=>setTimeout(resolve,0))}
   const meta={version:this.version,avatar:a,width:256,height:320,transparent:true,origin:'top-left',anchor:'Use the full 256x320 frame; do not independently crop animation poses.',states:this.states};
   files.push({name:'nhan-vat.json',data:new TextEncoder().encode(JSON.stringify(meta,null,2))});this.download(this.zip(files),'nhan-vat-'+Wardrobe.names[a.style].toLowerCase()+'-chuyen-dong.zip');

@@ -1,0 +1,41 @@
+/* Aligned, two-column controls in landscape; original portrait positioning is preserved. */
+.farm-tools-dock,.farm-social-dock{display:contents}
+@media(orientation:landscape) and (max-height:650px){
+ #hud .farm-tools-dock{position:absolute;left:max(8px,env(safe-area-inset-left));bottom:calc(78px + var(--sb));display:grid;grid-template-columns:repeat(2,36px);gap:6px}
+ #hud .farm-tools-dock .three-controls,#hud .farm-tools-dock .zoomctl{display:contents!important}
+ #hud .farm-tools-dock .cbtn,#hud .farm-tools-dock #b-harv{position:static!important;inset:auto!important;width:36px!important;height:36px!important;margin:0!important}
+ #hud .farm-social-dock{position:absolute;right:max(8px,env(safe-area-inset-right));top:calc(70px + var(--st));display:grid;grid-template-columns:repeat(2,49px);gap:5px}
+ #hud .farm-social-dock .side{display:contents!important}
+ #hud .farm-social-dock .sbtn{width:49px;height:43px;min-height:43px;padding:1px;font-size:9px;line-height:12px;white-space:nowrap}
+ #hud .farm-social-dock .sbtn .ico{width:27px;height:27px;margin-bottom:1px}
+ #hud .farm-social-dock .game-icon{width:24px;height:24px}
+ #hud .bl-row{position:fixed;left:108px;bottom:calc(78px + var(--sb));gap:5px}
+ #hud .bl{width:min(310px,calc(100vw - 110px))}
+}
+@media(orientation:landscape) and (max-height:360px){#hud .farm-tools-dock{grid-template-columns:repeat(2,30px);gap:4px;bottom:calc(74px + var(--sb))}#hud .farm-tools-dock .cbtn,#hud .farm-tools-dock #b-harv{width:30px!important;height:30px!important;min-height:30px;font-size:18px!important}#hud .farm-social-dock{top:calc(55px + var(--st));gap:3px}#hud .farm-social-dock .sbtn{height:38px;min-height:38px}#hud .farm-social-dock .sbtn .ico{height:23px;width:25px}}
+/* Saturated sea, warm land and a clear selection card replace the muted atlas. */
+#screen-map{background:radial-gradient(ellipse at 30% 25%,#247f87,#103b55 80%);color:#f7e6bb}
+#screen-map .homeland-heading{color:#fff4d3;top:75px;left:22px;text-shadow:0 2px 12px #092b3966}
+#screen-map .homeland-heading>span{color:#e8c77f;font-size:9px;letter-spacing:2px}
+#screen-map .homeland-heading h1{color:#fff7dc;font-size:25px;line-height:1.2;letter-spacing:-.5px;margin:6px 0}
+#screen-map .homeland-heading p{display:block;color:#cde5d9;font-size:11px;max-width:300px;line-height:1.4}
+#screen-map .map-top .pill,#screen-map .map-top .rbtn{background:#fff5db;color:#255551;border:1px solid #e3c57e;box-shadow:0 3px 0 #082d3540}
+#screen-map .map-sheet{background:#fff7e9;border:1px solid #e8cc91;border-radius:25px 25px 0 0;box-shadow:0 -8px 36px #06253645}
+#screen-map .map-sheet .card{background:linear-gradient(120deg,#e8efd8,#f8edcd);border-color:#c7d4a8;padding:12px}
+#screen-map .map-sheet .sel-info{font-size:13px;color:#315746;line-height:1.4}
+.homeland-regions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:8px}
+.homeland-regions button{border:1px solid #d7d5ba;border-radius:10px;background:#f5efdb;color:#54725d;font:800 11px inherit;padding:8px 3px;white-space:nowrap}
+.homeland-regions button.on{background:#2c766b;color:#fff7dc;border-color:#2c766b}
+#screen-map .pitem{border-color:#d5ddbd;display:block;padding:10px;background:#fffdf3}
+#screen-map .pitem.sel{background:#deecd0;border-color:#54927d;box-shadow:inset 3px 0 #387968}
+#screen-map .pitem .game-icon{width:19px;height:21px;vertical-align:middle}
+#screen-map .plist{scrollbar-width:thin;scrollbar-color:#9cb39a transparent}
+#screen-map .reg{color:#6b8056;margin-top:3px}
+#mapSvg .map-marker{fill:#f4cb77;stroke:#fff6d8;stroke-width:1.6px}
+#mapSvg .pv.selected .map-marker{fill:#d4633c;stroke:#fff3ab;stroke-width:3px}
+#mapSvg .pv.dimmed{opacity:.22;pointer-events:none}
+#mapSvg .atlas-region-name{fill:#dcead3;font:800 8px system-ui;letter-spacing:1px;paint-order:stroke;stroke:#124953;stroke-width:2px}
+.province-selected{display:flex;gap:10px;align-items:center}.province-selected>.game-icon{width:50px;height:48px;flex:none}.province-selected b{display:block;font-size:18px}.province-selected small{display:block;font-size:11px;margin-top:3px;color:#63805e}
+@media(orientation:portrait){#screen-map .map-sheet{height:44%}#screen-map .map-sheet.big{height:57%}#screen-map .homeland-heading p{display:none}#screen-map .map-sheet .card{padding:8px 10px}#screen-map .map-sheet .btn-big{padding:8px;margin-top:6px}}
+@media(orientation:landscape) and (max-height:650px){#screen-map .homeland-heading{top:59px;max-width:calc(100% - 345px)}#screen-map .homeland-heading h1{font-size:19px}#screen-map .homeland-heading p,#screen-map .homeland-heading>span{display:none}#screen-map .map-sheet{top:58px;right:9px;bottom:9px;width:310px;border-radius:21px}#screen-map .map-top{right:332px}#screen-map .map-sheet .card{padding:8px}.province-selected>.game-icon{width:35px;height:36px}.province-selected b{font-size:15px}.homeland-regions button{font-size:10px;padding:6px 1px}}
+@media(min-width:1000px){#screen-map .homeland-heading{max-width:500px}#screen-map .homeland-heading h1{font-size:34px}#screen-map .map-sheet{width:350px}}

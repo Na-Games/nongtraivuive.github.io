@@ -21,12 +21,12 @@ const ActorRig={
   const hip=this.bone(B,'hips',256,m.hip,null,u),spine=this.bone(B,'spine',256,m.hip-12,hip,u),head=this.bone(B,'head',m.head.x,headCut,spine,u);
   const arms=[],legs=[];
   for(const side of [-1,1]){const x=c+side*b.w*.25,upper=this.bone(B,'arm'+side,x,m.shoulder,spine,u),lower=this.bone(B,'forearm'+side,x,elbow,upper,u);arms.push({upper,lower,ui:B.indexOf(upper),li:B.indexOf(lower)})}
-  for(const side of [-1,1]){const x=c+side*b.w*.14,upper=this.bone(B,'thigh'+side,x,m.hip,hip,u),lower=this.bone(B,'shin'+side,x,knee,upper,u);legs.push({upper,lower,ui:B.indexOf(upper),li:B.indexOf(lower)})}
+  for(const side of [-1,1]){const x=c+side*b.w*.14,upper=this.bone(B,'thigh'+side,x,m.hip,hip,u),lower=this.bone(B,'shin'+side,x,knee,upper,u),foot=this.bone(B,'foot'+side,x,598,lower,u);legs.push({upper,lower,foot,ui:B.indexOf(upper),li:B.indexOf(lower),fi:B.indexOf(foot),upperLength:(knee-m.hip)*u,lowerLength:(598-knee)*u,soleLength:22*u})}
   this.skin(root,v.cv,512,640,u,B,(x,y)=>{
    if(y<headCut+8){const mix=this.smooth(headCut-10,headCut+8,y);return[[2,1-mix],[1,mix]]}
    const edge=b.w*(.22+(y-m.shoulder)/(m.hand-m.shoulder)*.09);
    if(y>=m.shoulder&&y<=m.hand&&Math.abs(x-c)>edge){const a=arms[x<c?0:1],k=this.smooth(elbow-13,elbow+13,y);return[[a.ui,1-k],[a.li,k]]}
-   if(y>m.hip){const l=legs[x<c?0:1],k=this.smooth(knee-16,knee+16,y),hipMix=this.smooth(m.hip,m.hip+15,y);return[[l.ui,(1-k)*hipMix],[l.li,k*hipMix],[0,1-hipMix]]}
+   if(y>m.hip){const l=legs[x<c?0:1],k=this.smooth(knee-16,knee+16,y),f=this.smooth(592,604,y),hipMix=this.smooth(m.hip,m.hip+15,y);return[[l.ui,(1-k)*hipMix],[l.li,k*(1-f)*hipMix],[l.fi,f*hipMix],[0,1-hipMix]]}
    return[[1,1]];
   });Object.assign(d,{hip,spine,head,arms,legs,hipY:hip.position.y,armRest:arms.map(a=>a.upper.position.clone())});return true;
  },
@@ -40,14 +40,14 @@ const ActorRig={
   const phase=(o.phase||0)*Math.PI*2,wave=Math.sin(phase),move=d.blend,run=d.run,jump=o.jump&&!reduced?Math.sin(clamp(o.phase||0,0,1)*Math.PI):0;
   mesh.position.y=jump*.38+Math.abs(Math.sin(phase*2))*.016*move;
   const idle=reduced?0:1-move;
-  d.hip.position.y=d.hipY+Math.sin(t*2.1)*.003*idle;d.spine.scale.y=1+Math.sin(t*2.1)*.003*idle;d.spine.rotation.z=-.045*run*move+wave*.018*move+Math.sin(t*1.15)*.012*idle;d.head.rotation.z=-d.spine.rotation.z*.45+Math.sin(t*.85)*.018*idle;
-  for(let i=0;i<2;i++){const s=i?1:-1,v=wave*s,a=d.arms[i],l=d.legs[i];a.upper.rotation.z=-v*(.29+run*.16)*move+Math.sin(t*1.7+i)*.018*idle;a.lower.rotation.z=(-.09-run*.23)*move;l.upper.rotation.z=v*(.37+run*.18)*move;l.lower.rotation.z=-Math.max(0,-v)*(.42+run*.25)*move;l.lower.scale.y=1;
+  d.hip.position.y=d.hipY-Math.min(.075,d.blend*.075)+Math.sin(t*2.1)*.003*idle;d.spine.scale.y=1+Math.sin(t*2.1)*.003*idle;d.spine.rotation.z=-.045*run*move+wave*.018*move+Math.sin(t*1.15)*.012*idle;d.head.rotation.z=-d.spine.rotation.z*.45+Math.sin(t*.85)*.018*idle;
+  for(let i=0;i<2;i++){const s=i?1:-1,v=wave*s,a=d.arms[i],l=d.legs[i];a.upper.rotation.z=-v*(.29+run*.16)*move+Math.sin(t*1.7+i)*.018*idle;a.lower.rotation.z=(-.09-run*.23)*move;l.upper.rotation.set(0,0,v*(.37+run*.18)*move);l.lower.rotation.set(0,0,-Math.max(0,-v)*(.42+run*.25)*move);l.lower.scale.y=1;
    if(jump){a.upper.rotation.z+=s*jump*.22;l.upper.rotation.z+=jump*.14;l.lower.rotation.z-=jump*.30}
   }
   const work=o.work||o.fishing;d.workBlend=(d.workBlend||0)+((work?1:0)-(d.workBlend||0))*(1-Math.exp(-14*dt));
   if(d.workBlend>.005){const a=d.arms[1],clock=o.actionTime??t,w=reduced?0:Math.sin(clock*5),amount=d.workBlend;d.spine.rotation.z+=(-.04+w*.035)*amount;a.upper.rotation.z+=(-.35+w*.32)*amount;a.lower.rotation.z+=(-.24+w*.22)*amount;d.arms[0].upper.rotation.z+=(.16+w*.10)*amount}
   const joints=[d.spine,d.head,...d.arms.flatMap(a=>[a.upper,a.lower]),...d.legs.flatMap(l=>[l.upper,l.lower])];d.poseState??=joints.map(j=>j.rotation.z);const ease=reduced?1:1-Math.exp(-22*dt);for(let i=0;i<joints.length;i++){d.poseState[i]+=(joints[i].rotation.z-d.poseState[i])*ease;joints[i].rotation.z=d.poseState[i]}
-  this.tool(root,o);d.animationFrames=(d.animationFrames||0)+1;
+  if(typeof GroundedGait!=='undefined')GroundedGait.human(root,o,dt);this.tool(root,o);d.animationFrames=(d.animationFrames||0)+1;
  },
  tool(root,o){
   const d=root.userData,action=o.work?(o.action||'hoe'):o.fishing?'fish':null;
@@ -89,7 +89,7 @@ const ActorRig={
   d.body.scale.y=reduced?1:1+Math.sin(t*1.9+e.x)*.004*(1-blend);
   for(let i=0;i<4;i++){d.legs[i].rotation.z=Math.sin(phase+(i%2)*Math.PI)*.25*blend;d.legs[i].scale.y=e.water?.15:1}
   if(d.insect){const flap=reduced?0:Math.sin(t*(d.species==='butterfly'?12:35)+e.x)*1.05;d.wings[0].rotation.y=flap;d.wings[1].rotation.y=-flap}
-  d.animationFrames=(d.animationFrames||0)+1;
+  if(typeof GroundedGait!=='undefined')GroundedGait.animal(root,e,t,dt);d.animationFrames=(d.animationFrames||0)+1;
  },
  shadows(farm){
   if(!S.fx.shadow){if(this.shadowMesh)this.shadowMesh.visible=false;return}
