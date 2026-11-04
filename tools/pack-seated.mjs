@@ -27,8 +27,9 @@ for(const garment of ['shirt','overalls','jacket']){
    if(warm&&(ny<.35||ny>.38&&ny<.65||ny>.83&&r>165)){skin[i]=r;skin[i+1]=Math.min(255,g/220*255);skin[i+2]=Math.min(255,bl/188*255);skin[i+3]=a}
    if(grey&&ny>.28&&ny<(garment==='overalls'?.90:.61)){cloth[i]=cloth[i+1]=cloth[i+2]=Math.min(255,(r+g+bl)/3/155*255);cloth[i+3]=a}
   }
+  let gripX=0,gripY=0,gripCount=0;for(let yy=Math.floor(b.y+b.h*.35);yy<b.y+b.h*.62;yy++)for(let xx=Math.floor(b.x+b.w*.78);xx<b.x+b.w;xx++){const ii=(yy*512+xx)*4;if(skin[ii+3]>100){gripX+=xx;gripY+=yy;gripCount++}}
   const id=style+'-'+garment,file=out+'/body-'+id+'.png',s=out+'/skin-'+id+'.png',c=out+'/cloth-'+id+'.png';encode(file,512,640,p);encode(s,512,640,skin);encode(c,512,640,cloth);
-  spec.bodies[id]={file,skin:s,cloth:c,pose:'seated',head:{x:(hx0+hx1)/2,y:b.y+2,w:Math.max(64,hx1-hx0)},bounds:b,hip:b.y+b.h*.61,shoulder:b.y+b.h*.32,hand:b.y+b.h*.47,grip:{x:b.x+b.w*.86,y:b.y+b.h*.47},seat:{x:b.x+b.w*.25,y:b.y+b.h*.61}};
+  spec.bodies[id]={file,skin:s,cloth:c,pose:'seated',head:{x:(hx0+hx1)/2,y:b.y+2,w:Math.max(64,hx1-hx0)},bounds:b,hip:b.y+b.h*.61,shoulder:b.y+b.h*.32,hand:b.y+b.h*.47,grip:{x:gripCount?gripX/gripCount:b.x+b.w*.86,y:gripCount?gripY/gripCount:b.y+b.h*.5},seat:{x:b.x+b.w*.25,y:b.y+b.h*.61}};
  }
 }
 fs.writeFileSync(out+'/manifest.json',JSON.stringify(spec,null,2));fs.writeFileSync(out+'/manifest.js','const SEATED_ART='+JSON.stringify(spec)+';\n');console.log('Packed 18 seated bodies and 36 color masks');

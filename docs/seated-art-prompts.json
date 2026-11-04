@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/illustrated/source/shirt.png",
+  "purpose": "Actual seated fishing anatomy, compatible with the current six identities and customizable overlays",
+  "sources": [
+    {"file":"assets/seated/source/shirt.png","brief":"Six bald Vietnamese farmers in a 3x2 transparent sheet, natural seated pose with horizontal thighs, bent knees and both hands clasping an invisible rod handle. Neutral gray shirts, navy trousers, brown sandals. No chair, hair, hat, rod or background."},
+    {"file":"assets/seated/source/overalls.png","brief":"Preserve the seated sheet identities, anatomy, hand positions and grid exactly. Replace clothes with neutral gray overalls and ivory undershirts; preserve sandals and alpha."},
+    {"file":"assets/seated/source/jacket.png","brief":"Preserve the seated sheet identities, anatomy, hand positions and grid exactly. Replace clothes with neutral gray farmer jackets and navy trousers; preserve sandals and alpha."}
+  ]
+}

@@ -3,7 +3,7 @@ let FS=null;
 const Fishing={
   inputActive:false,audio:null,
   ensure(){const f=S.fish;f.spot=FISH_SPOTS[f.spot]?f.spot:'lotus';f.bait=BAITS.some(b=>b.id===f.bait)?f.bait:'nho';f.xp=f.xp||0;f.records=f.records||{};f.history=f.history||[];f.chests=f.chests||0;f.streak=f.streak||0;f.bestStreak=f.bestStreak||0;const day=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());if(!f.daily||f.daily.day!==day)f.daily={day,caught:0,perfect:0,species:[],claimed:[]};if(!FishMechanics.unlocked(f.spot,f.caught))f.spot='lotus'},
-  open(){if(FS)return;closeSheet();hidePop();this.ensure();fadeTo(()=>{
+  open(){if(FS)return;closeSheet();hidePop();this.ensure();if(typeof SEATED_ART!=='undefined')IllustratedAvatar.ready(S.av,'seated').catch(()=>{});fadeTo(()=>{
     if(FS)return;const scr=$('#screen-fish');scr.classList.remove('hidden');document.body.classList.add('fishing-active');
     scr.innerHTML=`<canvas id="fishCv" aria-label="Mặt hồ câu cá"></canvas><div class="fish-vignette"></div>
     <header class="angler-header"><button class="angler-round" id="fexit" aria-label="Về nông trại">‹</button><button class="angler-location" id="flocation"><small>CHUYẾN CÂU CỦA BẠN</small><b id="fspot"></b><span>Đổi địa điểm ▾</span></button><button class="angler-round" id="fsettings" aria-label="Cài đặt câu cá">${Art.icon('settings','Cài đặt')}</button></header>

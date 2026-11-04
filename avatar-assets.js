@@ -1,7 +1,7 @@
 'use strict';
 /* Exact alpha PNG exports of the same model used by the farm, HUD and fishing. */
 const AvatarAssets={
- version:7,
+ version:9,
  get combinations(){return Wardrobe.names.length*SKINS.length*HAIRS.length*OUTFITS.length*Wardrobe.hairStyles.length*3*HATS.length},
  presets:[
   {style:0,skin:0,hair:0,outfit:0,hairStyle:'short',shirtStyle:'shirt',hat:'non'},

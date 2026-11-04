@@ -1,0 +1,80 @@
+﻿{
+    "date":  "2026-11-04",
+    "reason":  "Incomplete obsolete avatar raster fallback and its exporter superseded by shared illustrated/seated renderer; script reference removed from index.html.",
+    "count":  17,
+    "bytes":  198068,
+    "preserved":  [
+                      ".runtime",
+                      "docs/verification"
+                  ],
+    "removed":  [
+                    {
+                        "file":  "assets/avatars-v5/parts/0-body-mask.png",
+                        "bytes":  15881
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-body.png",
+                        "bytes":  22638
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-jacket-mask.png",
+                        "bytes":  12737
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-jacket.png",
+                        "bytes":  12941
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-overalls-mask.png",
+                        "bytes":  12510
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-overalls.png",
+                        "bytes":  17602
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-shirt-mask.png",
+                        "bytes":  11904
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-garment-shirt.png",
+                        "bytes":  12302
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-braid-mask.png",
+                        "bytes":  12019
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-braid.png",
+                        "bytes":  12019
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-long.png",
+                        "bytes":  11943
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-short-mask.png",
+                        "bytes":  8728
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-short.png",
+                        "bytes":  8728
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-swept-mask.png",
+                        "bytes":  8452
+                    },
+                    {
+                        "file":  "assets/avatars-v5/parts/0-hair-swept.png",
+                        "bytes":  8452
+                    },
+                    {
+                        "file":  "avatar-raster.js",
+                        "bytes":  4144
+                    },
+                    {
+                        "file":  "tools/export-avatar-parts.mjs",
+                        "bytes":  5068
+                    }
+                ]
+}

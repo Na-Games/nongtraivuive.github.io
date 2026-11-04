@@ -1,3 +1,5 @@
+Bản sửa DOCX lần 2: [dấu sản phẩm, bước chân chạm đất, tư thế ngồi câu mới và giao diện hai cột](docs/DOCUMENT-V2.md).
+
 Map 3D bản 8: [khớp chuyển động GPU liên tục, tối ưu thao tác và kết quả đo](docs/SMOOTH-MOTION.md).
 
 Bản sửa theo tài liệu ngày 03/11/2026: [chi tiết và cách bật tên cây](docs/DOCUMENT-FIXES-V7.md). Bộ chuyển động có 80 PNG cho mỗi nhân vật tùy chỉnh.

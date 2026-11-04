@@ -92,7 +92,7 @@ function refreshHud(){
   drawHudAvatar();refreshQuest();
 }
 function drawHudAvatar(){const c=$('#av-hud');if(!c)return;const x=c.getContext('2d');x.clearRect(0,0,140,140);drawAvatar(x,70,150,150,S.av,{t:0})}
-function layoutFarmDocks(){const hud=$('#hud');if(!hud)return;const tools=$('.farm-tools-dock',hud)||el('div','farm-tools-dock'),social=$('.farm-social-dock',hud)||el('div','farm-social-dock');for(const n of [$('#b-harv',hud),$('.three-controls',hud),$('.zoomctl',hud)])if(n)tools.append(n);for(const n of [$('.side-events',hud),$('.side-social',hud)])if(n)social.append(n);hud.append(tools,social)}
+function layoutFarmDocks(){const hud=$('#hud');if(!hud)return;const tools=$('.farm-tools-dock',hud)||el('div','farm-tools-dock'),social=$('.farm-social-dock',hud)||el('div','farm-social-dock');for(const n of [$('#b-harv',hud),$('.three-controls',hud),$('.zoomctl',hud),$('.bl',hud)])if(n)tools.append(n);for(const n of [$('.side-events',hud),$('.side-social',hud)])if(n)social.append(n);hud.append(tools,social)}
 function refreshQuest(){
   const b=$('#qbox');if(!b)return;const q=QUESTS[S.qi];
   if(!q){b.innerHTML='<small>XONG</small><b>Hết nhiệm vụ 🎉</b>';return}

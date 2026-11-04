@@ -1,9 +1,13 @@
 /* Aligned, two-column controls in landscape; original portrait positioning is preserved. */
 .farm-tools-dock,.farm-social-dock{display:contents}
-@media(orientation:landscape) and (max-height:650px){
+@media(orientation:landscape){
  #hud .farm-tools-dock{position:absolute;left:max(8px,env(safe-area-inset-left));bottom:calc(78px + var(--sb));display:grid;grid-template-columns:repeat(2,36px);gap:6px}
  #hud .farm-tools-dock .three-controls,#hud .farm-tools-dock .zoomctl{display:contents!important}
+ #hud .farm-tools-dock .bl,#hud .farm-tools-dock .bl-row{display:contents!important}
+ #hud .farm-tools-dock .quest{position:fixed;left:8px;bottom:calc(14px + var(--sb));width:min(310px,calc(100vw - 110px))}
+ #hud .prof{left:108px;top:calc(52px + var(--st))}
  #hud .farm-tools-dock .cbtn,#hud .farm-tools-dock #b-harv{position:static!important;inset:auto!important;width:36px!important;height:36px!important;margin:0!important}
+ #hud .farm-tools-dock #b-harv{order:0}#hud .farm-tools-dock #b-follow{order:1}#hud .farm-tools-dock #b-rotate-left{order:2}#hud .farm-tools-dock #b-rotate-right{order:3}#hud .farm-tools-dock #b-camera-home{order:4}#hud .farm-tools-dock #b-world{order:5}#hud .farm-tools-dock #b-zin{order:6}#hud .farm-tools-dock #b-zout{order:7}#hud .farm-tools-dock #b-menu{order:8}#hud .farm-tools-dock #b-fish{order:9}
  #hud .farm-social-dock{position:absolute;right:max(8px,env(safe-area-inset-right));top:calc(70px + var(--st));display:grid;grid-template-columns:repeat(2,49px);gap:5px}
  #hud .farm-social-dock .side{display:contents!important}
  #hud .farm-social-dock .sbtn{width:49px;height:43px;min-height:43px;padding:1px;font-size:9px;line-height:12px;white-space:nowrap}
@@ -24,7 +28,7 @@
 #screen-map .map-sheet .card{background:linear-gradient(120deg,#e8efd8,#f8edcd);border-color:#c7d4a8;padding:12px}
 #screen-map .map-sheet .sel-info{font-size:13px;color:#315746;line-height:1.4}
 .homeland-regions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin-top:8px}
-.homeland-regions button{border:1px solid #d7d5ba;border-radius:10px;background:#f5efdb;color:#54725d;font:800 11px inherit;padding:8px 3px;white-space:nowrap}
+.homeland-regions button{border:1px solid #d7d5ba;border-radius:10px;background:#f5efdb;color:#54725d;font:800 11px/1.2 system-ui,sans-serif;padding:8px 3px;white-space:nowrap}
 .homeland-regions button.on{background:#2c766b;color:#fff7dc;border-color:#2c766b}
 #screen-map .pitem{border-color:#d5ddbd;display:block;padding:10px;background:#fffdf3}
 #screen-map .pitem.sel{background:#deecd0;border-color:#54927d;box-shadow:inset 3px 0 #387968}

@@ -6,7 +6,7 @@ const ActorRig={
  texture(image){const t=new THREE.CanvasTexture(image);t.colorSpace=THREE.SRGBColorSpace;t.minFilter=THREE.LinearFilter;t.magFilter=THREE.LinearFilter;t.generateMipmaps=false;return t},
  bone(list,name,x,y,parent,unit){const b=new THREE.Bone();b.name=name;b.userData.pixel={x,y};const p=parent?.userData.pixel||{x:256,y:620};b.position.set((x-p.x)*unit,(p.y-y)*unit,0);parent?.add(b);list.push(b);return b},
  skin(root,image,width,height,unit,bones,weight,texture,anchor={x:256,y:620}){
-  const human=width===512&&height===640,geometry=new THREE.PlaneGeometry(width*unit,height*unit,human?24:12,human?32:16);geometry.translate((width/2-anchor.x)*unit,(anchor.y-height/2)*unit,0);
+  const geometry=new THREE.PlaneGeometry(width*unit,height*unit,24,32);geometry.translate((width/2-anchor.x)*unit,(anchor.y-height/2)*unit,0);
   const pos=geometry.attributes.position,indices=[],weights=[];
   for(let i=0;i<pos.count;i++){const x=pos.getX(i)/unit+anchor.x,y=anchor.y-pos.getY(i)/unit,w=weight(x,y);for(let j=0;j<4;j++){indices.push(w[j]?.[0]||0);weights.push(w[j]?.[1]||0)}}
   geometry.setAttribute('skinIndex',new THREE.Uint16BufferAttribute(indices,4));geometry.setAttribute('skinWeight',new THREE.Float32BufferAttribute(weights,4));
@@ -40,7 +40,7 @@ const ActorRig={
   const phase=(o.phase||0)*Math.PI*2,wave=Math.sin(phase),move=d.blend,run=d.run,jump=o.jump&&!reduced?Math.sin(clamp(o.phase||0,0,1)*Math.PI):0;
   mesh.position.y=jump*.38+Math.abs(Math.sin(phase*2))*.016*move;
   const idle=reduced?0:1-move;
-  d.hip.position.y=d.hipY-Math.min(.075,d.blend*.075)+Math.sin(t*2.1)*.003*idle;d.spine.scale.y=1+Math.sin(t*2.1)*.003*idle;d.spine.rotation.z=-.045*run*move+wave*.018*move+Math.sin(t*1.15)*.012*idle;d.head.rotation.z=-d.spine.rotation.z*.45+Math.sin(t*.85)*.018*idle;
+  d.hip.position.y=d.hipY-Math.min(.09,d.blend*.09)+Math.sin(t*2.1)*.003*idle;d.spine.scale.y=1+Math.sin(t*2.1)*.003*idle;d.spine.rotation.z=-.045*run*move+wave*.018*move+Math.sin(t*1.15)*.012*idle;d.head.rotation.z=-d.spine.rotation.z*.45+Math.sin(t*.85)*.018*idle;
   for(let i=0;i<2;i++){const s=i?1:-1,v=wave*s,a=d.arms[i],l=d.legs[i];a.upper.rotation.z=-v*(.29+run*.16)*move+Math.sin(t*1.7+i)*.018*idle;a.lower.rotation.z=(-.09-run*.23)*move;l.upper.rotation.set(0,0,v*(.37+run*.18)*move);l.lower.rotation.set(0,0,-Math.max(0,-v)*(.42+run*.25)*move);l.lower.scale.y=1;
    if(jump){a.upper.rotation.z+=s*jump*.22;l.upper.rotation.z+=jump*.14;l.lower.rotation.z-=jump*.30}
   }
