@@ -7,8 +7,8 @@ const GroundedGait={
   g.base.copy(root.position).add(g.right);g.base.y=Farm3D.walkHeight(g.base.x,g.base.z);
   let f=g.feet[index];if(!f)f=g.feet[index]={plant:g.base.clone(),start:g.base.clone(),stance:false,cycle};
   const inStance=cycle<stance;
-  if(inStance){if(!f.stance||cycle<f.cycle){f.plant.copy(g.base).addScaledVector(g.direction,stride*stance*.5);f.plant.y=Farm3D.walkHeight(f.plant.x,f.plant.z)}g.target.copy(f.plant);f.start.copy(f.plant)}
-  else{const u=(cycle-stance)/(1-stance),ease=u*u*(3-2*u);g.target.copy(g.base).addScaledVector(g.direction,stride*stance*.5);g.target.lerpVectors(f.start,g.target,ease);g.target.y=Farm3D.walkHeight(g.target.x,g.target.z)+Math.sin(u*Math.PI)*lift}
+  if(inStance){if(!f.stance||cycle<f.cycle){if(f.swing&&f.end)f.plant.copy(f.end);else{f.plant.copy(g.base).addScaledVector(g.direction,stride*stance*.5);f.plant.y=Farm3D.walkHeight(f.plant.x,f.plant.z)}}f.swing=false;g.target.copy(f.plant);f.start.copy(f.plant)}
+  else{const u=(cycle-stance)/(1-stance),ease=u*u*u*(10+u*(-15+6*u));if(!f.swing){f.end??=g.base.clone();f.end.copy(g.base).addScaledVector(g.direction,stride*(1-stance*.5));f.end.y=Farm3D.walkHeight(f.end.x,f.end.z);f.swing=true}g.target.lerpVectors(f.start,f.end,ease);g.target.y=Math.max(Farm3D.walkHeight(g.target.x,g.target.z),g.target.y)+Math.sin(u*Math.PI)**2*lift}
   f.stance=inStance;f.cycle=cycle;f.world??=new THREE.Vector3();f.world.copy(g.target);
   g.local.copy(g.target).sub(root.position).divideScalar(scale);g.local.y-=d.mesh.position.y;g.local.applyQuaternion(g.inverse);g.local.x/=d.mesh.scale.x;return g.local;
  },

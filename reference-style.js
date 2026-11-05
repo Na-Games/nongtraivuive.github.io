@@ -1,6 +1,8 @@
 'use strict';
 /* The approved detailed cutouts remain sharp; only joint matrices change per frame. */
 const ReferenceActors={
+ // Match velocity at both boundaries of the short return stroke.
+ stroke(cycle,stance){if(cycle<stance)return 1-2*cycle/stance;const u=(cycle-stance)/(1-stance),v=-2*(1-stance)/stance;return -1+6*u*u-4*u*u*u+v*(2*u*u*u-3*u*u+u)},
  visible(root,margin){const p=Farm3D.project(root.position.x,root.position.z,root.position.y);root.visible=p.x>-margin&&p.x<innerWidth+margin&&p.y>-margin&&p.y<innerHeight+margin;return root.visible},
  turn(root,vx,vy,dt){
   const d=root.userData,camera=Farm3D.camera,side=Math.sin(Farm3D.yaw)*vy-Math.cos(Farm3D.yaw)*vx;
@@ -35,7 +37,7 @@ const ReferenceActors={
  animalPose(root,e,t,dt){
   const d=root.userData;if(!d.mesh&&!this.prepare(root))return;if(!this.visible(root,180))return;dt=Math.min(.05,dt||1/60);this.turn(root,e.vx||0,e.vy||0,dt);const reduced=!!S.fx.reduceMotion,blend=reduced?0:e.moveBlend||0,phase=(e.phase||0)*Math.PI*2;
   d.mesh.position.y=reduced?0:d.insect?Math.sin(t*3.3+e.x)*.025:e.water?Math.sin(t*2+e.x)*.010:Math.cos(phase*2)*.004*blend;d.body.scale.y=reduced?1:1+Math.sin(t*1.7+e.x)*.003*(1-blend);d.head.rotation.z=reduced?0:Math.sin(t*.9+e.x)*.012*(1-blend)+Math.sin(phase)*.009*blend;
-  for(let i=0;i<d.legs.length;i++){const cycle=(((e.phase||0)+(d.bird?i*.5:[0,.5,.75,.25][i]))%1+1)%1,stance=.64,returning=cycle>=stance,u=returning?(cycle-stance)/(1-stance):cycle/stance,stroke=returning?-Math.cos(u*Math.PI):1-2*u,l=d.legs[i],f=d.feet[i],ease=1-Math.exp(-22*dt),target=e.water?-.4:stroke*.36*blend;l.rotation.x+=(target-l.rotation.x)*ease;l.rotation.z=stroke*.022*blend;l.position.y=l.userData.restY??l.position.y;l.userData.restY??=l.position.y;l.position.y=l.userData.restY+(returning?Math.sin(u*Math.PI)*.020*blend:0);f.rotation.x=-l.rotation.x*.65;f.rotation.z=-l.rotation.z*.6}
+  for(let i=0;i<d.legs.length;i++){const cycle=(((e.phase||0)+(d.bird?i*.5:[0,.5,.75,.25][i]))%1+1)%1,stance=.64,returning=cycle>=stance,u=returning?(cycle-stance)/(1-stance):0,stroke=this.stroke(cycle,stance),l=d.legs[i],f=d.feet[i],ease=1-Math.exp(-22*dt),target=e.water?-.4:stroke*.36*blend;l.rotation.x+=(target-l.rotation.x)*ease;l.rotation.z=stroke*.022*blend;l.userData.restY??=l.position.y;l.position.y=l.userData.restY+Math.sin(u*Math.PI)**2*.020*blend;f.rotation.x=-l.rotation.x*.65;f.rotation.z=-l.rotation.z*.6}
   if(d.insect){const flap=reduced?0:Math.sin(t*(d.species==='butterfly'?9:43)+e.x)*.75;d.wings[0].rotation.y=flap;d.wings[1].rotation.y=-flap}d.animationFrames=(d.animationFrames||0)+1;
  }
 };

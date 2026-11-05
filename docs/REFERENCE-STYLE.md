@@ -8,7 +8,7 @@ Các màu da, tóc, áo, kiểu tóc, áo sơ mi/quần yếm/áo khoác và b�
 
 ## Chuyển động
 
-Ảnh được gắn lên lưới có khớp trên GPU, không upload bitmap theo từng khung hình. Tay, khuỷu, gối, bàn chân và đầu của người chuyển động liên tục. Nhịp bước theo quãng đường; chân chống giữ vị trí trên đất; điểm cuối vung chân trùng điểm đặt chân tiếp theo. Chuyển hướng có góc trung gian. Động vật có nhịp chân theo loài, cử động đầu, nhịp thở, bơi và vỗ cánh. Các actor ngoài màn hình được bỏ qua để giảm công việc mỗi khung hình.
+Ảnh được gắn lên lưới có khớp trên GPU, không upload bitmap theo từng khung hình. Tay, khuỷu, gối, bàn chân và đầu của người chuyển động liên tục. Nhịp bước theo quãng đường; chân chống giữ vị trí trên đất; điểm cuối vung chân trùng điểm đặt chân tiếp theo. Vị trí hạ chân được giữ cố định trong đoạn vung, đường đi có vận tốc bằng không khi tiếp đất; độ nâng chân giảm mềm ở hai đầu. Chuyển hướng có góc trung gian. Động vật có nhịp chân theo loài, vận tốc chuyển khớp liên tục giữa đoạn chống và đoạn vung chân, cử động đầu, nhịp thở, bơi và vỗ cánh. Các actor ngoài màn hình được bỏ qua để giảm công việc mỗi khung hình.
 
 Đây là hình minh họa mang diện mạo 3D đặt trong map 3D; không phải mô hình giải phẫu đầy đủ có mặt sau được dựng lại từ ảnh. Bộ dựng hình khối trong `volume-actors.js` được giữ làm phương án riêng để không mất mã nguồn trước đó, nhưng không là mặc định.
 
