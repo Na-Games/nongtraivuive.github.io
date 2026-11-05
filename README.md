@@ -1,3 +1,5 @@
+Bộ hình hiện tại: [nhân vật và động vật chi tiết theo ảnh mẫu, ghép ngoại hình và chuyển động trên map](docs/REFERENCE-STYLE.md).
+
 Bản sửa DOCX lần 2: [dấu sản phẩm, bước chân chạm đất, tư thế ngồi câu mới và giao diện hai cột](docs/DOCUMENT-V2.md).
 
 Map 3D bản 8: [khớp chuyển động GPU liên tục, tối ưu thao tác và kết quả đo](docs/SMOOTH-MOTION.md).

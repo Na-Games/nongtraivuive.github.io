@@ -8,7 +8,7 @@ const GroundedGait={
   let f=g.feet[index];if(!f)f=g.feet[index]={plant:g.base.clone(),start:g.base.clone(),stance:false,cycle};
   const inStance=cycle<stance;
   if(inStance){if(!f.stance||cycle<f.cycle){f.plant.copy(g.base).addScaledVector(g.direction,stride*stance*.5);f.plant.y=Farm3D.walkHeight(f.plant.x,f.plant.z)}g.target.copy(f.plant);f.start.copy(f.plant)}
-  else{const u=(cycle-stance)/(1-stance),ease=u*u*(3-2*u);g.target.copy(g.base).addScaledVector(g.direction,stride*.18);g.target.lerpVectors(f.start,g.target,ease);g.target.y=Farm3D.walkHeight(g.target.x,g.target.z)+Math.sin(u*Math.PI)*lift}
+  else{const u=(cycle-stance)/(1-stance),ease=u*u*(3-2*u);g.target.copy(g.base).addScaledVector(g.direction,stride*stance*.5);g.target.lerpVectors(f.start,g.target,ease);g.target.y=Farm3D.walkHeight(g.target.x,g.target.z)+Math.sin(u*Math.PI)*lift}
   f.stance=inStance;f.cycle=cycle;f.world??=new THREE.Vector3();f.world.copy(g.target);
   g.local.copy(g.target).sub(root.position).divideScalar(scale);g.local.y-=d.mesh.position.y;g.local.applyQuaternion(g.inverse);g.local.x/=d.mesh.scale.x;return g.local;
  },
@@ -17,7 +17,7 @@ const GroundedGait={
   for(const l of d.legs)l.foot?.quaternion.identity();
   if(blend<.025||o.jump){g.feet.length=0;g.walkTime=0;for(const l of d.legs){l.ikUpper?.copy(l.upper.quaternion);l.ikLower?.copy(l.lower.quaternion)}return}
   g.walkTime=(g.walkTime||0)+dt;const stopping=o.speed!==undefined&&o.speed<.03;if(stopping&&g.wasMoving)for(const f of g.feet){if(f?.world){f.plant.copy(f.world);f.stance=true;f.cycle=0}}g.wasMoving=!stopping;if(p.speed>.03)g.direction.set(p.vx,0,p.vy).normalize();g.inverse.copy(d.mesh.quaternion).invert();
-  const run=d.run||0,stride=(.95+.4*run)*(root.scale.x||1)*(d.avatar.style===5?.82:1),stance=.64-.19*run,alpha=clamp(blend*2,0,1);
+  const run=d.run||0,stride=(.8+.35*run)*(root.scale.x||1)*(d.avatar.style===5?.82:1),stance=.62-.14*run,alpha=clamp(blend*2,0,1);
   for(let i=0;i<2;i++){const l=d.legs[i],cycle=stopping?0:(((o.phase||0)+i*.5)%1+1)%1,lateral=l.upper.position.x;
    const target=this.foot(root,g,i,p,cycle,stance,lateral,stride,.075+.07*run);target.y+=l.soleLength;
    g.hip.set(lateral,d.hip.position.y,0);g.axis.copy(target).sub(g.hip);const raw=g.axis.length(),length=Math.min(raw,(l.upperLength+l.lowerLength)*.997);g.axis.normalize();
