@@ -2,7 +2,7 @@
 const Scenery={
  images:{},pending:new Set(),
  loadOne(id){if(this.images[id]||this.pending.has(id))return;this.pending.add(id);const image=new Image();image.onload=()=>{this.images[id]=image;this.pending.delete(id);Scene.groundKey=null};image.onerror=()=>{this.pending.delete(id)};image.src='assets/backgrounds/'+id+'.png'},
- load(){for(const id of ['village-panorama','fishing-lake','terrain-meadow','province-relief','fishing-lotus','fishing-river','fishing-bay']){this.loadOne(id);if(id.startsWith('fishing-')&&innerWidth>innerHeight&&id!=='fishing-lake')this.loadOne(id+'-wide')}},
+ load(){this.loadOne('terrain-meadow')},
  cover(c,id,x,y,w,h){const image=this.images[id];if(!image)return false;const s=Math.max(w/image.width,h/image.height),sw=w/s,sh=h/s;c.drawImage(image,(image.width-sw)/2,(image.height-sh)/2,sw,sh,x,y,w,h);return true},
  fishingStage(c,W,H,t){
   const wide=W>H,h=Math.min(wide?116:144,W*.29,H*.32),x=W*(wide?.81:.79),y=H*(wide?.77:.57),left=x-h*.95,right=Math.min(W+20,x+h*1.05),back=y-h*.15,front=y+h*.18;

@@ -125,8 +125,8 @@
   "animals": {
     "cow": {
       "file": "assets/illustrated-motion/cow.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -137,8 +137,8 @@
     },
     "buffalo": {
       "file": "assets/illustrated-motion/buffalo.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -149,8 +149,8 @@
     },
     "pig": {
       "file": "assets/illustrated-motion/pig.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -161,8 +161,8 @@
     },
     "goat": {
       "file": "assets/illustrated-motion/goat.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -173,8 +173,8 @@
     },
     "sheep": {
       "file": "assets/illustrated-motion/sheep.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -185,8 +185,8 @@
     },
     "dog": {
       "file": "assets/illustrated-motion/dog.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -197,8 +197,8 @@
     },
     "cat": {
       "file": "assets/illustrated-motion/cat.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -209,8 +209,8 @@
     },
     "hen": {
       "file": "assets/illustrated-motion/hen.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -221,8 +221,8 @@
     },
     "duck": {
       "file": "assets/illustrated-motion/duck.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -233,8 +233,8 @@
     },
     "crane": {
       "file": "assets/illustrated-motion/crane.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -245,8 +245,8 @@
     },
     "bee-animal": {
       "file": "assets/illustrated-motion/bee-animal.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",
@@ -257,8 +257,8 @@
     },
     "butterfly": {
       "file": "assets/illustrated-motion/butterfly.png",
-      "w": 128,
-      "h": 160,
+      "w": 1024,
+      "h": 480,
       "states": [
         "idle",
         "walk",

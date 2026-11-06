@@ -2,17 +2,32 @@
 /* Shared PNG renderer for the farm, fishing, HUD, sheets and asset library. */
 const Art={
   images:{},tiles:{},failed:[],ready:0,total:Object.keys(ART_MANIFEST.sheets).length,emoji:new Map(),
+  requested:new Set(),waiting:[],active:0,
+  /* Critical sheets load at start; every other sheet loads the first time a sprite from it is requested. */
   load(){
     const critical=new Set(['terrain','nature','buildings','growth','produce','ui','village-people','wardrobe-parts','village-landscape','duck-swim','plot-states']);
-    const entries=Object.entries(ART_MANIFEST.sheets),primary=entries.filter(([id])=>critical.has(id)),background=entries.filter(([id])=>!critical.has(id));
-    const loadOne=([id,s])=>new Promise(resolve=>{const im=new Image();let settled=false;const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve()};const timer=setTimeout(()=>finish(false),12000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file});
-    const queue=async entries=>{let cursor=0;await Promise.all(Array.from({length:Math.min(3,entries.length)},async()=>{while(cursor<entries.length)await loadOne(entries[cursor++])}))};
-    this.criticalPromise=queue(primary);
-    return this.criticalPromise.then(()=>queue(background));
+    const primary=Object.keys(ART_MANIFEST.sheets).filter(id=>critical.has(id));
+    this.criticalPromise=Promise.all(primary.map(id=>this.need(id)));
+    return this.criticalPromise;
   },
-  has(id){return !!(ART_MANIFEST.sprites[id]&&this.images[ART_MANIFEST.sprites[id].sheet])},
+  need(id){
+    const s=ART_MANIFEST.sheets[id];if(!s)return Promise.resolve();
+    if(this.images[id])return Promise.resolve();
+    if(this.requested.has(id))return Promise.resolve();
+    this.requested.add(id);
+    return new Promise(resolve=>{this.waiting.push([id,s,resolve]);this.pump()});
+  },
+  pump(){
+    while(this.active<3&&this.waiting.length){
+      const [id,s,resolve]=this.waiting.shift();this.active++;
+      const im=new Image();let settled=false;
+      const finish=ok=>{if(settled)return;settled=true;clearTimeout(timer);this.active--;if(ok){this.images[id]=im;this.ready++}else this.failed.push(id);resolve();this.pump()};
+      const timer=setTimeout(()=>finish(false),15000);im.onload=()=>finish(true);im.onerror=()=>finish(false);im.src=s.file;
+    }
+  },
+  has(id){const s=ART_MANIFEST.sprites[id];if(!s)return false;if(this.images[s.sheet])return true;this.need(s.sheet);return false},
   draw(c,id,x,y,w,h=w,anchor=.5,flip=false){
-    const s=ART_MANIFEST.sprites[id];if(!s||!this.images[s.sheet])return false;
+    const s=ART_MANIFEST.sprites[id];if(!s)return false;if(!this.images[s.sheet]){this.need(s.sheet);return false}
     const sheet=ART_MANIFEST.sheets[s.sheet],b=s.bounds,scale=Math.min(w/b.w,h/b.h),dw=b.w*scale,dh=b.h*scale;
     c.save();c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.translate(x,y);if(flip)c.scale(-1,1);
     c.drawImage(this.images[s.sheet],s.col*sheet.cell+b.x,s.row*sheet.cell+b.y,b.w,b.h,-dw/2,-dh*anchor,dw,dh);c.restore();return true;
