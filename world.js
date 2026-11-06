@@ -37,4 +37,4 @@ const World={
   },
 };
 World.ridge.onload=()=>{if(typeof Scene!=='undefined')Scene.groundKey=null};
-World.ridge.src='assets/sprites/terrain/mountain-ridge-v2.png';
+World.ridge.src='assets/sprites/terrain/mountain-ridge-v2.webp';
