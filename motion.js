@@ -34,7 +34,7 @@ const Motion={
     if(x>=2&&x<8&&y>=23&&y<28)return false;
     if(x>=(typeof COAST_X==='undefined'?25:COAST_X)+1||y<1.5)return false;
     if(x<.3||y<.3||x>N-.3||y>N-.3)return false;
-    if(x>=PX0-.15&&x<PX0+PCOLS+.15&&y>=PY0-.15&&y<PY0+Math.min(PROWS,5)+.15)return false;
+    if(x>=PX0-.5&&x<PX0+PCOLS+.5&&y>=PY0-.5&&y<PY0+Math.min(PROWS,5)+.5)return false;
     if(Math.hypot((x-11.5)/3.5,(y-3.6)/2.8)<1)return false;
     const cache=!this.collision||this.collision.decorRef!==S.decor||this.collision.decorCount!==(S.decor?.length||0)?this.prepareCollision():this.collision,near=cache.cells.get(Math.floor(x/2)+Math.floor(y/2)*128);
     if(near)for(const s of near){if(s.r2!==undefined?(x-s.x)**2+(y-s.y)**2<s.r2:x>s.left&&x<s.right&&y>s.top&&y<s.bottom)return false}
@@ -69,6 +69,23 @@ const Motion={
     e.turn=(e.turn??e.face??-1)+((e.face||-1)-(e.turn??e.face??-1))*this.exp(18,dt);e.walk=e.moveBlend>.06?1:0;
     return distance;
   },
+  bodyRadius(e){if(e===Scene.player)return .32;return e.e==='🐄'||e.e==='🐃'?.55:/🐷|🐐|🐑|🐕/.test(e.e||'')?.38:.26},
+  /* Soft body collision: people and animals push each other apart instead of walking through one another. */
+  separate(scene,dt){
+    const list=[scene.player,...scene.animals.filter(a=>!a.fly)],k=Math.min(1,dt*14);
+    const ok=(e,x,y)=>e.water?this.pond(x,y):this.canOccupy(x,y);
+    for(let i=0;i<list.length;i++)for(let j=i+1;j<list.length;j++){
+      const a=list[i],b=list[j];if(!!a.water!==!!b.water&&a!==scene.player&&b!==scene.player)continue;if((a.water&&b===scene.player)||(b.water&&a===scene.player))continue;
+      let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);const min=this.bodyRadius(a)+this.bodyRadius(b);if(d>=min)continue;
+      if(d<.001){const g=(i*7+j*3)%6.283;dx=Math.cos(g);dy=Math.sin(g);d=1}
+      const push=(min-d)*k,nx=dx/d,ny=dy/d,wa=a===scene.player?.2:b===scene.player?.8:.5,wb=1-wa;
+      const ax=a.x-nx*push*wa,ay=a.y-ny*push*wa,bx=b.x+nx*push*wb,by=b.y+ny*push*wb;
+      const moveA=ok(a,ax,ay),moveB=ok(b,bx,by);
+      if(moveA&&moveB){a.x=ax;a.y=ay;b.x=bx;b.y=by}
+      else if(moveA){const x=a.x-nx*push,y=a.y-ny*push;if(ok(a,x,y)){a.x=x;a.y=y}}
+      else if(moveB){const x=b.x+nx*push,y=b.y+ny*push;if(ok(b,x,y)){b.x=x;b.y=y}}
+    }
+  },
   chooseTarget(a){
     for(let i=0;i<24;i++){const x=clamp(a.home[0]+rnd(-a.r,a.r),.4,N-.4),y=clamp(a.home[1]+rnd(-a.r,a.r),.4,N-.4);if(a.water?this.pond(x,y):a.fly||this.canOccupy(x,y)){if(a.water||a.fly){a.tx=x;a.ty=y;return true}if(this.navigate(a,x,y))return true}}a.tx=a.x;a.ty=a.y;return false;
   },
@@ -88,6 +105,7 @@ const Motion={
     p.accel=8;const distance=this.stepSafe(p,dt,2.8,(.8+.35*clamp(((p.speed||0)-1.4)/1.4,0,1))*(.72*(S.fx.avatarScale||1.25))*(S.av?.style===5?.82:1));p.footDistance=(p.footDistance||0)+distance;
     if(p.footDistance>.48){p.footDistance=0;this.emit('dust',p.x,p.y,14,.4)}
     if(!p.moving&&Math.hypot(p.tx-p.x,p.ty-p.y)<.025){p.path=null;if(p.pendingWork){p.work=p.pendingWork;p.pendingWork=0}}
+    this.separate(scene,dt);
     p.jump=Math.max(0,(p.jump||0)-dt);p.workClock=p.work>0?(p.workClock||0)+dt:0;p.work=Math.max(0,p.work-dt);
     for(const e of this.effects)e.age+=dt;this.effects=this.effects.filter(e=>e.age<e.life);
     scene.smokeTime=(scene.smokeTime||0)+dt;if(scene.smokeTime>.65){scene.smokeTime=0;for(const [id,b]of Object.entries(S.b))if(b.t0&&!b.ready){const d=BUILDINGS[id];this.emit('smoke',d.slot[0]+1,d.slot[1]+1,30,.95,105)}}

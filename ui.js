@@ -463,8 +463,9 @@ function runLoader(done){
   const iv=setInterval(()=>{const elapsed=performance.now()-start;progress(Math.min(92,12+Art.ready*10+elapsed/70));if(elapsed>1200)msg.textContent='Sắp vào vườn, hình ảnh còn lại tải ở nền…'},80);
   const finish=()=>{if(finished)return;finished=true;clearInterval(iv);clearTimeout(deadline);progress(100);msg.textContent='Nông trại đã sẵn sàng!';setTimeout(()=>{screen.classList.add('out');done();setTimeout(()=>{screen.remove();GameAudio.sync()},500)},120)};
   // Enter even on a slow/missing image. All gameplay has a canvas fallback.
-  const deadline=setTimeout(finish,3000);
-  Promise.resolve(Art.criticalPromise).then(()=>{const minimum=Math.max(0,350-(performance.now()-start));setTimeout(finish,minimum)},finish);
+  const deadline=setTimeout(finish,8000);
+  // Sheets are loaded on demand, so draw one hidden frame first to request every sheet the scene uses, then wait for them: no pop-in after the loading screen.
+  Promise.resolve(Art.criticalPromise).then(()=>new Promise(r=>setTimeout(r,450))).then(()=>{try{Scene.draw()}catch(e){}return Art.idle(5000)}).then(()=>{const minimum=Math.max(0,350-(performance.now()-start));setTimeout(finish,minimum)},finish);
 }
 
 /* ===== Màn hình chọn tỉnh (bản đồ Việt Nam) ===== */

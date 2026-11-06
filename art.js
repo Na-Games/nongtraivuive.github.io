@@ -17,6 +17,7 @@ const Art={
     this.requested.add(id);
     return new Promise(resolve=>{this.waiting.push([id,s,resolve]);this.pump()});
   },
+  idle(max=6000){const t0=performance.now();return new Promise(r=>{const tick=()=>{if(this.active===0&&!this.waiting.length||performance.now()-t0>max)r();else setTimeout(tick,50)};tick()})},
   pump(){
     while(this.active<3&&this.waiting.length){
       const [id,s,resolve]=this.waiting.shift();this.active++;
