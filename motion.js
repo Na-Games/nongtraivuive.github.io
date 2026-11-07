@@ -44,7 +44,7 @@ const Motion={
   radius(id){return /house|greenhouse|stall/.test(id)?1.18:/tree|pine|maple|bamboo|palm/.test(id)?.57:/rock/.test(id)?.42:.5},
   pond(x,y){return Math.hypot((x-11.5)/2.75,(y-3.6)/2.05)<1},
   canTravel(x,y,tx,ty,allowed=(x,y)=>this.canOccupy(x,y)){const steps=Math.max(1,Math.ceil(Math.hypot(tx-x,ty-y)/.1));for(let i=1;i<=steps;i++)if(!allowed(x+(tx-x)*i/steps,y+(ty-y)*i/steps))return false;return true},
-  stepSafe(e,dt,speed,stride){const x=e.x,y=e.y,phase=e.phase,allowed=e.fly?()=>true:e.water?(x,y)=>this.pond(x,y):(x,y)=>this.canOccupy(x,y);const distance=this.stepEntity(e,dt,speed,stride);if(this.canTravel(x,y,e.x,e.y,allowed))return distance;e.x=x;e.y=y;e.phase=phase||0;e.tx=x;e.ty=y;e.vx=e.vy=0;e.path=null;e.walk=0;e.speed=0;e.moving=false;e.wait=.1;return 0},
+  stepSafe(e,dt,speed,stride){const x=e.x,y=e.y,phase=e.phase,allowed=e.fly?()=>true:e.water?(x,y)=>this.pond(x,y):(x,y)=>this.canOccupy(x,y);const distance=this.stepEntity(e,dt,speed,stride);if(this.canTravel(x,y,e.x,e.y,allowed))return distance;const nx=e.x,ny=e.y;if(Math.abs(nx-x)>1e-4&&this.canTravel(x,y,nx,y,allowed)){e.y=y;e.vy=0;return Math.abs(nx-x)}if(Math.abs(ny-y)>1e-4&&this.canTravel(x,y,x,ny,allowed)){e.x=x;e.vx=0;return Math.abs(ny-y)}e.x=x;e.y=y;e.phase=phase||0;e.tx=x;e.ty=y;e.vx=e.vy=0;e.path=null;e.walk=0;e.speed=0;e.moving=false;e.wait=.1;return 0},
   route(x,y,tx,ty){
     const collision=this.prepareCollision(),key=collision.version;if(!this.navCache||this.navCache.key!==key)this.navCache={key,cells:Array.from({length:N*N},(_,i)=>this.canOccupy(i%N+.5,Math.floor(i/N)+.5))};const cells=this.navCache.cells,nearest=(px,py)=>{const ix=Math.floor(px),iy=Math.floor(py),direct=iy*N+ix;if(ix>=0&&ix<N&&iy>=0&&iy<N&&cells[direct])return direct;let best=-1,dist=Infinity;for(let i=0;i<cells.length;i++){if(!cells[i])continue;const d=(i%N+.5-px)**2+(Math.floor(i/N)+.5-py)**2;if(d<dist){dist=d;best=i}}return best};
     const start=nearest(x,y),goal=nearest(tx,ty);if(start<0||goal<0)return [];
@@ -57,12 +57,12 @@ const Motion={
   workPlayer(duration=.85,action='hoe'){const p=Scene.player;p.action=action;if(p.walk||p.path?.length)p.pendingWork=duration;else{p.work=duration;p.workClock=0}},
   stepEntity(e,dt,maxSpeed,stride=1){
     const dx=e.tx-e.x,dy=e.ty-e.y,d=Math.hypot(dx,dy),oldX=e.x,oldY=e.y;
-    const rate=e.accel||10,lag=Math.hypot(e.vx||0,e.vy||0)/rate;
-    const speed=d<.018?0:Math.min(maxSpeed,Math.sqrt(2*maxSpeed*3*Math.max(.004,d-lag*.6)));
+    const rate=e.accel||10,lag=Math.hypot(e.vx||0,e.vy||0)/rate,hasMore=!!(e.path&&e.pathIndex<e.path.length-1);
+    const speed=d<.018?0:hasMore?maxSpeed:Math.min(maxSpeed,Math.sqrt(2*maxSpeed*3*Math.max(.004,d-lag*.6)));
     const desiredX=d?dx/d*speed:0,desiredY=d?dy/d*speed:0,k=this.exp(rate,dt);
     e.vx=(e.vx||0)+(desiredX-(e.vx||0))*k;e.vy=(e.vy||0)+(desiredY-(e.vy||0))*k;
     const step=Math.hypot(e.vx,e.vy)*dt;
-    if(d<.018||step>=d&&e.vx*dx+e.vy*dy>0){e.x=e.tx;e.y=e.ty;e.vx=e.vy=0}else{e.x+=e.vx*dt;e.y+=e.vy*dt}
+    if(!hasMore&&(d<.018||step>=d&&e.vx*dx+e.vy*dy>0)){e.x=e.tx;e.y=e.ty;e.vx=e.vy=0}else{e.x+=e.vx*dt;e.y+=e.vy*dt}
     e.speed=Math.hypot(e.vx,e.vy);if(e.speed>.025){const desired=Math.atan2(e.vx,e.vy);e.heading??=desired;const delta=Math.atan2(Math.sin(desired-e.heading),Math.cos(desired-e.heading));e.heading+=delta*this.exp(9,dt)}const distance=Math.hypot(e.x-oldX,e.y-oldY);e.phase=(e.phase||0)+distance/stride;e.moving=e.speed>.035;e.moveBlend=(e.moveBlend||0)+((e.moving?1:0)-(e.moveBlend||0))*this.exp(12,dt);
     if(!e.moving&&e.moveBlend>.01)e.phase+=(Math.round(e.phase*2)/2-e.phase)*this.exp(18,dt);
     const sx=e.vx-e.vy,sy=(e.vx+e.vy)*.5;if(Math.abs(sx)>.08)e.face=sx>0?1:-1;if(Math.abs(sy)>.06)e.back=sy<0;
@@ -94,13 +94,13 @@ const Motion={
     for(const a of scene.animals){
       if(!a.fly&&(a.water?!this.pond(a.x,a.y):!this.canOccupy(a.x,a.y))){if(a.water){a.x=11.5;a.y=3.6}else{const route=this.route(a.x,a.y,a.home[0],a.home[1]);if(route.length){a.x=route[0].x;a.y=route[0].y}}a.tx=a.x;a.ty=a.y;a.vx=a.vy=0;a.path=null}
       if(!a.motionStarted){a.motionStarted=true;a.heading=0;a.tx=a.x;a.ty=a.y;a.phase=(a.x*7+a.y*3)%1;a.wait=.15+a.phase*.65}
-      if(a.path?.length){let waypoint=a.path[a.pathIndex];if(waypoint&&Math.hypot(waypoint.x-a.x,waypoint.y-a.y)<Math.max(.10,(a.speed||0)*.28)&&a.pathIndex<a.path.length-1)waypoint=a.path[++a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
-      if(!a.path&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);const r=Math.random();a.cur=a.sp*(r<.2?rnd(1.15,1.45):rnd(.6,1));a.wait=r<.3?rnd(.5,1.4):r>.8?rnd(5,9):rnd(1.8,4.5)}}
+      if(a.path?.length){while(a.pathIndex<a.path.length-1&&Math.hypot(a.path[a.pathIndex].x-a.x,a.path[a.pathIndex].y-a.y)<Math.max(.18,(a.speed||0)*.22))a.pathIndex++;const waypoint=a.path[a.pathIndex];if(waypoint){a.tx=waypoint.x;a.ty=waypoint.y}if(a.pathIndex===a.path.length-1&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04)a.path=null}
+      if(!a.path&&Math.hypot(a.tx-a.x,a.ty-a.y)<.04){a.wait-=dt;if(a.wait<=0){this.chooseTarget(a);const r=Math.random();a.cur=a.sp*(r<.25?rnd(1.15,1.45):rnd(.68,1.05));a.wait=r<.35?rnd(.4,1.1):r>.82?rnd(3.2,6.0):rnd(1.2,2.8)}}
       a.accel=a.fly?7:4.5;const top=a.cur||a.sp,gait=.78+.38*clamp((a.speed||0)/Math.max(.1,a.sp),0,1.4);const distance=this.stepSafe(a,dt,top,(a.fly?.6:a.e==='🐄'||a.e==='🐃'?.7:.52)*gait);a.footDistance=(a.footDistance||0)+distance;
       if(a.footDistance>(a.water?.3:.55)&&!a.fly){a.footDistance=0;this.emit(a.water?'water':'dust',a.x,a.y,a.water?20:12,.45)}
     }
     const p=scene.player;
-    if(p.path?.length){let waypoint=p.path[p.pathIndex];if(waypoint&&Math.hypot(waypoint.x-p.x,waypoint.y-p.y)<.13&&p.pathIndex<p.path.length-1)waypoint=p.path[++p.pathIndex];if(waypoint){p.tx=waypoint.x;p.ty=waypoint.y}}
+    if(p.path?.length){while(p.pathIndex<p.path.length-1&&Math.hypot(p.path[p.pathIndex].x-p.x,p.path[p.pathIndex].y-p.y)<Math.max(.26,(p.speed||0)*.14))p.pathIndex++;const waypoint=p.path[p.pathIndex];if(waypoint){p.tx=waypoint.x;p.ty=waypoint.y}}
     if(!this.canOccupy(p.x,p.y)){const path=this.route(p.x,p.y,p.tx,p.ty);if(path.length){p.x=path[0].x;p.y=path[0].y;p.path=path;p.pathIndex=0;p.vx=p.vy=0}}
     p.accel=8;const distance=this.stepSafe(p,dt,2.8,(.8+.35*clamp(((p.speed||0)-1.4)/1.4,0,1))*(.72*(S.fx.avatarScale||1.25))*(S.av?.style===5?.82:1));p.footDistance=(p.footDistance||0)+distance;
     if(p.footDistance>.48){p.footDistance=0;this.emit('dust',p.x,p.y,14,.4)}
