@@ -11,18 +11,20 @@ const ActorRig={
   return inv?[[w[0]?.[0]||0,(w[0]?.[1]||0)*inv],[w[1]?.[0]||0,(w[1]?.[1]||0)*inv],[w[2]?.[0]||0,(w[2]?.[1]||0)*inv],[w[3]?.[0]||0,(w[3]?.[1]||0)*inv]]:[[0,1],[0,0],[0,0],[0,0]];
  },
  segmentedSkin(root,image,width,height,unit,bones,parts,texture,anchor={x:256,y:620}){
+  if(typeof image==='number'){anchor=texture||{x:width/2,y:height};texture=parts;parts=bones;bones=unit;unit=height;height=width;width=image;image=null}
+  if(!Array.isArray(parts))return null;
   const positions=[],normals=[],uvs=[],skinIndices=[],skinWeights=[],indexArray=[];
   let vertexOffset=0;
   for(const part of parts){
-   const nx=part.nx||8,ny=part.ny||12,y0=part.y0,y1=part.y1,zBase=part.z||0,arch=part.arch||.003;
+   const nx=part.nx||part.cols||8,ny=part.ny||part.rows||12,y0=part.y0??(part.v0||0)*height,y1=part.y1??(part.v1??1)*height,zBase=part.z||0,arch=part.arch||.003,weightFn=part.weight||part.weightAt;
    for(let iy=0;iy<=ny;iy++){
-    const v=iy/ny,y=y0+(y1-y0)*v,x0=typeof part.x0==='function'?part.x0(y):part.x0,x1=typeof part.x1==='function'?part.x1(y):part.x1;
+    const v=iy/ny,y=y0+(y1-y0)*v,rawX0=part.x0??(part.u0||0)*width,rawX1=part.x1??(part.u1??1)*width,x0=typeof rawX0==='function'?rawX0(y):rawX0,x1=typeof rawX1==='function'?rawX1(y):rawX1;
     for(let ix=0;ix<=nx;ix++){
      const u=ix/nx,x=x0+(x1-x0)*u,z=zBase+Math.sin(u*Math.PI)*arch;
      positions.push((x-anchor.x)*unit,(anchor.y-y)*unit,z);
      normals.push(0,0,1);
      uvs.push(clamp(x/width,0,1),clamp(1-y/height,0,1));
-     const nw=this.normalizeWeights(part.weight(x,y));
+     const nw=this.normalizeWeights(weightFn?weightFn(x,y):[[0,1]]);
      for(let j=0;j<4;j++){skinIndices.push(nw[j][0]);skinWeights.push(nw[j][1])}
     }
    }

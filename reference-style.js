@@ -108,14 +108,14 @@ const ReferenceActors={
    const legBounds=[0,...splits,1];
    for(let i=0;i<legs.length;i++){
     const isNear=bird?(i===1):(i===1||i===3);
-    if(!isNear)patches.push({u0:legBounds[i],u1:legBounds[i+1],v0:Math.max(0,cut-.03),v1:1,z:-.008+i*.001,cols:6,rows:12,weightAt:legWeight(i)});
+    if(!isNear)patches.push({x0:legBounds[i]*m.w,x1:legBounds[i+1]*m.w,y0:Math.max(0,cut-.03)*m.h,y1:m.h,z:-.008+i*.001,nx:6,ny:12,weight:legWeight(i)});
    }
-   patches.push({u0:0,u1:1,v0:0,v1:Math.min(1,cut+.025),z:0,cols:18,rows:16,weightAt:upperWeight});
+   patches.push({x0:0,x1:m.w,y0:0,y1:Math.min(1,cut+.025)*m.h,z:0,nx:18,ny:16,weight:upperWeight});
    for(let i=0;i<legs.length;i++){
     const isNear=bird?(i===1):(i===1||i===3);
-    if(isNear)patches.push({u0:legBounds[i],u1:legBounds[i+1],v0:Math.max(0,cut-.03),v1:1,z:.008+i*.001,cols:6,rows:12,weightAt:legWeight(i)});
+    if(isNear)patches.push({x0:legBounds[i]*m.w,x1:legBounds[i+1]*m.w,y0:Math.max(0,cut-.03)*m.h,y1:m.h,z:.008+i*.001,nx:6,ny:12,weight:legWeight(i)});
    }
-   ActorRig.segmentedSkin(root,m.w,m.h,u,bones,patches,texture,{x:m.w/2,y:m.h});
+   ActorRig.segmentedSkin(root,image,m.w,m.h,u,bones,patches,texture,{x:m.w/2,y:m.h});
   }
   Object.assign(d,{body,head,tail,legs,feet,wings,insect,bird,size,cfg,bodyY:body.position.y,headY:head.position.y});return true;
  },
